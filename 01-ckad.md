@@ -37,10 +37,15 @@ events
 </p>
 </details>
 
-#### 02. Create a pod called `pod-1` using image `nginx`, the container should be named `container-1` in the namespace `my-pod-namespace`
+#### 02. Create a pod called `pod-1` using image `nginx`, the container should be named `container-1` in the namespace `my-pod-namespace`. Create the namespace.
 
 <details><summary>show</summary>
 <p>
+
+```bash
+# Create the namespace
+kubectl create namespace my-pod-namespace
+```
 
 ```bash
 # Switch context into the namespace so that all subsequent commands execute inside that namespace.
@@ -141,13 +146,19 @@ kubectl get all
 </p>
 </details>
 
-#### 03. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image. The containers should be named `my-container`. Each container should have a memory `request` of 25Mi and a memory `limit` of 100Mi. This deployment should run in the `my-deployment-namespace` namespace.
+#### 03. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image. The containers should be named `my-container`. Each container should have a memory `request` of 25Mi and a memory `limit` of 100Mi. This deployment should run in the `my-deployment-namespace` namespace. Create the namespace.
 
 <details><summary>show</summary>
 <p>
+
+```bash
+# Create the namespace
+kubectl create namespace my-deployment-namespace
+```
+
 ```bash
 # Switch context into the namespace so that all subsequent commands execute inside that namespace.
-kubectl config set-context --current --namespace=my-pod-namespace 
+kubectl config set-context --current --namespace=my-deployment-namespace
 ```
 
 ```bash
@@ -192,7 +203,6 @@ metadata:
   labels:
     app: my-deployment
   name: my-deployment
-  namespace: my-mynamespace
 spec:
   replicas: 3
   selector:
@@ -228,4 +238,71 @@ kubectl get all
 ```
 
  </p>
+</details>
+
+#### 04. In the previous question a Deployment called `my-deployment` was created. Allow network traffic to flow to this deployment from inside the cluster.
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# Run the help flag to get examples
+kubectl expose -h
+
+Examples:
+  # Create a service for a replicated nginx, which serves on port 80 and connects to the containers on port 8000
+  kubectl expose rc nginx --port=80 --target-port=8000
+
+  # Create a service for a replication controller identified by type and name specified in "nginx-controller.yaml",
+which serves on port 80 and connects to the containers on port 8000
+  kubectl expose -f nginx-controller.yaml --port=80 --target-port=8000
+
+  # Create a service for a pod valid-pod, which serves on port 444 with the name "frontend"
+  kubectl expose pod valid-pod --port=444 --name=frontend
+
+  # Create a second service based on the above service, exposing the container port 8443 as port 443 with the name
+"nginx-https"
+  kubectl expose service nginx --port=443 --target-port=8443 --name=nginx-https
+
+  # Create a service for a replicated streaming application on port 4100 balancing UDP traffic and named 'video-stream'.
+  kubectl expose rc streamer --port=4100 --protocol=UDP --name=video-stream
+
+  # Create a service for a replicated nginx using replica set, which serves on port 80 and connects to the containers on
+port 8000
+  kubectl expose rs nginx --port=80 --target-port=8000
+
+  # Create a service for an nginx deployment, which serves on port 80 and connects to the containers on port 8000
+  kubectl expose deployment nginx --port=80 --target-port=8000
+
+```
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# Using the best example that matches the question
+kubectl expose deployment my-deployment --port=80 --target-port=80
+```
+
+Watch out for the statement from inside the Cluster so this is of type: ClusterIP
+--type='': Type for this service: ClusterIP, NodePort, LoadBalancer, or ExternalName. Default is 'ClusterIP'.
+
+```bash
+# Check that the Service was created
+kubectl get service
+
+NAME            TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+my-deployment   ClusterIP   10.245.79.74   <none>        80/TCP    103s
+```
+
+```bash
+# A quicker check is to see if the Pod Endpoints are being load balanced
+kubectl get endpoints
+
+NAME            ENDPOINTS                                         AGE
+my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
+# The three replicas internal endpoints are registered
+```
+
+</p>
 </details>

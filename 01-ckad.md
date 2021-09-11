@@ -595,8 +595,67 @@ FIELDS:
 ```
 
 ```bash
-kubectl get pod json-pod -o jsonpath={.status.hostIP}    ## From Kubernetes.io Bookmarks..Operations..
+kubectl get pod json-pod -o jsonpath={.status.hostIP}    ## From Kubernetes.io Bookmarks..Operations
 10.130.0.5
+```
+
+</p>
+</details>
+
+#### 07. Create a pod called log-pod using image nginx in namespace log-namespace. Create the namespace. Delete the pod called log-pod. Obtain the logs for the deleted pod called log-pod
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl create namespace log-namespace
+kubectl run log-pod --image=nginx -n log-namespace
+kubectl config set-context --current --namespace=log-namespace
+kubectl delete pod log-pod --force
+```
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl logs -h
+
+Examples:
+  # Return snapshot logs from pod nginx with only one container
+  kubectl logs nginx
+
+  # Return snapshot logs from pod nginx with multi containers
+  kubectl logs nginx --all-containers=true
+
+  # Return snapshot logs from all containers in pods defined by label app=nginx
+  kubectl logs -l app=nginx --all-containers=true
+
+  # Return snapshot of previous terminated ruby container logs from pod web-1
+  kubectl logs -p -c ruby web-1
+
+  # Begin streaming the logs of the ruby container in pod web-1
+  kubectl logs -f -c ruby web-1
+
+  # Begin streaming the logs from all containers in pods defined by label app=nginx
+  kubectl logs -f -l app=nginx --all-containers=true
+
+  # Display only the most recent 20 lines of output in pod nginx
+  kubectl logs --tail=20 nginx
+
+  # Show all logs from pod nginx written in the last hour
+  kubectl logs --since=1h nginx
+
+  # Show logs from a kubelet with an expired serving certificate
+  kubectl logs --insecure-skip-tls-verify-backend nginx
+
+  # Return snapshot logs from first container of a job named hello
+  kubectl logs job/hello
+
+  # Return snapshot logs from container nginx-1 of a deployment named nginx
+  kubectl logs deployment/nginx -c nginx-1
 ```
 
 </p>

@@ -84,12 +84,13 @@ kubectl apply -f q2.yml -n my-namespace
 </p>
 </details>
 
-### 03. Create a Deployment called `my-deployment`, with three replicas, using the `nginx` image. The containers should be named `my-container`. Each container should have a memory request of 20Mi and a memory limit of 50Mi. This deployment should run in the `my-deployment-namespace` namespace.
+### 03. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image. The containers should be named `my-container`. Each container should have a memory `request` of 25Mi and a memory `limit` of 100Mi. This deployment should run in the `my-deployment-namespace` namespace.
 
 <details><summary>show</summary>
 <p>
 
 ```bash
+# Run the help flag to get examples
 kubectl create deployment -h
 kubectl create deploy -h
   
@@ -108,12 +109,55 @@ Examples:
 ```
 
 ```bash
-kubectl create deployment my-deployment --image=nginx --repliacs=3 -n my-deployment-namespace --dry-run=client -o yaml > q3.yml
+# Using the best example that matches the question
+kubectl create deployment my-deployment --image=nginx --repliacs=3 -n my-namespace --dry-run=client -o yaml > q3.yml
 ```
 
-`vi q3.yml`
+```bash
+# Edit the YAML file to make required changes
+vi q3.yml  
+```
   
 ```bash
-kubectl create deployment my-deployment --image=nginx --repliacs=3 -n my-deployment-namespace --dry-run=client -o yaml > q3.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: my-deployment
+  name: my-deployment
+  namespace: my-mynamespace
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-deployment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: my-deployment
+    spec:
+      containers:
+      - image: nginx
+        name: my-container # Change from nginx to my container 
+        resources:         # From Kubernetes.io Bookmarks..Core Pod..Pod-Limits and Requests
+          requests:
+            memory: "25Mi"        
+          limits:
+            memory: "100Mi"        
+        resources: {}
+status: {}
+```
+
+```bash
+# Apply the YAML file to the Kubernetes API server  
+kubectl apply -f q3.yml  
+```
+  
+```bash
+# Quick verification that the deployment was created and is working
+kubectl get all -n 
 ```
   

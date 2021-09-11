@@ -1,11 +1,13 @@
-### Create a namespace called 'mynamespace' and a pod with image nginx called nginx on this namespace
+## Kubernetes Workloads
+
+### List all the namespaces in the cluster
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl create namespace mynamespace
-kubectl run nginx --image=nginx --restart=Never -n mynamespace
+kubectl get namespaces
+k get ns  
 ```
 
 </p>

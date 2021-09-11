@@ -1,30 +1,35 @@
-## Kubernetes Workloads
+## Sample CKAD Questions and Answers
 
 #### 01. List all the kubernetes resources that can be found in a namespace. By name only.
 
 <details><summary>show</summary>
 <p>
-
 ```bash
 kubectl api-resources --namespaced=true # # From Kubernetes.io Bookmarks..Namespace
 
-NAME                               SHORTNAMES                           APIVERSION                                  NAMESPACED   
-bindings                                                                v1                                          true         
-configmaps                         cm                                   v1                                          true         
-endpoints                          ep                                   v1                                          true         
-events                             ev                                   v1                                          true         
+NAME SHORTNAMES APIVERSION NAMESPACED  
+bindings v1 true  
+configmaps cm v1 true  
+endpoints ep v1 true  
+events ev v1 true  
 ...
-  
+
 # Do not need the additional supplied columns.
-  
+
+````
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+```bash
 kubectl api-resources --namespaced=true -o name
 bindings
 configmaps
 endpoints
 events
-...  
-  
-```
+...
+````
 
 </p>
 </details>
@@ -33,7 +38,6 @@ events
 
 <details><summary>show</summary>
 <p>
-
 ```bash
 # Switch context into the namespace so that all subsequent commands execute inside that namespace.
 kubectl config set-context --current --namespace=my-pod-namespace 
@@ -41,55 +45,66 @@ kubectl config set-context --current --namespace=my-pod-namespace
   
 ```bash
 # Run the help flag to get examples
-kubectl run -h 
+kubectl run -h
 
 Examples:
-  # Start a nginx pod
-  kubectl run nginx --image=nginx
 
-  # Start a hazelcast pod and let the container expose port 5701
-  kubectl run hazelcast --image=hazelcast/hazelcast --port=5701
+# Start a nginx pod
 
-  # Start a hazelcast pod and set environment variables "DNS_DOMAIN=cluster" and "POD_NAMESPACE=default" in the
+kubectl run nginx --image=nginx
+
+# Start a hazelcast pod and let the container expose port 5701
+
+kubectl run hazelcast --image=hazelcast/hazelcast --port=5701
+
+# Start a hazelcast pod and set environment variables "DNS_DOMAIN=cluster" and "POD_NAMESPACE=default" in the
+
 container
-  kubectl run hazelcast --image=hazelcast/hazelcast --env="DNS_DOMAIN=cluster" --env="POD_NAMESPACE=default"
+kubectl run hazelcast --image=hazelcast/hazelcast --env="DNS_DOMAIN=cluster" --env="POD_NAMESPACE=default"
 
-  # Start a hazelcast pod and set labels "app=hazelcast" and "env=prod" in the container
-  kubectl run hazelcast --image=hazelcast/hazelcast --labels="app=hazelcast,env=prod"
+# Start a hazelcast pod and set labels "app=hazelcast" and "env=prod" in the container
 
-  # Dry run; print the corresponding API objects without creating them
-  kubectl run nginx --image=nginx --dry-run=client
+kubectl run hazelcast --image=hazelcast/hazelcast --labels="app=hazelcast,env=prod"
 
-  # Start a nginx pod, but overload the spec with a partial set of values parsed from JSON
-  kubectl run nginx --image=nginx --overrides='{ "apiVersion": "v1", "spec": { ... } }'
+# Dry run; print the corresponding API objects without creating them
 
-  # Start a busybox pod and keep it in the foreground, don't restart it if it exits
-  kubectl run -i -t busybox --image=busybox --restart=Never
+kubectl run nginx --image=nginx --dry-run=client
 
-  # Start the nginx pod using the default command, but use custom arguments (arg1 .. argN) for that command
-  kubectl run nginx --image=nginx -- <arg1> <arg2> ... <argN>
+# Start a nginx pod, but overload the spec with a partial set of values parsed from JSON
 
-  # Start the nginx pod using a different command and custom arguments
-  kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN> 
-```  
+kubectl run nginx --image=nginx --overrides='{ "apiVersion": "v1", "spec": { ... } }'
 
+# Start a busybox pod and keep it in the foreground, don't restart it if it exits
+
+kubectl run -i -t busybox --image=busybox --restart=Never
+
+# Start the nginx pod using the default command, but use custom arguments (arg1 .. argN) for that command
+
+kubectl run nginx --image=nginx -- <arg1> <arg2> ... <argN>
+
+# Start the nginx pod using a different command and custom arguments
+
+kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>
+
+````
 </p>
-</details>  
-  
+</details>
+
 <details><summary>show</summary>
 <p>
-  
+
 ```bash
-# Using the best example that matches the question  
+# Using the best example that matches the question
+# --dry-run=client -o yaml from Kubernetes.io..Cheat Sheet
 kubectl run pod-1 --image=nginx --dry-run=client -o yaml > q2.yml
-```
+````
 
 ```bash
 # Edit the YAML file to make required changes
-# Use the Question number in case you want to return to the question for reference or for review  
-vi q3.yml  
+# Use the Question number in case you want to return to the question for reference or for review
+vi q2.yml
 ```
-  
+
 ```bash
 apiVersion: v1
 kind: Pod
@@ -110,15 +125,15 @@ status: {}
 ```
 
 ```bash
-# Apply the YAML file to the Kubernetes API server    
-kubectl apply -f q2.yml 
+# Apply the YAML file to the Kubernetes API server
+kubectl apply -f q2.yml
 ```
 
 ```bash
 # Quick verification that the pod was created and is working
-kubectl get all 
-```  
-  
+kubectl get all
+```
+
 </p>
 </details>
 
@@ -126,12 +141,16 @@ kubectl get all
 
 <details><summary>show</summary>
 <p>
+```bash
+# Switch context into the namespace so that all subsequent commands execute inside that namespace.
+kubectl config set-context --current --namespace=my-pod-namespace 
+```
 
 ```bash
 # Run the help flag to get examples
 kubectl create deployment -h
 kubectl create deploy -h
-  
+
 Examples:
   # Create a deployment named my-dep that runs the busybox image
   kubectl create deployment my-dep --image=busybox
@@ -143,9 +162,14 @@ Examples:
   kubectl create deployment my-dep --image=nginx --replicas=3
 
   # Create a deployment named my-dep that runs the busybox image and expose port 5701
-  kubectl create deployment my-dep --image=busybox --port=5701  
+  kubectl create deployment my-dep --image=busybox --port=5701
 ```
 
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
 ```bash
 # Using the best example that matches the question
 kubectl create deployment my-deployment --image=nginx --repliacs=3 -n my-namespace --dry-run=client -o yaml > q3.yml
@@ -153,9 +177,9 @@ kubectl create deployment my-deployment --image=nginx --repliacs=3 -n my-namespa
 
 ```bash
 # Edit the YAML file to make required changes
-vi q3.yml  
+vi q3.yml
 ```
-  
+
 ```bash
 apiVersion: apps/v1
 kind: Deployment
@@ -179,23 +203,25 @@ spec:
     spec:
       containers:
       - image: nginx
-        name: my-container # Change from nginx to my container 
+        name: my-container # Change from nginx to my container
         resources:         # From Kubernetes.io Bookmarks..Core Pod..Pod-Limits and Requests
           requests:
-            memory: "25Mi"        
+            memory: "25Mi"
           limits:
-            memory: "100Mi"        
+            memory: "100Mi"
         resources: {}
 status: {}
 ```
 
 ```bash
-# Apply the YAML file to the Kubernetes API server  
-kubectl apply -f q3.yml  
+# Apply the YAML file to the Kubernetes API server
+kubectl apply -f q3.yml
 ```
-  
+
 ```bash
 # Quick verification that the deployment was created and is working
-kubectl get all -n 
+kubectl get all
 ```
-  
+
+ </p>
+</details>

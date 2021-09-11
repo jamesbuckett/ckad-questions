@@ -1,25 +1,41 @@
 ## Kubernetes Workloads
 
-### 01. List all the namespaces in the cluster
+#### 01. List all the kubernetes resources that can be found in a namespace. By name only.
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl get namespaces
-k get ns  
+kubectl api-resources --namespaced=true # # From Kubernetes.io Bookmarks..Namespace
+
+NAME                               SHORTNAMES                           APIVERSION                                  NAMESPACED   
+bindings                                                                v1                                          true         
+configmaps                         cm                                   v1                                          true         
+endpoints                          ep                                   v1                                          true         
+events                             ev                                   v1                                          true         
+...
+  
+# Do not need the additional supplied columns.
+  
+kubectl api-resources --namespaced=true -o name
+bindings
+configmaps
+endpoints
+events
+...  
+  
 ```
 
 </p>
 </details>
 
-### 02. Create a pod called `pod-1` using image `nginx`, the container should be named `container-1` in the namespace `my-namespace`
+#### 02. Create a pod called `pod-1` using image `nginx`, the container should be named `container-1` in the namespace `my-namespace`
 
 <details><summary>show</summary>
 <p>
 
-
 ```bash
+# Run the help flag to get examples
 kubectl run -h 
 
 Examples:
@@ -51,6 +67,12 @@ container
   # Start the nginx pod using a different command and custom arguments
   kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN> 
 ```  
+
+</p>
+</details>  
+  
+<details><summary>show</summary>
+<p>
   
 ```bash
 kubectl run pod-1 --image=nginx --dry-run=client -o yaml > q2.yml
@@ -78,13 +100,19 @@ status: {}
 ```
 
 ```bash
+# Apply the YAML file to the Kubernetes API server    
 kubectl apply -f q2.yml -n my-namespace
 ```
+
+```bash
+# Quick verification that the pod was created and is working
+kubectl get all 
+```  
   
 </p>
 </details>
 
-### 03. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image. The containers should be named `my-container`. Each container should have a memory `request` of 25Mi and a memory `limit` of 100Mi. This deployment should run in the `my-deployment-namespace` namespace.
+#### 03. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image. The containers should be named `my-container`. Each container should have a memory `request` of 25Mi and a memory `limit` of 100Mi. This deployment should run in the `my-deployment-namespace` namespace.
 
 <details><summary>show</summary>
 <p>

@@ -146,7 +146,7 @@ kubectl get all
 </p>
 </details>
 
-#### 03. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image. The containers should be named `my-container`. Each container should have a memory `request` of 25Mi and a memory `limit` of 100Mi. This deployment should run in the `my-deployment-namespace` namespace. Create the namespace.
+#### 03. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image. The containers should be named `my-container`. Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi. This deployment should run in the `my-deployment-namespace` namespace. Create the namespace.
 
 <details><summary>show</summary>
 <p>
@@ -185,6 +185,7 @@ Examples:
 
 <details><summary>show</summary>
 <p>
+
 ```bash
 # Using the best example that matches the question
 kubectl create deployment my-deployment --image=nginx --repliacs=3 -n my-namespace --dry-run=client -o yaml > q3.yml
@@ -235,6 +236,17 @@ kubectl apply -f q3.yml
 ```bash
 # Quick verification that the deployment was created and is working
 kubectl get all
+
+NAME                               READY   STATUS    RESTARTS   AGE
+pod/my-deployment-67fc8546-9b4bm   1/1     Running   0          16m
+pod/my-deployment-67fc8546-mjw24   1/1     Running   0          16m
+pod/my-deployment-67fc8546-tp5bk   1/1     Running   0          16m
+
+NAME                            READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/my-deployment   3/3     3            3           16m
+
+NAME                                     DESIRED   CURRENT   READY   AGE
+replicaset.apps/my-deployment-67fc8546   3         3         3       16m
 ```
 
  </p>
@@ -302,6 +314,45 @@ kubectl get endpoints
 NAME            ENDPOINTS                                         AGE
 my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 # The three replicas internal endpoints are registered
+```
+
+</p>
+</details>
+
+#### 05. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl top pods -A --sort-by=cpu
+
+NAMESPACE                 NAME                                                    CPU(cores)   MEMORY(bytes)
+default                   falco-pxf8g                                             51m          55Mi
+ns-loki                   loki-release-prometheus-server-6d4f4df478-9z2f8         38m          356Mi
+ns-demo                   adservice-68444cb46c-jvc86                              23m          202Mi
+ns-loki                   loki-release-promtail-prvvn                             13m          34Mi
+ns-demo                   recommendationservice-b4cf8f489-xwv49                   13m          69Mi
+...
+```
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl top pods -A --sort-by=memory
+
+NAMESPACE                 NAME                                                    CPU(cores)   MEMORY(bytes)
+ns-loki                   loki-release-prometheus-server-6d4f4df478-9z2f8         11m          356Mi
+ns-demo                   adservice-68444cb46c-jvc86                              20m          202Mi
+kube-system               cilium-gcnbl                                            6m           165Mi
+kube-system               cilium-htrth                                            18m          163Mi
+kube-system               cilium-8h6vd                                            5m           162Mi
+kube-system               cilium-ml27n                                            11m          161Mi
+...
 ```
 
 </p>

@@ -4,32 +4,35 @@
 
 <details><summary>show</summary>
 <p>
-```bash
-kubectl api-resources --namespaced=true # # From Kubernetes.io Bookmarks..Namespace
 
-NAME SHORTNAMES APIVERSION NAMESPACED  
-bindings v1 true  
-configmaps cm v1 true  
-endpoints ep v1 true  
-events ev v1 true  
+```bash
+kubectl api-resources --namespaced=true   # From Kubernetes.io Bookmarks..Namespace
+
+NAME                               SHORTNAMES                           APIVERSION                                  NAMESPACED   KIND
+bindings                                                                v1                                          true         Binding
+configmaps                         cm                                   v1                                          true         ConfigMap
+endpoints                          ep                                   v1                                          true         Endpoints
 ...
 
 # Do not need the additional supplied columns.
 
-````
+```
+
 </p>
 </details>
 
 <details><summary>show</summary>
 <p>
+
 ```bash
 kubectl api-resources --namespaced=true -o name
+
 bindings
 configmaps
 endpoints
 events
 ...
-````
+```
 
 </p>
 </details>

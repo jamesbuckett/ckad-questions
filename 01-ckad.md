@@ -41,11 +41,12 @@ events
 
 <details><summary>show</summary>
 <p>
+
 ```bash
 # Switch context into the namespace so that all subsequent commands execute inside that namespace.
-kubectl config set-context --current --namespace=my-pod-namespace 
-```  
-  
+kubectl config set-context --current --namespace=my-pod-namespace
+```
+
 ```bash
 # Run the help flag to get examples
 kubectl run -h
@@ -88,8 +89,8 @@ kubectl run nginx --image=nginx -- <arg1> <arg2> ... <argN>
 # Start the nginx pod using a different command and custom arguments
 
 kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>
+```
 
-````
 </p>
 </details>
 
@@ -100,7 +101,7 @@ kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>
 # Using the best example that matches the question
 # --dry-run=client -o yaml from Kubernetes.io..Cheat Sheet
 kubectl run pod-1 --image=nginx --dry-run=client -o yaml > q2.yml
-````
+```
 
 ```bash
 # Edit the YAML file to make required changes

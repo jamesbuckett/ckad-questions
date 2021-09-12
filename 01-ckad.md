@@ -362,7 +362,7 @@ kube-system               cilium-ml27n                                          
 </p>
 </details>
 
-#### 06. Create a pod called json-pod using image nginx in namespace json-namespace. Create the namespace. Obtain the hostIP address using JSONPath.
+#### 06. Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`. Create the namespace. Obtain the `hostIP` address using `JSONPath`.
 
 <details><summary>show</summary>
 <p>
@@ -602,7 +602,7 @@ kubectl get pod json-pod -o jsonpath={.status.hostIP}    ## From Kubernetes.io B
 </p>
 </details>
 
-#### 07. Create a pod called log-pod using image nginx in namespace log-namespace. Create the namespace. Delete the pod called log-pod. Obtain the logs for the deleted pod called log-pod
+#### 07. Create a pod called `log-pod` using image `nginx` in namespace `log-namespace`. Create the namespace. Obtain the `logs` for the nginx pod for the `last hour`.
 
 <details><summary>show</summary>
 <p>
@@ -611,7 +611,6 @@ kubectl get pod json-pod -o jsonpath={.status.hostIP}    ## From Kubernetes.io B
 kubectl create namespace log-namespace
 kubectl run log-pod --image=nginx -n log-namespace
 kubectl config set-context --current --namespace=log-namespace
-kubectl delete pod log-pod --force
 ```
 
 </p>
@@ -658,5 +657,65 @@ Examples:
   kubectl logs deployment/nginx -c nginx-1
 ```
 
+```bash
+# Straight forward match in the examples
+kubectl logs --since=1h nginx
+```
+
 </p>
 </details>
+
+#### 08. Create a deployment called `patch-deployment` with `2` replicas using image `nginx` in namespace `patch-namespace`. Create the namespace. After deployment patch one of the containers to use image `redis`.
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl create namespace patch-namespace
+kubectl create deployment --image=nginx --replicas=2 -n patch-namespace
+kubectl config set-context --current --namespace=patch-namespace
+```
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+````bash
+
+kubectl patch -h
+
+Examples:
+  # Partially update a node using a strategic merge patch, specifying the patch as JSON
+  kubectl patch node k8s-node-1 -p '{"spec":{"unschedulable":true}}'
+
+  # Partially update a node using a strategic merge patch, specifying the patch as YAML
+  kubectl patch node k8s-node-1 -p $'spec:\n unschedulable: true'
+
+  # Partially update a node identified by the type and name specified in "node.json" using strategic merge patch
+  kubectl patch -f node.json -p '{"spec":{"unschedulable":true}}'
+
+  # Update a container's image; spec.containers[*].name is required because it's a merge key
+  kubectl patch pod valid-pod -p '{"spec":{"containers":[{"name":"kubernetes-serve-hostname","image":"new image"}]}}'
+
+  # Update a container's image using a JSON patch with positional arrays
+  kubectl patch pod valid-pod --type='json' -p='[{"op": "replace", "path": "/spec/containers/0/image", "value":"new
+image"}]'
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# # Using the best example that matches the question
+kubectl patch pod valid-pod -p '{"spec":{"containers":[{"name":"kubernetes-serve-hostname","image":"new image"}]}}'
+
+# Alter `kubernetes-serve-hostname` and `new image` to match the question
+kubectl patch pod valid-pod -p '{"spec":{"containers":[{"name":"patch-container","image":"redis"}]}}'
+
+</p>
+</details>
+````

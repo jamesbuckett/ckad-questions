@@ -188,7 +188,7 @@ Examples:
 
 ```bash
 # Using the best example that matches the question
-kubectl create deployment my-deployment --image=nginx --repliacs=3 -n my-namespace --dry-run=client -o yaml > q3.yml
+kubectl create deployment my-deployment --image=nginx --replicas=3 -n my-namespace --dry-run=client -o yaml > q3.yml
 ```
 
 ```bash

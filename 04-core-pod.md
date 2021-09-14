@@ -4,3 +4,11 @@
 
 <details><summary>show</summary>
 <p>
+
+```bash
+Sample
+
+```
+
+</p>
+</details>

@@ -5,8 +5,10 @@
 <details><summary>show</summary>
 <p>
 
+[Not All Objects are in a Namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#not-all-objects-are-in-a-namespace)
+
 ```bash
-kubectl api-resources --namespaced=true   # From Kubernetes.io Bookmarks..Namespace
+kubectl api-resources --namespaced=true   
 
 NAME                               SHORTNAMES                           APIVERSION                                  NAMESPACED   KIND
 bindings                                                                v1                                          true         Binding
@@ -196,6 +198,8 @@ kubectl create deployment my-deployment --image=nginx --replicas=3 -n my-namespa
 vi q3.yml
 ```
 
+[Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory)
+
 ```bash
 apiVersion: apps/v1
 kind: Deployment
@@ -219,7 +223,7 @@ spec:
       containers:
       - image: nginx
         name: my-container  # Change from nginx to my container
-        resources:                     # From Kubernetes.io Bookmarks..Core Pod..Pod-Limits and Requests
+        resources:                     
           requests:
             memory: "25Mi"
           limits:

@@ -1,6 +1,6 @@
 ## Sample CKAD Operational Questions and Answers
 
-#### 01. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
+#### 06-01. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
 
 <details><summary>show</summary>
 <p>
@@ -45,7 +45,7 @@ kube-system               cilium-ml27n                                          
 </p>
 </details>
 
-#### 02. Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`. Create the namespace. Obtain the `hostIP` address using `JSONPath`.
+#### 06-02. Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`. Create the namespace. Obtain the `hostIP` address using `JSONPath`.
 
 <details><summary>show</summary>
 <p>
@@ -297,7 +297,21 @@ kubectl get pod json-pod -o jsonpath={.status.hostIP}
 </p>
 </details>
 
-#### 03. Create a pod called `log-pod` using image `nginx` in namespace `log-namespace`. Create the namespace. Obtain the `logs` for the nginx pod for the `last hour`.
+#### 06-03. Output all the events for all namespaces by creation date.
+
+<details><summary>show</summary>
+<p>
+
+kubernetes.io: [Viewing, finding resources](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resources)
+
+```bash
+kubectl get events -A --sort-by=.metadata.creationTimestamp
+```
+
+</p>
+</details>
+
+#### 06-04. Create a pod called `log-pod` using image `nginx` in namespace `log-namespace`. Create the namespace. Obtain the `logs` for the nginx pod for the `last hour`.
 
 <details><summary>show</summary>
 <p>

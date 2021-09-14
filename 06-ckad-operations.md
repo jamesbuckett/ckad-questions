@@ -6,7 +6,7 @@
 <p>
 
 ```bash
-kubectl top pods -A --sort-by=cpu
+kubectl top pods -A --sort-by=cpu | more
 ```
 
 Output:
@@ -27,7 +27,7 @@ ns-demo                   recommendationservice-b4cf8f489-xwv49                 
 <p>
 
 ```bash
-kubectl top pods -A --sort-by=memory
+kubectl top pods -A --sort-by=memory | more
 ```
 
 Output:
@@ -278,7 +278,7 @@ FIELDS:
      is alpha-level and is only populated by servers that enable the
      EphemeralContainers feature.
 
-   hostIP       <string>                                          ## Second element
+   hostIP       <string>               ## Second element
      IP address of the host to which the pod is assigned. Empty if not yet
      scheduled.
 ```

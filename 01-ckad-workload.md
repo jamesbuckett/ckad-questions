@@ -439,7 +439,7 @@ This works but does not help with the record part of the question, so switch to 
 kubernetes.io:[Updating a Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment)
 
 ```bash
-kubectl set image deployment.apps/edit-deployment nginx=redis --record
+kubectl set image deployment.apps/edit-deployment nginx=redisredis:6.0.15 --record
 ```
 
 </p>

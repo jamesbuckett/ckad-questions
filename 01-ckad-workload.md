@@ -9,7 +9,9 @@ kubernetes.io: [Not All Objects are in a Namespace](https://kubernetes.io/docs/c
 
 ```bash
 kubectl api-resources --namespaced=true   
+```
 
+```bash
 NAME                               SHORTNAMES                           APIVERSION                                  NAMESPACED   KIND
 bindings                                                                v1                                          true         Binding
 configmaps                         cm                                   v1                                          true         ConfigMap
@@ -28,7 +30,9 @@ endpoints                          ep                                   v1      
 
 ```bash
 kubectl api-resources --namespaced=true -o name
+```
 
+```bash
 bindings
 configmaps
 endpoints
@@ -57,7 +61,8 @@ kubectl config set-context --current --namespace=my-pod-namespace
 ```bash
 # Run the help flag to get examples
 kubectl run -h
-
+```
+```bash
 Examples:
 
 # Start a nginx pod
@@ -133,7 +138,6 @@ spec:
   dnsPolicy: ClusterFirst
   restartPolicy: Always
 status: {}
-
 ```
 
 ```bash
@@ -166,9 +170,11 @@ kubectl config set-context --current --namespace=my-deployment-namespace
 
 ```bash
 # Run the help flag to get examples
-kubectl create deployment -h
+# kubectl create deployment -h
 kubectl create deploy -h
+```
 
+```bash
 Examples:
   # Create a deployment named my-dep that runs the busybox image
   kubectl create deployment my-dep --image=busybox

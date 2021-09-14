@@ -11,6 +11,7 @@ kubernetes.io: [Not All Objects are in a Namespace](https://kubernetes.io/docs/c
 kubectl api-resources --namespaced=true   
 ```
 
+Output:
 ```bash
 NAME                               SHORTNAMES                           APIVERSION                                  NAMESPACED   KIND
 bindings                                                                v1                                          true         Binding
@@ -32,6 +33,7 @@ endpoints                          ep                                   v1      
 kubectl api-resources --namespaced=true -o name
 ```
 
+Output:
 ```bash
 bindings
 configmaps
@@ -62,6 +64,8 @@ kubectl config set-context --current --namespace=my-pod-namespace
 # Run the help flag to get examples
 kubectl run -h
 ```
+
+Output:
 ```bash
 Examples:
 
@@ -176,6 +180,7 @@ kubectl config set-context --current --namespace=my-deployment-namespace
 kubectl create deploy -h
 ```
 
+Output:
 ```bash
 Examples:
   # Create a deployment named my-dep that runs the busybox image
@@ -234,11 +239,11 @@ spec:
       containers:
       - image: nginx
         name: my-container  # Change from nginx to my container
-        resources:                     
-          requests:
-            memory: "25Mi"
-          limits:
-            memory: "100Mi"
+        resources:          # From Meaning of memory link above          
+          requests:         # From Meaning of memory link above
+            memory: "25Mi"  # From Meaning of memory link above
+          limits:           # From Meaning of memory link above
+            memory: "100Mi" # From Meaning of memory link above
         resources: {}
 status: {}
 ```
@@ -253,6 +258,7 @@ kubectl apply -f q3.yml
 kubectl get all
 ```
 
+Output:
 ```bash
 NAME                               READY   STATUS    RESTARTS   AGE
 pod/my-deployment-67fc8546-9b4bm   1/1     Running   0          16m
@@ -279,6 +285,7 @@ replicaset.apps/my-deployment-67fc8546   3         3         3       16m
 kubectl expose -h
 ```
 
+Output:
 ```
 Examples:
   # Create a service for a replicated nginx, which serves on port 80 and connects to the containers on port 8000
@@ -325,7 +332,10 @@ Watch out for the statement from inside the Cluster so this is of type: ClusterI
 ```bash
 # Check that the Service was created
 kubectl get service
+```
 
+Output:
+```bash
 NAME            TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
 my-deployment   ClusterIP   10.245.79.74   <none>        80/TCP    103s
 ```
@@ -333,7 +343,10 @@ my-deployment   ClusterIP   10.245.79.74   <none>        80/TCP    103s
 ```bash
 # A quicker check is to see if the Pod Endpoints are being load balanced
 kubectl get endpoints
+```
 
+Output:
+```bash
 NAME            ENDPOINTS                                         AGE
 my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 # The three replicas internal endpoints are registered

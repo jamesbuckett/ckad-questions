@@ -1,4 +1,4 @@
-## Sample CKAD Questions and Answers
+## Sample CKAD Workload Questions and Answers
 
 #### 01. List all the kubernetes resources that can be found in a namespace. By name only.
 

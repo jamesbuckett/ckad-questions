@@ -7,7 +7,10 @@
 
 ```bash
 kubectl top pods -A --sort-by=cpu
+```
 
+Output:
+```bash
 NAMESPACE                 NAME                                                    CPU(cores)   MEMORY(bytes)
 default                   falco-pxf8g                                             51m          55Mi
 ns-loki                   loki-release-prometheus-server-6d4f4df478-9z2f8         38m          356Mi
@@ -25,7 +28,10 @@ ns-demo                   recommendationservice-b4cf8f489-xwv49                 
 
 ```bash
 kubectl top pods -A --sort-by=memory
+```
 
+Output:
+```bash
 NAMESPACE                 NAME                                                    CPU(cores)   MEMORY(bytes)
 ns-loki                   loki-release-prometheus-server-6d4f4df478-9z2f8         11m          356Mi
 ns-demo                   adservice-68444cb46c-jvc86                              20m          202Mi
@@ -58,6 +64,10 @@ kubectl config set-context --current --namespace=json-namespace
 
 ```bash
 kubectl get pod json-pod -o json
+```
+
+Output:
+```bash
 
 {
     "apiVersion": "v1",
@@ -216,7 +226,7 @@ kubectl get pod json-pod -o json
 
 ```bash
 # Reduced output to walk back to JSON root:
-    "status": {                                             ## First element
+    "status": {                          ## First element
         "conditions": [
             {
                 "lastProbeTime": null,
@@ -225,7 +235,7 @@ kubectl get pod json-pod -o json
                 "type": "Initialized"
             },
 ...
-        "hostIP": "10.130.0.5",               ## Second Element
+        "hostIP": "10.130.0.5",         ## Second Element
         "phase": "Running",
         "podIP": "10.244.2.198",
 
@@ -235,8 +245,10 @@ kubectl get pod json-pod -o json
 ```bash
 # Another way to get the JSONPath
 kubectl explain pod.status
-kubectl explain pod.status --recursive
+# kubectl explain pod.status --recursive
 
+Output:
+```bash
 KIND:     Pod
 VERSION:  v1
 
@@ -271,9 +283,9 @@ FIELDS:
      scheduled.
 ```
 
+kubernetes.io:[JSONPath Support](https://kubernetes.io/docs/reference/kubectl/jsonpath/)
 ```bash
-kubectl get pod json-pod -o jsonpath={.status.hostIP}    ## From Kubernetes.io Bookmarks..Operations
-10.130.0.5
+kubectl get pod json-pod -o jsonpath={.status.hostIP}    
 ```
 
 </p>
@@ -297,8 +309,11 @@ kubectl config set-context --current --namespace=log-namespace
 <p>
 
 ```bash
-kubectl logs -h
+kubectl logs -h | more
+```
 
+Output:
+```bash
 Examples:
   # Return snapshot logs from pod nginx with only one container
   kubectl logs nginx

@@ -14,5 +14,6 @@ A set of sample questions and solutions to assist in preparing for the CKAD exam
 * [03. Example CKAD Network and Storage questions with answers](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-networking-storage.md)
 * [04. Example CKAD Pod questions with answers](https://github.com/jamesbuckett/ckad-questions/blob/main/04-core-pod.md)
 * [05. Example CKAD Extension questions with answers](https://github.com/jamesbuckett/ckad-questions/blob/main/05-ckad-extensions.md)
+* 06. [Example CKAD Operations questions with answers](https://github.com/jamesbuckett/ckad-questions/blob/main/06-ckad-operations.md)
 
 *End of Section*

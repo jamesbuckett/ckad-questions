@@ -327,15 +327,15 @@ my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 </p>
 </details>
 
-#### 05. Create a deployment called `patch-deployment` with `2` replicas using image `nginx` in namespace `patch-namespace`. Create the namespace. After deployment alter the containers to use the `redis` image.
+#### 05. Create a deployment called `edit-deployment` with `2` replicas using image `nginx` in namespace `edit-namespace`. Create the namespace. After deployment alter the containers to use the `redis` image.
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl create namespace patch-namespace
-kubectl create deployment --image=nginx --replicas=2 -n patch-namespace
-kubectl config set-context --current --namespace=patch-namespace
+kubectl create namespace edit-namespace
+kubectl create deployment --image=nginx --replicas=2 -n edit-namespace
+kubectl config set-context --current --namespace=edit-namespace
 ```
 
 </p>
@@ -353,5 +353,13 @@ kubectl edit -h
 
 <details><summary>show</summary>
 <p>
+
+#### Clean Up 
+
+```bash
+kubectl delete ns my-pod-namespace 
+kubectl delete ns my-deployment
+kubectl delete ns edit-namespace
+```
 
 *End of Section*

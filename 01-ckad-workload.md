@@ -5,7 +5,7 @@
 <details><summary>show</summary>
 <p>
 
-[Not All Objects are in a Namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#not-all-objects-are-in-a-namespace)
+kubernetes.io: [Not All Objects are in a Namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#not-all-objects-are-in-a-namespace)
 
 ```bash
 kubectl api-resources --namespaced=true   
@@ -400,7 +400,7 @@ This does not work so switch to set the `set image` command
 </p>
 </details>
 
-[Updating a Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment)
+kubernetes.io:[Updating a Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment)
 
 ```bash
 kubectl set image deployment.apps/edit-deployment nginx=redis --record

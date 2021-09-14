@@ -62,7 +62,7 @@ kubectl config set-context --current --namespace=my-pod-namespace
 
 ```bash
 # Run the help flag to get examples
-kubectl run -h
+kubectl run -h | more
 ```
 
 Output:
@@ -177,7 +177,7 @@ kubectl config set-context --current --namespace=my-deployment-namespace
 ```bash
 # Run the help flag to get examples
 # kubectl create deployment -h
-kubectl create deploy -h
+kubectl create deploy -h | more
 ```
 
 Output:
@@ -282,7 +282,7 @@ replicaset.apps/my-deployment-67fc8546   3         3         3       16m
 
 ```bash
 # Run the help flag to get examples
-kubectl expose -h
+kubectl expose -h | more
 ```
 
 Output:

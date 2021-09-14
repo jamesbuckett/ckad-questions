@@ -428,7 +428,7 @@ spec:
 
 :wq # write and quit file
 ```
-This does not work so switch to set the `set image` command
+This works but does not help with the record part of the question, so switch to set the `set image` command
 
 </p>
 </details>

@@ -378,7 +378,7 @@ kubectl config set-context --current --namespace=edit-namespace
 <p>
 
 ```bash
-kubecctl edit deployment.apps/edit-deployment
+kubectl edit deployment.apps/edit-deployment
 ```
 
 ```bash

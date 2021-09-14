@@ -242,6 +242,12 @@ Output:
 # So the JSON path is .status.hostIP
 ```
 
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
 ```bash
 # Another way to get the JSONPath
 kubectl explain pod.status

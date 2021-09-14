@@ -8,7 +8,7 @@
 kubernetes.io: [Not All Objects are in a Namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#not-all-objects-are-in-a-namespace)
 
 ```bash
-kubectl api-resources --namespaced=true   
+kubectl api-resources --namespaced=true | more   
 ```
 
 Output:
@@ -30,7 +30,7 @@ endpoints                          ep                                   v1      
 <p>
 
 ```bash
-kubectl api-resources --namespaced=true -o name
+kubectl api-resources --namespaced=true -o name | more
 ```
 
 Output:

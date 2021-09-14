@@ -104,9 +104,10 @@ kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>
 <details><summary>show</summary>
 <p>
 
+kubernetes.io: [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+
 ```bash
 # Using the best example that matches the question
-# --dry-run=client -o yaml from Kubernetes.io..Cheat Sheet
 kubectl run pod-1 --image=nginx --dry-run=client -o yaml > q2.yml
 ```
 
@@ -240,7 +241,9 @@ kubectl apply -f q3.yml
 ```bash
 # Quick verification that the deployment was created and is working
 kubectl get all
+```
 
+```bash
 NAME                               READY   STATUS    RESTARTS   AGE
 pod/my-deployment-67fc8546-9b4bm   1/1     Running   0          16m
 pod/my-deployment-67fc8546-mjw24   1/1     Running   0          16m
@@ -264,7 +267,9 @@ replicaset.apps/my-deployment-67fc8546   3         3         3       16m
 ```bash
 # Run the help flag to get examples
 kubectl expose -h
+```
 
+```
 Examples:
   # Create a service for a replicated nginx, which serves on port 80 and connects to the containers on port 8000
   kubectl expose rc nginx --port=80 --target-port=8000

@@ -143,6 +143,8 @@ status: {}
 ```bash
 # Apply the YAML file to the Kubernetes API server
 kubectl apply -f q2.yml
+# Make edits
+# :wq - Write and Quit
 ```
 
 ```bash
@@ -203,6 +205,8 @@ kubectl create deployment my-deployment --image=nginx --replicas=3 -n my-namespa
 ```bash
 # Edit the YAML file to make required changes
 vi q3.yml
+# Make edits
+# :wq - Write and Quit
 ```
 
 [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory)

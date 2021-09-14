@@ -444,7 +444,7 @@ kubectl set image deployment.apps/edit-deployment nginx=redis --record
 
 ```bash
 kubectl delete ns my-pod-namespace 
-kubectl delete ns my-deployment
+kubectl delete ns my-deployment-namespace 
 kubectl delete ns edit-namespace
 ```
 

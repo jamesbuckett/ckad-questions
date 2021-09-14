@@ -327,14 +327,14 @@ my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 </p>
 </details>
 
-#### 05. Create a deployment called `edit-deployment` with `2` replicas using image `nginx` in namespace `edit-namespace`. Create the namespace. After deployment alter the containers to use the `redis` image.
+#### 05. Create a deployment called `edit-deployment` with `2` replicas using image `nginx` in namespace `edit-namespace`. Create the namespace. After deployment alter the containers to use the `redis` image and record the change.
 
 <details><summary>show</summary>
 <p>
 
 ```bash
 kubectl create namespace edit-namespace
-kubectl create deployment --image=nginx --replicas=2 -n edit-namespace
+kubectl create deployment edit-deployment --image=nginx --replicas=2 -n edit-namespace
 kubectl config set-context --current --namespace=edit-namespace
 ```
 
@@ -345,14 +345,66 @@ kubectl config set-context --current --namespace=edit-namespace
 <p>
 
 ```bash
-kubectl edit -h
+kubecctl edit deployment.apps/edit-deployment
 ```
+
+```bash
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2021-09-14T03:43:00Z"
+  generation: 1
+  labels:
+    app: edit-deployment
+  name: edit-deployment
+  namespace: edit-namespace
+  resourceVersion: "11650562"
+  uid: fdf79d08-aaa7-40e7-92d4-71db9a8fb6b0
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: edit-deployment
+  strategy:
+      rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: edit-deployment
+    spec:
+      containers:
+      - image: redis
+        imagePullPolicy: Always
+        name: nginx
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+
+:wq # write and quit file
+```
+This does not work so switch to set the `set image` command
 
 </p>
 </details>
 
-<details><summary>show</summary>
-<p>
+[Updating a Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment)
+
+```bash
+kubectl set image deployment.apps/edit-deployment nginx=redis --record
+```
 
 #### Clean Up 
 

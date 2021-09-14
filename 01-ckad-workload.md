@@ -1,6 +1,6 @@
 ## Sample CKAD Workload Questions and Answers
 
-#### 01. List all the kubernetes resources that can be found in a namespace. By name only.
+#### 01-01. List all the kubernetes resources that can be found in a namespace. By name only.
 
 <details><summary>show</summary>
 <p>
@@ -45,7 +45,7 @@ events
 </p>
 </details>
 
-#### 02. Create a pod called `pod-1` using image `nginx`, the container should be named `container-1` in the namespace `my-pod-namespace`. Create the namespace.
+#### 01-02. Create a pod called `pod-1` using image `nginx`, the container should be named `container-1` in the namespace `my-pod-namespace`. Create the namespace.
 
 <details><summary>show</summary>
 <p>
@@ -117,13 +117,13 @@ kubernetes.io: [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubect
 
 ```bash
 # Using the best example that matches the question
-kubectl run pod-1 --image=nginx --dry-run=client -o yaml > q2.yml
+kubectl run pod-1 --image=nginx --dry-run=client -o yaml > q01-02.yml
 ```
 
 ```bash
 # Edit the YAML file to make required changes
 # Use the Question number in case you want to return to the question for reference or for review
-vi q2.yml
+vi q01-02.yml
 ```
 
 ```bash
@@ -162,7 +162,7 @@ kubectl get all
 </p>
 </details>
 
-#### 03. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image. The containers should be named `my-container`. Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi. This deployment should run in the `my-deployment-namespace` namespace. Create the namespace.
+#### 01-03. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image. The containers should be named `my-container`. Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi. This deployment should run in the `my-deployment-namespace` namespace. Create the namespace.
 
 <details><summary>show</summary>
 <p>
@@ -207,12 +207,12 @@ Examples:
 
 ```bash
 # Using the best example that matches the question
-kubectl create deployment my-deployment --image=nginx --replicas=3 --dry-run=client -o yaml > q3.yml
+kubectl create deployment my-deployment --image=nginx --replicas=3 --dry-run=client -o yaml > q01-03.yml
 ```
 
 ```bash
 # Edit the YAML file to make required changes
-vi q3.yml
+vi q01-03.yml
 # Make edits
 # d$ - delete to end of line
 # :u - Undo on any error
@@ -255,7 +255,7 @@ status: {}
 
 ```bash
 # Apply the YAML file to the Kubernetes API server
-kubectl apply -f q3.yml
+kubectl apply -f q01-03.yml
 ```
 
 ```bash
@@ -280,7 +280,7 @@ replicaset.apps/my-deployment-67fc8546   3         3         3       16m
  </p>
 </details>
 
-#### 04. In the previous question a Deployment called `my-deployment` was created. Allow network traffic to flow to this deployment from inside the cluster.
+#### 01-04. In the previous question a Deployment called `my-deployment` was created. Allow network traffic to flow to this deployment from inside the cluster.
 
 <details><summary>show</summary>
 <p>
@@ -360,7 +360,7 @@ my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 </p>
 </details>
 
-#### 05. Create a deployment called `edit-deployment` with `2` replicas using image `nginx` in namespace `edit-namespace`. Create the namespace. After deployment alter the containers to use the `redis` image and record the change.
+#### 01-05. Create a deployment called `edit-deployment` with `2` replicas using image `nginx` in namespace `edit-namespace`. Create the namespace. After deployment alter the containers to use the `redis` image and record the change.
 
 <details><summary>show</summary>
 <p>

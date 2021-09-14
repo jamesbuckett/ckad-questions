@@ -415,11 +415,17 @@ This does not work so switch to set the `set image` command
 </p>
 </details>
 
+<details><summary>show</summary>
+<p>
+
 kubernetes.io:[Updating a Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment)
 
 ```bash
 kubectl set image deployment.apps/edit-deployment nginx=redis --record
 ```
+
+</p>
+</details>
 
 #### Clean Up 
 

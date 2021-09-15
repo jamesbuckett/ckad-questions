@@ -125,10 +125,19 @@ spec:
 ```
 
 ```bash
-kubectl apply -f 04-02-pod.yml
+kubectl apply -f 04-01-pod.yml
 # Verify that the volume is mounted
-kubectl describe pod storage-pod | grep -i A2 volume
+kubectl describe pod storage-pod | grep -i Mounts -A1
+# Or just kubectl describe pod storage-pod 
 ```
+
+Output
+```bash
+    Mounts:
+      /my-mount from my-volume (rw)    # Success
+```
+
+
 
 </p>
 </details>
@@ -146,5 +155,11 @@ Sample
 
 </p>
 </details>
+
+#### Clean Up 
+
+```bash
+kubectl delete ns storage-namespace
+```
 
 *End of Section*

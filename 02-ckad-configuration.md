@@ -138,14 +138,37 @@ kubectl apply -f 02-01.yml
 
 ```bash
 # Quick verification that the deployment was created and is working
-kubectl exec -it secret-pod env
+kubectl exec secret-pod -- env
 ```
 
-
-
+Output:
+```bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=secret-pod
+NGINX_VERSION=1.21.3
+NJS_VERSION=0.6.2
+PKG_RELEASE=1~buster
+SECRET-ENV-USER=bob           # Success
+SECRET-ENV-PASSWORD=123456    # Success
+KUBERNETES_PORT_443_TCP_PORT=443
+KUBERNETES_PORT_443_TCP_ADDR=10.245.0.1
+KUBERNETES_SERVICE_HOST=10.245.0.1
+KUBERNETES_SERVICE_PORT=443
+KUBERNETES_SERVICE_PORT_HTTPS=443
+KUBERNETES_PORT=tcp://10.245.0.1:443
+KUBERNETES_PORT_443_TCP=tcp://10.245.0.1:443
+KUBERNETES_PORT_443_TCP_PROTO=tcp
+TERM=xterm
+HOME=/root
+```
 
 </p>
 </details>
 
+#### Clean Up 
+
+```bash
+kubectl delete ns secret-namespace
+```
 
 *End of Section*

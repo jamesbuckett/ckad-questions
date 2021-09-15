@@ -1,18 +1,5 @@
 ## Sample CKAD Configuration Questions and Answers
 
-#### 02-01. Sample Question.
-
-<details><summary>show</summary>
-<p>
-
-```bash
-Sample
-
-```
-
-</p>
-</details>
-
 #### 02-01. Create a secret called `my-secret` which contains `user=bob` and `password=123456`. Make the secret immutable. Make the secret available in a pod called `secret-pod` as environmental variables `SECRET-ENV-USER` and `SECRET-ENV-PASSWORD`. Create a pod called `secret-pod` using image `nginx` in namespace called `secret-namespace`. Create the namespace.
 
 <details><summary>show</summary>

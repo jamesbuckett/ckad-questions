@@ -2,7 +2,7 @@
 
 #### 04-01. Create a namespace called `storage-namespace`. Create a Persistent Volume called `my-pv` with `5Gi` storage using hostPath `/mnt/my-host`. Create a Persistent Volume Claim called `my-pvc` with `2Gi` storage. Create a pod called `storage-pod` using the nginx image. Mount the Persistent Volume Claim onto `/my-mount` in `storage-pod`.
 
-kubernetes.io: [Create a PersistentVolume](Create a PersistentVolume)
+kubernetes.io: [Create a PersistentVolume](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume)
 
 <details><summary>show</summary>
 <p>
@@ -12,11 +12,12 @@ kubectl create namespace storage-namespace
 kubectl config set-context --current --namespace=storage-namespace
 ```
 
+kubernetes.io: [Create a PersistentVolume](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume)
+
 ```bash
+# Create a YAML file for the PV
 vi 04-01-pv.yml
 ```
-
-kubernetes.io: [Create a PersistentVolume](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume)
 
 ```bash
 apiVersion: v1
@@ -39,6 +40,11 @@ spec:
 kubectl apply -f 04-01-pv.yml
 kubectl get pv
 ```
+Output:
+```bash
+NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM
+my-pv     5Gi        RWO            Retain           Available
+```
 
 </p>
 </details>
@@ -46,11 +52,12 @@ kubectl get pv
 <details><summary>show</summary>
 <p>
 
+kubernetes.io: [Create a PersistentVolumeClaim](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim)
+
 ```bash
+# Create a YAML file for the PVC
 vi 04-01-pvc.yml
 ```
-
-kubernetes.io: [Create a PersistentVolumeClaim](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim)
 
 ```bash
 apiVersion: v1
@@ -79,6 +86,7 @@ kubectl get pvc
 <p>
 
 ```bash
+# Create a YAML file for the Pod
 vi 04-01-pod.yml
 ```
 

@@ -88,7 +88,7 @@ kubectl run hazelcast --image=hazelcast/hazelcast --labels="app=hazelcast,env=pr
 
 # Dry run; print the corresponding API objects without creating them
 
-kubectl run nginx --image=nginx --dry-run=client
+kubectl run nginx --image=nginx --dry-run=client ### This example matches most closely to the question.
 
 # Start a nginx pod, but overload the spec with a partial set of values parsed from JSON
 
@@ -193,7 +193,7 @@ Examples:
   kubectl create deployment my-dep --image=busybox -- date
 
   # Create a deployment named my-dep that runs the nginx image with 3 replicas
-  kubectl create deployment my-dep --image=nginx --replicas=3
+  kubectl create deployment my-dep --image=nginx --replicas=3 ### This example matches most closely to the question.
 
   # Create a deployment named my-dep that runs the busybox image and expose port 5701
   kubectl create deployment my-dep --image=busybox --port=5701
@@ -315,7 +315,7 @@ port 8000
   kubectl expose rs nginx --port=80 --target-port=8000
 
   # Create a service for an nginx deployment, which serves on port 80 and connects to the containers on port 8000
-  kubectl expose deployment nginx --port=80 --target-port=8000
+  kubectl expose deployment nginx --port=80 --target-port=8000 ### This example matches most closely to the question.
 
 ```
 

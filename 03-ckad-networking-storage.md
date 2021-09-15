@@ -143,23 +143,156 @@ Output
 </details>
 
 
-#### 04-02. Sample Question.
+#### 04-02. Create a namespace called `service-namespace`. Create a pod called `service-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a service for the pod called `my-service` allowing for communication inside the cluster. Let the service expose port 8080. Create an ingress called `my-ingress` to expose the service outside the cluster.
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-Sample
+kubectl create namespace service-namespace
+kubectl config set-context --current --namespace=service-namespace
+```
 
+```bash
+kubectl run -h | more
+```
+
+Output:
+```bash
+Examples:
+  # Start a nginx pod
+  kubectl run nginx --image=nginx
+  
+  # Start a hazelcast pod and let the container expose port 5701
+  kubectl run hazelcast --image=hazelcast/hazelcast --port=5701 ### This example matches most closely to the question.
+  
+  # Start a hazelcast pod and set environment variables "DNS_DOMAIN=cluster" and "POD_NAMESPACE=default" in the container
+  kubectl run hazelcast --image=hazelcast/hazelcast --env="DNS_DOMAIN=cluster" --env="POD_NAMESPACE=default"
+  
+  # Start a hazelcast pod and set labels "app=hazelcast" and "env=prod" in the container
+  kubectl run hazelcast --image=hazelcast/hazelcast --labels="app=hazelcast,env=prod" ### This example matches most closely to the question.
+  
+  # Dry run; print the corresponding API objects without creating them
+  kubectl run nginx --image=nginx --dry-run=client
+  
+  # Start a nginx pod, but overload the spec with a partial set of values parsed from JSON
+  kubectl run nginx --image=nginx --overrides='{ "apiVersion": "v1", "spec": { ... } }'
+  
+  # Start a busybox pod and keep it in the foreground, don't restart it if it exits
+  kubectl run -i -t busybox --image=busybox --restart=Never
+  
+  # Start the nginx pod using the default command, but use custom arguments (arg1 .. argN) for that command
+  kubectl run nginx --image=nginx -- <arg1> <arg2> ... <argN>
+  
+  # Start the nginx pod using a different command and custom arguments
+  kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>
+```
+
+```bash
+kubectl run service-pod --image=nginx --port=80  --labels="tier=web"
+kubectl get all
 ```
 
 </p>
 </details>
 
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl expose -h | more
+```
+Output:
+```bash
+Examples:
+  # Create a service for a replicated nginx, which serves on port 80 and connects to the containers on port 8000
+  kubectl expose rc nginx --port=80 --target-port=8000
+  
+  # Create a service for a replication controller identified by type and name specified in "nginx-controller.yaml",
+which serves on port 80 and connects to the containers on port 8000
+  kubectl expose -f nginx-controller.yaml --port=80 --target-port=8000 
+  
+  # Create a service for a pod valid-pod, which serves on port 444 with the name "frontend"
+  kubectl expose pod valid-pod --port=444 --name=frontend  ### This example matches most closely to the question.
+    
+  # Create a second service based on the above service, exposing the container port 8443 as port 443 with the name
+"nginx-https"
+  kubectl expose service nginx --port=443 --target-port=8443 --name=nginx-https
+  
+  # Create a service for a replicated streaming application on port 4100 balancing UDP traffic and named 'video-stream'.
+  kubectl expose rc streamer --port=4100 --protocol=UDP --name=video-stream
+  
+  # Create a service for a replicated nginx using replica set, which serves on port 80 and connects to the containers on
+port 8000
+  kubectl expose rs nginx --port=80 --target-port=8000 ### This example matches most closely to the question.
+  
+  # Create a service for an nginx deployment, which serves on port 80 and connects to the containers on port 8000
+  kubectl expose deployment nginx --port=80 --target-port=8000
+```
+
+```bash
+kubectl expose pod service-pod --port=8080 --target-port=80 --name=my-service
+kubectl get all
+kubectl get ep
+```
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+*This part is under development until the new curriculum is released*
+
+This command is not on kubernetes.io but installs a Contour Ingress Controller
+```bash
+kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
+```
+
+kubernetes.io [The Ingress resource](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
+
+```bash
+vi q03-02-ing.yml
+```
+
+```bash
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress          # Change
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /              # Change
+        pathType: Prefix
+        backend:
+          service:
+            name: my-service # Change
+            port:
+              number: 80
+```
+
+```bash
+kubectl apply -f q03-02-ing.yml
+kubectl get service
+kubectl get ep 
+kubectl get ingress
+kubectl describe ingress my-ing
+```
+
+</p>
+</details>
+
+
 #### Clean Up 
 
 ```bash
 kubectl delete ns storage-namespace
+kubectl delete ns service-namespace
 ```
 
 *End of Section*

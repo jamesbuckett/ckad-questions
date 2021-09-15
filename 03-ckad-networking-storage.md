@@ -1,6 +1,6 @@
 ## Sample CKAD Networking and Storage Questions and Answers
 
-#### 04-01. Create a namespac called `storage-namespace`. Create a Persistent Volume called `my-pv` with 5Gi storage using hostPath /mnt/my-host. Create a Persistent Volume Claim called `my-pvc` with 2Gi storage. Create a pod called `storage-pod` using the nginx image. Mount the Persistent Volume Claim onto `/my-mount` in `storage-pod`.
+#### 04-01. Create a namespace called `storage-namespace`. Create a Persistent Volume called `my-pv` with 5Gi storage using hostPath /mnt/my-host. Create a Persistent Volume Claim called `my-pvc` with 2Gi storage. Create a pod called `storage-pod` using the nginx image. Mount the Persistent Volume Claim onto `/my-mount` in `storage-pod`.
 
 kubernetes.io: [Create a PersistentVolume](Create a PersistentVolume)
 

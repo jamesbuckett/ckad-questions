@@ -74,9 +74,18 @@ spec:
 ```
 
 ```bash
-kubectl apply -f 04-02-pvc.yml
+kubectl apply -f 04-01-pvc.yml
 kubectl get pv
 kubectl get pvc
+```
+
+Output:
+```bash
+NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM
+my-pv     5Gi        RWO            Retain           Bound       storage-namespace/my-pvc  # STATUS=Bound means the PV and PVC are linked
+
+NAME     STATUS   VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+my-pvc   Bound    my-pv    5Gi        RWO            manual         6s                     # STATUS=Bound means the PV and PVC are linked
 ```
 
 </p>
@@ -85,12 +94,13 @@ kubectl get pvc
 <details><summary>show</summary>
 <p>
 
+kubernetes.io: [Create a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-pod)
+
 ```bash
 # Create a YAML file for the Pod
 vi 04-01-pod.yml
 ```
 
-kubernetes.io: [Create a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-pod)
 
 ```bash
 apiVersion: v1

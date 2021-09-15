@@ -152,10 +152,91 @@ HOME=/root
 </p>
 </details>
 
+#### 02-02. Create a namespace called `quota-namespace`. Create a Resource Quota for this namespace called `my-quota`. Set a memory reservation of `2Gi`. Set a CPU reservation of `500Mi`.
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl create namespace quota-namespace
+kubectl config set-context --current --namespace=quota-namespace
+```
+
+```bash
+kubectl create quota -h | more
+```
+
+Output
+```bash
+  # Create a new resource quota named my-quota
+  kubectl create quota my-quota --hard=cpu=1,memory=1G,pods=2,services=3,replicationcontrollers=2,resourcequotas=1,secrets=5,persistentvolumeclaims=10 ### This example matches most closely to the question.
+  
+  # Create a new resource quota named best-effort
+  kubectl create quota best-effort --hard=pods=100 --scopes=BestEffort
+```
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl create quota my-quota --hard=cpu=500Mi,memory=2G
+kubectl get quota
+```
+Output:
+```bash
+NAME       AGE    REQUEST                      LIMIT
+my-quota   118s   cpu: 0/500Mi, memory: 0/2G
+```
+REQUEST = Minimum (Request)
+LIMIT = Maximum (Limits)
+
+
+
+```bash
+# Try to run a Pod with resource requests exceeding the quota
+kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl set resources -f - --requests=cpu=1000m,memory=4Gi --limits=cpu=1000m,memory=4Gi --local -o yaml > 02-02.yml
+kubectl apply -f 02-02.yml
+# Error from server (Forbidden): error when creating "02-02.yml": pods "nginx" is forbidden: exceeded quota: my-quota, requested: memory=4Gi, used: memory=0, limited: memory=2G
+```
+
+```bash
+# Try to run a Pod with resource requests within the quota
+kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl set resources -f - --requests=cpu=250m,memory=1Gi --limits=cpu=250m,memory=1Gi --local -o yaml > 02-02.yml
+kubectl apply -f 02-02.yml
+kubectl get all
+kubectl get quota
+```
+
+Output:
+```bash
+NAME       AGE   REQUEST                           LIMIT
+my-quota   19m   cpu: 250m/500Mi, memory: 1Gi/2G   
+```
+
+[Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) 
+* Limits and requests for memory are measured in bytes.
+* You can express memory as a plain integer or as a fixed-point number using one of these suffixes: E, P, T, G, M, k. 
+* You can also use the power-of-two equivalents: Ei, Pi, Ti, Gi, Mi, Ki. 
+
+* E/Ei = Exabyte
+* P/Pi = Petabyte
+* T/Ti = Terrabyte
+* G/Gi = Gigabyte
+* M/Mi = Megabyte
+* k/Ki = Kilobyte
+
+
+</p>
+</details>
+
 #### Clean Up 
 
 ```bash
 kubectl delete ns secret-namespace
+kubectl delete ns quota-namespace
 ```
 
 *End of Section*

@@ -273,15 +273,57 @@ spec:
           service:
             name: my-service # Change
             port:
-              number: 80
+              number: 8080   # Change
 ```
 
 ```bash
 kubectl apply -f q03-02-ing.yml
-kubectl get service
+
+# Pod Address under IP heading
+kubectl get pod -o wide 
+
+# The Pod is an endpoint listed under ENDPOINTS with port :80
 kubectl get ep 
+
+# The Service IP listed under CLUSTER-IP with PORT(S) :8080
+kubectl get service -o wide
+
+# Ingress IP listed under ADDRESS`
 kubectl get ingress
-kubectl describe ingress my-ing
+```
+
+```bash
+NAME         CLASS    HOSTS   ADDRESS           PORTS   AGE
+my-ingress   <none>   *       144.126.242.138   80      4m34s
+```
+
+Take the IP Address under the heading ADDRESS then execute `curl <ADDRESS>`
+
+Output: 
+```bash
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
 ```
 
 </p>

@@ -226,7 +226,7 @@ Output:
 
 ```bash
 # Reduced output to walk back to JSON root:
-    "status": {                          ## First element
+    "status": {                          ## First element: .status
         "conditions": [
             {
                 "lastProbeTime": null,
@@ -235,7 +235,7 @@ Output:
                 "type": "Initialized"
             },
 ...
-        "hostIP": "10.130.0.5",         ## Second Element
+        "hostIP": "10.130.0.5",         ## Second Element: .status.hostIP 
         "phase": "Running",
         "podIP": "10.244.2.198",
 
@@ -258,7 +258,7 @@ Output:
 KIND:     Pod
 VERSION:  v1
 
-RESOURCE: status <Object>            ## First element
+RESOURCE: status <Object>            ## First element: .status
 
 DESCRIPTION:
      Most recently observed status of the pod. This data may not be up to date.
@@ -284,7 +284,7 @@ FIELDS:
      is alpha-level and is only populated by servers that enable the
      EphemeralContainers feature.
 
-   hostIP       <string>               ## Second element
+   hostIP       <string>               ## Second element: .status.hostIP
      IP address of the host to which the pod is assigned. Empty if not yet
      scheduled.
 ```

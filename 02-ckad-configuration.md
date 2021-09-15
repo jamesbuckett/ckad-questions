@@ -72,17 +72,29 @@ vi 02-01-secret.yml
 kubernetes.io: [Immutable Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#secret-immutable)
 
 ```bash
-
+apiVersion: v1
+data:
+  password: MTIzNDU2
+  user: Ym9i
+immutable: true   # From Immutable Secrets link above
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: my-secret
 ```
 
 
 ```bash
+# Apply the YAML file to the Kubernetes API server
+# The secret is availiable to all pods in the namespace 
+kubectl apply -f 02-01-secret.yml
 # Verify that the secret got created
 kubectl get secret my-secret
 kubectl describe secret my-secret
 ```
 
 ```bash
+# Now to create the pod that will consume the secret
 kubectl run secret-pod --image=nginx --restart=Never -n secret-namespace --dry-run=client -o yaml > 02-01-pod.yml
 vi 02-01.yml
 ```

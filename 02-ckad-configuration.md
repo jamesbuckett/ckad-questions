@@ -13,7 +13,7 @@ Sample
 </p>
 </details>
 
-#### 02-01. Create a secret called `my-secret` which contains `user=bob` and password=123456`. Make the secret immutable. Make the secret available in a pod called `secret-pod` as environmental variables `SECRET-ENV-USER` and `SECRET-ENV-PASSWORD`. Create a pod called `secret-pod` using image `nginx` in namespace called `secret-namespace`. Create the namespace.
+#### 02-01. Create a secret called `my-secret` which contains `user=bob` and `password=123456`. Make the secret immutable. Make the secret available in a pod called `secret-pod` as environmental variables `SECRET-ENV-USER` and `SECRET-ENV-PASSWORD`. Create a pod called `secret-pod` using image `nginx` in namespace called `secret-namespace`. Create the namespace.
 
 <details><summary>show</summary>
 <p>
@@ -66,13 +66,24 @@ Examples:
 <p>
 
 ```bash
-kubectl create secret generic my-secret --from-literal=user=bob --from-literal=password=123456 
+kubectl create secret generic my-secret --from-literal=user=bob --from-literal=password=123456 --dry-run=client -o yaml > 02-01-secret.yml
+vi 02-01-secret.yml
+```
+kubernetes.io: [Immutable Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#secret-immutable)
+
+```bash
+
+```
+
+
+```bash
+# Verify that the secret got created
 kubectl get secret my-secret
 kubectl describe secret my-secret
 ```
 
 ```bash
-kubectl run secret-pod --image=nginx --restart=Never -n secret-namespace --dry-run=client -o yaml > 02-01.yml
+kubectl run secret-pod --image=nginx --restart=Never -n secret-namespace --dry-run=client -o yaml > 02-01-pod.yml
 vi 02-01.yml
 ```
 

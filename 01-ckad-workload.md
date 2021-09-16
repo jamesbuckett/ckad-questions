@@ -228,7 +228,7 @@ kubectl create deployment my-deployment --image=nginx --replicas=3 --port=80 --d
 vi q01-03.yml
 ```
 
-[Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory)
+kubernetes.io: [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory)
 
 ```bash
 apiVersion: apps/v1
@@ -368,6 +368,7 @@ my-deployment   ClusterIP   10.245.79.74   <none>        80/TCP    103s
 clear
 # A quicker check is to see if the Pod Endpoints are being load balanced
 kubectl get endpoints
+kubectl get pods -o wide
 ```
 
 Output:

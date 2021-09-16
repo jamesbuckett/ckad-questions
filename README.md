@@ -17,7 +17,8 @@ A set of sample questions and solutions to assist in preparing for the CKAD exam
 * [06. Example CKAD Operations questions with answers](https://github.com/jamesbuckett/ckad-questions/blob/main/06-ckad-operations.md)
 
 ## Logistics
-* I have tested this on Docker Desktop v1.21.4 without any issues
-* To remove all the resources that get created run the Clean Up section at the end of each section.
+* The current version of Kubernetes in the CKAD exam can be found [here](https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks#what-application-version-is-running-in-the-exam-environment). 
+* This has been trsted on Docker Desktop v4.0.1
+* To remove all the resources that get created run the commands in the Clean Up section.
 
 *End of Section*

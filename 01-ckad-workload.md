@@ -374,7 +374,7 @@ my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 </p>
 </details>
 
-#### 01-05. Create a namespace called `edit-namespace`. Create a deployment called `edit-deployment` with `2` replicas using image `nginx` in namespace. After the deployment is running, alter the containers to use the `redis` image and record the change.
+#### 01-05. Create a namespace called `edit-namespace`. Create a deployment called `edit-deployment` with `2` replicas using the `redis` image in namespace. After the deployment is running, alter the containers to use the `nginx` image. Then alter the containers to use the `nginx:1.14.2` image and record the change.
 
 <details><summary>show</summary>
 <p>
@@ -382,7 +382,7 @@ my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 ```bash
 clear
 kubectl create namespace edit-namespace
-kubectl create deployment edit-deployment --image=nginx --replicas=2 -n edit-namespace
+kubectl create deployment edit-deployment --image=redis --replicas=2 -n edit-namespace
 kubectl config set-context --current --namespace=edit-namespace
 ```
 
@@ -429,7 +429,7 @@ spec:
         app: edit-deployment
     spec:
       containers:
-      - image: redis
+      - image: nginx
         imagePullPolicy: Always
         name: nginx
         resources: {}
@@ -443,6 +443,13 @@ spec:
 
 :wq # write and quit file
 ```
+
+```bash
+clear
+# Check the image in the Deployment 
+kubectl describe deployment edit-deployment | grep Image
+```
+
 This works but does not help with the record part of the question, so switch to set the `set image` command
 
 </p>
@@ -456,8 +463,17 @@ kubernetes.io:[Updating a Deployment](https://kubernetes.io/docs/concepts/worklo
 ```bash
 clear
 # Use the kubectl set image command
-kubectl set image deployment.apps/edit-deployment nginx=redisredis:6.0.15 --record
+kubectl set image deployment.apps/edit-deployment nginx=nginx:1.14.2 --record
 ```
+
+```bash
+clear
+# Check the image in the Deployment 
+kubectl describe deployment edit-deployment | grep Image
+# Check that the change was recorded
+kubectl rollout status deployment.apps/edit-deployment
+```
+
 
 </p>
 </details>
@@ -465,9 +481,9 @@ kubectl set image deployment.apps/edit-deployment nginx=redisredis:6.0.15 --reco
 #### Clean Up 
 
 ```bash
-kubectl delete ns pod-namespace 
-kubectl delete ns deployment-namespace 
-kubectl delete ns edit-namespace
+kubectl delete ns pod-namespace --force
+kubectl delete ns deployment-namespace --force
+kubectl delete ns edit-namespace --force
 ```
 
 *End of Section*

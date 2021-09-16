@@ -45,7 +45,7 @@ events
 </p>
 </details>
 
-#### 01-02. Create a namespace called `my-pod-namespace`. Create a pod called `pod-1` using `nginx` image. The container in the pod should be named `container-1`.
+#### 01-02. Create a namespace called `pod-namespace`. Create a pod called `pod-1` using `nginx` image. The container in the pod should be named `container-1`.
 
 <details><summary>show</summary>
 <p>
@@ -57,7 +57,7 @@ kubectl create namespace my-pod-namespace
 
 ```bash
 # Switch context into the namespace so that all subsequent commands execute inside that namespace.
-kubectl config set-context --current --namespace=my-pod-namespace
+kubectl config set-context --current --namespace=pod-namespace
 ```
 
 ```bash
@@ -151,7 +151,7 @@ status: {}
 
 ```bash
 # Apply the YAML file to the Kubernetes API server
-kubectl apply -f q2.yml
+kubectl apply -f q01-02.yml
 ```
 
 ```bash

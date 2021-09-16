@@ -167,7 +167,7 @@ kubectl get pod --watch
 </p>
 </details>
 
-#### 01-03. Create a namespace called `deployment-namespace`. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image inside the namespace. The containers should be named `my-container`. Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi.
+#### 01-03. Create a namespace called `deployment-namespace`. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx container. The containers should be named `my-container`. Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi.
 
 <details><summary>show</summary>
 <p>
@@ -216,7 +216,7 @@ Examples:
 ```bash
 clear
 # Using the best example that matches the question
-kubectl create deployment my-deployment --image=nginx --replicas=3 --dry-run=client -o yaml > q01-03.yml
+kubectl create deployment my-deployment --image=nginx --replicas=3 --port=80 --dry-run=client -o yaml > q01-03.yml
 ```
 
 ```bash
@@ -252,6 +252,8 @@ spec:
     spec:
       containers:
       - image: nginx
+        ports:
+        - containerPort: 80
         name: my-container  # Change from nginx to my container
         resources:          # From Meaning of memory link above          
           requests:         # From Meaning of memory link above
@@ -290,7 +292,7 @@ replicaset.apps/my-deployment-67fc8546   3         3         3       16m
  </p>
 </details>
 
-#### 01-04. In the previous question a Deployment called `my-deployment` was created. Allow network traffic to flow to this deployment from inside the cluster.
+#### 01-04. In the previous question a Deployment called `my-deployment` was created. Allow network traffic to flow to this deployment from inside the cluster on `port 8080`.
 
 <details><summary>show</summary>
 <p>
@@ -339,12 +341,16 @@ port 8000
 ```bash
 clear
 # Using the best example that matches the question
-kubectl expose deployment my-deployment --port=80 --target-port=80
+kubectl expose deployment my-deployment --port=8080 --target-port=80
 ```
 
 Watch out for the statement from inside the Cluster so this is of type: ClusterIP
 
-- --type='': Type for this service: ClusterIP, NodePort, LoadBalancer, or ExternalName. Default is 'ClusterIP'.
+Types include:
+* ClusterIP (default)
+* NodePort 
+* LoadBalancer 
+* ExternalName
 
 ```bash
 clear
@@ -463,7 +469,7 @@ kubernetes.io:[Updating a Deployment](https://kubernetes.io/docs/concepts/worklo
 ```bash
 clear
 # Use the kubectl set image command
-kubectl set image deployment.apps/edit-deployment nginx=nginx:1.14.2 --record
+kubectl set image deployment.apps/edit-deployment redis=nginx:1.14.2 --record
 ```
 
 ```bash
@@ -471,7 +477,7 @@ clear
 # Check the image in the Deployment 
 kubectl describe deployment edit-deployment | grep Image
 # Check that the change was recorded
-kubectl rollout status deployment.apps/edit-deployment
+kubectl rollout history deployment.apps/edit-deployment
 ```
 
 

@@ -248,8 +248,7 @@ spec:
           requests:         # From Meaning of memory link above
             memory: "25Mi"  # From Meaning of memory link above
           limits:           # From Meaning of memory link above
-            memory: "100Mi" # From Meaning of memory link above
-        resources: {}
+            memory: "100Mi" # From Meaning of memory link above        
 status: {}
 ```
 

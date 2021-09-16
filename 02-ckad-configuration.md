@@ -6,6 +6,7 @@
 <p>
 
 ```bash
+clear
 kubectl create namespace secret-namespace
 kubectl config set-context --current --namespace=secret-namespace
 ```
@@ -22,6 +23,7 @@ Three types of secret:
 * tls
 
 ```bash
+clear
 # kubectl create secret -h 
 kubectl create secret generic -h | more
 ```
@@ -53,6 +55,8 @@ Examples:
 <p>
 
 ```bash
+clear
+# Create a generic secret
 kubectl create secret generic my-secret --from-literal=user=bob --from-literal=password=123456 --dry-run=client -o yaml > 02-01-secret.yml
 vi 02-01-secret.yml
 ```
@@ -72,6 +76,7 @@ metadata:
 
 
 ```bash
+clear
 # Apply the YAML file to the Kubernetes API server
 # The secret is availiable to all pods in the namespace 
 kubectl apply -f 02-01-secret.yml
@@ -81,6 +86,7 @@ kubectl describe secret my-secret
 ```
 
 ```bash
+clear
 # Now to create the pod that will consume the secret
 kubectl run secret-pod --image=nginx --restart=Never -n secret-namespace --dry-run=client -o yaml > 02-01-pod.yml
 vi 02-01.yml
@@ -119,12 +125,14 @@ status: {}
 ```
 
 ```bash
+clear
 # Apply the YAML file to the Kubernetes API server
 kubectl apply -f 02-01.yml
 ```
 
 ```bash
-# Quick verification that the deployment was created and is working
+clear
+# Quick verification that the deployment was created and the secret is visible as an environmetal variable
 kubectl exec secret-pod -- env
 ```
 
@@ -158,11 +166,13 @@ HOME=/root
 <p>
 
 ```bash
+clear
 kubectl create namespace quota-namespace
 kubectl config set-context --current --namespace=quota-namespace
 ```
 
 ```bash
+clear
 kubectl create quota -h | more
 ```
 
@@ -182,6 +192,7 @@ Output
 <p>
 
 ```bash
+clear
 kubectl create quota my-quota --hard=cpu=500Mi,memory=2G
 kubectl get quota
 ```
@@ -190,12 +201,13 @@ Output:
 NAME       AGE    REQUEST                      LIMIT
 my-quota   118s   cpu: 0/500Mi, memory: 0/2G
 ```
-REQUEST = Minimum (Request)
-LIMIT = Maximum (Limits)
-
+In English
+* REQUEST = Minimum (Request)
+* LIMIT = Maximum (Limits)
 
 
 ```bash
+clear
 # Try to run a Pod with resource requests exceeding the quota
 kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl set resources -f - --requests=cpu=1000m,memory=4Gi --limits=cpu=1000m,memory=4Gi --local -o yaml > 02-02.yml
 kubectl apply -f 02-02.yml
@@ -203,6 +215,7 @@ kubectl apply -f 02-02.yml
 ```
 
 ```bash
+clear
 # Try to run a Pod with resource requests within the quota
 kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl set resources -f - --requests=cpu=250m,memory=1Gi --limits=cpu=250m,memory=1Gi --local -o yaml > 02-02.yml
 kubectl apply -f 02-02.yml
@@ -221,13 +234,13 @@ my-quota   19m   cpu: 250m/500Mi, memory: 1Gi/2G
 * You can express memory as a plain integer or as a fixed-point number using one of these suffixes: E, P, T, G, M, k. 
 * You can also use the power-of-two equivalents: Ei, Pi, Ti, Gi, Mi, Ki. 
 
+In English:
 * E/Ei = Exabyte
 * P/Pi = Petabyte
 * T/Ti = Terrabyte
 * G/Gi = Gigabyte
 * M/Mi = Megabyte
 * k/Ki = Kilobyte
-
 
 </p>
 </details>

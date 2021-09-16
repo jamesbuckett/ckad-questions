@@ -30,6 +30,7 @@ endpoints                          ep                                   v1      
 <p>
 
 ```bash
+clear
 kubectl api-resources --namespaced=true -o name | more
 ```
 
@@ -51,16 +52,19 @@ events
 <p>
 
 ```bash
+clear
 # Create the namespace
 kubectl create namespace pod-namespace
 ```
 
 ```bash
+clear
 # Switch context into the namespace so that all subsequent commands execute inside that namespace.
 kubectl config set-context --current --namespace=pod-namespace
 ```
 
 ```bash
+clear
 # Run the help flag to get examples
 kubectl run -h | more
 ```
@@ -155,8 +159,9 @@ kubectl apply -f q01-02.yml
 ```
 
 ```bash
+clear
 # Quick verification that the pod was created and is working
-kubectl get all
+kubectl get pod --watch
 ```
 
 </p>
@@ -168,16 +173,19 @@ kubectl get all
 <p>
 
 ```bash
+clear
 # Create the namespace
 kubectl create namespace deployment-namespace
 ```
 
 ```bash
+clear
 # Switch context into the namespace so that all subsequent commands execute inside that namespace.
 kubectl config set-context --current --namespace=deployment-namespace
 ```
 
 ```bash
+clear
 # Run the help flag to get examples
 # kubectl create deployment -h
 kubectl create deploy -h | more
@@ -206,6 +214,7 @@ Examples:
 <p>
 
 ```bash
+clear
 # Using the best example that matches the question
 kubectl create deployment my-deployment --image=nginx --replicas=3 --dry-run=client -o yaml > q01-03.yml
 ```
@@ -253,11 +262,13 @@ status: {}
 ```
 
 ```bash
+clear
 # Apply the YAML file to the Kubernetes API server
 kubectl apply -f q01-03.yml
 ```
 
 ```bash
+clear
 # Quick verification that the deployment was created and is working
 kubectl get all
 ```
@@ -285,6 +296,7 @@ replicaset.apps/my-deployment-67fc8546   3         3         3       16m
 <p>
 
 ```bash
+clear
 # Run the help flag to get examples
 kubectl expose -h | more
 ```
@@ -325,6 +337,7 @@ port 8000
 <p>
 
 ```bash
+clear
 # Using the best example that matches the question
 kubectl expose deployment my-deployment --port=80 --target-port=80
 ```
@@ -334,6 +347,7 @@ Watch out for the statement from inside the Cluster so this is of type: ClusterI
 - --type='': Type for this service: ClusterIP, NodePort, LoadBalancer, or ExternalName. Default is 'ClusterIP'.
 
 ```bash
+clear
 # Check that the Service was created
 kubectl get service
 ```
@@ -345,6 +359,7 @@ my-deployment   ClusterIP   10.245.79.74   <none>        80/TCP    103s
 ```
 
 ```bash
+clear
 # A quicker check is to see if the Pod Endpoints are being load balanced
 kubectl get endpoints
 ```
@@ -365,6 +380,7 @@ my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 <p>
 
 ```bash
+clear
 kubectl create namespace edit-namespace
 kubectl create deployment edit-deployment --image=nginx --replicas=2 -n edit-namespace
 kubectl config set-context --current --namespace=edit-namespace
@@ -438,6 +454,8 @@ This works but does not help with the record part of the question, so switch to 
 kubernetes.io:[Updating a Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment)
 
 ```bash
+clear
+# Use the kubectl set image command
 kubectl set image deployment.apps/edit-deployment nginx=redisredis:6.0.15 --record
 ```
 

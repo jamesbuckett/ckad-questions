@@ -1,6 +1,6 @@
 ## Sample CKAD Configuration Questions and Answers
 
-#### 02-01. Create a namespace called `secret-namespace`. Create a secret in this namespace called my-secret`. The secret should be immutable and contain the literal values `user=bob` and `password=123456`. Create a pod called called `secret-pod` using the `nginx` image. The pod should consume the secret as environmental variables `SECRET-ENV-USER` and `SECRET-ENV-PASSWORD`.
+#### 02-01. Create a namespace called `secret-namespace`. Create a secret in this namespace called `my-secret`. The secret should be immutable and contain the literal values `user=bob` and `password=123456`. Create a pod called called `secret-pod` using the `nginx` image. The pod should consume the secret as environmental variables `SECRET-ENV-USER` and `SECRET-ENV-PASSWORD`.
 
 <details><summary>show</summary>
 <p>

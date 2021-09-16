@@ -72,6 +72,12 @@ kind: Secret
 metadata:
   creationTimestamp: null
   name: my-secret
+
+# vi edits
+# / - find
+# d$ - delete to end of line
+# :u - undo on any error
+# :wq - write and quit  
 ```
 
 
@@ -122,6 +128,12 @@ spec:
   dnsPolicy: ClusterFirst
   restartPolicy: Never
 status: {}
+
+# vi edits
+# / - find
+# d$ - delete to end of line
+# :u - undo on any error
+# :wq - write and quit
 ```
 
 ```bash

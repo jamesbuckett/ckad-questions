@@ -147,10 +147,11 @@ spec:
   restartPolicy: Always
 status: {}
 
-# Make edits
+# vi edits
+# / - find
 # d$ - delete to end of line
-# :u - Undo on any error
-# :wq - Write and Quit
+# :u - undo on any error
+# :wq - write and quit
 ```
 
 ```bash
@@ -221,10 +222,6 @@ kubectl create deployment my-deployment --image=nginx --replicas=3 --port=80 --d
 
 ```bash
 # Edit the YAML file to make required changes
-# Make edits
-# d$ - delete to end of line
-# :u - Undo on any error
-# :wq - Write and Quit
 vi q01-03.yml
 ```
 
@@ -261,6 +258,12 @@ spec:
           limits:           # From Meaning of memory link above
             memory: "100Mi" # From Meaning of memory link above        
 status: {}
+
+# vi edits
+# / - find
+# d$ - delete to end of line
+# :u - undo on any error
+# :wq - write and quit
 ```
 
 ```bash
@@ -448,7 +451,11 @@ spec:
       securityContext: {}
       terminationGracePeriodSeconds: 30
 
-:wq # write and quit file
+# vi edits
+# / - find
+# d$ - delete to end of line
+# :u - undo on any error
+# :wq - write and quit
 ```
 
 ```bash

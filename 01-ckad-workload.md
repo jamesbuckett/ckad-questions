@@ -162,19 +162,19 @@ kubectl get all
 </p>
 </details>
 
-#### 01-03. Create a namespace called `my-deployment-namespace`. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image inside the namespace. The containers should be named `my-container`. Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi.
+#### 01-03. Create a namespace called `deployment-namespace`. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image inside the namespace. The containers should be named `my-container`. Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi.
 
 <details><summary>show</summary>
 <p>
 
 ```bash
 # Create the namespace
-kubectl create namespace my-deployment-namespace
+kubectl create namespace deployment-namespace
 ```
 
 ```bash
 # Switch context into the namespace so that all subsequent commands execute inside that namespace.
-kubectl config set-context --current --namespace=my-deployment-namespace
+kubectl config set-context --current --namespace=deployment-namespace
 ```
 
 ```bash
@@ -448,8 +448,8 @@ kubectl set image deployment.apps/edit-deployment nginx=redisredis:6.0.15 --reco
 #### Clean Up 
 
 ```bash
-kubectl delete ns my-pod-namespace 
-kubectl delete ns my-deployment-namespace 
+kubectl delete ns pod-namespace 
+kubectl delete ns deployment-namespace 
 kubectl delete ns edit-namespace
 ```
 

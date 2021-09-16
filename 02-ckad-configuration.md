@@ -89,7 +89,7 @@ kubectl describe secret my-secret
 clear
 # Now to create the pod that will consume the secret
 kubectl run secret-pod --image=nginx --restart=Never -n secret-namespace --dry-run=client -o yaml > 02-01-pod.yml
-vi 02-01.yml
+vi 02-01-pod.yml
 ```
 
 kubernetes.io: [Using Secrets as environment variables](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables)
@@ -127,7 +127,7 @@ status: {}
 ```bash
 clear
 # Apply the YAML file to the Kubernetes API server
-kubectl apply -f 02-01.yml
+kubectl apply -f 02-01-pod.yml
 ```
 
 ```bash
@@ -248,8 +248,8 @@ In English:
 #### Clean Up 
 
 ```bash
-kubectl delete ns secret-namespace
-kubectl delete ns quota-namespace
+kubectl delete ns secret-namespace --force
+kubectl delete ns quota-namespace --force
 ```
 
 *End of Section*

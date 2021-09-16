@@ -16,4 +16,8 @@ A set of sample questions and solutions to assist in preparing for the CKAD exam
 * [05. Example CKAD Extension questions with answers](https://github.com/jamesbuckett/ckad-questions/blob/main/05-ckad-extensions.md)
 * [06. Example CKAD Operations questions with answers](https://github.com/jamesbuckett/ckad-questions/blob/main/06-ckad-operations.md)
 
+## Logistics
+* I have tested this on Docker Desktop v1.21.4 without any issues
+* To remove all the resources that get created run the Clean Up section at the end of each section.
+
 *End of Section*

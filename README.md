@@ -18,7 +18,7 @@ A set of sample questions and solutions to assist in preparing for the CKAD exam
 
 ## Logistics
 * The current version of Kubernetes in the CKAD exam can be found [here](https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks#what-application-version-is-running-in-the-exam-environment). 
-* This has been trsted on Docker Desktop v4.0.1
+* This has been tested on Docker Desktop v4.0.1.
 * To remove all the resources that get created run the commands in the Clean Up section.
 
 *End of Section*

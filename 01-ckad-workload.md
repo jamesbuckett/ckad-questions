@@ -358,6 +358,8 @@ Types include:
 ```bash
 clear
 # Check that the Service was created
+  # Inside the namespace: my-deploment
+  # Outside the namespace: my-deployment.deployment-namespace.svc.cluster.local
 kubectl get service
 ```
 

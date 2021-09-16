@@ -52,7 +52,7 @@ events
 
 ```bash
 # Create the namespace
-kubectl create namespace my-pod-namespace
+kubectl create namespace pod-namespace
 ```
 
 ```bash

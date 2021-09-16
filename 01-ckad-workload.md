@@ -221,11 +221,11 @@ kubectl create deployment my-deployment --image=nginx --replicas=3 --dry-run=cli
 
 ```bash
 # Edit the YAML file to make required changes
-vi q01-03.yml
 # Make edits
 # d$ - delete to end of line
 # :u - Undo on any error
 # :wq - Write and Quit
+vi q01-03.yml
 ```
 
 [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory)

@@ -23,9 +23,13 @@ Please install the [metrics server](https://github.com/kubernetes-sigs/metrics-s
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 ```
 
+```bash
+kubectl patch deployment metrics-server -n kube-system --type 'json' -p '[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--kubelet-insecure-tls"}]'
+```
+
 ### Contour Ingress
 
-By default the contour ingress required for the Ingress Networking question is not present on Docker Desktop.
+By default the Contour Ingress required for the Ingress Networking question is not present on Docker Desktop.
 
 Please install the [contour ingress](https://projectcontour.io/) with the following command:
 

@@ -298,6 +298,14 @@ FIELDS:
      scheduled.
 ```
 
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+Using either method to obtain the JSONPath constuct the search query to hostIP.
+
 kubernetes.io:[JSONPath Support](https://kubernetes.io/docs/reference/kubectl/jsonpath/)
 ```bash
 kubectl get pod json-pod -o jsonpath={.status.hostIP}    

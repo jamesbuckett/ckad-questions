@@ -341,6 +341,7 @@ clear
 kubectl create namespace log-namespace
 kubectl run log-pod --image=nginx -n log-namespace
 kubectl config set-context --current --namespace=log-namespace
+kubectl get all
 ```
 
 </p>

@@ -7,6 +7,7 @@
 
 
 ```bash
+clear
 kubectl top pods -A --sort-by=cpu | more
 ```
 
@@ -28,6 +29,7 @@ ns-demo                   recommendationservice-b4cf8f489-xwv49                 
 <p>
 
 ```bash
+clear
 kubectl top pods -A --sort-by=memory | more
 ```
 
@@ -52,6 +54,7 @@ kube-system               cilium-ml27n                                          
 <p>
 
 ```bash
+clear
 kubectl create namespace json-namespace
 kubectl run json-pod --image=nginx -n json-namespace
 kubectl config set-context --current --namespace=json-namespace
@@ -250,6 +253,7 @@ Output:
 <p>
 
 ```bash
+clear
 # Another way to get the JSONPath
 kubectl explain pod.status
 # kubectl explain pod.status --recursive
@@ -306,6 +310,7 @@ kubectl get pod json-pod -o jsonpath={.status.hostIP}
 kubernetes.io: [Viewing, finding resources](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resources)
 
 ```bash
+clear
 kubectl get events -A --sort-by=.metadata.creationTimestamp
 ```
 
@@ -318,6 +323,7 @@ kubectl get events -A --sort-by=.metadata.creationTimestamp
 <p>
 
 ```bash
+clear
 kubectl create namespace log-namespace
 kubectl run log-pod --image=nginx -n log-namespace
 kubectl config set-context --current --namespace=log-namespace
@@ -330,6 +336,7 @@ kubectl config set-context --current --namespace=log-namespace
 <p>
 
 ```bash
+clear
 kubectl logs -h | more
 ```
 
@@ -371,6 +378,7 @@ Examples:
 ```
 
 ```bash
+clear
 # Straight forward match in the examples
 kubectl logs --since=1h nginx
 ```

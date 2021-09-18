@@ -297,7 +297,10 @@ NAME         CLASS    HOSTS   ADDRESS           PORTS   AGE
 my-ingress   <none>   *       144.126.242.138   80      4m34s
 ```
 
-Take the IP Address under the heading ADDRESS then execute `curl <ADDRESS>`
+```bash
+curl localhost
+```
+
 
 Output: 
 ```bash

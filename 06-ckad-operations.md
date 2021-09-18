@@ -58,6 +58,7 @@ clear
 kubectl create namespace json-namespace
 kubectl run json-pod --image=nginx -n json-namespace
 kubectl config set-context --current --namespace=json-namespace
+kubectl get all
 ```
 
 </p>
@@ -252,11 +253,14 @@ Output:
 <details><summary>show</summary>
 <p>
 
+There is a second and in my opinion a cleaner method to get the JSONPath.
+
 ```bash
 clear
 # Another way to get the JSONPath
 kubectl explain pod.status
 # kubectl explain pod.status --recursive
+```
 
 Output:
 ```bash

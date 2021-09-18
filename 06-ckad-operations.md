@@ -392,6 +392,12 @@ Examples:
   kubectl logs deployment/nginx -c nginx-1
 ```
 
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
 ```bash
 clear
 # Straight forward match in the examples

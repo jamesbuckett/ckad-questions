@@ -17,6 +17,9 @@ Please install these two software components, required to answer questions in la
 
 By default the metrics server required for the `kubectl top` command is not present on Docker Desktop.
 
+<details><summary>show</summary>
+<p>
+
 Please install the [metrics server](https://github.com/kubernetes-sigs/metrics-server) with the following command:
 
 ```bash
@@ -27,15 +30,24 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/late
 kubectl patch deployment metrics-server -n kube-system --type 'json' -p '[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--kubelet-insecure-tls"}]'
 ```
 
+</p>
+</details>
+
 ### Contour Ingress
 
 By default the Contour Ingress required for the Ingress Networking question is not present on Docker Desktop.
+
+<details><summary>show</summary>
+<p>
 
 Please install the [contour ingress](https://projectcontour.io/) with the following command:
 
 ```bash
 kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
 ```
+
+</p>
+</details>
 
 ## Questions by Domain
 

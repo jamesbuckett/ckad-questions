@@ -331,8 +331,8 @@ Commercial support is available at
 #### Clean Up 
 
 ```bash
-kubectl delete ns storage-namespace
-kubectl delete ns service-namespace
+kubectl delete ns storage-namespace --force
+kubectl delete ns service-namespace --force
 ```
 
 *End of Section*

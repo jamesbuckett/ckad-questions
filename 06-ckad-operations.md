@@ -401,10 +401,17 @@ Examples:
 ```bash
 clear
 # Straight forward match in the examples
-kubectl logs --since=1h nginx
+kubectl logs --since=1h log-pod
 ```
 
 </p>
 </details>
+
+#### Clean Up 
+
+```bash
+kubectl delete ns json-namespace --force
+kubectl delete ns log-namespace --force
+```
 
 *End of Section*

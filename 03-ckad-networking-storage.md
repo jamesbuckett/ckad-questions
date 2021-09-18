@@ -245,11 +245,6 @@ kubectl get ep
 
 *This part is under development until the new curriculum is released*
 
-This command is not on kubernetes.io but installs a Contour Ingress Controller
-```bash
-kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
-```
-
 kubernetes.io [The Ingress resource](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
 
 ```bash

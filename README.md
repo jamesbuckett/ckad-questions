@@ -7,6 +7,32 @@ A set of sample questions and solutions to assist in preparing for the CKAD exam
 - Opinions expressed here are solely my own and do not express the views or opinions of JPMorgan Chase.
 - Any third-party trademarks are the intellectual property of their respective owners and any mention herein is for referential purposes only.
 
+## Preparation for Docker Desktop
+
+Please install these two software components, required to answer questions in later sections:
+* metrics server
+* contour ingress
+
+### metrics server
+
+By default the metrics server required for the `kubectl top` command is not present on Docker Desktop.
+
+Please install the [metrics server](https://github.com/kubernetes-sigs/metrics-server) with the following command:
+
+```bash
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+```
+
+### Contour Ingress
+
+By default the contour ingress required for the Ingress Networking question is not present on Docker Desktop.
+
+Please install the [contour ingress](https://projectcontour.io/) with the following command:
+
+```bash
+kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
+```
+
 ## Questions by Domain
 
 * [01. Example CKAD Workload questions with answers](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-workload.md)

@@ -5,13 +5,6 @@
 <details><summary>show</summary>
 <p>
 
-By default the metrics server required for the `kubectl top` command is not present on Docker Desktop.
-
-Install the [metrics server](https://github.com/kubernetes-sigs/metrics-server) with the following command:
-
-```bash
-kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
-```
 
 ```bash
 kubectl top pods -A --sort-by=cpu | more

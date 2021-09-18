@@ -67,8 +67,10 @@ kubectl get all
 <details><summary>show</summary>
 <p>
 
+The first verbose method to obtain the JSONPath.
+
 ```bash
-kubectl get pod json-pod -o json
+kubectl get pod json-pod -o json | more
 ```
 
 Output:
@@ -258,7 +260,7 @@ There is a second and in my opinion a cleaner method to get the JSONPath.
 ```bash
 clear
 # Another way to get the JSONPath
-kubectl explain pod.status
+kubectl explain pod.status | more
 # kubectl explain pod.status --recursive
 ```
 

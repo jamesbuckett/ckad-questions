@@ -342,10 +342,14 @@ clear
 # Create all the required resources
 kubectl create namespace netpol-namespace
 kubectl config set-context --current --namespace=netpol-namespace
-kubectl run web-pod --image=nginx --port=80  --labels="tier=web" --expose
-kubectl run db-pod-1 --image=nginx --port=11 --labels="tier=db-1" --expose
-kubectl run db-pod-2 --image=nginx --port=22 --labels="tier=db-2" --expose
-kubectl run db-pod-3 --image=nginx --port=33 --labels="tier=db-3" --expose
+kubectl run web-pod --image=nginx --port=80  --labels="tier=web" 
+kubectl expose pod web-pod --port=8080 --name=web-service
+kubectl run db-pod-1 --image=nginx --port=11 --labels="tier=db-1"
+kubectl expose pod db-pod-1 --port=1111 --name=db-pod-1-service
+kubectl run db-pod-2 --image=nginx --port=22 --labels="tier=db-2"
+kubectl expose pod db-pod-2 --port=2222 --name=db-pod-2-service
+kubectl run db-pod-3 --image=nginx --port=33 --labels="tier=db-3"
+kubectl expose pod db-pod-3 --port=3333 --name=db-pod-3-service
 clear
 kubectl get all
 kubectl get pod -L tier 

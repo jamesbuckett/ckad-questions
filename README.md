@@ -11,8 +11,6 @@
 ## Preparation for Docker Desktop
 
 Please install these two software components, required to answer questions in later sections:
-* metrics server
-* contour ingress
 
 ### metrics server
 

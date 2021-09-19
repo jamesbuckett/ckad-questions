@@ -327,6 +327,142 @@ Commercial support is available at
 </p>
 </details>
 
+#### 04-02. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `db-pod-1` using the `nginx` image and exposing port `11`. Label the pod `tier=db-1`. Create a pod called `db-pod-2` using the `nginx` image and exposing port `22`. Label the pod `tier=db-2`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only connect to `db-pod-1` on port `11` and to connect to `db-pod-2` on port `22`. 
+
+I use the notepad to scetch out the ingress and egress before starting 
+* `web-pod` > `db-pod-1` on port 11
+* `web-pod` > `db-pod-2` on port 22
+
+
+<details><summary>show</summary>
+<p>
+
+```bash
+clear
+# Create all the required resources
+kubectl create namespace netpol-namespace
+kubectl config set-context --current --namespace=netpol-namespace
+kubectl run web-pod --image=nginx --port=80  --labels="tier=web"
+kubectl run db-pod-1 --image=nginx port=11 --labels="tier=db-1"
+kubectl run db-pod-2 --image=nginx port=22 --labels="tier=db-2"
+kubectl run db-pod-3 --image=nginx port=33 --labels="tier=db-3"
+clear
+kubectl get all
+kubectl get pod -L tier 
+```
+
+```bash
+clear
+# Test connectivity without Network Policy
+kubectl get pod -o wide | awk 'FNR == 3 {print $6}'| curl -s 
+kubectl get pod -o wide | awk 'FNR == 4 {print $6}'| curl -s 
+kubectl get all
+```
+
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+kubernetes.io: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
+
+```bash
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: test-network-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - ipBlock:
+        cidr: 172.17.0.0/16
+        except:
+        - 172.17.1.0/24
+    - namespaceSelector:
+        matchLabels:
+          project: myproject
+    - podSelector:
+        matchLabels:
+          role: frontend
+    ports:
+    - protocol: TCP
+      port: 6379
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 10.0.0.0/24
+    ports:
+    - protocol: TCP
+      port: 5978
+```
+
+<details><summary>show</summary>
+<p>
+
+
+<details><summary>show</summary>
+<p>
+
+kubernetes.io: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
+
+```bash
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: my-netpol     # Change  
+spec:
+  podSelector:
+    matchLabels:
+      tier: web       # Change - Which pod does this Netowork Policy Apply to i.e. any pod with label tier=web
+  policyTypes:
+  - Egress
+  egress:             # Egress - Traffic outwards from pod with label tier=web
+  - to:               # First condition "to" podSelector and ports
+    - podSelector:      # Condition podSelector
+        matchLabels:
+          tier: db-1      # First podSelector possibility
+    - podSelector:
+        matchLabels:
+          tier: db-2      # Second podSelector possibility  
+    ports:              # Condition ports
+    - protocol: TCP
+      port: 11            # First ports possibility
+    - protocol: TCP
+      port: 22            # Second ports possibility
+
+```
+
+```bash
+clear
+# Test connectivity with Network Policy
+kubectl apply -f 
+kubectl get pod -o wide | awk 'FNR == 3 {print $6}'| curl -s 
+kubectl get pod -o wide | awk 'FNR == 4 {print $6}'| curl -s 
+kubectl get all
+```
+
+
+Read this as:
+* Allow outgoing traffic if:
+  * Destination Pod has label db-1 OR db-2  
+  AND
+  * Destination Port is 11 OR Destination Port is 22
+
+Pod web=tier can connect to pod db-2 on port 11
+
+
+
+<details><summary>show</summary>
+<p>
 
 #### Clean Up 
 

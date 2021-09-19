@@ -358,10 +358,8 @@ kubectl get pod -L tier
 ```bash
 clear
 # Test connectivity without Network Policy
-kubectl get pod -o wide | awk 'FNR == 2 {print $6}' | xargs -d'\n' curl
-kubectl get pod -o wide | awk 'FNR == 3 {print $6}' | xargs -d'\n' curl
-kubectl get pod -o wide | awk 'FNR == 4 {print $6}' | xargs -d'\n' curl
-kubectl get pod -o wide | awk 'FNR == 5 {print $6}' | xargs -d'\n' curl
+kubectl get pod -o wide 
+# kubectl exec web-pod -- curl -s <IP>:<PORT>
 ```
 
 </p>

@@ -343,9 +343,9 @@ clear
 kubectl create namespace netpol-namespace
 kubectl config set-context --current --namespace=netpol-namespace
 kubectl run web-pod --image=nginx --port=80  --labels="tier=web"
-kubectl run db-pod-1 --image=nginx port=11 --labels="tier=db-1"
-kubectl run db-pod-2 --image=nginx port=22 --labels="tier=db-2"
-kubectl run db-pod-3 --image=nginx port=33 --labels="tier=db-3"
+kubectl run db-pod-1 --image=nginx --port=11 --labels="tier=db-1"
+kubectl run db-pod-2 --image=nginx --port=22 --labels="tier=db-2"
+kubectl run db-pod-3 --image=nginx --port=33 --labels="tier=db-3"
 clear
 kubectl get all
 kubectl get pod -L tier 
@@ -469,6 +469,7 @@ Pod web=tier can connect to pod db-2 on port 11
 ```bash
 kubectl delete ns storage-namespace --force
 kubectl delete ns service-namespace --force
+kubectl delete ns netpol-namespace --force
 ```
 
 *End of Section*

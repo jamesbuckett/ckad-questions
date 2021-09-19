@@ -327,7 +327,7 @@ Commercial support is available at
 </p>
 </details>
 
-#### 04-02. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `db-pod-1` using the `nginx` image and exposing port `11`. Label the pod `tier=db-1`. Create a pod called `db-pod-2` using the `nginx` image and exposing port `22`. Label the pod `tier=db-2`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only connect to `db-pod-1` on port `11` and to connect to `db-pod-2` on port `22`. 
+#### 04-03. UNDER CONSTRUCTION. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `db-pod-1` using the `nginx` image and exposing port `11`. Label the pod `tier=db-1`. Create a pod called `db-pod-2` using the `nginx` image and exposing port `22`. Label the pod `tier=db-2`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only connect to `db-pod-1` on port `11` and to connect to `db-pod-2` on port `22`. 
 
 I use the notepad to scetch out the ingress and egress before starting 
 * `web-pod` > `db-pod-1` on port 11
@@ -342,10 +342,10 @@ clear
 # Create all the required resources
 kubectl create namespace netpol-namespace
 kubectl config set-context --current --namespace=netpol-namespace
-kubectl run web-pod --image=nginx --port=80  --labels="tier=web"
-kubectl run db-pod-1 --image=nginx --port=11 --labels="tier=db-1"
-kubectl run db-pod-2 --image=nginx --port=22 --labels="tier=db-2"
-kubectl run db-pod-3 --image=nginx --port=33 --labels="tier=db-3"
+kubectl run web-pod --image=nginx --port=80  --labels="tier=web" --expose
+kubectl run db-pod-1 --image=nginx --port=11 --labels="tier=db-1" --expose
+kubectl run db-pod-2 --image=nginx --port=22 --labels="tier=db-2" --expose
+kubectl run db-pod-3 --image=nginx --port=33 --labels="tier=db-3" --expose
 clear
 kubectl get all
 kubectl get pod -L tier 
@@ -354,11 +354,11 @@ kubectl get pod -L tier
 ```bash
 clear
 # Test connectivity without Network Policy
-kubectl get pod -o wide | awk 'FNR == 3 {print $6}'| curl -s 
-kubectl get pod -o wide | awk 'FNR == 4 {print $6}'| curl -s 
-kubectl get all
+kubectl get pod -o wide | awk 'FNR == 2 {print $6}' | xargs -d'\n' curl
+kubectl get pod -o wide | awk 'FNR == 3 {print $6}' | xargs -d'\n' curl
+kubectl get pod -o wide | awk 'FNR == 4 {print $6}' | xargs -d'\n' curl
+kubectl get pod -o wide | awk 'FNR == 5 {print $6}' | xargs -d'\n' curl
 ```
-
 
 </p>
 </details>
@@ -405,8 +405,8 @@ spec:
       port: 5978
 ```
 
-<details><summary>show</summary>
-<p>
+</p>
+</details>
 
 
 <details><summary>show</summary>
@@ -445,9 +445,10 @@ spec:
 clear
 # Test connectivity with Network Policy
 kubectl apply -f 
-kubectl get pod -o wide | awk 'FNR == 3 {print $6}'| curl -s 
-kubectl get pod -o wide | awk 'FNR == 4 {print $6}'| curl -s 
-kubectl get all
+kubectl get pod -o wide | awk 'FNR == 2 {print $6}' | xargs -d'\n' curl
+kubectl get pod -o wide | awk 'FNR == 3 {print $6}' | xargs -d'\n' curl
+kubectl get pod -o wide | awk 'FNR == 4 {print $6}' | xargs -d'\n' curl
+kubectl get pod -o wide | awk 'FNR == 5 {print $6}' | xargs -d'\n' curl
 ```
 
 
@@ -459,10 +460,9 @@ Read this as:
 
 Pod web=tier can connect to pod db-2 on port 11
 
+</p>
+</details>
 
-
-<details><summary>show</summary>
-<p>
 
 #### Clean Up 
 

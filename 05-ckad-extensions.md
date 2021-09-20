@@ -45,7 +45,7 @@ docker build -t my-image:v0.1 .
 ```bash
 clear
 # Run the docker image
-docker run -it --rm -d -p 8080:80 --name my-container my-image
+docker run -it --rm -d -p 8080:80 --name my-container my-image:v0.1
 
 ```
 
@@ -73,7 +73,7 @@ docker container stop my-container
 ```bash
 clear
 # Delete the Image
-docker image rm my-image
+docker image rm my-image:v0.1
 
 ```
 

@@ -1,6 +1,6 @@
 ## Sample CKAD Extension Questions and Answers
 
-#### 05-01. Create a container from the attached Dockerfile and index.html. Name the image `my-image`. Name the container `my-container`. Run the container exposing port `8080` on the host and port `80` on the container. Stop the container. Delete the container.
+#### 05-01. Create a container from the attached Dockerfile and index.html. Name the image `my-image`. Name the container `my-container`. Run the image exposing port `8080` on the host and port `80` on the container. Stop the container. Delete the image.
 
 <details><summary>show</summary>
 <p>

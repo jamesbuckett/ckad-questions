@@ -188,4 +188,26 @@ Output:
 </p>
 </details>
 
+#### 05-03. List all the Custom Resource Definitions installed in a cluster.
+
+<details><summary>show</summary>
+<p>
+
+```bash
+clear
+# kubectl get Custom Resource Defintions
+kubectl get crds
+
+```
+
+Output
+```bash
+
+
+```
+
+</p>
+</details>
+
+
 *End of Section*

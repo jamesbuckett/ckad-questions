@@ -1,7 +1,7 @@
 # Sample CKAD exercises and solutions
 
 - A set of sample questions and solutions to assist in preparing for the CKAD exam. 
-- Assumed practice environment is [Docker Desktop](https://www.docker.com/products/docker-desktop).
+- Assumed practice environment is [Docker Desktop](https://www.docker.com/products/docker-desktop) with a [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install) backend.
 
 ## Disclaimer
 
@@ -11,13 +11,15 @@
 ## Preparation for Docker Desktop
 
 Please install these two software components, required to answer questions in later sections:
+* [metrics server](https://github.com/kubernetes-sigs/metrics-server)
+* [contour ingress](https://projectcontour.io/)
+
+<details><summary>show</summary>
+<p>
 
 ### metrics server
 
 By default the metrics server required for the `kubectl top` command is not present on Docker Desktop.
-
-<details><summary>show</summary>
-<p>
 
 Please install the [metrics server](https://github.com/kubernetes-sigs/metrics-server) with the following command:
 
@@ -32,12 +34,12 @@ kubectl patch deployment metrics-server -n kube-system --type 'json' -p '[{"op":
 </p>
 </details>
 
+<details><summary>show</summary>
+<p>
+
 ### Contour Ingress
 
 By default the Contour Ingress required for the Ingress Networking question is not present on Docker Desktop.
-
-<details><summary>show</summary>
-<p>
 
 Please install the [contour ingress](https://projectcontour.io/) with the following command:
 

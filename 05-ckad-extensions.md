@@ -210,5 +210,27 @@ tlscertificatedelegations.projectcontour.io   2021-09-22T06:28:39Z
 </p>
 </details>
 
+#### 05-04. UNDER CONSTRUCTION - List all the non native Kubernetes resources in a cluster.
+
+<details><summary>show</summary>
+<p>
+
+To Do
+* Install Calico 
+* List Calico Resouces
+* Get Calico Ingress
+
+```bash
+clear
+kubectl api-resources -o name | grep -i calico
+```
+
+Output
+```bash
+
+```
+
+</p>
+</details>
 
 *End of Section*

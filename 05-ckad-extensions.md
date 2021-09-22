@@ -202,8 +202,9 @@ kubectl get crds
 
 Output
 ```bash
-
-
+extensionservices.projectcontour.io           2021-09-22T06:28:39Z
+httpproxies.projectcontour.io                 2021-09-22T06:28:39Z
+tlscertificatedelegations.projectcontour.io   2021-09-22T06:28:39Z
 ```
 
 </p>

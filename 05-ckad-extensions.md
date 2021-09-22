@@ -80,14 +80,29 @@ docker image rm my-image:v0.1
 </p>
 </details>
 
-#### 05-02. Give the command to list out all the available API groups on your cluster. Then list out the API's in the `named` group. 
+#### 05-02. Give the command to list out all the available API groups on your cluster. Then list out the API's in the `named` API (/apis) group.
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-# List available API groups
-curl http://locahost:6443
+clear
+# Use the kubectl to provide credentials to connect to the API server
+kubectl proxy &
+
+```
+
+```bash
+clear
+# List all available API groups
+curl http://locahost:8001 -k | more
+
+```
+
+Output:
+```bash
+
+
 
 ```
 
@@ -98,10 +113,19 @@ curl http://locahost:6443
 <p>
 
 ```bash
+clear
 # List all supported resource groups
-curl http://locahost:6443/apis -k | grep "name"
+curl http://locahost:8001/apis -k | grep "name"
 
 ```
+
+Output:
+```bash
+
+
+
+```
+
 
 </p>
 </details>

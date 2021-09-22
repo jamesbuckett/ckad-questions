@@ -80,4 +80,30 @@ docker image rm my-image:v0.1
 </p>
 </details>
 
+#### 05-02. Give the command to list out all the available API groups on your cluster. Then list out the API's in the `named` group. 
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# List available API groups
+curl http://locahost:6443
+
+```
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# List all supported resource groups
+curl http://locahost:6443/apis -k | grep "name"
+
+```
+
+</p>
+</details>
+
 *End of Section*

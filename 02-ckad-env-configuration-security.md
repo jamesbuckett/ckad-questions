@@ -1,13 +1,14 @@
 ## Sample CKAD Environment, Configuration and Security Questions and Answers
 
 ### Application Environment, Configuration and Security – 25%
-* Discover and use resources that extend Kubernetes (CRD)
+* Discover and use resources that extend Kubernetes (CRD) **
 * Understand authentication, authorization and admission control
 * Understanding and defining resource requirements, limits and quotas **
 * Understand ConfigMaps
 * Create & consume Secrets **
 * Understand ServiceAccounts
 * Understand SecurityContexts
+
 
 #### 02-01. Create a namespace called `secret-namespace`. Create a secret in this namespace called `my-secret`. The secret should be immutable and contain the literal values `user=bob` and `password=123456`. Create a pod called called `secret-pod` using the `nginx` image. The pod should consume the secret as environmental variables `SECRET-ENV-USER` and `SECRET-ENV-PASSWORD`.
 
@@ -265,6 +266,27 @@ In English:
 
 </p>
 </details>
+
+#### 02-03. List all the Custom Resource Definitions installed in a cluster.
+
+<details><summary>show</summary>
+<p>
+
+```bash
+clear
+# kubectl get Custom Resource Defintions
+kubectl get crds
+```
+
+Output:
+```bash
+extensionservices.projectcontour.io           2021-09-22T06:28:39Z
+httpproxies.projectcontour.io                 2021-09-22T06:28:39Z
+tlscertificatedelegations.projectcontour.io   2021-09-22T06:28:39Z
+```
+</p>
+</details>
+
 
 #### Clean Up 
 

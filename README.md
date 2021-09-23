@@ -1,7 +1,7 @@
 # Sample CKAD exercises and solutions
 
 - A set of sample questions and solutions to assist in preparing for the CKAD exam. 
-- Assumed practice environment is [Docker Desktop](https://www.docker.com/products/docker-desktop).
+- Assumed practice environment is [Docker Desktop](https://www.docker.com/products/docker-desktop) with a [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install) backend.
 
 ## Disclaimer
 

@@ -70,11 +70,14 @@ clear
 # List all available API groups from the API server
 # /api is called the core API's
 # /apis is called the named API's - going forward new features will be made available under this API
+# You need to pass the -k or --insecure option to the curl command. 
+# This option explicitly allows curl to perform “insecure” SSL connections and transfers.
 curl http://localhost:8001 -k | more 
 ```
 
 Output:
 ```bash
+...
    "/api",
    "/api/v1",
    "/apis",
@@ -106,6 +109,7 @@ Output:
    "/apis/certificates.k8s.io",
    "/apis/certificates.k8s.io/v1",
    "/apis/certificates.k8s.io/v1beta1",
+...
 ```bash
 
 </p>
@@ -121,6 +125,7 @@ curl http://locahost:8001/apis -k | grep "name" | more
 ```
 Output:
 ```bash
+...
       "name": "apiregistration.k8s.io",
       "name": "apps",
       "name": "events.k8s.io",
@@ -141,6 +146,7 @@ Output:
       "name": "node.k8s.io",
       "name": "discovery.k8s.io",
       "name": "flowcontrol.apiserver.k8s.io",
+...
 ```
 
 </p>

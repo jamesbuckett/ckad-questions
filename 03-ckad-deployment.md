@@ -2,7 +2,7 @@
 
 ### Application Deployment – 20% 
 * Use Kubernetes primitives to implement common deployment strategies (e.g. blue/green or canary)
-* Understand Deployments and how to perform rolling updates **
+* Understand Deployments and how to perform rolling updates [**](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md#03-01-create-a-namespace-called-deployment-namespace-create-a-deployment-called-my-deployment-with-three-replicas-using-the-nginx-image-inside-the-namespace-expose-port-80-for-the-nginx-container-the-containers-should-be-named-my-container-each-container-should-have-a-memory-request-of-25mi-and-a-memory-limit-of-100mi)
 * Use the Helm package manager to deploy existing packages
 
 #### 03-01. Create a namespace called `deployment-namespace`. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx container. The containers should be named `my-container`. Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi.

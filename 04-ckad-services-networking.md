@@ -1,9 +1,9 @@
 ## Sample CKAD Services and Networking - 20% - Questions and Answers
 
 ### Services and Networking – 20%
-* Demonstrate basic understanding of NetworkPolicies **
-* Provide and troubleshoot access to applications via services **
-* Use Ingress rules to expose applications **
+* Demonstrate basic understanding of NetworkPolicies [**](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md#03-01-create-a-namespace-called-deployment-namespace-create-a-deployment-called-my-deployment-with-three-replicas-using-the-nginx-image-inside-the-namespace-expose-port-80-for-the-nginx-container-the-containers-should-be-named-my-container-each-container-should-have-a-memory-request-of-25mi-and-a-memory-limit-of-100mi)
+* Provide and troubleshoot access to applications via services 
+* Use Ingress rules to expose applications [**](https://github.com/jamesbuckett/ckad-questions/blob/main/04-ckad-services-networking.md#04-01-create-a-namespace-called-service-namespace-create-a-pod-called-service-pod-using-the-nginx-image-and-exposing-port-80-label-the-pod-tierweb-create-a-service-for-the-pod-called-my-service-allowing-for-communication-inside-the-cluster-let-the-service-expose-port-8080-create-an-ingress-called-my-ingress-to-expose-the-service-outside-the-cluster)
 
 #### 04-01. Create a namespace called `service-namespace`. Create a pod called `service-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a service for the pod called `my-service` allowing for communication inside the cluster. Let the service expose port 8080. Create an ingress called `my-ingress` to expose the service outside the cluster.
 

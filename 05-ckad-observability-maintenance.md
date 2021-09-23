@@ -3,9 +3,12 @@
 Application Observability and Maintenance – 15%
 * Understand API deprecations
 * Implement probes and health checks
-* Use provided tools to monitor Kubernetes applications
+* Use provided tools to monitor Kubernetes applications **
 * Utilize container logs
 * Debugging in Kubernetes
+
+
+
 
 #### 06-01. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
 

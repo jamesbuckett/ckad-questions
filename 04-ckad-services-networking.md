@@ -1,154 +1,11 @@
 ## Sample CKAD Services and Networking - 20% - Questions and Answers
 
 Services and Networking – 20%
-* Demonstrate basic understanding of NetworkPolicies
-* Provide and troubleshoot access to applications via services
-* Use Ingress rules to expose applications
+* Demonstrate basic understanding of NetworkPolicies **
+* Provide and troubleshoot access to applications via services **
+* Use Ingress rules to expose applications **
 
-#### 04-01. Create a namespace called `storage-namespace`. Create a Persistent Volume called `my-pv` with `5Gi` storage using hostPath `/mnt/my-host`. Create a Persistent Volume Claim called `my-pvc` with `2Gi` storage. Create a pod called `storage-pod` using the nginx image. Mount the Persistent Volume Claim onto `/my-mount` in `storage-pod`.
-
-kubernetes.io: [Create a PersistentVolume](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume)
-
-<details><summary>show</summary>
-<p>
-
-```bash
-kubectl create namespace storage-namespace
-kubectl config set-context --current --namespace=storage-namespace
-```
-
-kubernetes.io: [Create a PersistentVolume](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume)
-
-```bash
-# Create a YAML file for the PV
-vi 04-01-pv.yml
-```
-
-```bash
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: my-pv              # Change
-  labels:
-    type: local
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 5Gi           # Change
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/mnt/my-host"   # Change
-```
-
-```bash
-kubectl apply -f 04-01-pv.yml
-kubectl get pv
-```
-Output:
-```bash
-NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM
-my-pv     5Gi        RWO            Retain           Available
-```
-
-</p>
-</details>
-
-<details><summary>show</summary>
-<p>
-
-kubernetes.io: [Create a PersistentVolumeClaim](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim)
-
-```bash
-# Create a YAML file for the PVC
-vi 04-01-pvc.yml
-```
-
-```bash
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: my-pvc          # Change
-spec:
-  storageClassName: manual
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi      # Change
-```
-
-```bash
-kubectl apply -f 04-01-pvc.yml
-kubectl get pv
-kubectl get pvc
-```
-
-Output:
-```bash
-NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM
-my-pv     5Gi        RWO            Retain           Bound       storage-namespace/my-pvc  # STATUS=Bound means the PV and PVC are linked
-
-NAME     STATUS   VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   AGE
-my-pvc   Bound    my-pv    5Gi        RWO            manual         6s                     # STATUS=Bound means the PV and PVC are linked
-```
-
-</p>
-</details>
-
-<details><summary>show</summary>
-<p>
-
-kubernetes.io: [Create a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-pod)
-
-```bash
-# Create a YAML file for the Pod
-vi 04-01-pod.yml
-```
-
-
-```bash
-apiVersion: v1
-kind: Pod
-metadata:
-  name: storage-pod                    # Change
-spec:
-  volumes:
-    - name: my-volume
-      persistentVolumeClaim:
-        claimName: my-pvc              # Change
-  containers:
-    - name: my-container
-      image: nginx
-      ports:
-        - containerPort: 80
-          name: "http-server"
-      volumeMounts:
-        - mountPath: "/my-mount"       # Change
-          name: my-volume
-
-```
-
-```bash
-kubectl apply -f 04-01-pod.yml
-# Verify that the volume is mounted
-kubectl describe pod storage-pod | grep -i Mounts -A1
-# Or just kubectl describe pod storage-pod 
-```
-
-Output
-```bash
-    Mounts:
-      /my-mount from my-volume (rw)    # Success
-```
-
-
-
-</p>
-</details>
-
-
-#### 04-02. Create a namespace called `service-namespace`. Create a pod called `service-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a service for the pod called `my-service` allowing for communication inside the cluster. Let the service expose port 8080. Create an ingress called `my-ingress` to expose the service outside the cluster.
+#### 04-01. Create a namespace called `service-namespace`. Create a pod called `service-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a service for the pod called `my-service` allowing for communication inside the cluster. Let the service expose port 8080. Create an ingress called `my-ingress` to expose the service outside the cluster.
 
 <details><summary>show</summary>
 <p>
@@ -248,12 +105,10 @@ kubectl get ep
 <details><summary>show</summary>
 <p>
 
-*This part is under development until the new curriculum is released*
-
 kubernetes.io [The Ingress resource](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
 
 ```bash
-vi q03-02-ing.yml
+vi q04-01-ing.yml
 ```
 
 ```bash
@@ -277,7 +132,7 @@ spec:
 ```
 
 ```bash
-kubectl apply -f q03-02-ing.yml
+kubectl apply -f q04-01-ing.yml
 
 # Pod Address under IP heading
 kubectl get pod -o wide 
@@ -300,7 +155,6 @@ my-ingress   <none>   *       144.126.242.138   80      4m34s
 ```bash
 curl localhost
 ```
-
 
 Output: 
 ```bash
@@ -332,7 +186,7 @@ Commercial support is available at
 </p>
 </details>
 
-#### 04-03. UNDER CONSTRUCTION. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `db-pod-1` using the `nginx` image and exposing port `11`. Label the pod `tier=db-1`. Create a pod called `db-pod-2` using the `nginx` image and exposing port `22`. Label the pod `tier=db-2`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only connect to `db-pod-1` on port `11` and to connect to `db-pod-2` on port `22`. 
+#### 04-02. UNDER CONSTRUCTION. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `db-pod-1` using the `nginx` image and exposing port `11`. Label the pod `tier=db-1`. Create a pod called `db-pod-2` using the `nginx` image and exposing port `22`. Label the pod `tier=db-2`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only connect to `db-pod-1` on port `11` and to connect to `db-pod-2` on port `22`. 
 
 I use the notepad to scetch out the ingress and egress before starting 
 * `web-pod` > `db-pod-1` on port 11
@@ -458,7 +312,6 @@ kubectl get pod -o wide | awk 'FNR == 4 {print $6}' | xargs -d'\n' curl
 kubectl get pod -o wide | awk 'FNR == 5 {print $6}' | xargs -d'\n' curl
 ```
 
-
 Read this as:
 * Allow outgoing traffic if:
   * Destination Pod has label db-1 OR db-2  
@@ -473,10 +326,16 @@ Pod web=tier can connect to pod db-2 on port 11
 
 #### Clean Up 
 
+<details><summary>show</summary>
+<p>
+
 ```bash
 kubectl delete ns storage-namespace --force
 kubectl delete ns service-namespace --force
 kubectl delete ns netpol-namespace --force
 ```
+
+</p>
+</details>
 
 *End of Section*

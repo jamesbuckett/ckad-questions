@@ -259,9 +259,15 @@ In English:
 
 #### Clean Up 
 
+<details><summary>show</summary>
+<p>
+
 ```bash
 kubectl delete ns secret-namespace --force
 kubectl delete ns quota-namespace --force
 ```
+
+</p>
+</details>
 
 *End of Section*

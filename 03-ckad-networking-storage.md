@@ -465,13 +465,18 @@ Pod web=tier can connect to pod db-2 on port 11
 </p>
 </details>
 
-
 #### Clean Up 
+
+<details><summary>show</summary>
+<p>
 
 ```bash
 kubectl delete ns storage-namespace --force
 kubectl delete ns service-namespace --force
 kubectl delete ns netpol-namespace --force
 ```
+
+</p>
+</details>
 
 *End of Section*

@@ -490,16 +490,21 @@ kubectl describe deployment edit-deployment | grep Image
 kubectl rollout history deployment.apps/edit-deployment
 ```
 
-
 </p>
 </details>
 
 #### Clean Up 
+
+<details><summary>show</summary>
+<p>
 
 ```bash
 kubectl delete ns pod-namespace --force
 kubectl delete ns deployment-namespace --force
 kubectl delete ns edit-namespace --force
 ```
+
+</p>
+</details>
 
 *End of Section*

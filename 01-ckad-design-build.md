@@ -269,6 +269,9 @@ kubectl get pod --watch
 
 #### 01-03. Create a container from the attached Dockerfile and index.html. Name the image `my-image`. Name the container `my-container`. Run the container exposing port `8080` on the host and port `80` on the container. Stop the container. Delete the container.
 
+<details><summary>show</summary>
+<p>
+
 Create a file called index.html
 ```bash
 vi index.html
@@ -288,6 +291,12 @@ Edit the Docker with to include the text below
 ```bash
 FROM nginx:latest
 COPY ./index.html /usr/share/nginx/html/index.html
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
 
 ```bash
 clear
@@ -323,6 +332,9 @@ docker container stop my-container
 clear
 # Delete the Image
 docker image rm my-image
+
+</p>
+</details>
 
 #### Clean Up 
 

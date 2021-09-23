@@ -338,6 +338,7 @@ docker container stop my-container
 clear
 # Delete the Image
 docker image rm my-image
+```
 
 </p>
 </details>

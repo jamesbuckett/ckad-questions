@@ -54,8 +54,9 @@ events
 ```bash
 clear
 # Use the kubectl proxy to provide credentials to connect to the API server
-# kubectl proxy starts a local proxy service on poort 8001
+# kubectl proxy starts a local proxy service on port 8001
 # kubectl proxy uses credentials from kubeconfig file
+
 kubectl proxy &
 ```
 
@@ -68,10 +69,13 @@ kubectl proxy &
 ```bash
 clear
 # List all available API groups from the API server
+
 # /api is called the core API's
 # /apis is called the named API's - going forward new features will be made available under this API
+
 # You need to pass the -k or --insecure option to the curl command. 
 # This option explicitly allows curl to perform “insecure” SSL connections and transfers.
+
 curl http://localhost:8001 -k | more 
 ```
 
@@ -120,7 +124,8 @@ Output:
 
 ```bash
 clear
-# List all supported resource groups under the apis API
+# List all supported resource groups under the `named` (apis) group
+
 curl http://locahost:8001/apis -k | grep "name" | more
 ```
 

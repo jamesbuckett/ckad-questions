@@ -1,23 +1,21 @@
 ## Sample CKAD Observability and Maintenance - 15% - Questions and Answers
 
-Application Observability and Maintenance – 15%
+### Application Observability and Maintenance – 15%
 * Understand API deprecations
 * Implement probes and health checks
 * Use provided tools to monitor Kubernetes applications **
-* Utilize container logs
-* Debugging in Kubernetes
+* Utilize container logs **
+* Debugging in Kubernetes **
 
-
-
-
-#### 06-01. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
+#### 05-01. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
 
 <details><summary>show</summary>
 <p>
 
-
 ```bash
 clear
+# Requires metrics server to be installed and working
+# Similar to Linux top command but for pods
 kubectl top pods -A --sort-by=cpu | more
 ```
 
@@ -40,6 +38,8 @@ ns-demo                   recommendationservice-b4cf8f489-xwv49                 
 
 ```bash
 clear
+# Requires metrics server to be installed and working
+# Similar to Linux top command but for pods
 kubectl top pods -A --sort-by=memory | more
 ```
 
@@ -58,7 +58,7 @@ kube-system               cilium-ml27n                                          
 </p>
 </details>
 
-#### 06-02. Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`. Create the namespace. Obtain the `hostIP` address using `JSONPath`.
+#### 05-02. Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`. Create the namespace. Obtain the `hostIP` address using `JSONPath`.
 
 <details><summary>show</summary>
 <p>
@@ -326,7 +326,7 @@ kubectl get pod json-pod -o jsonpath={.status.hostIP}
 </p>
 </details>
 
-#### 06-03. Output all the events for all namespaces by creation date.
+#### 05-03. Output all the events for all namespaces by creation date.
 
 <details><summary>show</summary>
 <p>
@@ -341,7 +341,7 @@ kubectl get events -A --sort-by=.metadata.creationTimestamp
 </p>
 </details>
 
-#### 06-04. Create a pod called `log-pod` using image `nginx` in namespace `log-namespace`. Create the namespace. Obtain the `logs` for the nginx pod for the `last hour`.
+#### 05-04. Create a pod called `log-pod` using image `nginx` in namespace `log-namespace`. Create the namespace. Obtain the `logs` for the nginx pod for the `last hour`.
 
 <details><summary>show</summary>
 <p>

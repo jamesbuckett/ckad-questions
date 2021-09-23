@@ -1,6 +1,6 @@
 ## Sample CKAD Services and Networking - 20% - Questions and Answers
 
-Services and Networking – 20%
+### Services and Networking – 20%
 * Demonstrate basic understanding of NetworkPolicies **
 * Provide and troubleshoot access to applications via services **
 * Use Ingress rules to expose applications **
@@ -57,7 +57,6 @@ kubectl get all
 
 </p>
 </details>
-
 
 <details><summary>show</summary>
 <p>
@@ -192,7 +191,6 @@ I use the notepad to scetch out the ingress and egress before starting
 * `web-pod` > `db-pod-1` on port 11
 * `web-pod` > `db-pod-2` on port 22
 
-
 <details><summary>show</summary>
 <p>
 
@@ -269,7 +267,6 @@ spec:
 </p>
 </details>
 
-
 <details><summary>show</summary>
 <p>
 
@@ -330,7 +327,6 @@ Pod web=tier can connect to pod db-2 on port 11
 <p>
 
 ```bash
-kubectl delete ns storage-namespace --force
 kubectl delete ns service-namespace --force
 kubectl delete ns netpol-namespace --force
 ```

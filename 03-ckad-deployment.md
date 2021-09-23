@@ -1,7 +1,11 @@
-## Sample CKAD Pod Questions and Answers
+## Sample CKAD Application Deployment Questions and Answers
 
+### Application Deployment – 20% 
+* Use Kubernetes primitives to implement common deployment strategies (e.g. blue/green or canary)
+* Understand Deployments and how to perform rolling updates **
+* Use the Helm package manager to deploy existing packages
 
-#### 01-03. Create a namespace called `deployment-namespace`. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx container. The containers should be named `my-container`. Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi.
+#### 03-01. Create a namespace called `deployment-namespace`. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx container. The containers should be named `my-container`. Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi.
 
 <details><summary>show</summary>
 <p>
@@ -128,7 +132,7 @@ replicaset.apps/my-deployment-67fc8546   3         3         3       16m
  </p>
 </details>
 
-#### 01-04. In the previous question a Deployment called `my-deployment` was created. Allow network traffic to flow to this deployment from inside the cluster on `port 8080`.
+#### 03-02. In the previous question a Deployment called `my-deployment` was created. Allow network traffic to flow to this deployment from inside the cluster on `port 8080`.
 
 <details><summary>show</summary>
 <p>
@@ -219,7 +223,7 @@ my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 </p>
 </details>
 
-#### 01-05. Create a namespace called `edit-namespace`. Create a deployment called `edit-deployment` with `2` replicas using the `redis` image in namespace. After the deployment is running, alter the containers to use the `nginx` image. Then alter the containers to use the `nginx:1.14.2` image and record the change.
+#### 03-03. Create a namespace called `edit-namespace`. Create a deployment called `edit-deployment` with `2` replicas using the `redis` image in namespace. After the deployment is running, alter the containers to use the `nginx` image. Then alter the containers to use the `nginx:1.14.2` image and record the change.
 
 <details><summary>show</summary>
 <p>
@@ -326,14 +330,14 @@ kubectl rollout history deployment.apps/edit-deployment
 </p>
 </details>
 
-#### 01. Sample Question.
+#### Clean Up 
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-Sample
-
+kubectl delete ns deployment-namespace --force
+kubectl delete ns edit-namespace --force
 ```
 
 </p>

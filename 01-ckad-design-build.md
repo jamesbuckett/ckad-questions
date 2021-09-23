@@ -1,4 +1,4 @@
-## Sample CKAD Application Design and Build - 20% - Questions and Answers
+## Sample CKAD Application Design and Build Questions and Answers
 
 ### Application Design and Build – 20%
 * Define, build and modify container images
@@ -145,8 +145,6 @@ Output
 
 </p>
 </details>
-
-
 
 #### 01-02. Create a namespace called `pod-namespace`. Create a pod called `pod-1` using `nginx` image. The container in the pod should be named `container-1`.
 

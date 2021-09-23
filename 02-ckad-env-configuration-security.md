@@ -1,4 +1,4 @@
-## Sample CKAD Environment, Configuration and Security - 25% - Questions and Answers
+## Sample CKAD Environment, Configuration and Security Questions and Answers
 
 ### Application Environment, Configuration and Security – 25%
 * Discover and use resources that extend Kubernetes (CRD)

@@ -110,7 +110,7 @@ Output:
    "/apis/certificates.k8s.io/v1",
    "/apis/certificates.k8s.io/v1beta1",
 ...
-```bash
+```
 
 </p>
 </details>
@@ -123,6 +123,7 @@ clear
 # List all supported resource groups under the apis API
 curl http://locahost:8001/apis -k | grep "name" | more
 ```
+
 Output:
 ```bash
 ...

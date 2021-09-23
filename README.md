@@ -11,7 +11,7 @@
 ## Preparation for Docker Desktop
 
 Please install these two software components, required to answer questions in later sections:
-* [metrics server](https://github.com/kubernetes-sigs/metrics-server)
+
 <details><summary>show</summary>
 <p>
 
@@ -31,7 +31,7 @@ kubectl patch deployment metrics-server -n kube-system --type 'json' -p '[{"op":
 
 </p>
 </details>
-* [contour ingress](https://projectcontour.io/)
+
 <details><summary>show</summary>
 <p>
 

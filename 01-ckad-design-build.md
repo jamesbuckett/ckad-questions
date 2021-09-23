@@ -291,6 +291,7 @@ Edit the Docker with to include the text below
 ```bash
 FROM nginx:latest
 COPY ./index.html /usr/share/nginx/html/index.html
+```
 
 </p>
 </details>

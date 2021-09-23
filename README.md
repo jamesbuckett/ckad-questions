@@ -45,6 +45,12 @@ Please install the [contour ingress](https://projectcontour.io/) with the follow
 kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
 ```
 
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
 ### Calico ## UNDER CONSTRUCTION ##
 
 ```bash

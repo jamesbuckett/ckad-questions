@@ -187,7 +187,7 @@ Commercial support is available at
 
 #### 04-02. UNDER CONSTRUCTION. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `db-pod-1` using the `nginx` image and exposing port `11`. Label the pod `tier=db-1`. Create a pod called `db-pod-2` using the `nginx` image and exposing port `22`. Label the pod `tier=db-2`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only connect to `db-pod-1` on port `11` and to connect to `db-pod-2` on port `22`. 
 
-I use the notepad to scetch out the ingress and egress before starting 
+I use the notepad to sketch out the ingress and egress before starting 
 * `web-pod` > `db-pod-1` on port 11
 * `web-pod` > `db-pod-2` on port 22
 

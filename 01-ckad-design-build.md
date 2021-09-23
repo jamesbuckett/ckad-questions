@@ -272,6 +272,8 @@ kubectl get pod --watch
 <details><summary>show</summary>
 <p>
 
+##### Image Creation
+
 Create a file called index.html
 ```bash
 vi index.html
@@ -293,17 +295,20 @@ FROM nginx:latest
 COPY ./index.html /usr/share/nginx/html/index.html
 ```
 
-</p>
-</details>
-
-<details><summary>show</summary>
-<p>
-
 ```bash
 clear
 # Build the docker image
 docker build -t my-image:v0.1 .
 ```
+
+</p>
+</details>
+
+
+<details><summary>show</summary>
+<p>
+
+##### Container Operations
 
 ```bash
 clear

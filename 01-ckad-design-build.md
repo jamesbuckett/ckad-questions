@@ -1,10 +1,11 @@
 ## Sample CKAD Application Design and Build Questions and Answers
 
 ### Application Design and Build – 20%
-* Define, build and modify container images [**](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-design-build.md#01-03-create-a-container-from-the-attached-dockerfile-and-indexhtml-name-the-image-my-image-name-the-container-my-container-run-the-container-exposing-port-8080-on-the-host-and-port-80-on-the-container-stop-the-container-delete-the-container)
-* Understand Jobs and CronJobs
-* Understand multi-container Pod design patterns (e.g. sidecar, init and others)
-* Utilize persistent and ephemeral volumes [**](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-design-build.md#01-01-create-a-namespace-called-storage-namespace-create-a-persistent-volume-called-my-pv-with-5gi-storage-using-hostpath-mntmy-host-create-a-persistent-volume-claim-called-my-pvc-with-2gi-storage-create-a-pod-called-storage-pod-using-the-nginx-image-mount-the-persistent-volume-claim-onto-my-mount-in-storage-pod)
+
+- Define, build and modify container images [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-design-build.md#01-03-create-a-container-from-the-attached-dockerfile-and-indexhtml-name-the-image-my-image-name-the-container-my-container-run-the-container-exposing-port-8080-on-the-host-and-port-80-on-the-container-stop-the-container-delete-the-container)
+- Understand Jobs and CronJobs
+- Understand multi-container Pod design patterns (e.g. sidecar, init and others)
+- Utilize persistent and ephemeral volumes [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-design-build.md#01-01-create-a-namespace-called-storage-namespace-create-a-persistent-volume-called-my-pv-with-5gi-storage-using-hostpath-mntmy-host-create-a-persistent-volume-claim-called-my-pvc-with-2gi-storage-create-a-pod-called-storage-pod-using-the-nginx-image-mount-the-persistent-volume-claim-onto-my-mount-in-storage-pod)
 
 #### 01-01. Create a namespace called `storage-namespace`. Create a Persistent Volume called `my-pv` with `5Gi` storage using hostPath `/mnt/my-host`. Create a Persistent Volume Claim called `my-pvc` with `2Gi` storage. Create a pod called `storage-pod` using the nginx image. Mount the Persistent Volume Claim onto `/my-mount` in `storage-pod`.
 
@@ -12,6 +13,7 @@
 <p>
 
 ```bash
+clear
 kubectl create namespace storage-namespace
 kubectl config set-context --current --namespace=storage-namespace
 ```
@@ -41,11 +43,15 @@ spec:
 ```
 
 ```bash
+clear
 kubectl apply -f 01-01-pv.yml
 kubectl get pv
 ```
+
 Output:
+
 ```bash
+# Note the STATUS=Available
 NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM
 my-pv     5Gi        RWO            Retain           Available
 ```
@@ -78,12 +84,14 @@ spec:
 ```
 
 ```bash
+clear
 kubectl apply -f 01-01-pvc.yml
 kubectl get pv
 kubectl get pvc
 ```
 
 Output:
+
 ```bash
 NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM
 my-pv     5Gi        RWO            Retain           Bound       storage-namespace/my-pvc  # STATUS=Bound means the PV and PVC are linked
@@ -128,13 +136,15 @@ spec:
 ```
 
 ```bash
+clear
 kubectl apply -f 01-01-pod.yml
 # Verify that the volume is mounted
 kubectl describe pod storage-pod | grep -i Mounts -A1
-# Or just kubectl describe pod storage-pod 
+# Or just kubectl describe pod storage-pod
 ```
 
 Output
+
 ```bash
     Mounts:
       /my-mount from my-volume (rw)    # Success
@@ -167,6 +177,7 @@ kubectl run -h | more
 ```
 
 Output:
+
 ```bash
 Examples:
 
@@ -217,11 +228,13 @@ kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>
 kubernetes.io: [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
 ```bash
+clear
 # Using the best example that matches the question
 kubectl run pod-1 --image=nginx --dry-run=client -o yaml > q01-02.yml
 ```
 
 ```bash
+clear
 # Edit the YAML file to make required changes
 # Use the Question number in case you want to return to the question for reference or for review
 vi q01-02.yml
@@ -252,6 +265,7 @@ status: {}
 ```
 
 ```bash
+clear
 # Apply the YAML file to the Kubernetes API server
 kubectl apply -f q01-02.yml
 ```
@@ -273,21 +287,25 @@ kubectl get pod --watch
 ##### Image Creation
 
 Create a file called index.html
+
 ```bash
 vi index.html
 ```
 
 Edit index.html with the following text.
+
 ```bash
 Hardships often prepare ordinary people for an extraordinary destiny.
 ```
 
 Create a file called Dockerfile
+
 ```bash
 vi Dockerfile
 ```
 
 Edit the Docker with to include the text below
+
 ```bash
 FROM nginx:latest
 COPY ./index.html /usr/share/nginx/html/index.html
@@ -302,7 +320,6 @@ docker build -t my-image:v0.1 .
 </p>
 </details>
 
-
 <details><summary>show</summary>
 <p>
 
@@ -311,7 +328,7 @@ docker build -t my-image:v0.1 .
 ```bash
 clear
 # Run the docker image
-docker run -it --rm -d -p 8080:80 --name my-container my-image
+docker run -it --rm -d -p 8080:80 --name my-container my-image:v0.1
 ```
 
 ```bash
@@ -335,24 +352,23 @@ docker container stop my-container
 ```bash
 clear
 # Delete the Image
-docker image rm my-image
+docker image rm my-image:v0.1
 ```
 
 </p>
 </details>
 
-#### Clean Up 
+#### Clean Up
 
 <details><summary>show</summary>
 <p>
 
 ```bash
+kubectl delete ns storage-namespace --force
 kubectl delete ns pod-namespace --force
-kubectl delete ns deployment-namespace --force
-kubectl delete ns edit-namespace --force
 ```
 
 </p>
 </details>
 
-*End of Section*
+_End of Section_

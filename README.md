@@ -8,15 +8,24 @@
 - Opinions expressed here are solely my own and do not express the views or opinions of JPMorgan Chase.
 - Any third-party trademarks are the intellectual property of their respective owners and any mention herein is for referential purposes only.
 
-## Docker Desktop
+## Questions by Domain
+
+- [Example CKAD Application Design and Build Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-design-build.md)
+- [Example CKAD Application Environment, Configuration and Security Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/02-ckad-env-configuration-security.md)
+- [Example CKAD Application Deployment Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md)
+- [Example CKAD Services and Networking Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/04-ckad-services-networking.md)
+- [Example CKAD Observability and Maintenance Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/05-ckad-observability-maintenance.md)
+- [Example CKAD Miscellaneous Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/06-ckad-miscellaneous.md)
+
+## Docker Desktop Setup
 
 ### Linux access to Docker desktop
 
 - Windows Subsystem for Linux requires you to install a Linux distribution from the Microsoft Store.
+  - Tick the 'Use the WSL 2 based engine' under the 'General' panel
 - To mimic the CKAD exam please execute all the commands in this repo from this Linux distribution that you installed.
-- Either start the distribution directly, docker and kubectl will be present when you enable the flag
-  - 'Use the WSL 2 based engine' under the 'General' panel
-- Or install [PuttY](https://www.putty.org/) and access via PuTTY
+  - The CKAD exam terminal is Ubuntu based.
+- Start the distribution directly by searching for Ubuntu and starting the application
 
 ### Prerequisite software for Docker desktop
 
@@ -71,15 +80,6 @@ curl https://docs.projectcalico.org/manifests/calico.yaml | kubectl apply -f -
 
 </p>
 </details>
-
-## Questions by Domain
-
-- [Example CKAD Application Design and Build Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-design-build.md)
-- [Example CKAD Application Environment, Configuration and Security Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/02-ckad-env-configuration-security.md)
-- [Example CKAD Application Deployment Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md)
-- [Example CKAD Services and Networking Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/04-ckad-services-networking.md)
-- [Example CKAD Observability and Maintenance Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/05-ckad-observability-maintenance.md)
-- [Example CKAD Miscellaneous Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/06-ckad-miscellaneous.md)
 
 ## Logistics
 

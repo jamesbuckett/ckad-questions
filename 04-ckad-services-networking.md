@@ -151,7 +151,7 @@ kubectl get ep
 # The Service IP listed under CLUSTER-IP with PORT(S) :8080
 kubectl get service -o wide
 
-# Ingress IP listed under ADDRESS is localhost`
+# Ingress IP listed under ADDRESS is localhost
 kubectl get ingress
 ```
 

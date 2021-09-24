@@ -1,6 +1,6 @@
 # Sample CKAD exercises and solutions
 
-- A set of sample questions and solutions to assist in preparing for the [CKAD](https://www.cncf.io/certification/ckad/) exam. 
+- A set of sample questions and solutions to assist in preparing for the [CKAD](https://www.cncf.io/certification/ckad/) exam.
 - Assumed practice environment is [Docker Desktop](https://www.docker.com/products/docker-desktop) with a [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install) backend.
 
 ## Disclaimer
@@ -8,9 +8,19 @@
 - Opinions expressed here are solely my own and do not express the views or opinions of JPMorgan Chase.
 - Any third-party trademarks are the intellectual property of their respective owners and any mention herein is for referential purposes only.
 
-## Preparation for Docker Desktop
+## Docker Desktop
 
-Please install these two software components, required to answer questions in later sections:
+### Linux access to Docker desktop
+
+- Windows Subsystem for Linux requires you to install a Linux distribution from the Microsoft Store.
+- To mimic the CKAD exam please execute all the commands in this repo from this Linux distribution that you installed.
+- Either start the distribution directly, docker and kubectl will be present when you enable the flag
+  - 'Use the WSL 2 based engine' under the 'General' panel
+- Or install [PuttY](https://www.putty.org/) and access via PuTTY
+
+### Prerequisite software for Docker desktop
+
+Please install these three software components, required to answer questions in later sections:
 
 <details><summary>show</summary>
 <p>
@@ -51,7 +61,9 @@ kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
 <details><summary>show</summary>
 <p>
 
-### Calico ## UNDER CONSTRUCTION ##
+### Calico
+
+Calico is required for the non native Kubernetes resources lookup question.
 
 ```bash
 curl https://docs.projectcalico.org/manifests/calico.yaml | kubectl apply -f -
@@ -62,16 +74,17 @@ curl https://docs.projectcalico.org/manifests/calico.yaml | kubectl apply -f -
 
 ## Questions by Domain
 
-* [Example CKAD Application Design and Build Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-design-build.md)
-* [Example CKAD Application Environment, Configuration and Security Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/02-ckad-env-configuration-security.md)
-* [Example CKAD Application Deployment Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md)
-* [Example CKAD Services and Networking Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/04-ckad-services-networking.md)
-* [Example CKAD Observability and Maintenance Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/05-ckad-observability-maintenance.md)
-* [Example CKAD Miscellaneous Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/06-ckad-miscellaneous.md)
+- [Example CKAD Application Design and Build Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-design-build.md)
+- [Example CKAD Application Environment, Configuration and Security Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/02-ckad-env-configuration-security.md)
+- [Example CKAD Application Deployment Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md)
+- [Example CKAD Services and Networking Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/04-ckad-services-networking.md)
+- [Example CKAD Observability and Maintenance Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/05-ckad-observability-maintenance.md)
+- [Example CKAD Miscellaneous Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/06-ckad-miscellaneous.md)
 
 ## Logistics
-* The current version of Kubernetes in the CKAD exam can be found [here](https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks#what-application-version-is-running-in-the-exam-environment). 
-* This has been tested on Docker Desktop v4.0.1.
-* To remove all the resources that get created run the commands in the Clean Up section.
 
-*End of Section*
+- The current version of Kubernetes in the CKAD exam can be found [here](https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks#what-application-version-is-running-in-the-exam-environment).
+- This has been tested on Docker Desktop v4.0.1.
+- To remove all the resources that get created run the commands in the Clean Up section.
+
+_End of Section_

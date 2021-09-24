@@ -201,7 +201,7 @@ ipamconfigs.crd.projectcalico.org
 ipamhandles.crd.projectcalico.org
 ippools.crd.projectcalico.org
 kubecontrollersconfigurations.crd.projectcalico.org
-networkpolicies.crd.projectcalico.org ## This is the Calico Resource Type that we want
+networkpolicies.crd.projectcalico.org        ## This is the Calico Resource Type that we want
 networksets.crd.projectcalico.org
 
 ```

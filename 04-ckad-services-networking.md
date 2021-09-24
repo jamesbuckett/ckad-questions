@@ -230,7 +230,7 @@ kubectl run app-pod --image=nginx --port=80 --labels="tier=app"
 kubectl expose pod app-pod --port=80 --target-port=80 --name=app-service
 
 # tier: db
-kubectl run db-pod --nginx --port=80 --labels="tier=db"
+kubectl run db-pod --image=nginx --port=80 --labels="tier=db"
 kubectl expose pod db-pod --port=80 --target-port=80 --name=db-service
 
 clear
@@ -240,9 +240,10 @@ kubectl get pod -L tier
 
 ```bash
 clear
-# Test connectivity without Network Policy
-kubectl get pod -o wide
-# kubectl exec web-pod -- curl -s <IP>:<PORT>
+# Test connectivity without  a Network Policy
+# This should work
+kubectl exec web-pod -- curl -s app-service:80
+kubectl exec web-pod -- curl -s db-service:80
 ```
 
 </p>
@@ -324,14 +325,14 @@ spec:
 clear
 # Test connectivity with Network Policy
 # This should work with the Network Policy: my-netpol
-kubectl exec web-pod -- curl -s app-service:8080
+kubectl exec web-pod -- curl -s app-service:80
 ```
 
 ```bash
 clear
 # Test connectivity with Network Policy
 # This should NOT work with the Network Policy: my-netpol
-kubectl exec web-pod -- curl -s db-service:8080
+kubectl exec web-pod -- curl -s db-service:80
 ```
 
 </p>

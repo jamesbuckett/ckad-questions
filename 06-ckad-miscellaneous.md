@@ -175,7 +175,7 @@ Output:
 </p>
 </details>
 
-#### 06-03. Calico is a non native Kubernetes Resource Type. List out how to obtain the correct resource name to query a Calico Network Policy.
+#### 06-03. Calico is a non native Kubernetes Resource Type. List out how to obtain the correct resource name to query a Calico Network Policy and not the default Kubernetes Network Policy.
 
 <details><summary>show</summary>
 <p>

@@ -56,7 +56,7 @@ Examples:
 ```bash
 clear
 # Using the best example that matches the question
-kubectl create deployment my-deployment --image=nginx --replicas=3 --port=80 --dry-run=client -o yaml > q01-03.yml
+kubectl create deployment my-deployment --image=nginx --replicas=3 --port=80 --dry-run=client -o yaml > q03-01.yml
 ```
 
 ```bash
@@ -253,19 +253,23 @@ kubectl edit deployment.apps/edit-deployment
 ```
 
 ```bash
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
-  creationTimestamp: "2021-09-14T03:43:00Z"
+  creationTimestamp: "2021-09-24T06:23:27Z"
   generation: 1
   labels:
     app: edit-deployment
   name: edit-deployment
   namespace: edit-namespace
-  resourceVersion: "11650562"
-  uid: fdf79d08-aaa7-40e7-92d4-71db9a8fb6b0
+  resourceVersion: "7856"
+  uid: d482067c-da5f-43ce-aa31-25defd2d0de3
 spec:
   progressDeadlineSeconds: 600
   replicas: 2
@@ -274,7 +278,7 @@ spec:
     matchLabels:
       app: edit-deployment
   strategy:
-      rollingUpdate:
+    rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
     type: RollingUpdate
@@ -285,17 +289,14 @@ spec:
         app: edit-deployment
     spec:
       containers:
-      - image: nginx
+      - image: redis                             ## Change this to use the nginx image
         imagePullPolicy: Always
-        name: nginx
+        name: redis                              ## This is the catch, when you created the deployment it used the image=redis to also name the container redis
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
       restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 30
 
 # vi edits
 # / - find
@@ -310,7 +311,7 @@ clear
 kubectl describe deployment edit-deployment | grep Image
 ```
 
-This works but does not help with the record part of the question, so switch to set the `set image` command
+This works but does not record what the change was.
 
 </p>
 </details>

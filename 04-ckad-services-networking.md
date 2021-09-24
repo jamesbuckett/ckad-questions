@@ -205,7 +205,7 @@ Commercial support is available at
 </p>
 </details>
 
-#### 04-02. UNDER CONSTRUCTION. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `app-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=app`. Create a pod called `db-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=db`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only egress to `app-pod` on port `80`. In turn only allow `app-pod` to egress to `db-pod` on port `80`.
+#### 04-02. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `app-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=app`. Create a pod called `db-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=db`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only egress to `app-pod` on port `80`. In turn only allow `app-pod` to egress to `db-pod` on port `80`.
 
 I use the notepad to sketch out the ingress and egress before starting
 
@@ -243,6 +243,7 @@ clear
 # Test connectivity without  a Network Policy
 # This should work
 kubectl exec web-pod -- curl -s app-service:80
+pause
 kubectl exec web-pod -- curl -s db-service:80
 ```
 
@@ -300,6 +301,10 @@ spec:
 kubernetes.io: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
 
 ```bash
+vi 04-02-netpol.yml
+```
+
+```bash
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -319,6 +324,10 @@ spec:
     - protocol: TCP
       port: 80
 
+```
+
+```bash
+kubectl apply -f 04-02-netpol.yml
 ```
 
 ```bash

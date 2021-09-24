@@ -275,7 +275,6 @@ There is a second and in my opinion a cleaner method to get the JSONPath.
 clear
 # Another way to get the JSONPath
 kubectl explain pod.status | more
-# kubectl explain pod.status --recursive
 ```
 
 Output:

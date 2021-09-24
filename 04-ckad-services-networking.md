@@ -140,19 +140,11 @@ spec:
 ```
 
 ```bash
+clear
 kubectl apply -f q04-01-ing.yml
 
-# Pod Address under IP heading
-kubectl get pod -o wide
-
-# The Pod is an endpoint listed under ENDPOINTS with port :80
-kubectl get ep
-
-# The Service IP listed under CLUSTER-IP with PORT(S) :8080
-kubectl get service -o wide
-
-# Ingress IP listed under ADDRESS is localhost
-kubectl get ingress
+# Describe the ingress
+kubectl describe ingress my-ingress
 ```
 
 ```bash

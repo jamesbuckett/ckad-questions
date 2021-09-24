@@ -144,13 +144,35 @@ clear
 kubectl apply -f q04-01-ing.yml
 
 # Describe the ingress
+# This must be present to continue: Address:          localhost
+# If not shutdown Docker Desktop and reboot Windows 10
 kubectl describe ingress my-ingress
 ```
 
+Output:
+
+````
+Name:             my-ingress
+Namespace:        service-namespace
+Address:          localhost
+Default backend:  default-http-backend:80 (<error: endpoints "default-http-backend" not found>)
+Rules:
+  Host        Path  Backends
+  ----        ----  --------
+  *
+              /   my-service:8080 (10.1.1.37:80)
+Annotations:  nginx.ingress.kubernetes.io/rewrite-target: /
+Events:       <none>
+
+
+
 ```bash
 # Verify that the NGINX page is rendering via the Ingress endpoint
+# If you have trouble with this reboot
 curl localhost
-```
+````
+
+I sometimes had trouble with this networking setup. I just rebooted and this would work.
 
 Output:
 
@@ -183,12 +205,12 @@ Commercial support is available at
 </p>
 </details>
 
-#### 04-02. UNDER CONSTRUCTION. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `db-pod-1` using the `nginx` image and exposing port `11`. Label the pod `tier=db-1`. Create a pod called `db-pod-2` using the `nginx` image and exposing port `22`. Label the pod `tier=db-2`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only connect to `db-pod-1` on port `11` and to connect to `db-pod-2` on port `22`.
+#### 04-02. UNDER CONSTRUCTION. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `app-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=app`. Create a pod called `db-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=db`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only egress to `app-pod` on port `80`. In turn only allow `app-pod` to egress to `db-pod` on port `80`.
 
 I use the notepad to sketch out the ingress and egress before starting
 
-- `web-pod` > `db-pod-1` on port 11
-- `web-pod` > `db-pod-2` on port 22
+- `tier: web` > `tier: app` on port 80
+- `tier: app` > `tier: db` on port 80
 
 <details><summary>show</summary>
 <p>
@@ -198,14 +220,19 @@ clear
 # Create all the required resources
 kubectl create namespace netpol-namespace
 kubectl config set-context --current --namespace=netpol-namespace
+
+# tier: web
 kubectl run web-pod --image=nginx --port=80  --labels="tier=web"
-kubectl expose pod web-pod --port=8080 --name=web-service
-kubectl run db-pod-1 --image=docker.io/jamesbuckett/db-pod-1:latest --port=11 --labels="tier=db-1"
-kubectl expose pod db-pod-1 --port=1111 --target-port=11 --name=db-pod-1-service
-kubectl run db-pod-2 --image=docker.io/jamesbuckett/db-pod-2:latest --port=22 --labels="tier=db-2"
-kubectl expose pod db-pod-2 --port=2222 --target-port=22 --name=db-pod-2-service
-kubectl run db-pod-3 --image=nginx --port=33 --labels="tier=db-3"
-kubectl expose pod db-pod-3 --port=3333 --target-port=33 --name=db-pod-3-service
+kubectl expose pod web-pod --port=80 --name=web-service
+
+# tier: app
+kubectl run app-pod --image=nginx --port=80 --labels="tier=app"
+kubectl expose pod app-pod --port=80 --target-port=80 --name=app-service
+
+# tier: db
+kubectl run db-pod --nginx --port=80 --labels="tier=db"
+kubectl expose pod db-pod --port=80 --target-port=80 --name=db-service
+
 clear
 kubectl get all
 kubectl get pod -L tier
@@ -279,43 +306,33 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      tier: web       # Change - Which pod does this Netowork Policy Apply to i.e. any pod with label tier=web
+      tier: web ## Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=web
   policyTypes:
   - Egress
-  egress:             # Egress - Traffic outwards from pod with label tier=web
-  - to:               # First condition "to" podSelector and ports
-    - podSelector:      # Condition podSelector
-        matchLabels:
-          tier: db-1      # First podSelector possibility
+  egress: ## Egress - Traffic outwards from pod with label tier=web
+  - to:
     - podSelector:
         matchLabels:
-          tier: db-2      # Second podSelector possibility
-    ports:              # Condition ports
+          tier: app
+    ports:
     - protocol: TCP
-      port: 11            # First ports possibility
-    - protocol: TCP
-      port: 22            # Second ports possibility
+      port: 80
 
 ```
 
 ```bash
 clear
 # Test connectivity with Network Policy
-kubectl apply -f
-kubectl get pod -o wide | awk 'FNR == 2 {print $6}' | xargs -d'\n' curl
-kubectl get pod -o wide | awk 'FNR == 3 {print $6}' | xargs -d'\n' curl
-kubectl get pod -o wide | awk 'FNR == 4 {print $6}' | xargs -d'\n' curl
-kubectl get pod -o wide | awk 'FNR == 5 {print $6}' | xargs -d'\n' curl
+# This should work with the Network Policy: my-netpol
+kubectl exec web-pod -- curl -s app-service:8080
 ```
 
-Read this as:
-
-- Allow outgoing traffic if:
-  - Destination Pod has label db-1 OR db-2  
-    AND
-  - Destination Port is 11 OR Destination Port is 22
-
-Pod web=tier can connect to pod db-2 on port 11
+```bash
+clear
+# Test connectivity with Network Policy
+# This should NOT work with the Network Policy: my-netpol
+kubectl exec web-pod -- curl -s db-service:8080
+```
 
 </p>
 </details>

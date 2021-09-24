@@ -12,11 +12,13 @@
 <p>
 
 ```bash
+clear
 kubectl create namespace service-namespace
 kubectl config set-context --current --namespace=service-namespace
 ```
 
 ```bash
+clear
 kubectl run -h | more
 ```
 
@@ -53,6 +55,7 @@ Examples:
 ```
 
 ```bash
+clear
 kubectl run service-pod --image=nginx --port=80  --labels="tier=web"
 kubectl get all
 ```
@@ -64,6 +67,7 @@ kubectl get all
 <p>
 
 ```bash
+clear
 kubectl expose -h | more
 ```
 
@@ -97,6 +101,7 @@ port 8000
 ```
 
 ```bash
+clear
 kubectl expose pod service-pod --port=8080 --target-port=80 --name=my-service
 kubectl get all
 kubectl get ep
@@ -146,16 +151,12 @@ kubectl get ep
 # The Service IP listed under CLUSTER-IP with PORT(S) :8080
 kubectl get service -o wide
 
-# Ingress IP listed under ADDRESS`
+# Ingress IP listed under ADDRESS is localhost`
 kubectl get ingress
 ```
 
 ```bash
-NAME         CLASS    HOSTS   ADDRESS           PORTS   AGE
-my-ingress   <none>   *       144.126.242.138   80      4m34s
-```
-
-```bash
+# Verify that the NGINX page is rendering via the Ingress endpoint
 curl localhost
 ```
 

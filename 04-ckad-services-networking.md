@@ -1,9 +1,10 @@
 ## Sample CKAD Services and Networking - 20% - Questions and Answers
 
 ### Services and Networking – 20%
-* Demonstrate basic understanding of NetworkPolicies [**](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md#03-01-create-a-namespace-called-deployment-namespace-create-a-deployment-called-my-deployment-with-three-replicas-using-the-nginx-image-inside-the-namespace-expose-port-80-for-the-nginx-container-the-containers-should-be-named-my-container-each-container-should-have-a-memory-request-of-25mi-and-a-memory-limit-of-100mi)
-* Provide and troubleshoot access to applications via services 
-* Use Ingress rules to expose applications [**](https://github.com/jamesbuckett/ckad-questions/blob/main/04-ckad-services-networking.md#04-01-create-a-namespace-called-service-namespace-create-a-pod-called-service-pod-using-the-nginx-image-and-exposing-port-80-label-the-pod-tierweb-create-a-service-for-the-pod-called-my-service-allowing-for-communication-inside-the-cluster-let-the-service-expose-port-8080-create-an-ingress-called-my-ingress-to-expose-the-service-outside-the-cluster)
+
+- Demonstrate basic understanding of NetworkPolicies [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md#03-01-create-a-namespace-called-deployment-namespace-create-a-deployment-called-my-deployment-with-three-replicas-using-the-nginx-image-inside-the-namespace-expose-port-80-for-the-nginx-container-the-containers-should-be-named-my-container-each-container-should-have-a-memory-request-of-25mi-and-a-memory-limit-of-100mi)
+- Provide and troubleshoot access to applications via services
+- Use Ingress rules to expose applications [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/04-ckad-services-networking.md#04-01-create-a-namespace-called-service-namespace-create-a-pod-called-service-pod-using-the-nginx-image-and-exposing-port-80-label-the-pod-tierweb-create-a-service-for-the-pod-called-my-service-allowing-for-communication-inside-the-cluster-let-the-service-expose-port-8080-create-an-ingress-called-my-ingress-to-expose-the-service-outside-the-cluster)
 
 #### 04-01. Create a namespace called `service-namespace`. Create a pod called `service-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a service for the pod called `my-service` allowing for communication inside the cluster. Let the service expose port 8080. Create an ingress called `my-ingress` to expose the service outside the cluster.
 
@@ -20,32 +21,33 @@ kubectl run -h | more
 ```
 
 Output:
-```bash
+
+```
 Examples:
   # Start a nginx pod
   kubectl run nginx --image=nginx
-  
+
   # Start a hazelcast pod and let the container expose port 5701
   kubectl run hazelcast --image=hazelcast/hazelcast --port=5701 ### This example matches most closely to the question.
-  
+
   # Start a hazelcast pod and set environment variables "DNS_DOMAIN=cluster" and "POD_NAMESPACE=default" in the container
   kubectl run hazelcast --image=hazelcast/hazelcast --env="DNS_DOMAIN=cluster" --env="POD_NAMESPACE=default"
-  
+
   # Start a hazelcast pod and set labels "app=hazelcast" and "env=prod" in the container
   kubectl run hazelcast --image=hazelcast/hazelcast --labels="app=hazelcast,env=prod" ### This example matches most closely to the question.
-  
+
   # Dry run; print the corresponding API objects without creating them
   kubectl run nginx --image=nginx --dry-run=client
-  
+
   # Start a nginx pod, but overload the spec with a partial set of values parsed from JSON
   kubectl run nginx --image=nginx --overrides='{ "apiVersion": "v1", "spec": { ... } }'
-  
+
   # Start a busybox pod and keep it in the foreground, don't restart it if it exits
   kubectl run -i -t busybox --image=busybox --restart=Never
-  
+
   # Start the nginx pod using the default command, but use custom arguments (arg1 .. argN) for that command
   kubectl run nginx --image=nginx -- <arg1> <arg2> ... <argN>
-  
+
   # Start the nginx pod using a different command and custom arguments
   kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>
 ```
@@ -64,30 +66,32 @@ kubectl get all
 ```bash
 kubectl expose -h | more
 ```
+
 Output:
-```bash
+
+```
 Examples:
   # Create a service for a replicated nginx, which serves on port 80 and connects to the containers on port 8000
   kubectl expose rc nginx --port=80 --target-port=8000
-  
+
   # Create a service for a replication controller identified by type and name specified in "nginx-controller.yaml",
 which serves on port 80 and connects to the containers on port 8000
-  kubectl expose -f nginx-controller.yaml --port=80 --target-port=8000 
-  
+  kubectl expose -f nginx-controller.yaml --port=80 --target-port=8000
+
   # Create a service for a pod valid-pod, which serves on port 444 with the name "frontend"
   kubectl expose pod valid-pod --port=444 --name=frontend  ### This example matches most closely to the question.
-    
+
   # Create a second service based on the above service, exposing the container port 8443 as port 443 with the name
 "nginx-https"
   kubectl expose service nginx --port=443 --target-port=8443 --name=nginx-https
-  
+
   # Create a service for a replicated streaming application on port 4100 balancing UDP traffic and named 'video-stream'.
   kubectl expose rc streamer --port=4100 --protocol=UDP --name=video-stream
-  
+
   # Create a service for a replicated nginx using replica set, which serves on port 80 and connects to the containers on
 port 8000
   kubectl expose rs nginx --port=80 --target-port=8000 ### This example matches most closely to the question.
-  
+
   # Create a service for an nginx deployment, which serves on port 80 and connects to the containers on port 8000
   kubectl expose deployment nginx --port=80 --target-port=8000
 ```
@@ -134,10 +138,10 @@ spec:
 kubectl apply -f q04-01-ing.yml
 
 # Pod Address under IP heading
-kubectl get pod -o wide 
+kubectl get pod -o wide
 
 # The Pod is an endpoint listed under ENDPOINTS with port :80
-kubectl get ep 
+kubectl get ep
 
 # The Service IP listed under CLUSTER-IP with PORT(S) :8080
 kubectl get service -o wide
@@ -155,8 +159,9 @@ my-ingress   <none>   *       144.126.242.138   80      4m34s
 curl localhost
 ```
 
-Output: 
-```bash
+Output:
+
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -185,11 +190,12 @@ Commercial support is available at
 </p>
 </details>
 
-#### 04-02. UNDER CONSTRUCTION. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `db-pod-1` using the `nginx` image and exposing port `11`. Label the pod `tier=db-1`. Create a pod called `db-pod-2` using the `nginx` image and exposing port `22`. Label the pod `tier=db-2`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only connect to `db-pod-1` on port `11` and to connect to `db-pod-2` on port `22`. 
+#### 04-02. UNDER CONSTRUCTION. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `db-pod-1` using the `nginx` image and exposing port `11`. Label the pod `tier=db-1`. Create a pod called `db-pod-2` using the `nginx` image and exposing port `22`. Label the pod `tier=db-2`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only connect to `db-pod-1` on port `11` and to connect to `db-pod-2` on port `22`.
 
-I use the notepad to sketch out the ingress and egress before starting 
-* `web-pod` > `db-pod-1` on port 11
-* `web-pod` > `db-pod-2` on port 22
+I use the notepad to sketch out the ingress and egress before starting
+
+- `web-pod` > `db-pod-1` on port 11
+- `web-pod` > `db-pod-2` on port 22
 
 <details><summary>show</summary>
 <p>
@@ -199,7 +205,7 @@ clear
 # Create all the required resources
 kubectl create namespace netpol-namespace
 kubectl config set-context --current --namespace=netpol-namespace
-kubectl run web-pod --image=nginx --port=80  --labels="tier=web" 
+kubectl run web-pod --image=nginx --port=80  --labels="tier=web"
 kubectl expose pod web-pod --port=8080 --name=web-service
 kubectl run db-pod-1 --image=docker.io/jamesbuckett/db-pod-1:latest --port=11 --labels="tier=db-1"
 kubectl expose pod db-pod-1 --port=1111 --target-port=11 --name=db-pod-1-service
@@ -209,13 +215,13 @@ kubectl run db-pod-3 --image=nginx --port=33 --labels="tier=db-3"
 kubectl expose pod db-pod-3 --port=3333 --target-port=33 --name=db-pod-3-service
 clear
 kubectl get all
-kubectl get pod -L tier 
+kubectl get pod -L tier
 ```
 
 ```bash
 clear
 # Test connectivity without Network Policy
-kubectl get pod -o wide 
+kubectl get pod -o wide
 # kubectl exec web-pod -- curl -s <IP>:<PORT>
 ```
 
@@ -276,7 +282,7 @@ kubernetes.io: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: my-netpol     # Change  
+  name: my-netpol     # Change
 spec:
   podSelector:
     matchLabels:
@@ -290,7 +296,7 @@ spec:
           tier: db-1      # First podSelector possibility
     - podSelector:
         matchLabels:
-          tier: db-2      # Second podSelector possibility  
+          tier: db-2      # Second podSelector possibility
     ports:              # Condition ports
     - protocol: TCP
       port: 11            # First ports possibility
@@ -302,7 +308,7 @@ spec:
 ```bash
 clear
 # Test connectivity with Network Policy
-kubectl apply -f 
+kubectl apply -f
 kubectl get pod -o wide | awk 'FNR == 2 {print $6}' | xargs -d'\n' curl
 kubectl get pod -o wide | awk 'FNR == 3 {print $6}' | xargs -d'\n' curl
 kubectl get pod -o wide | awk 'FNR == 4 {print $6}' | xargs -d'\n' curl
@@ -310,18 +316,18 @@ kubectl get pod -o wide | awk 'FNR == 5 {print $6}' | xargs -d'\n' curl
 ```
 
 Read this as:
-* Allow outgoing traffic if:
-  * Destination Pod has label db-1 OR db-2  
-  AND
-  * Destination Port is 11 OR Destination Port is 22
+
+- Allow outgoing traffic if:
+  - Destination Pod has label db-1 OR db-2  
+    AND
+  - Destination Port is 11 OR Destination Port is 22
 
 Pod web=tier can connect to pod db-2 on port 11
 
 </p>
 </details>
 
-
-#### Clean Up 
+#### Clean Up
 
 <details><summary>show</summary>
 <p>
@@ -334,4 +340,4 @@ kubectl delete ns netpol-namespace --force
 </p>
 </details>
 
-*End of Section*
+_End of Section_

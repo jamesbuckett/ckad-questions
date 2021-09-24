@@ -1,9 +1,10 @@
 ## Sample CKAD Application Deployment Questions and Answers
 
-### Application Deployment – 20% 
-* Use Kubernetes primitives to implement common deployment strategies (e.g. blue/green or canary)
-* Understand Deployments and how to perform rolling updates [**](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md#03-01-create-a-namespace-called-deployment-namespace-create-a-deployment-called-my-deployment-with-three-replicas-using-the-nginx-image-inside-the-namespace-expose-port-80-for-the-nginx-container-the-containers-should-be-named-my-container-each-container-should-have-a-memory-request-of-25mi-and-a-memory-limit-of-100mi)
-* Use the Helm package manager to deploy existing packages
+### Application Deployment – 20%
+
+- Use Kubernetes primitives to implement common deployment strategies (e.g. blue/green or canary)
+- Understand Deployments and how to perform rolling updates [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md#03-01-create-a-namespace-called-deployment-namespace-create-a-deployment-called-my-deployment-with-three-replicas-using-the-nginx-image-inside-the-namespace-expose-port-80-for-the-nginx-container-the-containers-should-be-named-my-container-each-container-should-have-a-memory-request-of-25mi-and-a-memory-limit-of-100mi)
+- Use the Helm package manager to deploy existing packages
 
 #### 03-01. Create a namespace called `deployment-namespace`. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx container. The containers should be named `my-container`. Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi.
 
@@ -30,7 +31,8 @@ kubectl create deploy -h | more
 ```
 
 Output:
-```bash
+
+```
 Examples:
   # Create a deployment named my-dep that runs the busybox image
   kubectl create deployment my-dep --image=busybox
@@ -89,11 +91,11 @@ spec:
         ports:
         - containerPort: 80
         name: my-container  # Change from nginx to my container
-        resources:          # From Meaning of memory link above          
+        resources:          # From Meaning of memory link above
           requests:         # From Meaning of memory link above
             memory: "25Mi"  # From Meaning of memory link above
           limits:           # From Meaning of memory link above
-            memory: "100Mi" # From Meaning of memory link above        
+            memory: "100Mi" # From Meaning of memory link above
 status: {}
 
 # vi edits
@@ -116,7 +118,8 @@ kubectl get all
 ```
 
 Output:
-```bash
+
+```
 NAME                               READY   STATUS    RESTARTS   AGE
 pod/my-deployment-67fc8546-9b4bm   1/1     Running   0          16m
 pod/my-deployment-67fc8546-mjw24   1/1     Running   0          16m
@@ -144,6 +147,7 @@ kubectl expose -h | more
 ```
 
 Output:
+
 ```
 Examples:
   # Create a service for a replicated nginx, which serves on port 80 and connects to the containers on port 8000
@@ -187,10 +191,11 @@ kubectl expose deployment my-deployment --port=8080 --target-port=80
 Watch out for the statement from inside the Cluster so this is of type: ClusterIP
 
 Types include:
-* ClusterIP (default)
-* NodePort 
-* LoadBalancer 
-* ExternalName
+
+- ClusterIP (default)
+- NodePort
+- LoadBalancer
+- ExternalName
 
 ```bash
 clear
@@ -201,7 +206,8 @@ kubectl get service
 ```
 
 Output:
-```bash
+
+```
 NAME            TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
 my-deployment   ClusterIP   10.245.79.74   <none>        80/TCP    103s
 ```
@@ -214,7 +220,8 @@ kubectl get pods -o wide
 ```
 
 Output:
-```bash
+
+```
 NAME            ENDPOINTS                                         AGE
 my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 # The three replicas internal endpoints are registered
@@ -299,7 +306,7 @@ spec:
 
 ```bash
 clear
-# Check the image in the Deployment 
+# Check the image in the Deployment
 kubectl describe deployment edit-deployment | grep Image
 ```
 
@@ -321,7 +328,7 @@ kubectl set image deployment.apps/edit-deployment redis=nginx:1.14.2 --record
 
 ```bash
 clear
-# Check the image in the Deployment 
+# Check the image in the Deployment
 kubectl describe deployment edit-deployment | grep Image
 # Check that the change was recorded
 kubectl rollout history deployment.apps/edit-deployment
@@ -330,7 +337,7 @@ kubectl rollout history deployment.apps/edit-deployment
 </p>
 </details>
 
-#### Clean Up 
+#### Clean Up
 
 <details><summary>show</summary>
 <p>
@@ -343,4 +350,4 @@ kubectl delete ns edit-namespace --force
 </p>
 </details>
 
-*End of Section*
+_End of Section_

@@ -1,11 +1,12 @@
 ## Sample CKAD Observability and Maintenance - 15% - Questions and Answers
 
 ### Application Observability and Maintenance – 15%
-* Understand API deprecations
-* Implement probes and health checks
-* Use provided tools to monitor Kubernetes applications **
-* Utilize container logs **
-* Debugging in Kubernetes **
+
+- Understand API deprecations
+- Implement probes and health checks
+- Use provided tools to monitor Kubernetes applications \*\*
+- Utilize container logs \*\*
+- Debugging in Kubernetes \*\*
 
 #### 05-01. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
 
@@ -20,7 +21,8 @@ kubectl top pods -A --sort-by=cpu | more
 ```
 
 Output:
-```bash
+
+```
 NAMESPACE                 NAME                                                    CPU(cores)   MEMORY(bytes)
 default                   falco-pxf8g                                             51m          55Mi
 ns-loki                   loki-release-prometheus-server-6d4f4df478-9z2f8         38m          356Mi
@@ -44,7 +46,8 @@ kubectl top pods -A --sort-by=memory | more
 ```
 
 Output:
-```bash
+
+```
 NAMESPACE                 NAME                                                    CPU(cores)   MEMORY(bytes)
 ns-loki                   loki-release-prometheus-server-6d4f4df478-9z2f8         11m          356Mi
 ns-demo                   adservice-68444cb46c-jvc86                              20m          202Mi
@@ -84,7 +87,8 @@ kubectl get pod json-pod -o json | more
 ```
 
 Output:
-```bash
+
+```
 
 {
     "apiVersion": "v1",
@@ -241,7 +245,7 @@ Output:
 }
 ```
 
-```bash
+```
 # Reduced output to walk back to JSON root:
     "status": {                          ## First element: .status
         "conditions": [
@@ -252,7 +256,7 @@ Output:
                 "type": "Initialized"
             },
 ...
-        "hostIP": "10.130.0.5",         ## Second Element: .status.hostIP 
+        "hostIP": "10.130.0.5",         ## Second Element: .status.hostIP
         "phase": "Running",
         "podIP": "10.244.2.198",
 
@@ -275,7 +279,8 @@ kubectl explain pod.status | more
 ```
 
 Output:
-```bash
+
+```
 KIND:     Pod
 VERSION:  v1
 
@@ -319,8 +324,9 @@ FIELDS:
 Using either method to obtain the JSONPath constuct the search query to hostIP.
 
 kubernetes.io:[JSONPath Support](https://kubernetes.io/docs/reference/kubectl/jsonpath/)
+
 ```bash
-kubectl get pod json-pod -o jsonpath={.status.hostIP}    
+kubectl get pod json-pod -o jsonpath={.status.hostIP}
 ```
 
 </p>
@@ -366,7 +372,8 @@ kubectl logs -h | more
 ```
 
 Output:
-```bash
+
+```
 Examples:
   # Return snapshot logs from pod nginx with only one container
   kubectl logs nginx
@@ -417,7 +424,7 @@ kubectl logs --since=1h log-pod
 </p>
 </details>
 
-#### Clean Up 
+#### Clean Up
 
 <details><summary>show</summary>
 <p>
@@ -430,4 +437,4 @@ kubectl delete ns log-namespace --force
 </p>
 </details>
 
-*End of Section*
+_End of Section_

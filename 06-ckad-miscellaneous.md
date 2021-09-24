@@ -8,11 +8,12 @@
 kubernetes.io: [Not All Objects are in a Namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#not-all-objects-are-in-a-namespace)
 
 ```bash
-kubectl api-resources --namespaced=true | more   
+kubectl api-resources --namespaced=true | more
 ```
 
 Output:
-```bash
+
+```
 NAME                               SHORTNAMES                           APIVERSION                                  NAMESPACED   KIND
 bindings                                                                v1                                          true         Binding
 configmaps                         cm                                   v1                                          true         ConfigMap
@@ -35,7 +36,8 @@ kubectl api-resources --namespaced=true -o name | more
 ```
 
 Output:
-```bash
+
+```
 bindings
 configmaps
 endpoints
@@ -73,14 +75,15 @@ clear
 # /api is called the core API's
 # /apis is called the named API's - going forward new features will be made available under this API
 
-# You need to pass the -k or --insecure option to the curl command. 
+# You need to pass the -k or --insecure option to the curl command.
 # This option explicitly allows curl to perform “insecure” SSL connections and transfers.
 
-curl http://localhost:8001 -k | more 
+curl http://localhost:8001 -k | more
 ```
 
 Output:
-```bash
+
+```
 ...
    "/api",
    "/api/v1",
@@ -130,7 +133,8 @@ curl http://locahost:8001/apis -k | grep "name" | more
 ```
 
 Output:
-```bash
+
+```
 ...
       "name": "apiregistration.k8s.io",
       "name": "apps",
@@ -158,4 +162,4 @@ Output:
 </p>
 </details>
 
-*End of Section*
+_End of Section_

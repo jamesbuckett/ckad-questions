@@ -50,7 +50,7 @@ kubectl get pv
 
 Output:
 
-```bash
+```
 # Note the STATUS=Available
 NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM
 my-pv     5Gi        RWO            Retain           Available
@@ -92,7 +92,7 @@ kubectl get pvc
 
 Output:
 
-```bash
+```
 NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM
 my-pv     5Gi        RWO            Retain           Bound       storage-namespace/my-pvc  # STATUS=Bound means the PV and PVC are linked
 
@@ -143,9 +143,9 @@ kubectl describe pod storage-pod | grep -i Mounts -A1
 # Or just kubectl describe pod storage-pod
 ```
 
-Output
+Output:
 
-```bash
+```
     Mounts:
       /my-mount from my-volume (rw)    # Success
 ```
@@ -178,7 +178,7 @@ kubectl run -h | more
 
 Output:
 
-```bash
+```
 Examples:
 
 # Start a nginx pod

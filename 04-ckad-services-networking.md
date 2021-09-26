@@ -207,7 +207,14 @@ Commercial support is available at
 
 #### 04-02. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `app-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=app`. Create a pod called `db-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=db`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only egress to `app-pod` on port `80`. In turn only allow `app-pod` to egress to `db-pod` on port `80`.
 
+Please NOTE:
+
+- Docker Desktop does not support CNI (container network interface) so the NetworkPolicy's define are ignored.
+- The commands work but the NetworkPolicy's are not enforced
+
 I use the notepad to sketch out the ingress and egress before starting
+
+Rules
 
 - `tier: web` > `tier: app` on port 80
 - `tier: app` > `tier: db` on port 80
@@ -241,7 +248,6 @@ kubectl get pod -L tier
 ```bash
 clear
 # Test connectivity without  a Network Policy
-# This should work
 kubectl exec web-pod -- curl -s app-service:80
 kubectl exec web-pod -- curl -s db-service:80
 ```
@@ -251,6 +257,8 @@ kubectl exec web-pod -- curl -s db-service:80
 
 <details><summary>show</summary>
 <p>
+
+Deny all Ingress and Egress traffic
 
 ```bash
 vi 04-02-netpol-zero-trust.yml
@@ -279,6 +287,8 @@ kubectl apply -f 04-02-netpol-zero-trust.yml
 <p>
 
 kubernetes.io: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
+
+Sample snippet:
 
 ```bash
 apiVersion: networking.k8s.io/v1
@@ -333,7 +343,7 @@ vi 04-02-netpol.yml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: my-netpol     # Change
+  name: my-netpol ## Change
 spec:
   podSelector:
     matchLabels:
@@ -348,7 +358,6 @@ spec:
     ports:
     - protocol: TCP
       port: 80
-
 ```
 
 ```bash
@@ -366,6 +375,7 @@ kubectl exec web-pod -- curl -s app-service:80
 clear
 # Test connectivity with Network Policy
 # This should NOT work with the Network Policy: my-netpol
+# Remember on Docker Desktop this will work as NetworkPolicy's are not enforced
 kubectl exec web-pod -- curl -s db-service:80
 ```
 

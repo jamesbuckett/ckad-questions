@@ -6,7 +6,185 @@
 - Provide and troubleshoot access to applications via services
 - Use Ingress rules to expose applications [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/04-ckad-services-networking.md#04-01-create-a-namespace-called-service-namespace-create-a-pod-called-service-pod-using-the-nginx-image-and-exposing-port-80-label-the-pod-tierweb-create-a-service-for-the-pod-called-my-service-allowing-for-communication-inside-the-cluster-let-the-service-expose-port-8080-create-an-ingress-called-my-ingress-to-expose-the-service-outside-the-cluster)
 
-#### 04-01. Create a namespace called `service-namespace`. Create a pod called `service-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a service for the pod called `my-service` allowing for communication inside the cluster. Let the service expose port 8080. Create an ingress called `my-ingress` to expose the service outside the cluster.
+#### 04-01. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `app-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=app`. Create a pod called `db-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=db`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only egress to `app-pod` on port `80`. In turn only allow `app-pod` to egress to `db-pod` on port `80`.
+
+Please NOTE:
+
+- Docker Desktop does not support CNI (container network interface) so the NetworkPolicy's define are ignored.
+- The commands work but the NetworkPolicy's are not enforced
+
+I use the notepad to sketch out the ingress and egress before starting
+
+Rules
+
+- `tier: web` > `tier: app` on port 80
+- `tier: app` > `tier: db` on port 80
+
+<details><summary>show</summary>
+<p>
+
+```bash
+clear
+# Create all the required resources
+kubectl create namespace netpol-namespace
+kubectl config set-context --current --namespace=netpol-namespace
+
+# tier: web
+kubectl run web-pod --image=nginx --port=80  --labels="tier=web"
+kubectl expose pod web-pod --port=80 --name=web-service
+
+# tier: app
+kubectl run app-pod --image=nginx --port=80 --labels="tier=app"
+kubectl expose pod app-pod --port=80 --target-port=80 --name=app-service
+
+# tier: db
+kubectl run db-pod --image=nginx --port=80 --labels="tier=db"
+kubectl expose pod db-pod --port=80 --target-port=80 --name=db-service
+
+clear
+kubectl get all
+kubectl get pod -L tier
+```
+
+```bash
+clear
+# Test connectivity without  a Network Policy
+kubectl exec web-pod -- curl -s app-service:80
+kubectl exec web-pod -- curl -s db-service:80
+```
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+Deny all Ingress and Egress traffic
+
+```bash
+vi ~/ckad/04-01-netpol-zero-trust.yml
+```
+
+```bash
+# This policy disables all Ingress and Egress Traffic
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-all
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+```
+
+```bash
+kubectl apply -f ~/ckad/04-01-netpol-zero-trust.yml
+```
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+kubernetes.io: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
+
+Sample snippet:
+
+```bash
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: test-network-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - ipBlock:
+        cidr: 172.17.0.0/16
+        except:
+        - 172.17.1.0/24
+    - namespaceSelector:
+        matchLabels:
+          project: myproject
+    - podSelector:
+        matchLabels:
+          role: frontend
+    ports:
+    - protocol: TCP
+      port: 6379
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 10.0.0.0/24
+    ports:
+    - protocol: TCP
+      port: 5978
+```
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+kubernetes.io: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
+
+```bash
+vi ~/ckad/04-01-netpol.yml
+```
+
+```bash
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: my-netpol ## Change
+spec:
+  podSelector:
+    matchLabels:
+      tier: web ## Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=web
+  policyTypes:
+  - Egress
+  egress: ## Egress - Traffic outwards from pod with label tier=web
+  - to:
+    - podSelector:
+        matchLabels:
+          tier: app
+    ports:
+    - protocol: TCP
+      port: 80
+```
+
+```bash
+kubectl apply -f ~/ckad/04-01-netpol.yml
+```
+
+```bash
+clear
+# Test connectivity with Network Policy
+# This should work with the Network Policy: my-netpol
+kubectl exec web-pod -- curl -s app-service:80
+```
+
+```bash
+clear
+# Test connectivity with Network Policy
+# This should NOT work with the Network Policy: my-netpol
+# Remember on Docker Desktop this will work as NetworkPolicy's are not enforced
+kubectl exec web-pod -- curl -s db-service:80
+```
+
+</p>
+</details>
+
+#### 04-02. Create a namespace called `service-namespace`. Create a pod called `service-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a service for the pod called `my-service` allowing for communication inside the cluster. Let the service expose port 8080.
 
 <details><summary>show</summary>
 <p>
@@ -111,48 +289,50 @@ kubectl get ep
 </p>
 </details>
 
+#### 04-03. Create an ingress called `my-ingress` to expose the service `my-service` outside the cluster.
+
 <details><summary>show</summary>
 <p>
 
 kubernetes.io [The Ingress resource](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
 
 ```bash
-vi ~/ckad/q04-01-ing.yml
+vi ~/ckad/q04-03-ing.yml
 ```
 
 ```bash
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: my-ingress          # Change
+  name: my-ingress ## Change
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - http:
       paths:
-      - path: /              # Change
+      - path: / ## Change
         pathType: Prefix
         backend:
           service:
-            name: my-service # Change
+            name: my-service ## Change
             port:
-              number: 8080   # Change
+              number: 8080 ## Change
 ```
 
 ```bash
 clear
-kubectl apply -f ~/ckad/q04-01-ing.yml
+kubectl apply -f ~/ckad/q04-02-ing.yml
 
 # Describe the ingress
-# This must be present to continue: Address:          localhost
+# This must be present to continue: Address: localhost
 # If not shutdown Docker Desktop and reboot Windows 10
 kubectl describe ingress my-ingress
 ```
 
 Output:
 
-````
+```
 Name:             my-ingress
 Namespace:        service-namespace
 Address:          localhost
@@ -164,14 +344,13 @@ Rules:
               /   my-service:8080 (10.1.1.37:80)
 Annotations:  nginx.ingress.kubernetes.io/rewrite-target: /
 Events:       <none>
-
-
+```
 
 ```bash
 # Verify that the NGINX page is rendering via the Ingress endpoint
 # If you have trouble with this reboot
 curl localhost
-````
+```
 
 I sometimes had trouble with this networking setup. I just rebooted and this would work.
 
@@ -201,183 +380,6 @@ Commercial support is available at
 <p><em>Thank you for using nginx.</em></p>
 </body>
 </html>
-```
-
-</p>
-</details>
-
-#### 04-02. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `app-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=app`. Create a pod called `db-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=db`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only egress to `app-pod` on port `80`. In turn only allow `app-pod` to egress to `db-pod` on port `80`.
-
-Please NOTE:
-
-- Docker Desktop does not support CNI (container network interface) so the NetworkPolicy's define are ignored.
-- The commands work but the NetworkPolicy's are not enforced
-
-I use the notepad to sketch out the ingress and egress before starting
-
-Rules
-
-- `tier: web` > `tier: app` on port 80
-- `tier: app` > `tier: db` on port 80
-
-<details><summary>show</summary>
-<p>
-
-```bash
-clear
-# Create all the required resources
-kubectl create namespace netpol-namespace
-kubectl config set-context --current --namespace=netpol-namespace
-
-# tier: web
-kubectl run web-pod --image=nginx --port=80  --labels="tier=web"
-kubectl expose pod web-pod --port=80 --name=web-service
-
-# tier: app
-kubectl run app-pod --image=nginx --port=80 --labels="tier=app"
-kubectl expose pod app-pod --port=80 --target-port=80 --name=app-service
-
-# tier: db
-kubectl run db-pod --image=nginx --port=80 --labels="tier=db"
-kubectl expose pod db-pod --port=80 --target-port=80 --name=db-service
-
-clear
-kubectl get all
-kubectl get pod -L tier
-```
-
-```bash
-clear
-# Test connectivity without  a Network Policy
-kubectl exec web-pod -- curl -s app-service:80
-kubectl exec web-pod -- curl -s db-service:80
-```
-
-</p>
-</details>
-
-<details><summary>show</summary>
-<p>
-
-Deny all Ingress and Egress traffic
-
-```bash
-vi ~/ckad/04-02-netpol-zero-trust.yml
-```
-
-```bash
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: default-all
-spec:
-  podSelector: {}
-  policyTypes:
-  - Ingress
-  - Egress
-```
-
-```bash
-kubectl apply -f ~/ckad/04-02-netpol-zero-trust.yml
-```
-
-</p>
-</details>
-
-<details><summary>show</summary>
-<p>
-
-kubernetes.io: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
-
-Sample snippet:
-
-```bash
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: test-network-policy
-  namespace: default
-spec:
-  podSelector:
-    matchLabels:
-      role: db
-  policyTypes:
-  - Ingress
-  - Egress
-  ingress:
-  - from:
-    - ipBlock:
-        cidr: 172.17.0.0/16
-        except:
-        - 172.17.1.0/24
-    - namespaceSelector:
-        matchLabels:
-          project: myproject
-    - podSelector:
-        matchLabels:
-          role: frontend
-    ports:
-    - protocol: TCP
-      port: 6379
-  egress:
-  - to:
-    - ipBlock:
-        cidr: 10.0.0.0/24
-    ports:
-    - protocol: TCP
-      port: 5978
-```
-
-</p>
-</details>
-
-<details><summary>show</summary>
-<p>
-
-kubernetes.io: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
-
-```bash
-vi ~/ckad/04-02-netpol.yml
-```
-
-```bash
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: my-netpol ## Change
-spec:
-  podSelector:
-    matchLabels:
-      tier: web ## Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=web
-  policyTypes:
-  - Egress
-  egress: ## Egress - Traffic outwards from pod with label tier=web
-  - to:
-    - podSelector:
-        matchLabels:
-          tier: app
-    ports:
-    - protocol: TCP
-      port: 80
-```
-
-```bash
-kubectl apply -f ~/ckad/04-02-netpol.yml
-```
-
-```bash
-clear
-# Test connectivity with Network Policy
-# This should work with the Network Policy: my-netpol
-kubectl exec web-pod -- curl -s app-service:80
-```
-
-```bash
-clear
-# Test connectivity with Network Policy
-# This should NOT work with the Network Policy: my-netpol
-# Remember on Docker Desktop this will work as NetworkPolicy's are not enforced
-kubectl exec web-pod -- curl -s db-service:80
 ```
 
 </p>

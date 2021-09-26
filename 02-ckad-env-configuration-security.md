@@ -10,14 +10,14 @@
 - Understand ServiceAccounts
 - Understand SecurityContexts
 
-#### 02-01. List all the Custom Resource Definitions installed in a cluster.
+#### 02-01. List all the Custom Resource Definitions installed in a cluster. Calico is a CRD. List out how to obtain the correct resource name to query a Calico Network Policy and not the default Kubernetes Network Policy.
 
 <details><summary>show</summary>
 <p>
 
 ```bash
 clear
-# kubectl get Custom Resource Defintions
+# kubectl get Custom Resource Definitions
 kubectl get crds
 ```
 
@@ -43,6 +43,43 @@ kubecontrollersconfigurations.crd.projectcalico.org   2021-09-24T05:26:26Z
 networkpolicies.crd.projectcalico.org                 2021-09-24T05:26:26Z
 networksets.crd.projectcalico.org                     2021-09-24T05:26:26Z
 tlscertificatedelegations.projectcontour.io           2021-09-24T05:26:16Z
+```
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+```bash
+clear
+kubectl api-resources -o name | grep calico
+```
+
+Output:
+
+```
+bgpconfigurations.crd.projectcalico.org
+bgppeers.crd.projectcalico.org
+blockaffinities.crd.projectcalico.org
+clusterinformations.crd.projectcalico.org
+felixconfigurations.crd.projectcalico.org
+globalnetworkpolicies.crd.projectcalico.org
+globalnetworksets.crd.projectcalico.org
+hostendpoints.crd.projectcalico.org
+ipamblocks.crd.projectcalico.org
+ipamconfigs.crd.projectcalico.org
+ipamhandles.crd.projectcalico.org
+ippools.crd.projectcalico.org
+kubecontrollersconfigurations.crd.projectcalico.org
+networkpolicies.crd.projectcalico.org        ## This is the Calico Resource Type that we want
+networksets.crd.projectcalico.org
+
+```
+
+```bash
+clear
+kubectl get networkpolicies.crd.projectcalico.org
 ```
 
 </p>
@@ -139,7 +176,7 @@ In English:
 </p>
 </details>
 
-#### 02-04. Create a namespace called `secret-namespace`. Create a secret in this namespace called `my-secret`. The secret should be immutable and contain the literal values `user=bob` and `password=123456`. Create a pod called called `secret-pod` using the `nginx` image. The pod should consume the secret as environmental variables `SECRET-ENV-USER` and `SECRET-ENV-PASSWORD`.
+#### 02-03. Create a namespace called `secret-namespace`. Create a secret in this namespace called `my-secret`. The secret should be immutable and contain the literal values `user=bob` and `password=123456`. Create a pod called called `secret-pod` using the `nginx` image. The pod should consume the secret as environmental variables `SECRET-ENV-USER` and `SECRET-ENV-PASSWORD`.
 
 <details><summary>show</summary>
 <p>
@@ -199,8 +236,8 @@ Examples:
 ```bash
 clear
 # Create a generic secret
-kubectl create secret generic my-secret --from-literal=user=bob --from-literal=password=123456 --dry-run=client -o yaml > 02-01-secret.yml
-vi ~/ckad/02-04-secret.yml
+kubectl create secret generic my-secret --from-literal=user=bob --from-literal=password=123456 --dry-run=client -o yaml > ~/ckad/02-03-secret.yml
+vi ~/ckad/02-03-secret.yml
 ```
 
 kubernetes.io: [Immutable Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#secret-immutable)
@@ -215,19 +252,13 @@ kind: Secret
 metadata:
   creationTimestamp: null
   name: my-secret
-
-# vi edits
-# / - find
-# d$ - delete to end of line
-# :u - undo on any error
-# :wq - write and quit
 ```
 
 ```bash
 clear
 # Apply the YAML file to the Kubernetes API server
 # The secret is availiable to all pods in the namespace
-kubectl apply -f ~/ckad/02-04-secret.yml
+kubectl apply -f ~/ckad/02-03-secret.yml
 # Verify that the secret got created
 kubectl get secret my-secret
 kubectl describe secret my-secret
@@ -236,8 +267,8 @@ kubectl describe secret my-secret
 ```bash
 clear
 # Now to create the pod that will consume the secret
-kubectl run secret-pod --image=nginx --restart=Never -n secret-namespace --dry-run=client -o yaml > 02-04-pod.yml
-vi ~/ckad/02-04-pod.yml
+kubectl run secret-pod --image=nginx --restart=Never -n secret-namespace --dry-run=client -o yaml > ~/ckad/02-03-pod.yml
+vi ~/ckad/02-03-pod.yml
 ```
 
 kubernetes.io: [Using Secrets as environment variables](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables)
@@ -270,18 +301,12 @@ spec:
   dnsPolicy: ClusterFirst
   restartPolicy: Never
 status: {}
-
-# vi edits
-# / - find
-# d$ - delete to end of line
-# :u - undo on any error
-# :wq - write and quit
 ```
 
 ```bash
 clear
 # Apply the YAML file to the Kubernetes API server
-kubectl apply -f ~/ckad/02-04-pod.yml
+kubectl apply -f ~/ckad/02-03-pod.yml
 ```
 
 ```bash
@@ -298,8 +323,8 @@ HOSTNAME=secret-pod
 NGINX_VERSION=1.21.3
 NJS_VERSION=0.6.2
 PKG_RELEASE=1~buster
-SECRET-ENV-USER=bob           # Success
-SECRET-ENV-PASSWORD=123456    # Success
+SECRET-ENV-USER=bob ## Success
+SECRET-ENV-PASSWORD=123456 ## Success
 KUBERNETES_PORT_443_TCP_PORT=443
 KUBERNETES_PORT_443_TCP_ADDR=10.245.0.1
 KUBERNETES_SERVICE_HOST=10.245.0.1

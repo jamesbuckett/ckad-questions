@@ -62,7 +62,7 @@ docker run -it --rm -d -p 8080:80 --name my-container my-image:v0.1
 
 ```bash
 clear
-# Verify Opertaion
+# Verify Operation
 curl localhost:8080
 ```
 
@@ -87,7 +87,7 @@ docker image rm my-image:v0.1
 </p>
 </details>
 
-#### 01-03. Create a namespace called `pod-namespace`. Create a pod called `pod-1` using `nginx` image. The container in the pod should be named `container-1`.
+#### 01-02. Create a namespace called `pod-namespace`. Create a pod called `pod-1` using `nginx` image. The container in the pod should be named `container-1`.
 
 <details><summary>show</summary>
 <p>
@@ -164,14 +164,14 @@ kubernetes.io: [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubect
 ```bash
 clear
 # Using the best example that matches the question
-kubectl run pod-1 --image=nginx --dry-run=client -o yaml > ~/ckad/q01-03.yml
+kubectl run pod-1 --image=nginx --dry-run=client -o yaml > ~/ckad/01-02.yml
 ```
 
 ```bash
 clear
 # Edit the YAML file to make required changes
 # Use the Question number in case you want to return to the question for reference or for review
-vi ~/ckad/01-03.yml
+vi ~/ckad/01-02.yml
 ```
 
 ```bash
@@ -201,7 +201,7 @@ status: {}
 ```bash
 clear
 # Apply the YAML file to the Kubernetes API server
-kubectl apply -f ~/ckad/01-03.yml
+kubectl apply -f ~/ckad/01-02.yml
 ```
 
 ```bash
@@ -213,7 +213,7 @@ kubectl get pod --watch
 </p>
 </details>
 
-#### 01-04. Create a namespace called `storage-namespace`. Create a Persistent Volume called `my-pv` with `5Gi` storage using hostPath `/mnt/my-host`. Create a Persistent Volume Claim called `my-pvc` with `2Gi` storage. Create a pod called `storage-pod` using the nginx image. Mount the Persistent Volume Claim onto `/my-mount` in `storage-pod`.
+#### 01-03. Create a namespace called `storage-namespace`. Create a Persistent Volume called `my-pv` with `5Gi` storage using hostPath `/mnt/my-host`. Create a Persistent Volume Claim called `my-pvc` with `2Gi` storage. Create a pod called `storage-pod` using the nginx image. Mount the Persistent Volume Claim onto `/my-mount` in `storage-pod`.
 
 <details><summary>show</summary>
 <p>
@@ -229,7 +229,7 @@ kubernetes.io: [Create a PersistentVolume](https://kubernetes.io/docs/tasks/conf
 
 ```bash
 # Create a YAML file for the PV
-vi ~/ckad/01-04-pv.yml
+vi ~/ckad/01-03-pv.yml
 ```
 
 ```bash
@@ -250,7 +250,7 @@ spec:
 ```
 
 ```bash
-kubectl apply -f ~/ckad/01-04-pv.yml
+kubectl apply -f ~/ckad/01-03-pv.yml
 clear
 kubectl get pv
 ```
@@ -273,7 +273,7 @@ kubernetes.io: [Create a PersistentVolumeClaim](https://kubernetes.io/docs/tasks
 
 ```bash
 # Create a YAML file for the PVC
-vi ~/ckad/01-04-pvc.yml
+vi ~/ckad/01-03-pvc.yml
 ```
 
 ```bash
@@ -291,7 +291,7 @@ spec:
 ```
 
 ```bash
-kubectl apply -f ~/ckad/01-04-pvc.yml
+kubectl apply -f ~/ckad/01-03-pvc.yml
 clear
 kubectl get pv
 kubectl get pvc
@@ -317,7 +317,7 @@ kubernetes.io: [Create a Pod](https://kubernetes.io/docs/tasks/configure-pod-con
 
 ```bash
 # Create a YAML file for the Pod
-vi  ~/ckad/01-04-pod.yml
+vi  ~/ckad/01-03-pod.yml
 ```
 
 ```bash
@@ -343,7 +343,7 @@ spec:
 ```
 
 ```bash
-kubectl apply -f ~/ckad/01-04-pod.yml
+kubectl apply -f ~/ckad/01-03-pod.yml
 clear
 # Verify that the volume is mounted
 # Or just kubectl describe pod storage-pod

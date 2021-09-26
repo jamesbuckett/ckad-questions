@@ -4,9 +4,9 @@
 
 - Understand API deprecations
 - Implement probes and health checks
-- Use provided tools to monitor Kubernetes applications \*\*
-- Utilize container logs \*\*
-- Debugging in Kubernetes \*\*
+- Use provided tools to monitor Kubernetes applications [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/05-ckad-observability-maintenance.md#05-01-first-list-all-the-pods-in-the-cluster-by-cpu-consumption-then-list-all-the-pods-in-the-cluster-by-memory-consumption)
+- Utilize container logs [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/05-ckad-observability-maintenance.md#05-02-create-a-pod-called-log-pod-using-image-nginx-in-namespace-log-namespace-create-the-namespace-obtain-the-logs-for-the-nginx-pod-for-the-last-hour)
+- Debugging in Kubernetes [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/05-ckad-observability-maintenance.md#05-04-create-a-pod-called-json-pod-using-image-nginx-in-namespace-json-namespace-create-the-namespace-obtain-the-hostip-address-using-jsonpath)
 
 #### 05-01. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
 

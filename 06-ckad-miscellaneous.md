@@ -1,4 +1,4 @@
-## Sample CKAD Extension Questions and Answers
+## Sample CKAD API Questions and Answers
 
 #### 06-01. List all the Kubernetes resources that can be found inside a namespace. By name only.
 
@@ -170,45 +170,6 @@ Output:
       "name": "projectcontour.io",
       "name": "metrics.k8s.io",
 ...
-```
-
-</p>
-</details>
-
-#### 06-03. Calico is a non native Kubernetes Resource Type. List out how to obtain the correct resource name to query a Calico Network Policy and not the default Kubernetes Network Policy.
-
-<details><summary>show</summary>
-<p>
-
-```bash
-clear
-kubectl api-resources -o name | grep calico
-```
-
-Output:
-
-```
-bgpconfigurations.crd.projectcalico.org
-bgppeers.crd.projectcalico.org
-blockaffinities.crd.projectcalico.org
-clusterinformations.crd.projectcalico.org
-felixconfigurations.crd.projectcalico.org
-globalnetworkpolicies.crd.projectcalico.org
-globalnetworksets.crd.projectcalico.org
-hostendpoints.crd.projectcalico.org
-ipamblocks.crd.projectcalico.org
-ipamconfigs.crd.projectcalico.org
-ipamhandles.crd.projectcalico.org
-ippools.crd.projectcalico.org
-kubecontrollersconfigurations.crd.projectcalico.org
-networkpolicies.crd.projectcalico.org        ## This is the Calico Resource Type that we want
-networksets.crd.projectcalico.org
-
-```
-
-```bash
-clear
-kubectl get networkpolicies.crd.projectcalico.org
 ```
 
 </p>

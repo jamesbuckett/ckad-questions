@@ -2,10 +2,10 @@
 
 ### Application Design and Build – 20%
 
-- Define, build and modify container images [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-design-build.md#01-03-create-a-container-from-the-attached-dockerfile-and-indexhtml-name-the-image-my-image-name-the-container-my-container-run-the-container-exposing-port-8080-on-the-host-and-port-80-on-the-container-stop-the-container-delete-the-container)
+- Define, build and modify container images [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-design-build.md#01-01-create-a-container-from-the-attached-dockerfile-and-indexhtml-name-the-image-my-image-name-the-container-my-container-run-the-container-exposing-port-8080-on-the-host-and-port-80-on-the-container-stop-the-container-delete-the-container)
 - Understand Jobs and CronJobs
 - Understand multi-container Pod design patterns (e.g. sidecar, init and others)
-- Utilize persistent and ephemeral volumes [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-design-build.md#01-01-create-a-namespace-called-storage-namespace-create-a-persistent-volume-called-my-pv-with-5gi-storage-using-hostpath-mntmy-host-create-a-persistent-volume-claim-called-my-pvc-with-2gi-storage-create-a-pod-called-storage-pod-using-the-nginx-image-mount-the-persistent-volume-claim-onto-my-mount-in-storage-pod)
+- Utilize persistent and ephemeral volumes [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-design-build.md#01-04-create-a-namespace-called-storage-namespace-create-a-persistent-volume-called-my-pv-with-5gi-storage-using-hostpath-mntmy-host-create-a-persistent-volume-claim-called-my-pvc-with-2gi-storage-create-a-pod-called-storage-pod-using-the-nginx-image-mount-the-persistent-volume-claim-onto-my-mount-in-storage-pod)
 
 #### 01-01. Create a container from the attached Dockerfile and index.html. Name the image `my-image`. Name the container `my-container`. Run the container exposing port `8080` on the host and port `80` on the container. Stop the container. Delete the container.
 

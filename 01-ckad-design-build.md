@@ -238,7 +238,7 @@ kubectl run pod-1 --image=nginx --dry-run=client -o yaml > ~/ckad/q01-02.yml
 clear
 # Edit the YAML file to make required changes
 # Use the Question number in case you want to return to the question for reference or for review
-vi ~/ckad/q01-02.yml
+vi ~/ckad/01-02.yml
 ```
 
 ```bash
@@ -268,7 +268,7 @@ status: {}
 ```bash
 clear
 # Apply the YAML file to the Kubernetes API server
-kubectl apply -f ~/ckad/q01-02.yml
+kubectl apply -f ~/ckad/01-02.yml
 ```
 
 ```bash
@@ -366,7 +366,7 @@ docker image rm my-image:v0.1
 <p>
 
 ```bash
-rm -R ~/ckad/
+yes | rm -R ~/ckad/
 kubectl delete pv my-pv
 kubectl delete ns storage-namespace --force
 kubectl delete ns pod-namespace --force

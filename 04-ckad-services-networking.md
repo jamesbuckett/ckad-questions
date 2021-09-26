@@ -243,8 +243,33 @@ clear
 # Test connectivity without  a Network Policy
 # This should work
 kubectl exec web-pod -- curl -s app-service:80
-pause
 kubectl exec web-pod -- curl -s db-service:80
+```
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+```bash
+vi 04-02-netpol-zero-trust.yml
+```
+
+```bash
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-all
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+```
+
+```bash
+kubectl apply -f 04-02-netpol-zero-trust.yml
 ```
 
 </p>

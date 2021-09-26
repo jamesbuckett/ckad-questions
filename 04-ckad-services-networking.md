@@ -1,4 +1,4 @@
-## Sample CKAD Services and Networking - 20% - Questions and Answers
+## Sample CKAD Services and Networking Q&A
 
 ### Services and Networking – 20%
 

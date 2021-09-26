@@ -1,4 +1,4 @@
-## Sample CKAD Application Design and Build Questions and Answers
+## Sample CKAD Application Design and Build Q&A
 
 ### Application Design and Build – 20%
 

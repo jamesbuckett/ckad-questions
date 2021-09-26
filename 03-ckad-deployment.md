@@ -1,4 +1,4 @@
-## Sample CKAD Application Deployment Questions and Answers
+## Sample CKAD Application Deployment Q&A
 
 ### Application Deployment – 20%
 
@@ -201,7 +201,7 @@ Types include:
 ```bash
 clear
 # Check that the Service was created
-  # Inside the namespace: my-deploment
+  # Inside the namespace: my-deployment
   # Outside the namespace: my-deployment.deployment-namespace.svc.cluster.local
 kubectl get service
 ```

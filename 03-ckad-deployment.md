@@ -12,6 +12,7 @@
 <p>
 
 ```bash
+mkdir ~/ckad/
 clear
 # Create the namespace
 kubectl create namespace deployment-namespace
@@ -344,6 +345,7 @@ kubectl rollout history deployment.apps/edit-deployment
 <p>
 
 ```bash
+yes | rm -R ~/ckad/
 kubectl delete ns deployment-namespace --force
 kubectl delete ns edit-namespace --force
 ```

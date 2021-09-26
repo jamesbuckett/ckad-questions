@@ -12,6 +12,7 @@
 <p>
 
 ```bash
+mkdir ~/ckad/
 clear
 kubectl create namespace service-namespace
 kubectl config set-context --current --namespace=service-namespace
@@ -388,6 +389,7 @@ kubectl exec web-pod -- curl -s db-service:80
 <p>
 
 ```bash
+yes | rm -R ~/ckad/
 kubectl delete ns service-namespace --force
 kubectl delete ns netpol-namespace --force
 ```

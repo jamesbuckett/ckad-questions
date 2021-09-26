@@ -13,7 +13,7 @@
 <p>
 
 ```bash
-mkdir ckad
+mkdir ~/ckad/
 clear
 kubectl create namespace storage-namespace
 kubectl config set-context --current --namespace=storage-namespace
@@ -367,9 +367,9 @@ docker image rm my-image:v0.1
 
 ```bash
 yes | rm -R ~/ckad/
-kubectl delete pv my-pv
 kubectl delete ns storage-namespace --force
 kubectl delete ns pod-namespace --force
+kubectl delete pv my-pv
 ```
 
 </p>

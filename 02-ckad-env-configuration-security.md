@@ -16,7 +16,7 @@
 <p>
 
 ```bash
-mkdir ckad
+mkdir ~/ckad/
 clear
 kubectl create namespace secret-namespace
 kubectl config set-context --current --namespace=secret-namespace

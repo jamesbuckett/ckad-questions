@@ -1,4 +1,4 @@
-## Sample CKAD API Questions and Answers
+## Sample CKAD API Q&A
 
 #### 06-01. List all the Kubernetes resources that can be found inside a namespace. By name only.
 

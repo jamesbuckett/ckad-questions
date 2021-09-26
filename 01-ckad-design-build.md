@@ -110,7 +110,7 @@ kubernetes.io: [Create a Pod](https://kubernetes.io/docs/tasks/configure-pod-con
 
 ```bash
 # Create a YAML file for the Pod
-vi 01-01-pod.yml
+vi  ~/ckad/01-01-pod.yml
 ```
 
 ```bash
@@ -137,7 +137,7 @@ spec:
 
 ```bash
 clear
-kubectl apply -f 01-01-pod.yml
+kubectl apply -f ~/ckad/01-01-pod.yml
 # Verify that the volume is mounted
 kubectl describe pod storage-pod | grep -i Mounts -A1
 # Or just kubectl describe pod storage-pod
@@ -237,7 +237,7 @@ kubectl run pod-1 --image=nginx --dry-run=client -o yaml > q01-02.yml
 clear
 # Edit the YAML file to make required changes
 # Use the Question number in case you want to return to the question for reference or for review
-vi q01-02.yml
+vi ~/ckad/q01-02.yml
 ```
 
 ```bash
@@ -267,7 +267,7 @@ status: {}
 ```bash
 clear
 # Apply the YAML file to the Kubernetes API server
-kubectl apply -f q01-02.yml
+kubectl apply -f ~/ckad/q01-02.yml
 ```
 
 ```bash

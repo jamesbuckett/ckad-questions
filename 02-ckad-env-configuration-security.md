@@ -70,7 +70,7 @@ Examples:
 clear
 # Create a generic secret
 kubectl create secret generic my-secret --from-literal=user=bob --from-literal=password=123456 --dry-run=client -o yaml > 02-01-secret.yml
-vi 02-01-secret.yml
+vi ~/ckad/02-01-secret.yml
 ```
 
 kubernetes.io: [Immutable Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#secret-immutable)
@@ -97,7 +97,7 @@ metadata:
 clear
 # Apply the YAML file to the Kubernetes API server
 # The secret is availiable to all pods in the namespace
-kubectl apply -f 02-01-secret.yml
+kubectl apply -f ~/ckad/02-01-secret.yml
 # Verify that the secret got created
 kubectl get secret my-secret
 kubectl describe secret my-secret
@@ -107,7 +107,7 @@ kubectl describe secret my-secret
 clear
 # Now to create the pod that will consume the secret
 kubectl run secret-pod --image=nginx --restart=Never -n secret-namespace --dry-run=client -o yaml > 02-01-pod.yml
-vi 02-01-pod.yml
+vi ~/ckad/02-01-pod.yml
 ```
 
 kubernetes.io: [Using Secrets as environment variables](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables)
@@ -151,7 +151,7 @@ status: {}
 ```bash
 clear
 # Apply the YAML file to the Kubernetes API server
-kubectl apply -f 02-01-pod.yml
+kubectl apply -f ~/ckad/02-01-pod.yml
 ```
 
 ```bash

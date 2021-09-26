@@ -116,7 +116,7 @@ kubectl get ep
 kubernetes.io [The Ingress resource](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
 
 ```bash
-vi q04-01-ing.yml
+vi ~/ckad/q04-01-ing.yml
 ```
 
 ```bash
@@ -141,7 +141,7 @@ spec:
 
 ```bash
 clear
-kubectl apply -f q04-01-ing.yml
+kubectl apply -f ~/ckad/q04-01-ing.yml
 
 # Describe the ingress
 # This must be present to continue: Address:          localhost
@@ -261,7 +261,7 @@ kubectl exec web-pod -- curl -s db-service:80
 Deny all Ingress and Egress traffic
 
 ```bash
-vi 04-02-netpol-zero-trust.yml
+vi ~/ckad/04-02-netpol-zero-trust.yml
 ```
 
 ```bash
@@ -277,7 +277,7 @@ spec:
 ```
 
 ```bash
-kubectl apply -f 04-02-netpol-zero-trust.yml
+kubectl apply -f ~/ckad/04-02-netpol-zero-trust.yml
 ```
 
 </p>
@@ -336,7 +336,7 @@ spec:
 kubernetes.io: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
 
 ```bash
-vi 04-02-netpol.yml
+vi ~/ckad/04-02-netpol.yml
 ```
 
 ```bash
@@ -361,7 +361,7 @@ spec:
 ```
 
 ```bash
-kubectl apply -f 04-02-netpol.yml
+kubectl apply -f ~/ckad/04-02-netpol.yml
 ```
 
 ```bash

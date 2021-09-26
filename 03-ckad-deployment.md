@@ -61,7 +61,7 @@ kubectl create deployment my-deployment --image=nginx --replicas=3 --port=80 --d
 
 ```bash
 # Edit the YAML file to make required changes
-vi q03-01.yml
+vi ~/ckad/q03-01.yml
 ```
 
 kubernetes.io: [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory)
@@ -108,7 +108,7 @@ status: {}
 ```bash
 clear
 # Apply the YAML file to the Kubernetes API server
-kubectl apply -f q03-01.yml
+kubectl apply -f ~/ckad/q03-01.yml
 ```
 
 ```bash

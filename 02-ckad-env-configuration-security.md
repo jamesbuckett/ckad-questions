@@ -16,6 +16,7 @@
 <p>
 
 ```bash
+mkdir ckad
 clear
 kubectl create namespace secret-namespace
 kubectl config set-context --current --namespace=secret-namespace
@@ -320,6 +321,7 @@ tlscertificatedelegations.projectcontour.io           2021-09-24T05:26:16Z
 <p>
 
 ```bash
+yes | rm -R ~/ckad/
 kubectl delete ns secret-namespace --force
 kubectl delete ns quota-namespace --force
 ```

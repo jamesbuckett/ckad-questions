@@ -13,6 +13,7 @@
 <p>
 
 ```bash
+mkdir ckad
 clear
 kubectl create namespace storage-namespace
 kubectl config set-context --current --namespace=storage-namespace
@@ -22,7 +23,7 @@ kubernetes.io: [Create a PersistentVolume](https://kubernetes.io/docs/tasks/conf
 
 ```bash
 # Create a YAML file for the PV
-vi 01-01-pv.yml
+vi ~/ckad/01-01-pv.yml
 ```
 
 ```bash
@@ -43,8 +44,8 @@ spec:
 ```
 
 ```bash
+kubectl apply -f ~/ckad/01-01-pv.yml
 clear
-kubectl apply -f 01-01-pv.yml
 kubectl get pv
 ```
 
@@ -66,7 +67,7 @@ kubernetes.io: [Create a PersistentVolumeClaim](https://kubernetes.io/docs/tasks
 
 ```bash
 # Create a YAML file for the PVC
-vi 01-01-pvc.yml
+vi ~/ckad/01-01-pvc.yml
 ```
 
 ```bash
@@ -84,8 +85,8 @@ spec:
 ```
 
 ```bash
+kubectl apply -f ~/ckad/01-01-pvc.yml
 clear
-kubectl apply -f 01-01-pvc.yml
 kubectl get pv
 kubectl get pvc
 ```
@@ -136,11 +137,11 @@ spec:
 ```
 
 ```bash
-clear
 kubectl apply -f ~/ckad/01-01-pod.yml
+clear
 # Verify that the volume is mounted
-kubectl describe pod storage-pod | grep -i Mounts -A1
 # Or just kubectl describe pod storage-pod
+kubectl describe pod storage-pod | grep -i Mounts -A1
 ```
 
 Output:
@@ -230,7 +231,7 @@ kubernetes.io: [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubect
 ```bash
 clear
 # Using the best example that matches the question
-kubectl run pod-1 --image=nginx --dry-run=client -o yaml > q01-02.yml
+kubectl run pod-1 --image=nginx --dry-run=client -o yaml > ~/ckad/q01-02.yml
 ```
 
 ```bash
@@ -289,7 +290,7 @@ kubectl get pod --watch
 Create a file called index.html
 
 ```bash
-vi index.html
+vi ~/ckad/index.html
 ```
 
 Edit index.html with the following text.
@@ -301,7 +302,7 @@ Hardships often prepare ordinary people for an extraordinary destiny.
 Create a file called Dockerfile
 
 ```bash
-vi Dockerfile
+vi ~/ckad/Dockerfile
 ```
 
 Edit the Docker with to include the text below
@@ -312,6 +313,7 @@ COPY ./index.html /usr/share/nginx/html/index.html
 ```
 
 ```bash
+cd ~/ckad/
 clear
 # Build the docker image
 docker build -t my-image:v0.1 .
@@ -364,6 +366,7 @@ docker image rm my-image:v0.1
 <p>
 
 ```bash
+rm -R ~/ckad/
 kubectl delete ns storage-namespace --force
 kubectl delete ns pod-namespace --force
 ```

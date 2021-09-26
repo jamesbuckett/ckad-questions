@@ -7,54 +7,43 @@
 - Understand multi-container Pod design patterns (e.g. sidecar, init and others)
 - Utilize persistent and ephemeral volumes [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-design-build.md#01-01-create-a-namespace-called-storage-namespace-create-a-persistent-volume-called-my-pv-with-5gi-storage-using-hostpath-mntmy-host-create-a-persistent-volume-claim-called-my-pvc-with-2gi-storage-create-a-pod-called-storage-pod-using-the-nginx-image-mount-the-persistent-volume-claim-onto-my-mount-in-storage-pod)
 
-#### 01-01. Create a namespace called `storage-namespace`. Create a Persistent Volume called `my-pv` with `5Gi` storage using hostPath `/mnt/my-host`. Create a Persistent Volume Claim called `my-pvc` with `2Gi` storage. Create a pod called `storage-pod` using the nginx image. Mount the Persistent Volume Claim onto `/my-mount` in `storage-pod`.
+#### 01-01. Create a container from the attached Dockerfile and index.html. Name the image `my-image`. Name the container `my-container`. Run the container exposing port `8080` on the host and port `80` on the container. Stop the container. Delete the container.
 
 <details><summary>show</summary>
 <p>
 
+##### Image Creation
+
+Create a file called index.html
+
 ```bash
-mkdir ~/ckad/
+vi ~/ckad/index.html
+```
+
+Edit index.html with the following text.
+
+```bash
+Hardships often prepare ordinary people for an extraordinary destiny.
+```
+
+Create a file called Dockerfile
+
+```bash
+vi ~/ckad/Dockerfile
+```
+
+Edit the Docker with to include the text below
+
+```bash
+FROM nginx:latest
+COPY ./index.html /usr/share/nginx/html/index.html
+```
+
+```bash
+cd ~/ckad/
 clear
-kubectl create namespace storage-namespace
-kubectl config set-context --current --namespace=storage-namespace
-```
-
-kubernetes.io: [Create a PersistentVolume](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume)
-
-```bash
-# Create a YAML file for the PV
-vi ~/ckad/01-01-pv.yml
-```
-
-```bash
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: my-pv              # Change
-  labels:
-    type: local
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 5Gi           # Change
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/mnt/my-host"   # Change
-```
-
-```bash
-kubectl apply -f ~/ckad/01-01-pv.yml
-clear
-kubectl get pv
-```
-
-Output:
-
-```
-# Note the STATUS=Available
-NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM
-my-pv     5Gi        RWO            Retain           Available
+# Build the docker image
+docker build -t my-image:v0.1 .
 ```
 
 </p>
@@ -63,98 +52,42 @@ my-pv     5Gi        RWO            Retain           Available
 <details><summary>show</summary>
 <p>
 
-kubernetes.io: [Create a PersistentVolumeClaim](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim)
+##### Container Operations
 
 ```bash
-# Create a YAML file for the PVC
-vi ~/ckad/01-01-pvc.yml
-```
-
-```bash
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: my-pvc          # Change
-spec:
-  storageClassName: manual
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi      # Change
-```
-
-```bash
-kubectl apply -f ~/ckad/01-01-pvc.yml
 clear
-kubectl get pv
-kubectl get pvc
+# Run the docker image
+docker run -it --rm -d -p 8080:80 --name my-container my-image:v0.1
 ```
 
-Output:
-
+```bash
+clear
+# Verify Opertaion
+curl localhost:8080
 ```
-NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM
-my-pv     5Gi        RWO            Retain           Bound       storage-namespace/my-pvc  # STATUS=Bound means the PV and PVC are linked
 
-NAME     STATUS   VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   AGE
-my-pvc   Bound    my-pv    5Gi        RWO            manual         6s                     # STATUS=Bound means the PV and PVC are linked
+```bash
+clear
+# List all images
+docker ps -a
+```
+
+```bash
+clear
+# Stop the Container
+docker container stop my-container
+```
+
+```bash
+clear
+# Delete the Image
+docker image rm my-image:v0.1
 ```
 
 </p>
 </details>
 
-<details><summary>show</summary>
-<p>
-
-kubernetes.io: [Create a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-pod)
-
-```bash
-# Create a YAML file for the Pod
-vi  ~/ckad/01-01-pod.yml
-```
-
-```bash
-apiVersion: v1
-kind: Pod
-metadata:
-  name: storage-pod                    # Change
-spec:
-  volumes:
-    - name: my-volume
-      persistentVolumeClaim:
-        claimName: my-pvc              # Change
-  containers:
-    - name: my-container
-      image: nginx
-      ports:
-        - containerPort: 80
-          name: "http-server"
-      volumeMounts:
-        - mountPath: "/my-mount"       # Change
-          name: my-volume
-
-```
-
-```bash
-kubectl apply -f ~/ckad/01-01-pod.yml
-clear
-# Verify that the volume is mounted
-# Or just kubectl describe pod storage-pod
-kubectl describe pod storage-pod | grep -i Mounts -A1
-```
-
-Output:
-
-```
-    Mounts:
-      /my-mount from my-volume (rw)    # Success
-```
-
-</p>
-</details>
-
-#### 01-02. Create a namespace called `pod-namespace`. Create a pod called `pod-1` using `nginx` image. The container in the pod should be named `container-1`.
+#### 01-03. Create a namespace called `pod-namespace`. Create a pod called `pod-1` using `nginx` image. The container in the pod should be named `container-1`.
 
 <details><summary>show</summary>
 <p>
@@ -231,14 +164,14 @@ kubernetes.io: [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubect
 ```bash
 clear
 # Using the best example that matches the question
-kubectl run pod-1 --image=nginx --dry-run=client -o yaml > ~/ckad/q01-02.yml
+kubectl run pod-1 --image=nginx --dry-run=client -o yaml > ~/ckad/q01-03.yml
 ```
 
 ```bash
 clear
 # Edit the YAML file to make required changes
 # Use the Question number in case you want to return to the question for reference or for review
-vi ~/ckad/01-02.yml
+vi ~/ckad/01-03.yml
 ```
 
 ```bash
@@ -268,7 +201,7 @@ status: {}
 ```bash
 clear
 # Apply the YAML file to the Kubernetes API server
-kubectl apply -f ~/ckad/01-02.yml
+kubectl apply -f ~/ckad/01-03.yml
 ```
 
 ```bash
@@ -280,43 +213,54 @@ kubectl get pod --watch
 </p>
 </details>
 
-#### 01-03. Create a container from the attached Dockerfile and index.html. Name the image `my-image`. Name the container `my-container`. Run the container exposing port `8080` on the host and port `80` on the container. Stop the container. Delete the container.
+#### 01-04. Create a namespace called `storage-namespace`. Create a Persistent Volume called `my-pv` with `5Gi` storage using hostPath `/mnt/my-host`. Create a Persistent Volume Claim called `my-pvc` with `2Gi` storage. Create a pod called `storage-pod` using the nginx image. Mount the Persistent Volume Claim onto `/my-mount` in `storage-pod`.
 
 <details><summary>show</summary>
 <p>
 
-##### Image Creation
-
-Create a file called index.html
-
 ```bash
-vi ~/ckad/index.html
-```
-
-Edit index.html with the following text.
-
-```bash
-Hardships often prepare ordinary people for an extraordinary destiny.
-```
-
-Create a file called Dockerfile
-
-```bash
-vi ~/ckad/Dockerfile
-```
-
-Edit the Docker with to include the text below
-
-```bash
-FROM nginx:latest
-COPY ./index.html /usr/share/nginx/html/index.html
-```
-
-```bash
-cd ~/ckad/
+mkdir ~/ckad/
 clear
-# Build the docker image
-docker build -t my-image:v0.1 .
+kubectl create namespace storage-namespace
+kubectl config set-context --current --namespace=storage-namespace
+```
+
+kubernetes.io: [Create a PersistentVolume](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume)
+
+```bash
+# Create a YAML file for the PV
+vi ~/ckad/01-04-pv.yml
+```
+
+```bash
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-pv              # Change
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 5Gi           # Change
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/my-host"   # Change
+```
+
+```bash
+kubectl apply -f ~/ckad/01-04-pv.yml
+clear
+kubectl get pv
+```
+
+Output:
+
+```
+# Note the STATUS=Available
+NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM
+my-pv     5Gi        RWO            Retain           Available
 ```
 
 </p>
@@ -325,36 +269,92 @@ docker build -t my-image:v0.1 .
 <details><summary>show</summary>
 <p>
 
-##### Container Operations
+kubernetes.io: [Create a PersistentVolumeClaim](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim)
 
 ```bash
-clear
-# Run the docker image
-docker run -it --rm -d -p 8080:80 --name my-container my-image:v0.1
+# Create a YAML file for the PVC
+vi ~/ckad/01-04-pvc.yml
 ```
 
 ```bash
-clear
-# Verify Opertaion
-curl localhost:8080
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc          # Change
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi      # Change
 ```
 
 ```bash
+kubectl apply -f ~/ckad/01-04-pvc.yml
 clear
-# List all images
-docker ps -a
+kubectl get pv
+kubectl get pvc
+```
+
+Output:
+
+```
+NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM
+my-pv     5Gi        RWO            Retain           Bound       storage-namespace/my-pvc  # STATUS=Bound means the PV and PVC are linked
+
+NAME     STATUS   VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+my-pvc   Bound    my-pv    5Gi        RWO            manual         6s                     # STATUS=Bound means the PV and PVC are linked
+```
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+kubernetes.io: [Create a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-pod)
+
+```bash
+# Create a YAML file for the Pod
+vi  ~/ckad/01-04-pod.yml
 ```
 
 ```bash
-clear
-# Stop the Container
-docker container stop my-container
+apiVersion: v1
+kind: Pod
+metadata:
+  name: storage-pod                    # Change
+spec:
+  volumes:
+    - name: my-volume
+      persistentVolumeClaim:
+        claimName: my-pvc              # Change
+  containers:
+    - name: my-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/my-mount"       # Change
+          name: my-volume
+
 ```
 
 ```bash
+kubectl apply -f ~/ckad/01-04-pod.yml
 clear
-# Delete the Image
-docker image rm my-image:v0.1
+# Verify that the volume is mounted
+# Or just kubectl describe pod storage-pod
+kubectl describe pod storage-pod | grep -i Mounts -A1
+```
+
+Output:
+
+```
+    Mounts:
+      /my-mount from my-volume (rw)    # Success
 ```
 
 </p>

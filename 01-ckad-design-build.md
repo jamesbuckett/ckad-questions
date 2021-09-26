@@ -367,6 +367,7 @@ docker image rm my-image:v0.1
 
 ```bash
 rm -R ~/ckad/
+kubectl delete pv my-pv
 kubectl delete ns storage-namespace --force
 kubectl delete ns pod-namespace --force
 ```

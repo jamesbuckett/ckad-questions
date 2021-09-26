@@ -1,4 +1,4 @@
-## Sample CKAD Environment, Configuration and Security Questions and Answers
+## Sample CKAD Environment, Configuration and Security Q&A
 
 ### Application Environment, Configuration and Security – 25%
 

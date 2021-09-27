@@ -62,37 +62,6 @@ kubectl exec web-pod -- curl -s db-service:80
 <details><summary>show</summary>
 <p>
 
-##### Prerequisites
-
-Deny all Ingress and Egress traffic
-
-```bash
-vi ~/ckad/04-01-netpol-zero-trust.yml
-```
-
-```bash
-# This policy disables all Ingress and Egress Traffic
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: default-all
-spec:
-  podSelector: {}
-  policyTypes:
-  - Ingress
-  - Egress
-```
-
-```bash
-kubectl apply -f ~/ckad/04-01-netpol-zero-trust.yml
-```
-
-</p>
-</details>
-
-<details><summary>show</summary>
-<p>
-
 ##### Solution
 
 kubernetes.io: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
@@ -105,7 +74,7 @@ vi ~/ckad/04-01-netpol.yml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: my-netpol ## Change
+  name: web-netpol ## Change
 spec:
   podSelector:
     matchLabels:
@@ -116,10 +85,29 @@ spec:
   - to:
     - podSelector:
         matchLabels:
-          tier: app
+          tier: "app"
     ports:
     - protocol: TCP
       port: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: app-netpol ## Change
+spec:
+  podSelector:
+    matchLabels:
+      tier: app ## Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=web
+  policyTypes:
+  - Ingress
+  ingress: ## Egress - Traffic outwards from pod with label tier=web
+  - from:
+    - podSelector:
+        matchLabels:
+          tier: "web"
+    ports:
+    - protocol: TCP
+      port: 80      
 ```
 
 ```bash

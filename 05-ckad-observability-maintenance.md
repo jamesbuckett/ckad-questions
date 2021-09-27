@@ -13,6 +13,8 @@
 <details><summary>show</summary>
 <p>
 
+##### Solution
+
 ```bash
 clear
 # Requires metrics server to be installed and working
@@ -37,6 +39,8 @@ ns-demo                   recommendationservice-b4cf8f489-xwv49                 
 
 <details><summary>show</summary>
 <p>
+
+##### Solution
 
 ```bash
 clear
@@ -65,6 +69,8 @@ kube-system               cilium-ml27n                                          
 
 <details><summary>show</summary>
 <p>
+
+##### Prerequisites
 
 ```bash
 mkdir ~/ckad/
@@ -148,6 +154,8 @@ kubectl logs --since=1h log-pod
 <details><summary>show</summary>
 <p>
 
+##### Solution
+
 kubernetes.io: [Viewing, finding resources](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resources)
 
 ```bash
@@ -159,6 +167,8 @@ kubectl get events -A --sort-by=.metadata.creationTimestamp
 </details>
 
 #### 05-04. Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`. Create the namespace. Obtain the `hostIP` address using `JSONPath`.
+
+##### Prerequisites
 
 <details><summary>show</summary>
 <p>
@@ -176,6 +186,8 @@ kubectl get all
 
 <details><summary>show</summary>
 <p>
+
+##### Solution
 
 ```bash
 clear
@@ -227,6 +239,8 @@ scheduled.
 
 <details><summary>show</summary>
 <p>
+
+##### Solution
 
 Using either method to obtain the JSONPath construct the search query to hostIP.
 

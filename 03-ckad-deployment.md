@@ -11,6 +11,8 @@
 <details><summary>show</summary>
 <p>
 
+##### Prerequisites
+
 ```bash
 mkdir ~/ckad/
 clear
@@ -237,6 +239,8 @@ my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 
 <details><summary>show</summary>
 <p>
+
+##### Prerequisites
 
 ```bash
 clear

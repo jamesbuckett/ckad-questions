@@ -17,7 +17,7 @@
 Create a file called index.html
 
 ```bash
-mkdir ~/ckad
+mkdir ~/ckad/
 vi ~/ckad/index.html
 ```
 

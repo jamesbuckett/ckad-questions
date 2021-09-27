@@ -89,6 +89,8 @@ kubectl apply -f ~/ckad/04-01-netpol-zero-trust.yml
 <details><summary>show</summary>
 <p>
 
+##### Help Examples
+
 kubernetes.io: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
 
 Sample snippet:
@@ -135,6 +137,8 @@ spec:
 
 <details><summary>show</summary>
 <p>
+
+##### Solution
 
 kubernetes.io: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
 
@@ -197,6 +201,8 @@ kubectl create namespace service-namespace
 kubectl config set-context --current --namespace=service-namespace
 ```
 
+##### Help Examples
+
 ```bash
 clear
 kubectl run -h | more
@@ -246,6 +252,8 @@ kubectl get all
 <details><summary>show</summary>
 <p>
 
+##### Help Examples
+
 ```bash
 clear
 kubectl expose -h | more
@@ -294,6 +302,8 @@ kubectl get ep
 
 <details><summary>show</summary>
 <p>
+
+##### Solution
 
 kubernetes.io [The Ingress resource](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
 

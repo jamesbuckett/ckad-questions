@@ -100,6 +100,8 @@ kubectl create namespace quota-namespace
 kubectl config set-context --current --namespace=quota-namespace
 ```
 
+##### Help Examples
+
 ```bash
 clear
 kubectl create quota -h | more
@@ -120,6 +122,8 @@ Output
 
 <details><summary>show</summary>
 <p>
+
+##### Solution
 
 ```bash
 clear
@@ -197,6 +201,8 @@ kubectl config set-context --current --namespace=secret-namespace
 <details><summary>show</summary>
 <p>
 
+##### Help Examples
+
 Three types of secret:
 
 - generic
@@ -235,6 +241,8 @@ Examples:
 
 <details><summary>show</summary>
 <p>
+
+##### Solution
 
 ```bash
 clear

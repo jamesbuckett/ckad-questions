@@ -31,6 +31,8 @@ endpoints                          ep                                   v1      
 <details><summary>show</summary>
 <p>
 
+##### Solution
+
 ```bash
 clear
 kubectl api-resources --namespaced=true -o name | more
@@ -68,6 +70,8 @@ kubectl proxy &
 
 <details><summary>show</summary>
 <p>
+
+##### Solution
 
 ```bash
 clear
@@ -134,6 +138,8 @@ Output:
 
 <details><summary>show</summary>
 <p>
+
+##### Solution
 
 ```bash
 clear

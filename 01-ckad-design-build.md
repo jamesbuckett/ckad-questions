@@ -12,7 +12,7 @@
 <details><summary>show</summary>
 <p>
 
-##### Image Creation
+##### Docker Image Creation
 
 Create a file called index.html
 
@@ -53,7 +53,7 @@ docker build -t my-image:v0.1 .
 <details><summary>show</summary>
 <p>
 
-##### Container Operations
+##### Docker Container Operations
 
 kubernetes.io: [docker run](https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/)
 
@@ -162,6 +162,8 @@ kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>
 <details><summary>show</summary>
 <p>
 
+##### Solution
+
 kubernetes.io: [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
 ```bash
@@ -215,8 +217,9 @@ kubectl get pod --watch
 <details><summary>show</summary>
 <p>
 
+##### Solution
+
 ```bash
-mkdir ~/ckad/
 clear
 kubectl create namespace storage-namespace
 kubectl config set-context --current --namespace=storage-namespace
@@ -266,6 +269,8 @@ my-pv     5Gi        RWO            Retain           Available
 <details><summary>show</summary>
 <p>
 
+##### Solution
+
 kubernetes.io: [Create a PersistentVolumeClaim](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim)
 
 ```bash
@@ -309,6 +314,8 @@ my-pvc   Bound    my-pv    5Gi        RWO            manual         6s          
 
 <details><summary>show</summary>
 <p>
+
+##### Solution
 
 kubernetes.io: [Create a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-pod)
 

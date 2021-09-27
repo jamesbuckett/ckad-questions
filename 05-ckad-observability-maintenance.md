@@ -81,6 +81,8 @@ kubectl get all
 <details><summary>show</summary>
 <p>
 
+##### Help Examples
+
 ```bash
 clear
 kubectl logs -h | more
@@ -129,6 +131,8 @@ Examples:
 
 <details><summary>show</summary>
 <p>
+
+##### Solution
 
 ```bash
 clear
@@ -224,7 +228,7 @@ scheduled.
 <details><summary>show</summary>
 <p>
 
-Using either method to obtain the JSONPath constuct the search query to hostIP.
+Using either method to obtain the JSONPath construct the search query to hostIP.
 
 kubernetes.io:[JSONPath Support](https://kubernetes.io/docs/reference/kubectl/jsonpath/)
 

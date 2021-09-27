@@ -67,6 +67,7 @@ kube-system               cilium-ml27n                                          
 <p>
 
 ```bash
+mkdir ~/ckad/
 clear
 kubectl create namespace log-namespace
 kubectl run log-pod --image=nginx -n log-namespace
@@ -243,6 +244,7 @@ kubectl get pod json-pod -o jsonpath={.status.hostIP}
 <p>
 
 ```bash
+yes | rm -R ~/ckad/
 kubectl delete ns json-namespace --force
 kubectl delete ns log-namespace --force
 ```

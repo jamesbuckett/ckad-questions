@@ -1,4 +1,4 @@
-## Sample CKAD Observability and Maintenance - 15% - Questions and Answers
+## Sample CKAD Observability and Maintenance Q&A
 
 ### Application Observability and Maintenance – 15%
 
@@ -181,13 +181,9 @@ kubectl explain pod.status | more
 
 Output:
 
-````
+```
 KIND:     Pod
 VERSION:  v1
-
-```diff
-RESOURCE: status <Object>            ## First element: .status
-````
 
 RESOURCE: status <Object> ## First element: .status
 
@@ -215,15 +211,11 @@ Status for any ephemeral containers that have run in this pod. This field
 is alpha-level and is only populated by servers that enable the
 EphemeralContainers feature.
 
-```diff
-   hostIP       <string>               ## Second element: .status.hostIP
-```
-
 hostIP <string> ## Second element: .status.hostIP
 IP address of the host to which the pod is assigned. Empty if not yet
 scheduled.
 
-````
+```
 
 </p>
 </details>
@@ -237,7 +229,7 @@ kubernetes.io:[JSONPath Support](https://kubernetes.io/docs/reference/kubectl/js
 
 ```bash
 kubectl get pod json-pod -o jsonpath={.status.hostIP}
-````
+```
 
 </p>
 </details>

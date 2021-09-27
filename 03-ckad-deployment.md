@@ -24,6 +24,8 @@ clear
 kubectl config set-context --current --namespace=deployment-namespace
 ```
 
+##### Help Examples
+
 ```bash
 clear
 # Run the help flag to get examples
@@ -53,6 +55,8 @@ Examples:
 
 <details><summary>show</summary>
 <p>
+
+##### Solution
 
 ```bash
 clear
@@ -135,6 +139,8 @@ replicaset.apps/my-deployment-67fc8546   3         3         3       16m
 <details><summary>show</summary>
 <p>
 
+##### Help Examples
+
 ```bash
 clear
 # Run the help flag to get examples
@@ -176,6 +182,8 @@ port 8000
 
 <details><summary>show</summary>
 <p>
+
+##### Solution
 
 ```bash
 clear
@@ -243,6 +251,8 @@ kubectl config set-context --current --namespace=edit-namespace
 <details><summary>show</summary>
 <p>
 
+##### Solution
+
 ```bash
 kubectl edit deployment.apps/edit-deployment
 ```
@@ -307,6 +317,8 @@ This works but does not record what the change was.
 
 <details><summary>show</summary>
 <p>
+
+##### Solution
 
 kubernetes.io:[Updating a Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment)
 

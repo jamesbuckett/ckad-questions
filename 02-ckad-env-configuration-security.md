@@ -72,13 +72,16 @@ ipamconfigs.crd.projectcalico.org
 ipamhandles.crd.projectcalico.org
 ippools.crd.projectcalico.org
 kubecontrollersconfigurations.crd.projectcalico.org
-networkpolicies.crd.projectcalico.org        ## This is the Calico Resource Type that we want
+networkpolicies.crd.projectcalico.org ## This is the Calico Resource Type that we want
 networksets.crd.projectcalico.org
 
 ```
 
 ```bash
 clear
+# This is the command to get all Calico Network Policies
+# If you run this command it will return: "No resources found in storage-namespace namespace"
+# As we have not created any Calico Network Policies
 kubectl get networkpolicies.crd.projectcalico.org
 ```
 
@@ -138,15 +141,15 @@ In English
 ```bash
 clear
 # Try to run a Pod with resource requests exceeding the quota
-kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl set resources -f - --requests=cpu=1000m,memory=4Gi --limits=cpu=1000m,memory=4Gi --local -o yaml > 02-02.yml
-kubectl apply -f 02-02.yml
+kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl set resources -f - --requests=cpu=1000m,memory=4Gi --limits=cpu=1000m,memory=4Gi --local -o yaml > ~/ckad/02-02-exceed.yml
+kubectl apply -f ~/ckad/02-02-exceed.yml
 ```
 
 ```bash
 clear
 # Try to run a Pod with resource requests within the quota
-kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl set resources -f - --requests=cpu=250m,memory=1Gi --limits=cpu=250m,memory=1Gi --local -o yaml > 02-02.yml
-kubectl apply -f 02-02.yml
+kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl set resources -f - --requests=cpu=250m,memory=1Gi --limits=cpu=250m,memory=1Gi --local -o yaml > ~/ckad/02-02-succeed.yml
+kubectl apply -f ~/ckad/02-02-succeed.yml
 kubectl get all
 kubectl get quota
 ```

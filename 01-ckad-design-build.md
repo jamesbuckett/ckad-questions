@@ -7,7 +7,7 @@
 - Understand multi-container Pod design patterns (e.g. sidecar, init and others)
 - Utilize persistent and ephemeral volumes [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-design-build.md#01-03-create-a-namespace-called-storage-namespace-create-a-persistent-volume-called-my-pv-with-5gi-storage-using-hostpath-mntmy-host-create-a-persistent-volume-claim-called-my-pvc-with-2gi-storage-create-a-pod-called-storage-pod-using-the-nginx-image-mount-the-persistent-volume-claim-onto-my-mount-in-storage-pod)
 
-#### 01-01. Create a container from the attached Dockerfile and index.html. Name the image `my-image`. Name the container `my-container`. Run the container exposing port `8080` on the host and port `80` on the container. Stop the container. Delete the container.
+#### 01-01. Create a container from the attached Dockerfile and index.html. Name the image `my-image`. Run the container exposing port `8080` on the host and port `80` on the container. Name the container `my-container`. Stop the container. Delete the container.
 
 <details><summary>show</summary>
 <p>
@@ -17,6 +17,7 @@
 Create a file called index.html
 
 ```bash
+mkdir ~/ckad
 vi ~/ckad/index.html
 ```
 
@@ -53,6 +54,8 @@ docker build -t my-image:v0.1 .
 <p>
 
 ##### Container Operations
+
+kubernetes.io: [docker run](https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/)
 
 ```bash
 clear
@@ -190,12 +193,6 @@ spec:
   dnsPolicy: ClusterFirst
   restartPolicy: Always
 status: {}
-
-# vi edits
-# / - find
-# d$ - delete to end of line
-# :u - undo on any error
-# :wq - write and quit
 ```
 
 ```bash
@@ -236,17 +233,17 @@ vi ~/ckad/01-03-pv.yml
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: my-pv              # Change
+  name: my-pv ## Change
   labels:
     type: local
 spec:
   storageClassName: manual
   capacity:
-    storage: 5Gi           # Change
+    storage: 5Gi ## Change
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/my-host"   # Change
+    path: "/mnt/my-host" ## Change
 ```
 
 ```bash
@@ -280,14 +277,14 @@ vi ~/ckad/01-03-pvc.yml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: my-pvc          # Change
+  name: my-pvc ## Change
 spec:
   storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi      # Change
+      storage: 2Gi ## Change
 ```
 
 ```bash
@@ -324,12 +321,12 @@ vi  ~/ckad/01-03-pod.yml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: storage-pod                    # Change
+  name: storage-pod ## Change
 spec:
   volumes:
     - name: my-volume
       persistentVolumeClaim:
-        claimName: my-pvc              # Change
+        claimName: my-pvc ## Change
   containers:
     - name: my-container
       image: nginx
@@ -337,7 +334,7 @@ spec:
         - containerPort: 80
           name: "http-server"
       volumeMounts:
-        - mountPath: "/my-mount"       # Change
+        - mountPath: "/my-mount" ## Change
           name: my-volume
 
 ```

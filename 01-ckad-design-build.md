@@ -95,6 +95,8 @@ docker image rm my-image:v0.1
 <details><summary>show</summary>
 <p>
 
+##### Prerequisites
+
 ```bash
 clear
 # Create the namespace
@@ -106,6 +108,8 @@ clear
 # Switch context into the namespace so that all subsequent commands execute inside that namespace.
 kubectl config set-context --current --namespace=pod-namespace
 ```
+
+##### Help Examples
 
 ```bash
 clear
@@ -217,13 +221,15 @@ kubectl get pod --watch
 <details><summary>show</summary>
 <p>
 
-##### Solution
+##### Prerequisites
 
 ```bash
 clear
 kubectl create namespace storage-namespace
 kubectl config set-context --current --namespace=storage-namespace
 ```
+
+##### Solution
 
 kubernetes.io: [Create a PersistentVolume](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume)
 

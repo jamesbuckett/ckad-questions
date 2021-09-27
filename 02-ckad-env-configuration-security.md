@@ -51,6 +51,8 @@ tlscertificatedelegations.projectcontour.io           2021-09-24T05:26:16Z
 <details><summary>show</summary>
 <p>
 
+##### Solution
+
 ```bash
 clear
 kubectl api-resources -o name | grep calico
@@ -92,6 +94,8 @@ kubectl get networkpolicies.crd.projectcalico.org
 
 <details><summary>show</summary>
 <p>
+
+##### Prerequisites
 
 ```bash
 mkdir ~/ckad/
@@ -188,6 +192,8 @@ In English:
 
 <details><summary>show</summary>
 <p>
+
+##### Prerequisites
 
 ```bash
 clear

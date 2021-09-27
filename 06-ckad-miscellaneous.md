@@ -56,6 +56,8 @@ events
 <details><summary>show</summary>
 <p>
 
+##### Prerequisites
+
 ```bash
 clear
 # Use the kubectl proxy to provide credentials to connect to the API server

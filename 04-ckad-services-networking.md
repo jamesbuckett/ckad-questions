@@ -23,6 +23,8 @@ Rules
 <details><summary>show</summary>
 <p>
 
+##### Prerequisites
+
 ```bash
 mkdir ~/ckad/
 clear
@@ -59,6 +61,8 @@ kubectl exec web-pod -- curl -s db-service:80
 
 <details><summary>show</summary>
 <p>
+
+##### Prerequisites
 
 Deny all Ingress and Egress traffic
 
@@ -194,6 +198,8 @@ kubectl exec web-pod -- curl -s db-service:80
 <details><summary>show</summary>
 <p>
 
+##### Prerequisites
+
 ```bash
 mkdir ~/ckad/
 clear
@@ -239,6 +245,8 @@ Examples:
   # Start the nginx pod using a different command and custom arguments
   kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>
 ```
+
+##### Solution
 
 ```bash
 clear
@@ -287,6 +295,8 @@ port 8000
   # Create a service for an nginx deployment, which serves on port 80 and connects to the containers on port 8000
   kubectl expose deployment nginx --port=80 --target-port=8000
 ```
+
+##### Solution
 
 ```bash
 clear

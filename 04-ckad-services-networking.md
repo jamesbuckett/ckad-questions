@@ -24,6 +24,7 @@ Rules
 <p>
 
 ```bash
+mkdir ~/ckad/
 clear
 # Create all the required resources
 kubectl create namespace netpol-namespace
@@ -297,7 +298,7 @@ kubectl get ep
 kubernetes.io [The Ingress resource](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
 
 ```bash
-vi ~/ckad/q04-03-ing.yml
+vi ~/ckad/04-03-ing.yml
 ```
 
 ```bash
@@ -322,7 +323,7 @@ spec:
 
 ```bash
 clear
-kubectl apply -f ~/ckad/q04-02-ing.yml
+kubectl apply -f ~/ckad/04-03-ing.yml
 
 # Describe the ingress
 # This must be present to continue: Address: localhost
@@ -347,6 +348,7 @@ Events:       <none>
 ```
 
 ```bash
+clear
 # Verify that the NGINX page is rendering via the Ingress endpoint
 # If you have trouble with this reboot
 curl localhost

@@ -94,6 +94,7 @@ kubectl get networkpolicies.crd.projectcalico.org
 <p>
 
 ```bash
+mkdir ~/ckad/
 clear
 kubectl create namespace quota-namespace
 kubectl config set-context --current --namespace=quota-namespace
@@ -185,7 +186,6 @@ In English:
 <p>
 
 ```bash
-mkdir ~/ckad/
 clear
 kubectl create namespace secret-namespace
 kubectl config set-context --current --namespace=secret-namespace
@@ -221,7 +221,7 @@ Examples:
 --from-file=ssh-publickey=path/to/id_rsa.pub
 
   # Create a new secret named my-secret with key1=supersecret and key2=topsecret
-  kubectl create secret generic my-secret --from-literal=key1=supersecret --from-literal=key2=topsecret ### This example matches most closely to the question.
+  kubectl create secret generic my-secret --from-literal=key1=supersecret --from-literal=key2=topsecret ## This example matches most closely to the question.
 
   # Create a new secret named my-secret using a combination of a file and a literal
   kubectl create secret generic my-secret --from-file=ssh-privatekey=path/to/id_rsa --from-literal=passphrase=topsecret
@@ -260,8 +260,9 @@ metadata:
 ```bash
 clear
 # Apply the YAML file to the Kubernetes API server
-# The secret is availiable to all pods in the namespace
+# The secret is available to all pods in the namespace
 kubectl apply -f ~/ckad/02-03-secret.yml
+clear
 # Verify that the secret got created
 kubectl get secret my-secret
 kubectl describe secret my-secret

@@ -123,14 +123,13 @@ kubectl apply -f ~/ckad/04-01-netpol.yml
 ```bash
 clear
 # Test connectivity with Network Policy
-# This should work with the Network Policy: my-netpol
+# Remember on Docker Desktop this will work as NetworkPolicy's are not enforced
 kubectl exec web-pod -- curl -s app-service:80
 ```
 
 ```bash
 clear
 # Test connectivity with Network Policy
-# This should NOT work with the Network Policy: my-netpol
 # Remember on Docker Desktop this will work as NetworkPolicy's are not enforced
 kubectl exec web-pod -- curl -s db-service:80
 ```

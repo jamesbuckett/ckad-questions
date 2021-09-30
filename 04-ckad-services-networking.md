@@ -96,6 +96,8 @@ spec:
     - podSelector:
         matchLabels:
           tier: app ## Egress - Traffic to pod with label tier=app
+  policyTypes:
+  - Egress
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -110,6 +112,8 @@ spec:
     - podSelector:
         matchLabels:
           tier: web ## Ingress - Traffic from pod with label tier=web
+  policyTypes:
+  - Ingress
 ```
 
 ```bash

@@ -50,8 +50,13 @@ kubectl get pod -L tier
 
 ```bash
 clear
-# Test connectivity without  a Network Policy
+# Test connectivity without  a Network Policy to app-service
 kubectl exec web-pod -- curl -s app-service:80
+```
+
+```bash
+clear
+# Test connectivity without  a Network Policy to db-service
 kubectl exec web-pod -- curl -s db-service:80
 ```
 

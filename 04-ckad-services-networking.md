@@ -18,7 +18,6 @@ I use the notepad to sketch out the ingress and egress before starting
 Rules
 
 - `tier: web` > `tier: app` on port 80
-- `tier: app` > `tier: db` on port 80
 
 <details><summary>show</summary>
 <p>

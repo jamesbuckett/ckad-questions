@@ -78,10 +78,10 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      tier: web ## Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=web
+      tier: web ## Change - Which pod does this Network Policy Apply to:  tier=web 
   policyTypes:
   - Egress
-  egress: ## Egress - Traffic outwards from pod with label tier=web
+  egress: ## Egress - Traffic outwards to pod with label tier=app
   - to:
     - podSelector:
         matchLabels:
@@ -97,10 +97,10 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      tier: app ## Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=web
+      tier: app ## Change - Which pod does this Network Policy Apply to:  tier=app
   policyTypes:
   - Ingress
-  ingress: ## Egress - Traffic outwards from pod with label tier=web
+  ingress: ## Ingress - Traffic inwards from pod with label tier=web
   - from:
     - podSelector:
         matchLabels:

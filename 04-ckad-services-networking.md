@@ -71,6 +71,15 @@ vi ~/ckad/04-01-netpol.yml
 ```
 
 ```bash
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: default-deny-all
+  namespace: default
+spec:
+  podSelector: {}
+  ingress: []
+---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -79,16 +88,11 @@ spec:
   podSelector:
     matchLabels:
       tier: web ## Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=web
-  policyTypes:
-  - Egress
-  egress: ## Egress - Traffic outwards from pod with label tier=web
+  egress:
   - to:
     - podSelector:
         matchLabels:
-          tier: "app"
-    ports:
-    - protocol: TCP
-      port: 80
+          tier: app ## Egress - Traffic to pod with label tier=app
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -97,17 +101,12 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      tier: app ## Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=web
-  policyTypes:
-  - Ingress
-  ingress: ## Egress - Traffic outwards from pod with label tier=web
+      tier: app ## Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=app
+  ingress:
   - from:
     - podSelector:
         matchLabels:
-          tier: "web"
-    ports:
-    - protocol: TCP
-      port: 80      
+          tier: web ## Ingress - Traffic from pod with label tier=web
 ```
 
 ```bash

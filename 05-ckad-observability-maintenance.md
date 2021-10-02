@@ -202,7 +202,7 @@ Output:
 KIND:     Pod
 VERSION:  v1
 
-RESOURCE: status <Object> ## First element: .status
+RESOURCE: status <Object> ##### First element: .status
 
 DESCRIPTION:
 Most recently observed status of the pod. This data may not be up to date.
@@ -228,7 +228,7 @@ Status for any ephemeral containers that have run in this pod. This field
 is alpha-level and is only populated by servers that enable the
 EphemeralContainers feature.
 
-hostIP <string> ## Second element: .status.hostIP
+hostIP <string> ##### Second element: .status.hostIP
 IP address of the host to which the pod is assigned. Empty if not yet
 scheduled.
 

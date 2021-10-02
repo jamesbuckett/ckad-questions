@@ -8,10 +8,11 @@
 
 #### 04-01. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `app-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=app`. Create a pod called `db-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=db`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only egress to `app-pod` on port `80`.
 
+```diff
 Please NOTE:
-
 - Docker Desktop does not support CNI (container network interface) so the NetworkPolicy's define are ignored.
 - The commands work but the NetworkPolicy's are not enforced
+```
 
 I use the notepad to sketch out the ingress and egress before starting
 

@@ -83,6 +83,20 @@ curl https://docs.projectcalico.org/manifests/calico.yaml | kubectl apply -f -
 </p>
 </details>
 
+### Optional software for Docker desktop
+
+<details><summary>show</summary>
+<p>
+
+#### Octant
+
+* Consider installing Octant to visualize Kubernetes Resource Types.
+* Installation instructions for Octant can be found [here](https://octant.dev/)
+* Or just use mine at octant.jamesbuckett.com
+
+</p>
+</details>
+
 ## Logistics
 
 - The current version of Kubernetes in the CKAD exam can be found [here](https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks#what-application-version-is-running-in-the-exam-environment).

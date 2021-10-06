@@ -370,6 +370,77 @@ Output:
 </p>
 </details>
 
+#### 01-04. Create a namespace called `ram-namespace`. Create a pod called `ram-pod` using `nginx` image. Create an emptyDir volume called `ram-emptydir`. The emptyDir must use a RAM-backed filesystem. Mount the mount path at `/tmpfs`
+
+<details><summary>show</summary>
+<p>
+
+##### Prerequisites
+
+```bash
+clear
+kubectl create namespace ram-namespace
+kubectl config set-context --current --namespace=ram-namespace
+```
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+##### Solution
+
+kubernetes.io: [emptyDir](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir) 
+
+
+```bash
+clear
+kubectl run ram-pod --image=nginx --dry-run=client -o yaml > ~/ckad/01-04.yml
+```
+
+```bash
+clear
+# Edit the YAML file to make required changes
+# Use the Question number in case you want to return to the question for reference or for review
+vi ~/ckad/01-04.yml
+```
+
+```bash
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: ram-pod
+  name: ram-pod
+spec:
+  containers:
+  - image: nginx
+    name: ram-pod
+    resources: {}
+    volumeMounts:
+    - mountPath: /demo
+      name: ram-emptydir
+  volumes:
+  - name: ram-emptydir
+    emptyDir:
+      medium: Memory     
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+```
+
+```bash
+clear
+# Apply the YAML file to the Kubernetes API server
+kubectl apply -f ~/ckad/01-04.yml
+```
+
+</p>
+</details>
+
+
 #### Clean Up
 
 <details><summary>show</summary>
@@ -379,6 +450,7 @@ Output:
 yes | rm -R ~/ckad/
 kubectl delete ns storage-namespace --force
 kubectl delete ns pod-namespace --force
+kubectl delete ns ram-namespace --force
 kubectl delete pv my-pv
 ```
 

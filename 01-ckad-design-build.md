@@ -420,7 +420,7 @@ spec:
     name: ram-pod
     resources: {}
     volumeMounts:
-    - mountPath: /demo
+    - mountPath: /tmpfs
       name: ram-emptydir
   volumes:
   - name: ram-emptydir

@@ -141,7 +141,7 @@ kubectl run hazelcast --image=hazelcast/hazelcast --labels="app=hazelcast,env=pr
 
 # Dry run; print the corresponding API objects without creating them
 
-kubectl run nginx --image=nginx --dry-run=client ### This example matches most closely to the question.
+kubectl run nginx --image=nginx --dry-run=client 👈👈👈 This example matches most closely to the question.
 
 # Start a nginx pod, but overload the spec with a partial set of values parsed from JSON
 
@@ -194,7 +194,7 @@ metadata:
 spec:
   containers:
   - image: nginx
-    name: container-1 # Change from pod-1 to container-1
+    name: container-1 #👈👈👈 Change from pod-1 to container-1
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Always
@@ -242,17 +242,17 @@ vi ~/ckad/01-03-pv.yml
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: my-pv ## Change
+  name: my-pv #👈👈👈 Change
   labels:
     type: local
 spec:
   storageClassName: manual
   capacity:
-    storage: 5Gi ## Change
+    storage: 5Gi #👈👈👈 Change
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/my-host" ## Change
+    path: "/mnt/my-host" #👈👈👈 Change
 ```
 
 ```bash
@@ -288,14 +288,14 @@ vi ~/ckad/01-03-pvc.yml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: my-pvc ## Change
+  name: my-pvc #👈👈👈 Change
 spec:
   storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi ## Change
+      storage: 2Gi #👈👈👈 Change
 ```
 
 ```bash
@@ -334,12 +334,12 @@ vi  ~/ckad/01-03-pod.yml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: storage-pod ## Change
+  name: storage-pod #👈👈👈 Change
 spec:
   volumes:
     - name: my-volume
       persistentVolumeClaim:
-        claimName: my-pvc ## Change
+        claimName: my-pvc #👈👈👈 Change
   containers:
     - name: my-container
       image: nginx
@@ -347,7 +347,7 @@ spec:
         - containerPort: 80
           name: "http-server"
       volumeMounts:
-        - mountPath: "/my-mount" ## Change
+        - mountPath: "/my-mount" #👈👈👈 Change
           name: my-volume
 
 ```

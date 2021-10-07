@@ -87,32 +87,32 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: web-netpol ## Change
+  name: web-netpol #👈👈👈 Change
 spec:
   podSelector:
     matchLabels:
-      tier: web ## Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=web
+      tier: web #👈👈👈 Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=web
   egress:
   - to:
     - podSelector:
         matchLabels:
-          tier: app ## Egress - Traffic to pod with label tier=app
+          tier: app #👈👈👈 Egress - Traffic to pod with label tier=app
   policyTypes:
   - Egress
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: app-netpol ## Change
+  name: app-netpol #👈👈👈 Change
 spec:
   podSelector:
     matchLabels:
-      tier: app ## Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=app
+      tier: app #👈👈👈 Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=app
   ingress:
   - from:
     - podSelector:
         matchLabels:
-          tier: web ## Ingress - Traffic from pod with label tier=web
+          tier: web #👈👈👈 Ingress - Traffic from pod with label tier=web
   policyTypes:
   - Ingress
 ```
@@ -167,13 +167,13 @@ Examples:
   kubectl run nginx --image=nginx
 
   # Start a hazelcast pod and let the container expose port 5701
-  kubectl run hazelcast --image=hazelcast/hazelcast --port=5701 ### This example matches most closely to the question.
+  kubectl run hazelcast --image=hazelcast/hazelcast --port=5701 👈👈👈 This example matches most closely to the question.
 
   # Start a hazelcast pod and set environment variables "DNS_DOMAIN=cluster" and "POD_NAMESPACE=default" in the container
   kubectl run hazelcast --image=hazelcast/hazelcast --env="DNS_DOMAIN=cluster" --env="POD_NAMESPACE=default"
 
   # Start a hazelcast pod and set labels "app=hazelcast" and "env=prod" in the container
-  kubectl run hazelcast --image=hazelcast/hazelcast --labels="app=hazelcast,env=prod" ### This example matches most closely to the question.
+  kubectl run hazelcast --image=hazelcast/hazelcast --labels="app=hazelcast,env=prod" 👈👈👈 This example matches most closely to the question.
 
   # Dry run; print the corresponding API objects without creating them
   kubectl run nginx --image=nginx --dry-run=client
@@ -224,7 +224,7 @@ which serves on port 80 and connects to the containers on port 8000
   kubectl expose -f nginx-controller.yaml --port=80 --target-port=8000
 
   # Create a service for a pod valid-pod, which serves on port 444 with the name "frontend"
-  kubectl expose pod valid-pod --port=444 --name=frontend  ### This example matches most closely to the question.
+  kubectl expose pod valid-pod --port=444 --name=frontend  👈👈👈 This example matches most closely to the question.
 
   # Create a second service based on the above service, exposing the container port 8443 as port 443 with the name
 "nginx-https"
@@ -235,7 +235,7 @@ which serves on port 80 and connects to the containers on port 8000
 
   # Create a service for a replicated nginx using replica set, which serves on port 80 and connects to the containers on
 port 8000
-  kubectl expose rs nginx --port=80 --target-port=8000 ### This example matches most closely to the question.
+  kubectl expose rs nginx --port=80 --target-port=8000 👈👈👈 This example matches most closely to the question.
 
   # Create a service for an nginx deployment, which serves on port 80 and connects to the containers on port 8000
   kubectl expose deployment nginx --port=80 --target-port=8000
@@ -270,20 +270,20 @@ vi ~/ckad/04-03-ing.yml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: my-ingress ## Change
+  name: my-ingress #👈👈👈 Change
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - http:
       paths:
-      - path: / ## Change
+      - path: / #👈👈👈 Change
         pathType: Prefix
         backend:
           service:
-            name: my-service ## Change
+            name: my-service #👈👈👈 Change
             port:
-              number: 8080 ## Change
+              number: 8080 #👈👈👈 Change
 ```
 
 ```bash

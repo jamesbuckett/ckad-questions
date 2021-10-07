@@ -46,10 +46,10 @@ Examples:
   kubectl create deployment my-dep --image=busybox -- date
 
   # Create a deployment named my-dep that runs the nginx image with 3 replicas
-  kubectl create deployment my-dep --image=nginx --replicas=3 ## This example matches most closely to the question.
+  kubectl create deployment my-dep --image=nginx --replicas=3 👈👈👈 This example matches most closely to the question.
 
   # Create a deployment named my-dep that runs the busybox image and expose port 5701
-  kubectl create deployment my-dep --image=busybox --port=5701
+  kubectl create deployment my-dep --image=busybox --port=5701 👈👈👈 This example matches most closely to the question.
 ```
 
 </p>
@@ -97,12 +97,12 @@ spec:
       - image: nginx
         ports:
         - containerPort: 80
-        name: my-container  # Change from nginx to my container
-        resources:          # From Meaning of memory link above
-          requests:         # From Meaning of memory link above
-            memory: "25Mi"  # From Meaning of memory link above
-          limits:           # From Meaning of memory link above
-            memory: "100Mi" # From Meaning of memory link above
+        name: my-container  #👈👈👈 Change from nginx to my container
+        resources:          #👈👈👈 From Meaning of memory link above
+          requests:         #👈👈👈 From Meaning of memory link above
+            memory: "25Mi"  #👈👈👈 From Meaning of memory link above
+          limits:           #👈👈👈 From Meaning of memory link above
+            memory: "100Mi" #👈👈👈 From Meaning of memory link above
 status: {}
 ```
 
@@ -175,7 +175,7 @@ port 8000
   kubectl expose rs nginx --port=80 --target-port=8000
 
   # Create a service for an nginx deployment, which serves on port 80 and connects to the containers on port 8000
-  kubectl expose deployment nginx --port=80 --target-port=8000 ## This example matches most closely to the question.
+  kubectl expose deployment nginx --port=80 --target-port=8000 👈👈👈 This example matches most closely to the question.
 
 ```
 
@@ -298,9 +298,9 @@ spec:
         app: edit-deployment
     spec:
       containers:
-      - image: redis ## Change this to nginx
+      - image: redis #👈👈👈 Change this to nginx
         imagePullPolicy: Always
-        name: redis ## This is the catch, when you created the deployment it used the image=redis to also name the container redis
+        name: redis #👈👈👈 This is the catch, when you created the deployment it used the image=redis to also name the container redis
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File

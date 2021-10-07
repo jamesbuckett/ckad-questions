@@ -74,7 +74,7 @@ ipamconfigs.crd.projectcalico.org
 ipamhandles.crd.projectcalico.org
 ippools.crd.projectcalico.org
 kubecontrollersconfigurations.crd.projectcalico.org
-networkpolicies.crd.projectcalico.org ## This is the Calico Resource Type that we want
+networkpolicies.crd.projectcalico.org 👈👈👈 This is the Calico Resource Type that we want
 networksets.crd.projectcalico.org
 
 ```
@@ -115,7 +115,7 @@ Output
 
 ```
   # Create a new resource quota named my-quota
-  kubectl create quota my-quota --hard=cpu=1,memory=1G,pods=2,services=3,replicationcontrollers=2,resourcequotas=1,secrets=5,persistentvolumeclaims=10 ### This example matches most closely to the question.
+  kubectl create quota my-quota --hard=cpu=1,memory=1G,pods=2,services=3,replicationcontrollers=2,resourcequotas=1,secrets=5,persistentvolumeclaims=10 👈👈👈 This example matches most closely to the question.
 
   # Create a new resource quota named best-effort
   kubectl create quota best-effort --hard=pods=100 --scopes=BestEffort
@@ -233,7 +233,7 @@ Examples:
 --from-file=ssh-publickey=path/to/id_rsa.pub
 
   # Create a new secret named my-secret with key1=supersecret and key2=topsecret
-  kubectl create secret generic my-secret --from-literal=key1=supersecret --from-literal=key2=topsecret ## This example matches most closely to the question.
+  kubectl create secret generic my-secret --from-literal=key1=supersecret --from-literal=key2=topsecret 👈👈👈 This example matches most closely to the question.
 
   # Create a new secret named my-secret using a combination of a file and a literal
   kubectl create secret generic my-secret --from-file=ssh-privatekey=path/to/id_rsa --from-literal=passphrase=topsecret
@@ -264,7 +264,7 @@ apiVersion: v1
 data:
   password: MTIzNDU2
   user: Ym9i
-immutable: true   # From Immutable Secrets link above
+immutable: true   #👈👈👈 From Immutable Secrets link above
 kind: Secret
 metadata:
   creationTimestamp: null
@@ -304,17 +304,17 @@ spec:
   containers:
   - image: nginx
     name: secret-pod
-    env:                             # From Using Secrets as environment variables link above
-      - name: SECRET-ENV-USER        # From Using Secrets as environment variables link above
-        valueFrom:                   # From Using Secrets as environment variables link above
-          secretKeyRef:              # From Using Secrets as environment variables link above
-            name: my-secret          # From Using Secrets as environment variables link above
-            key: user                # From Using Secrets as environment variables link above
-      - name: SECRET-ENV-PASSWORD    # From Using Secrets as environment variables link above
-        valueFrom:                   # From Using Secrets as environment variables link above
-          secretKeyRef:              # From Using Secrets as environment variables link above
-            name: my-secret          # From Using Secrets as environment variables link above
-            key: password            # From Using Secrets as environment variables link above
+    env:                             #👈👈👈 From Using Secrets as environment variables link above
+      - name: SECRET-ENV-USER        #👈👈👈 From Using Secrets as environment variables link above
+        valueFrom:                   #👈👈👈 From Using Secrets as environment variables link above
+          secretKeyRef:              #👈👈👈 From Using Secrets as environment variables link above
+            name: my-secret          #👈👈👈 From Using Secrets as environment variables link above
+            key: user                #👈👈👈 From Using Secrets as environment variables link above
+      - name: SECRET-ENV-PASSWORD    #👈👈👈 From Using Secrets as environment variables link above
+        valueFrom:                   #👈👈👈 From Using Secrets as environment variables link above
+          secretKeyRef:              #👈👈👈 From Using Secrets as environment variables link above
+            name: my-secret          #👈👈👈 From Using Secrets as environment variables link above
+            key: password            #👈👈👈 From Using Secrets as environment variables link above
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Never

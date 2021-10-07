@@ -26,7 +26,7 @@ Output:
 
 ```
 NAMESPACE                 NAME                                                    CPU(cores)   MEMORY(bytes)
-default                   falco-pxf8g                                             51m          55Mi
+default                   falco-pxf8g                                             51m 👈👈👈   55Mi
 ns-loki                   loki-release-prometheus-server-6d4f4df478-9z2f8         38m          356Mi
 ns-demo                   adservice-68444cb46c-jvc86                              23m          202Mi
 ns-loki                   loki-release-promtail-prvvn                             13m          34Mi
@@ -53,7 +53,7 @@ Output:
 
 ```
 NAMESPACE                 NAME                                                    CPU(cores)   MEMORY(bytes)
-ns-loki                   loki-release-prometheus-server-6d4f4df478-9z2f8         11m          356Mi
+ns-loki                   loki-release-prometheus-server-6d4f4df478-9z2f8         11m          356Mi 👈👈👈
 ns-demo                   adservice-68444cb46c-jvc86                              20m          202Mi
 kube-system               cilium-gcnbl                                            6m           165Mi
 kube-system               cilium-htrth                                            18m          163Mi
@@ -120,7 +120,7 @@ Examples:
   kubectl logs --tail=20 nginx
 
   # Show all logs from pod nginx written in the last hour
-  kubectl logs --since=1h nginx
+  kubectl logs --since=1h nginx 👈👈👈 This example matches most closely to the question: for the `last hour`
 
   # Show logs from a kubelet with an expired serving certificate
   kubectl logs --insecure-skip-tls-verify-backend nginx
@@ -202,7 +202,7 @@ Output:
 KIND:     Pod
 VERSION:  v1
 
-RESOURCE: status <Object> ##### First element: .status
+RESOURCE: status <Object> 👈👈👈 First element: =.status
 
 DESCRIPTION:
 Most recently observed status of the pod. This data may not be up to date.
@@ -228,7 +228,7 @@ Status for any ephemeral containers that have run in this pod. This field
 is alpha-level and is only populated by servers that enable the
 EphemeralContainers feature.
 
-hostIP <string> ##### Second element: .status.hostIP
+hostIP <string> 👈👈👈 Second element: =.status.hostIP
 IP address of the host to which the pod is assigned. Empty if not yet
 scheduled.
 

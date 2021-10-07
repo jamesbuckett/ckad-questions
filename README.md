@@ -90,9 +90,10 @@ curl https://docs.projectcalico.org/manifests/calico.yaml | kubectl apply -f -
 
 #### Octant
 
-* Consider installing Octant to visualize Kubernetes Resource Types.
+* Consider installing Octant to visualize Kubernetes Resource Types
+* This will help you understand the interaction and relationships between Kubernetes Resource types
 * Installation instructions for Octant can be found [here](https://octant.dev/)
-* Or just use mine at octant.jamesbuckett.com
+  * Or just use mine at [octant.jamesbuckett.com](http://octant.jamesbuckett.com/)
 
 </p>
 </details>
@@ -100,7 +101,7 @@ curl https://docs.projectcalico.org/manifests/calico.yaml | kubectl apply -f -
 ## Logistics
 
 - The current version of Kubernetes in the CKAD exam can be found [here](https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks#what-application-version-is-running-in-the-exam-environment).
-- This has been tested on Docker Desktop v4.0.1.
+- This has been tested on Docker Desktop v4.1.0.
 - To remove all the resources that get created run the commands in the Clean Up section.
 
 _End of Section_

@@ -46,10 +46,10 @@ Examples:
   kubectl create deployment my-dep --image=busybox -- date
 
   # Create a deployment named my-dep that runs the nginx image with 3 replicas
-  kubectl create deployment my-dep --image=nginx --replicas=3 👈👈👈 This example matches most closely to the question.
+  kubectl create deployment my-dep --image=nginx --replicas=3 👈👈👈 This example matches most closely to the question: `three` replicas
 
   # Create a deployment named my-dep that runs the busybox image and expose port 5701
-  kubectl create deployment my-dep --image=busybox --port=5701 👈👈👈 This example matches most closely to the question.
+  kubectl create deployment my-dep --image=busybox --port=5701 👈👈👈 This example matches most closely to the question: `port 80`
 ```
 
 </p>

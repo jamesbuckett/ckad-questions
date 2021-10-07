@@ -141,7 +141,7 @@ kubectl run hazelcast --image=hazelcast/hazelcast --labels="app=hazelcast,env=pr
 
 # Dry run; print the corresponding API objects without creating them
 
-kubectl run nginx --image=nginx --dry-run=client 👈👈👈 This example matches most closely to the question.
+kubectl run nginx --image=nginx --dry-run=client 👈👈👈 This example matches most closely to the question. Just needs an output file.
 
 # Start a nginx pod, but overload the spec with a partial set of values parsed from JSON
 
@@ -425,7 +425,7 @@ spec:
   volumes:
   - name: ram-emptydir
     emptyDir:
-      medium: Memory     
+      medium: Memory #👈👈👈 This is the sauce
   dnsPolicy: ClusterFirst
   restartPolicy: Always
 status: {}

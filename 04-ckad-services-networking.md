@@ -167,13 +167,13 @@ Examples:
   kubectl run nginx --image=nginx
 
   # Start a hazelcast pod and let the container expose port 5701
-  kubectl run hazelcast --image=hazelcast/hazelcast --port=5701 👈👈👈 This example matches most closely to the question.
+  kubectl run hazelcast --image=hazelcast/hazelcast --port=5701 👈👈👈 This example matches most closely to the question: exposing port `80`
 
   # Start a hazelcast pod and set environment variables "DNS_DOMAIN=cluster" and "POD_NAMESPACE=default" in the container
   kubectl run hazelcast --image=hazelcast/hazelcast --env="DNS_DOMAIN=cluster" --env="POD_NAMESPACE=default"
 
   # Start a hazelcast pod and set labels "app=hazelcast" and "env=prod" in the container
-  kubectl run hazelcast --image=hazelcast/hazelcast --labels="app=hazelcast,env=prod" 👈👈👈 This example matches most closely to the question.
+  kubectl run hazelcast --image=hazelcast/hazelcast --labels="app=hazelcast,env=prod" 👈👈👈 This example matches most closely to the question: Label the pod `tier=web`
 
   # Dry run; print the corresponding API objects without creating them
   kubectl run nginx --image=nginx --dry-run=client
@@ -224,7 +224,7 @@ which serves on port 80 and connects to the containers on port 8000
   kubectl expose -f nginx-controller.yaml --port=80 --target-port=8000
 
   # Create a service for a pod valid-pod, which serves on port 444 with the name "frontend"
-  kubectl expose pod valid-pod --port=444 --name=frontend  👈👈👈 This example matches most closely to the question.
+  kubectl expose pod valid-pod --port=444 --name=frontend  👈👈👈 This example matches most closely to the question: pod called `my-service`
 
   # Create a second service based on the above service, exposing the container port 8443 as port 443 with the name
 "nginx-https"
@@ -235,7 +235,7 @@ which serves on port 80 and connects to the containers on port 8000
 
   # Create a service for a replicated nginx using replica set, which serves on port 80 and connects to the containers on
 port 8000
-  kubectl expose rs nginx --port=80 --target-port=8000 👈👈👈 This example matches most closely to the question.
+  kubectl expose rs nginx --port=80 --target-port=8000 👈👈👈 This example matches most closely to the question: service expose port 8080
 
   # Create a service for an nginx deployment, which serves on port 80 and connects to the containers on port 8000
   kubectl expose deployment nginx --port=80 --target-port=8000
@@ -270,7 +270,7 @@ vi ~/ckad/04-03-ing.yml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: my-ingress #👈👈👈 Change
+  name: my-ingress #👈👈👈 Change: `my-ingress`
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
@@ -281,9 +281,9 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: my-service #👈👈👈 Change
+            name: my-service #👈👈👈 Change: `my-service`
             port:
-              number: 8080 #👈👈👈 Change
+              number: 8080 #👈👈👈 Change: --port=8080
 ```
 
 ```bash

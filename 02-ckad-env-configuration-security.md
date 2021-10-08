@@ -79,6 +79,7 @@ networksets.crd.projectcalico.org
 ```
 
 ```bash
+kubectl config set-context --current --namespace=default
 cat << EOF | kubectl apply -f -
 apiVersion: projectcalico.org/v3
 kind: NetworkPolicy

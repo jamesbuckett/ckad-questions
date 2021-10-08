@@ -79,8 +79,8 @@ kubectl proxy &
 clear
 # List all available API groups from the API server
 
-# /api is called the core API's
-# /apis is called the named API's - going forward new features will be made available under this API
+# /api is called the core API's #👈👈👈
+# /apis is called the named API's - going forward new features will be made available under this API #👈👈👈
 
 curl http://localhost:8001 | more
 ```

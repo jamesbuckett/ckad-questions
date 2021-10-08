@@ -448,6 +448,7 @@ kubectl apply -f ~/ckad/02-04.yml
 yes | rm -R ~/ckad/
 kubectl delete ns secret-namespace --force
 kubectl delete ns quota-namespace --force
+kubectl delete ns serviceaccount-namespace --force
 ```
 
 </p>

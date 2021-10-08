@@ -137,15 +137,18 @@ kubectl get quota
 
 Output:
 
-```
+```bash
 NAME       AGE    REQUEST                      LIMIT
 my-quota   118s   cpu: 0/500Mi, memory: 0/2G
 ```
 
-In English
+In English:
 
-- REQUEST = Minimum (Request)
-- LIMIT = Maximum (Limits)
+| Value      | Translation |
+| ----------- | ----------- |
+| REQUEST      | Minimum (Request)      |
+| LIMIT   | Maximum (Limits)        |
+
 
 ```bash
 clear
@@ -165,7 +168,7 @@ kubectl get quota
 
 Output:
 
-```
+```bash
 NAME       AGE   REQUEST                           LIMIT
 my-quota   19m   cpu: 250m/500Mi, memory: 1Gi/2G
 ```

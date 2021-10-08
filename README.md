@@ -31,7 +31,7 @@
 
 ### Prerequisite software for Docker desktop
 
-Please install these three software components, required to answer questions in later sections:
+Please install these software components, required to answer questions in later sections:
 
 <details><summary>show</summary>
 <p>
@@ -82,6 +82,23 @@ curl https://docs.projectcalico.org/manifests/calico.yaml | kubectl apply -f -
 
 </p>
 </details>
+
+<details><summary>show</summary>
+<p>
+
+### Helm
+
+Please install the [Helm](https://helm.sh/docs/) with the following command:
+
+```bash
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+```
+
+</p>
+</details>
+
 
 ### Optional software for Docker desktop
 

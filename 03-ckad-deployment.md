@@ -356,6 +356,29 @@ kubectl create namespace wordpress-namespace
 kubectl config set-context --current --namespace=wordpress-namespace
 ```
 
+```bash
+cat << EOF | kubectl apply -f -
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wp-ingress 
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: / 
+        pathType: Prefix
+        backend:
+          service:
+            name: my-wp-release-wordpress 
+            port:
+              number: 80
+EOF              
+```
+
+
 </p>
 </details>
 
@@ -544,6 +567,9 @@ curl localhost:80
 # Delete WordPress with Helm
 helm delete my-wp-release --purge
 ```
+
+</p>
+</details>
 
 #### Clean Up
 

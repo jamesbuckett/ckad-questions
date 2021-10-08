@@ -7,7 +7,7 @@
 - Understanding and defining resource requirements, limits and quotas [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/02-ckad-env-configuration-security.md#02-02-create-a-namespace-called-quota-namespace-create-a-resource-quota-for-this-namespace-called-my-quota-set-a-memory-reservation-of-2gi-set-a-cpu-reservation-of-500mi)
 - Understand ConfigMaps
 - Create & consume Secrets [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/02-ckad-env-configuration-security.md#02-02-create-a-namespace-called-quota-namespace-create-a-resource-quota-for-this-namespace-called-my-quota-set-a-memory-reservation-of-2gi-set-a-cpu-reservation-of-500mi)
-- Understand ServiceAccounts
+- Understand ServiceAccounts [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/02-ckad-env-configuration-security.md#02-04-create-a-namespace-called-serviceaccount-namespace-create-a-pod-called-serviceaccount-pod-using-nginx-image-create-a-seviceaccount-called-my-serviceaccount-update-the-pod-to-use-the-new-serviceaccount-display-the-token-for-the-new-serviceaccount)
 - Understand SecurityContexts
 
 #### 02-01. List all the Custom Resource Definitions installed in a cluster. Calico is a CRD. List out how to obtain the correct resource name to query a Calico Network Policy and not the default Kubernetes Network Policy.

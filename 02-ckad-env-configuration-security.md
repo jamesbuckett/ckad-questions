@@ -383,7 +383,7 @@ kubectl config set-context --current --namespace=serviceaccount-namespace
 <details><summary>show</summary>
 <p>
 
-##### Solution
+##### Solution: Create the serviceAccount and display the token
 
 ```bash
 clear
@@ -395,7 +395,27 @@ kubectl create sa my-serviceaccount
 # Get the corresponding secret created for the new serviceAccount
 clear
 kubectl get secret 
-kubectl describe secret
+```
+
+```bash
+# Get the token out of the secret
+clear
+kubectl describe secret my-serviceaccount-token-***** #👈👈👈 Replace ***** with your values
+```
+
+Output:
+```bash
+
+```
+
+<details><summary>show</summary>
+<p>
+
+##### Solution: Create the pod and update the pod to use the new serviceAccount
+
+```bash
+# Create the pod declaratively
+kubectl run serviceaccount-pod --image=nginx --dry-run=client -o yaml > ~/ckad/02-04.yml
 ```
 
 ```bash
@@ -429,15 +449,13 @@ status: {}
 kubectl apply -f ~/ckad/02-04.yml
 ```
 
-
-
-
+```bash
+# Check your work
+kubectl apply -f ~/ckad/02-04.yml
+```
 
 </p>
 </details>
-
-
-
 
 #### Clean Up
 

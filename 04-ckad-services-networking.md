@@ -246,7 +246,9 @@ port 8000
 ```bash
 clear
 kubectl expose pod service-pod --port=8080 --target-port=80 --name=my-service
-kubectl get all
+
+kubect get pod -o wide
+kubectl get service
 kubectl get ep
 ```
 

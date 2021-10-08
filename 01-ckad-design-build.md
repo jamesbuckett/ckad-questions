@@ -45,6 +45,7 @@ cd ~/ckad/
 clear
 # Build the docker image
 docker build -t my-image:v0.1 .
+docker images
 ```
 
 </p>
@@ -435,6 +436,9 @@ status: {}
 clear
 # Apply the YAML file to the Kubernetes API server
 kubectl apply -f ~/ckad/01-04.yml
+# Verify that the volume is mounted
+# Or just kubectl describe pod storage-pod
+kubectl describe pod ram-pod | grep -i Mounts -A1
 ```
 
 </p>
@@ -447,6 +451,7 @@ kubectl apply -f ~/ckad/01-04.yml
 <p>
 
 ```bash
+cd
 yes | rm -R ~/ckad/
 kubectl delete ns storage-namespace --force
 kubectl delete ns pod-namespace --force

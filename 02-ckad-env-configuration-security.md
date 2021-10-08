@@ -60,7 +60,7 @@ kubectl api-resources -o name | grep calico
 
 Output:
 
-```
+```bash
 bgpconfigurations.crd.projectcalico.org
 bgppeers.crd.projectcalico.org
 blockaffinities.crd.projectcalico.org
@@ -76,8 +76,37 @@ ippools.crd.projectcalico.org
 kubecontrollersconfigurations.crd.projectcalico.org
 networkpolicies.crd.projectcalico.org 👈👈👈 This is the Calico Resource Type that we want
 networksets.crd.projectcalico.org
-
 ```
+
+```bash
+cat << EOF | kubectl apply -f -
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+metadata:
+  name: allow-tcp-6379
+  namespace: default
+spec:
+  selector: role == 'database'
+  types:
+  - Ingress
+  - Egress
+  ingress:
+  - action: Allow
+    metadata:
+      annotations:
+        from: frontend
+        to: database
+    protocol: TCP
+    source:
+      selector: role == 'frontend'
+    destination:
+      ports:
+      - 6379
+  egress:
+  - action: Allow
+EOF      
+```
+
 
 ```bash
 clear
@@ -178,12 +207,15 @@ my-quota   19m   cpu: 250m/500Mi, memory: 1Gi/2G
 
 In English:
 
-- E/Ei = Exabyte
-- P/Pi = Petabyte
-- T/Ti = Terrabyte
-- G/Gi = Gigabyte
-- M/Mi = Megabyte
-- k/Ki = Kilobyte
+| Suffix      | Description |
+| ----------- | ----------- |
+| E/Ei      | Exabyte      |
+| P/Pi   | Petabyte        |
+| T/Ti   | Terrabyte        |
+| G/Gi   | Gigabyte        |
+| M/Mi   | Megabyte        |
+| k/Ki   | Kilobyte        |
+
 
 </p>
 </details>

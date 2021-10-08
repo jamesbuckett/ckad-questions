@@ -54,6 +54,7 @@ tlscertificatedelegations.projectcontour.io           2021-09-24T05:26:16Z
 ##### Solution
 
 ```bash
+kubectl config set-context --current --namespace=default
 clear
 kubectl api-resources -o name | grep calico
 ```
@@ -79,13 +80,12 @@ networksets.crd.projectcalico.org
 ```
 
 ```bash
-kubectl config set-context --current --namespace=default
 cat << EOF | kubectl apply -f -
-apiVersion: crd.projectcalico.org/v3
+apiVersion: projectcalico.org/v3
 kind: NetworkPolicy
 metadata:
   name: allow-tcp-6379
-  namespace: default
+  namespace: production
 spec:
   selector: role == 'database'
   types:

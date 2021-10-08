@@ -387,24 +387,50 @@ kubectl config set-context --current --namespace=serviceaccount-namespace
 
 ```bash
 clear
+# Create the serviceAccount
 kubectl create sa my-serviceaccount
 ```
 
 ```bash
+# Get the corresponding secret created for the new serviceAccount
 clear
-kubectl run serviceaccount-pod --image=nginx --dry-run=client -o yaml > ~/ckad/02-04.yml
+kubectl get secret 
+kubectl describe secret
 ```
 
 ```bash
+# Edit the manifest file
 vi ~/ckad/02-04.yml
 ```
 
 kubernetes.io: [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
 
 ```bash
-clear
-kubectl run serviceaccount-pod --image=nginx --dry-run=client -o yaml > ~/ckad/02-04.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: serviceaccount-pod
+  name: serviceaccount-pod
+spec:
+  serviceAccountName: my-serviceaccount #👈👈👈 Configure Service Accounts for Pods, catch the value is serviceAccountName and NOT serviceaccount
+  containers:
+  - image: nginx
+    name: serviceaccount-pod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
 ```
+
+```bash
+# Apply the YAML file to the Kubernetes API server
+kubectl apply -f ~/ckad/02-04.yml
+```
+
+
+
 
 
 </p>

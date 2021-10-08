@@ -4,7 +4,7 @@
 
 - Use Kubernetes primitives to implement common deployment strategies (e.g. blue/green or canary)
 - Understand Deployments and how to perform rolling updates [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md#03-01-create-a-namespace-called-deployment-namespace-create-a-deployment-called-my-deployment-with-three-replicas-using-the-nginx-image-inside-the-namespace-expose-port-80-for-the-nginx-container-the-containers-should-be-named-my-container-each-container-should-have-a-memory-request-of-25mi-and-a-memory-limit-of-100mi)
-- Use the Helm package manager to deploy existing packages
+- Use the Helm package manager to deploy existing packages [\*\*]
 
 #### 03-01. Create a namespace called `deployment-namespace`. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx container. The containers should be named `my-container`. Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi.
 
@@ -519,18 +519,18 @@ bitnami/wordpress                               12.1.20         5.8.1           
 
 ```bash
 # Install WordPress with Helm
-helm install my-wp-release \
+helm install my-wp-release \ #👈👈👈 The name of your release
   --set wordpressUsername=admin \
   --set wordpressPassword=password \
   --set mariadb.auth.rootPassword=secretpassword \
-  --set service.type=ClusterIP \
-    bitnami/wordpress
+  --set service.type=ClusterIP \ #👈👈👈 Changed this to work with Docker Desktop
+    bitnami/wordpress #👈👈👈 The software to install
 ```
 
 Output:
 ```bash
 NAME: my-wp-release
-LAST DEPLOYED: Fri Oct  8 06:34:57 2021
+LAST DEPLOYED: Fri Oct  8 15:44:30 2021
 NAMESPACE: wordpress-namespace
 STATUS: deployed
 REVISION: 1
@@ -546,12 +546,9 @@ To access your WordPress site from outside the cluster follow the steps below:
 
 1. Get the WordPress URL by running these commands:
 
-  NOTE: It may take a few minutes for the LoadBalancer IP to be available.
-        Watch the status with: 'kubectl get svc --namespace wordpress-namespace -w my-wp-release-wordpress'
-
-   export SERVICE_IP=$(kubectl get svc --namespace wordpress-namespace my-wp-release-wordpress --template "{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}")
-   echo "WordPress URL: http://$SERVICE_IP/"
-   echo "WordPress Admin URL: http://$SERVICE_IP/admin"
+   kubectl port-forward --namespace wordpress-namespace svc/my-wp-release-wordpress 80:80 &
+   echo "WordPress URL: http://127.0.0.1//"
+   echo "WordPress Admin URL: http://127.0.0.1//admin"
 
 2. Open a browser and access WordPress using the obtained URL.
 
@@ -564,6 +561,11 @@ To access your WordPress site from outside the cluster follow the steps below:
 ```bash
 # Verify operation of WordPress
 curl localhost:80
+```
+
+```bash
+# List active helm releases
+helm ls
 ```
 
 ```bash

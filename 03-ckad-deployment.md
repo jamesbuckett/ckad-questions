@@ -519,12 +519,12 @@ bitnami/wordpress                               12.1.20         5.8.1           
 
 ```bash
 # Install WordPress with Helm
-helm install my-wp-release \ #👈👈👈 The name of your release
+helm install my-wp-release \
   --set wordpressUsername=admin \
   --set wordpressPassword=password \
   --set mariadb.auth.rootPassword=secretpassword \
-  --set service.type=ClusterIP \ #👈👈👈 Changed this to work with Docker Desktop
-    bitnami/wordpress #👈👈👈 The software to install
+  --set service.type=ClusterIP \
+    bitnami/wordpress 
 ```
 
 Output:

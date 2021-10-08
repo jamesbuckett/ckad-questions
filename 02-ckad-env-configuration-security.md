@@ -408,6 +408,9 @@ Output:
 
 ```
 
+</p>
+</details>
+
 <details><summary>show</summary>
 <p>
 

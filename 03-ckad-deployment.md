@@ -63,7 +63,7 @@ Examples:
 ```bash
 clear
 # Using the best example that matches the question
-kubectl create deployment my-deployment --image=nginx --replicas=3 --port=80 --dry-run=client -o yaml > q03-01.yml
+kubectl create deployment my-deployment --image=nginx --replicas=3 --port=80 --dry-run=client -o yaml > ~/ckad/q03-01.yml
 ```
 
 ```bash

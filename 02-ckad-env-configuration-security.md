@@ -105,7 +105,7 @@ spec:
       - 6379
   egress:
   - action: Allow
-EOF      
+EOF
 ```
 
 

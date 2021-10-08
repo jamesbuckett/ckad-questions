@@ -405,7 +405,19 @@ kubectl describe secret my-serviceaccount-token-***** #👈👈👈 Replace ****
 
 Output:
 ```bash
+Name:         my-serviceaccount-token-nptmw
+Namespace:    serviceaccount-namespace
+Labels:       <none>
+Annotations:  kubernetes.io/service-account.name: my-serviceaccount
+              kubernetes.io/service-account.uid: c8e68650-5fcb-4654-a8f7-99fedaba4356
 
+Type:  kubernetes.io/service-account-token
+
+Data
+====
+ca.crt:     1156 bytes
+namespace:  24 bytes
+token:      eyJhbGciOiJSUzI1NiIsImtpZCI6IkFEcU0xS1hKTTQtZFR6bjl3UHlJZ09rNWpobDkyTmxBV05GSmFvZnpjY2sifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJzZXJ2aWNlYWNjb3VudC1uYW1lc3BhY2UiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlY3JldC5uYW1lIjoibXktc2VydmljZWFjY291bnQtdG9rZW4tbnB0bXciLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoibXktc2VydmljZWFjY291bnQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiJjOGU2ODY1MC01ZmNiLTQ2NTQtYThmNy05OWZlZGFiYTQzNTYiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6c2VydmljZWFjY291bnQtbmFtZXNwYWNlOm15LXNlcnZpY2VhY2NvdW50In0.2R9cp-NzmtTzgJFiMkU1e-UdhoH5pa1cUPZULjNvJzwxrY7jRRwlIlAfAMcUf5dYdVeDpVla8oIRR_p_6R-SyoP6QbzxVtUWU8ApgYn_daH6lRFFtjv3-t9cOBWzZeBXdnmLw2u6t8dgjZ-dh7ExIgRfYrJQ_E_m3B1GNl-XpRC2xQ_-zXMOyHbhs1_Tx3aL5sBzWxmaR_I7X-9S--66gVVjuXEZwooZQblX3vjv3xWrfMDQb0bNjuFe7SK9FpFeLCPFd_yqIfKfwVhNogubhXiSWSoN_MxlUCmD5dxjkVJNrdhQJ5NHhI9-tzpa3cqsUyL0pjm7OexF-woYp3p96g #👈👈👈 This is the token that can be used to authenticate to the API Server
 ```
 
 </p>
@@ -453,9 +465,16 @@ kubectl apply -f ~/ckad/02-04.yml
 ```
 
 ```bash
-# Check your work
-kubectl apply -f ~/ckad/02-04.yml
+# Bonus Section # Verify your work by checking the serviceAccount in use via JSONPath
+kubectl get pod serviceaccount-pod -o jsonpath={.spec.serviceAccountName}
 ```
+
+Output
+```bash
+my-serviceaccount
+```
+
+
 
 </p>
 </details>

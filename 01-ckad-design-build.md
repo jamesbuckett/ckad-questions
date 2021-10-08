@@ -10,8 +10,9 @@
 #### 01-01. Create a container from the attached Dockerfile and index.html. Name the image `my-image`. Run the container exposing port `8080` on the host and port `80` on the container. Name the container `my-container`. Stop the container. Delete the container.
 
 ##### Podman
-* If you get any questions relating to podman, podman's CLI is deliberately aligned with Docker
 * Podman is an OCI-complaint container runtime that works without a daemon.
+* If you get any questions relating to [Podman](https://podman.io/), podman's CLI is deliberately aligned with Docker
+* Use `docker` and `podman` interchangeably 
 
 <details><summary>show</summary>
 <p>

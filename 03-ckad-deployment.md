@@ -343,10 +343,12 @@ kubectl rollout history deployment.apps/edit-deployment
 </p>
 </details>
 
-#### 03-04. Use helm to install WordPress into a namespace called wordpress-namespace.
+#### 03-04. Use Helm to install WordPress into a namespace called `wordpress-namespace`
 
 <details><summary>show</summary>
 <p>
+
+WordPress on Bitnami [details](https://github.com/bitnami/charts/tree/master/bitnami/wordpress/#installing-the-chart)
 
 ##### Prerequisites
 
@@ -521,6 +523,7 @@ helm install my-wp-release \
   --set wordpressUsername=admin \
   --set wordpressPassword=password \
   --set mariadb.auth.rootPassword=secretpassword \
+  --set service.type=ClusterIP \
     bitnami/wordpress
 ```
 

@@ -80,36 +80,6 @@ networksets.crd.projectcalico.org
 ```
 
 ```bash
-cat << EOF | kubectl apply -f -
-apiVersion: projectcalico.org/v3
-kind: NetworkPolicy
-metadata:
-  name: allow-tcp-6379
-  namespace: production
-spec:
-  selector: role == 'database'
-  types:
-  - Ingress
-  - Egress
-  ingress:
-  - action: Allow
-    metadata:
-      annotations:
-        from: frontend
-        to: database
-    protocol: TCP
-    source:
-      selector: role == 'frontend'
-    destination:
-      ports:
-      - 6379
-  egress:
-  - action: Allow
-EOF
-```
-
-
-```bash
 clear
 # This is the command to get all Calico Network Policies
 # If you run this command it will return: "No resources found in storage-namespace namespace"

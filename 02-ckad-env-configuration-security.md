@@ -364,6 +364,55 @@ HOME=/root
 </p>
 </details>
 
+#### 02-04. Create a namespace called `serviceaccount-namespace`. Create a pod called `serviceaccount-pod` using `nginx` image. Create a SeviceAccount called: my-serviceaccount. Update the pod to use the new ServiceAccount. Display the token for the new ServiceAccount.
+
+<details><summary>show</summary>
+<p>
+
+##### Prerequisites
+
+```bash
+clear
+kubectl create namespace serviceaccount-namespace
+kubectl config set-context --current --namespace=serviceaccount-namespace
+```
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+##### Solution
+
+```bash
+clear
+kubectl create sa my-serviceaccount
+```
+
+```bash
+clear
+kubectl run serviceaccount-pod --image=nginx --dry-run=client -o yaml > ~/ckad/02-04.yml
+```
+
+```bash
+vi ~/ckad/02-04.yml
+```
+
+kubernetes.io: [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
+
+```bash
+clear
+kubectl run serviceaccount-pod --image=nginx --dry-run=client -o yaml > ~/ckad/02-04.yml
+```
+
+
+</p>
+</details>
+
+
+
+
 #### Clean Up
 
 <details><summary>show</summary>

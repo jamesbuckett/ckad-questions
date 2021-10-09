@@ -11,6 +11,18 @@
 <details><summary>show</summary>
 <p>
 
+##### Overview
+
+![03-01-deploy](https://user-images.githubusercontent.com/18049790/136654817-cf8b912c-7dc3-486d-8615-6b8ecbdc0e8a.png)
+
+![03-01-pod](https://user-images.githubusercontent.com/18049790/136654820-9ff806cf-5987-4eab-bfee-aaaf36e3837f.png)
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
 ##### Prerequisites
 
 ```bash
@@ -109,7 +121,7 @@ status: {}
 ```bash
 clear
 # Apply the YAML file to the Kubernetes API server
-kubectl apply -f ~/ckad/q03-01.yml
+kubectl apply -f ~/ckad/03-01.yml
 ```
 
 ```bash
@@ -137,6 +149,16 @@ replicaset.apps/my-deployment-67fc8546   3         3         3       16m
 </details>
 
 #### 03-02. In the previous question a Deployment called `my-deployment` was created. Allow network traffic to flow to this deployment from inside the cluster on `port 8080`.
+
+<details><summary>show</summary>
+<p>
+
+##### Overview
+
+![03-02](https://user-images.githubusercontent.com/18049790/136654933-3cbb67a7-c892-402b-a7a1-9e6f2977ab51.png)
+
+</p>
+</details>
 
 <details><summary>show</summary>
 <p>
@@ -235,6 +257,16 @@ my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 </details>
 
 #### 03-03. Create a namespace called `edit-namespace`. Create a deployment called `edit-deployment` with `2` replicas using the `redis` image in namespace. After the deployment is running, alter the containers to use the `nginx` image. Then alter the containers to use the `nginx:1.14.2` image and record the change.
+
+<details><summary>show</summary>
+<p>
+
+##### Overview
+
+![03-03](https://user-images.githubusercontent.com/18049790/136655071-9e4a9225-3a8f-4aed-8556-0767162fec36.png)
+
+</p>
+</details>
 
 <details><summary>show</summary>
 <p>
@@ -347,6 +379,18 @@ kubectl rollout history deployment.apps/edit-deployment
 <details><summary>show</summary>
 <p>
 
+##### Overview
+
+![03-04-wp](https://user-images.githubusercontent.com/18049790/136655517-2bf660fb-8f97-4503-b6b8-cae0bc4fc4b2.png)
+
+![03-04-deploy](https://user-images.githubusercontent.com/18049790/136655521-cb6bba5d-e1f6-4e9f-876c-b8da98d96c64.png)
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
 WordPress on Bitnami [details](https://github.com/bitnami/charts/tree/master/bitnami/wordpress/#installing-the-chart)
 
 ##### Prerequisites
@@ -388,6 +432,7 @@ EOF
 ##### Solution
 
 ```bash
+clear
 # Add the Bitnami repo
 helm repo add bitnami https://charts.bitnami.com/bitnami
 ```

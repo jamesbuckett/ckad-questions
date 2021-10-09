@@ -63,12 +63,12 @@ Examples:
 ```bash
 clear
 # Using the best example that matches the question
-kubectl create deployment my-deployment --image=nginx --replicas=3 --port=80 --dry-run=client -o yaml > ~/ckad/q03-01.yml
+kubectl create deployment my-deployment --image=nginx --replicas=3 --port=80 --dry-run=client -o yaml > ~/ckad/03-01.yml
 ```
 
 ```bash
 # Edit the YAML file to make required changes
-vi ~/ckad/q03-01.yml
+vi ~/ckad/03-01.yml
 ```
 
 kubernetes.io: [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory)
@@ -176,7 +176,6 @@ port 8000
 
   # Create a service for an nginx deployment, which serves on port 80 and connects to the containers on port 8000
   kubectl expose deployment nginx --port=80 --target-port=8000 👈👈👈 This example matches most closely to the question.
-
 ```
 
 </p>
@@ -603,38 +602,70 @@ kubectl config set-context --current --namespace=blue-green-namespace
 <details><summary>show</summary>
 <p>
 
-##### Solution
-
-```bash
-clear
-# Create a service
-kubectl create namespace blue-green-namespace
-```
-
-</p>
-</details>
-
-<details><summary>show</summary>
-<p>
-
 ##### Solution - Blue Deployment
 
 ```bash
 clear
-# Create a service
-kubectl create deployment blue-deployment --image=nginx --replicas=10 --port=80 --labels='version=blue, tier=web'
+# Create the deployment as far as possible using the CLI (imperatively)
+kubectl create deployment blue-deployment --image=nginx --replicas=10 --port=80 --dry-run=client -o yaml > ~/ckad/03-05-deploy-blue.yml
 ```
 
 ```bash
 clear
-# Check your work - Watch the Pods
-kubectl get pods -w
+# Edit the YAML file to make required changes
+# Use the Question number in case you want to return to the question for reference or for review
+vi ~/ckad/03-05-deploy-blue.yml
+```
+
+Output
+
+```bash
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: blue-deployment
+  name: blue-deployment
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: blue-deployment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: blue-deployment
+        version: blue #👈👈👈
+        tier: web #👈👈👈
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
 ```
 
 ```bash
 clear
-# Check your work - Is the service load balancing to the pods
-kubectl get ep
+# Apply the YAML file to the Kubernetes API server
+kubectl apply -f ~/ckad/03-05-deploy-green.yml
+```
+
+```bash
+clear
+# Quick verification that the pod was created and is working
+kubectl get pod --watch
+```
+
+```bash
+clear
+# Check labels
+kubectl get pods -L version
 ```
 
 </p>
@@ -647,14 +678,66 @@ kubectl get ep
 
 ```bash
 clear
-# Create a service
-kubectl create deployment green-deployment --image=nginx --replicas=10 --port=80 --labels='version=green, tier=web'
+# Create the deployment as far as possible using the CLI (imperatively)
+kubectl create deployment green-deployment --image=nginx --replicas=10 --port=80 --dry-run=client -o yaml > ~/ckad/03-05-deploy-green.yml
 ```
 
 ```bash
 clear
-# Check your work - Is the service load balancing to the pods
-kubectl get ep
+# Edit the YAML file to make required changes
+# Use the Question number in case you want to return to the question for reference or for review
+vi ~/ckad/03-05-deploy-green.yml
+```
+
+Output
+
+```bash
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: green-deployment
+  name: green-deployment
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: green-deployment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: green-deployment
+        version: green #👈👈👈
+        tier: web #👈👈👈
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
+```
+
+```bash
+clear
+# Apply the YAML file to the Kubernetes API server
+kubectl apply -f ~/ckad/03-05-deploy-green.yml
+```
+
+```bash
+clear
+# Quick verification that the pod was created and is working
+kubectl get pod --watch
+```
+
+```bash
+clear
+# Check labels
+kubectl get pods -L version
 ```
 
 </p>

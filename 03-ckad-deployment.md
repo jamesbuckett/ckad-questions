@@ -800,8 +800,14 @@ kubectl scale --replicas=3 deployment green-deployment
 
 ```bash
 clear
-# Check your work - Is the service load balancing to the pods
+# Check your work - 7 blue and 3 green
 kubectl get pods -L version
+```
+
+```bash
+clear
+# Check your work - Is the service load balancing to the pods
+kubectl get ep -o wide
 ```
 
 </p>

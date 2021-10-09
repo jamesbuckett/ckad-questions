@@ -582,6 +582,14 @@ helm delete my-wp-release --purge
 <details><summary>show</summary>
 <p>
 
+##### Overview
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
 ##### Prerequisites
 
 ```bash

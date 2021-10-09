@@ -4,7 +4,7 @@
 
 - Understand Deployments and how to perform rolling updates [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md#03-01-create-a-namespace-called-deployment-namespace-create-a-deployment-called-my-deployment-with-three-replicas-using-the-nginx-image-inside-the-namespace-expose-port-80-for-the-nginx-container-the-containers-should-be-named-my-container-each-container-should-have-a-memory-request-of-25mi-and-a-memory-limit-of-100mi)
 - Use the Helm package manager to deploy existing packages [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md#03-04-use-helm-to-install-wordpress-into-a-namespace-called-wordpress-namespace)
-- Use Kubernetes primitives to implement common deployment strategies (e.g. blue/green or canary) [\*\*]
+- Use Kubernetes primitives to implement common deployment strategies (e.g. blue/green or canary) [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md#03-05-create-a-namespace-called-blue-green-namespace-create-a-deployment-called-blue-deployment-with-10-replicas-using-the-nginx-image-inside-the-namespace-expose-port-80-for-the-nginx-containers-label-the-pods-versionblue-and-tierweb-create-a-service-called-bsg-service-to-route-traffic-to-blue-deployment-verify-that-traffic-is-flowing-from-the-service-to-the-deployment-create-a-new-deployment-called-green-deployment--with-10-replicas-using-the-nginx-image-inside-the-namespace-expose-port-80-for-the-nginx-containers-label-the-pods-versiongreen-and-tierweb-once-the-green-deployment-is-active-split-traffic-between-blue-deployment70-and-green-deployment30)
 
 #### 03-01. Create a namespace called `deployment-namespace`. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx container. The containers should be named `my-container`. Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi.
 
@@ -617,8 +617,6 @@ clear
 vi ~/ckad/03-05-deploy-blue.yml
 ```
 
-Output
-
 ```bash
 apiVersion: apps/v1
 kind: Deployment
@@ -638,8 +636,8 @@ spec:
       creationTimestamp: null
       labels:
         app: blue-deployment
-        version: blue #👈👈👈
-        tier: web #👈👈👈
+        version: blue #👈👈👈 Add the label `version=blue`
+        tier: web #👈👈👈 Add the label:  `tier=web`
     spec:
       containers:
       - image: nginx
@@ -653,7 +651,7 @@ status: {}
 ```bash
 clear
 # Apply the YAML file to the Kubernetes API server
-kubectl apply -f ~/ckad/03-05-deploy-green.yml
+kubectl apply -f ~/ckad/03-05-deploy-blue.yml
 ```
 
 ```bash
@@ -666,6 +664,48 @@ kubectl get pod --watch
 clear
 # Check labels
 kubectl get pods -L version
+```
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
+##### Solution - Service
+
+```bash
+clear
+# Create the namespace
+kubectl expose deployment blue-deployment --port=80 --target-port=80 --name=bsg-service --dry-run=client -o yaml > ~/ckad/03-05-bsg-service.yml
+```
+
+```bash
+clear
+# Edit the YAML file to make required changes
+vi ~/ckad/03-05-bsg-service.yml
+```
+
+```bash
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: blue-deployment
+  name: bsg-service
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    #app: blue-deployment # Delete this
+    tier: web #👈👈👈 Add the label:  `tier=web`
+    version: green #👈👈👈  Add the label `version=green`
+    version: blue #👈👈👈 Add the label `version=blue`
+status:
+  loadBalancer: {}
 ```
 
 </p>
@@ -689,8 +729,6 @@ clear
 vi ~/ckad/03-05-deploy-green.yml
 ```
 
-Output
-
 ```bash
 apiVersion: apps/v1
 kind: Deployment
@@ -710,8 +748,8 @@ spec:
       creationTimestamp: null
       labels:
         app: green-deployment
-        version: green #👈👈👈
-        tier: web #👈👈👈
+        version: green #👈👈👈  Add the label `version=green`
+        tier: web #👈👈👈 Add the label:  `tier=web`
     spec:
       containers:
       - image: nginx
@@ -757,7 +795,7 @@ kubectl scale --replicas=7 deployment blue-deployment
 ```bash
 clear
 # Scale Blue to 3=30%
-kubectl scale --replicas=7 deployment green-deployment
+kubectl scale --replicas=3 deployment green-deployment
 ```
 
 ```bash

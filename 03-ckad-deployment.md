@@ -2,9 +2,9 @@
 
 ### Application Deployment – 20%
 
-- Use Kubernetes primitives to implement common deployment strategies (e.g. blue/green or canary)
 - Understand Deployments and how to perform rolling updates [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md#03-01-create-a-namespace-called-deployment-namespace-create-a-deployment-called-my-deployment-with-three-replicas-using-the-nginx-image-inside-the-namespace-expose-port-80-for-the-nginx-container-the-containers-should-be-named-my-container-each-container-should-have-a-memory-request-of-25mi-and-a-memory-limit-of-100mi)
-- Use the Helm package manager to deploy existing packages [\*\*]
+- Use the Helm package manager to deploy existing packages [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md#03-04-use-helm-to-install-wordpress-into-a-namespace-called-wordpress-namespace)
+- Use Kubernetes primitives to implement common deployment strategies (e.g. blue/green or canary) [\*\*]
 
 #### 03-01. Create a namespace called `deployment-namespace`. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx container. The containers should be named `my-container`. Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi.
 
@@ -363,23 +363,22 @@ cat << EOF | kubectl apply -f -
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: wp-ingress 
+  name: wp-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - http:
       paths:
-      - path: / 
+      - path: /
         pathType: Prefix
         backend:
           service:
-            name: my-wp-release-wordpress 
+            name: my-wp-release-wordpress
             port:
               number: 80
-EOF              
+EOF
 ```
-
 
 </p>
 </details>
@@ -400,11 +399,12 @@ helm search repo bitnami
 ```
 
 Output:
+
 ```bash
-NAME                                            CHART VERSION   APP VERSION     DESCRIPTION                                       
+NAME                                            CHART VERSION   APP VERSION     DESCRIPTION
 bitnami/bitnami-common                          0.0.9           0.0.9           DEPRECATED Chart with custom templates used in ...
 bitnami/airflow                                 11.0.8          2.1.4           Apache Airflow is a platform to programmaticall...
-bitnami/apache                                  8.8.3           2.4.50          Chart for Apache HTTP Server                      
+bitnami/apache                                  8.8.3           2.4.50          Chart for Apache HTTP Server
 bitnami/argo-cd                                 2.0.4           2.1.3           Declarative, GitOps continuous delivery tool fo...
 bitnami/argo-workflows                          0.1.1           3.1.13          Argo Workflows is meant to orchestrate Kubernet...
 bitnami/aspnet-core                             1.3.18          3.1.19          ASP.NET Core is an open-source framework create...
@@ -413,9 +413,9 @@ bitnami/cert-manager                            0.1.21          1.5.4           
 bitnami/common                                  1.10.0          1.10.0          A Library Helm Chart for grouping common logic ...
 bitnami/concourse                               0.1.7           7.5.0           Concourse is a pipeline-based continuous thing-...
 bitnami/consul                                  9.3.8           1.10.3          Highly available and distributed service discov...
-bitnami/contour                                 5.7.0           1.18.2          Contour Ingress controller for Kubernetes         
+bitnami/contour                                 5.7.0           1.18.2          Contour Ingress controller for Kubernetes
 bitnami/contour-operator                        0.1.1           1.18.2          The Contour Operator extends the Kubernetes API...
-bitnami/dataplatform-bp1                        8.0.1           0.0.11          OCTO Data platform Kafka-Spark-Solr Helm Chart    
+bitnami/dataplatform-bp1                        8.0.1           0.0.11          OCTO Data platform Kafka-Spark-Solr Helm Chart
 bitnami/dataplatform-bp2                        8.0.3           0.0.10          OCTO Data platform Kafka-Spark-Elasticsearch He...
 bitnami/discourse                               5.0.2           2.7.8           A Helm chart for deploying Discourse to Kubernetes
 bitnami/dokuwiki                                11.2.8          20200729.0.0    DokuWiki is a standards-compliant, simple to us...
@@ -434,10 +434,10 @@ bitnami/haproxy                                 0.2.13          2.4.7           
 bitnami/harbor                                  11.0.4          2.3.3           Harbor is an an open source trusted cloud nativ...
 bitnami/influxdb                                2.3.15          2.0.9           InfluxDB&trade; is an open source time-series d...
 bitnami/jasperreports                           11.0.6          7.8.0           The JasperReports server can be used as a stand...
-bitnami/jenkins                                 8.0.14          2.303.1         The leading open source automation server         
+bitnami/jenkins                                 8.0.14          2.303.1         The leading open source automation server
 bitnami/joomla                                  10.1.24         3.10.2          PHP content management system (CMS) for publish...
 bitnami/jupyterhub                              0.1.20          1.4.2           JupyterHub brings the power of notebooks to gro...
-bitnami/kafka                                   14.2.1          2.8.1           Apache Kafka is a distributed streaming platform. 
+bitnami/kafka                                   14.2.1          2.8.1           Apache Kafka is a distributed streaming platform.
 bitnami/keycloak                                5.1.2           15.0.2          Keycloak is a high performance Java-based ident...
 bitnami/kiam                                    0.3.15          3.6.0           kiam is a proxy that captures AWS Metadata API ...
 bitnami/kibana                                  9.0.6           7.14.2          Kibana is an open source, browser based analyti...
@@ -454,22 +454,22 @@ bitnami/mariadb-cluster                         1.0.2           10.2.14         
 bitnami/mariadb-galera                          6.0.1           10.6.4          MariaDB Galera is a multi-master database clust...
 bitnami/mean                                    6.1.2           4.6.2           DEPRECATED MEAN is a free and open-source JavaS...
 bitnami/mediawiki                               12.3.15         1.36.2          Extremely powerful, scalable software and a fea...
-bitnami/memcached                               5.15.5          1.6.12          Chart for Memcached                               
-bitnami/metallb                                 2.5.6           0.10.3          The Metal LB for Kubernetes                       
+bitnami/memcached                               5.15.5          1.6.12          Chart for Memcached
+bitnami/metallb                                 2.5.6           0.10.3          The Metal LB for Kubernetes
 bitnami/metrics-server                          5.10.4          0.5.1           Metrics Server is a cluster-wide aggregator of ...
 bitnami/minio                                   8.1.9           2021.10.6       Bitnami Object Storage based on MinIO&reg; is a...
 bitnami/mongodb                                 10.27.2         4.4.9           NoSQL document-oriented database that stores JS...
 bitnami/mongodb-sharded                         3.9.8           4.4.9           NoSQL document-oriented database that stores JS...
 bitnami/moodle                                  11.1.2          3.11.3          Moodle&trade; is a learning platform designed t...
 bitnami/mxnet                                   2.3.16          1.8.0           A flexible and efficient library for deep learning
-bitnami/mysql                                   8.8.8           8.0.26          Chart to create a Highly available MySQL cluster  
-bitnami/nats                                    6.4.10          2.6.1           An open-source, cloud-native messaging system     
-bitnami/nginx                                   9.5.7           1.21.3          Chart for the nginx server                        
-bitnami/nginx-ingress-controller                7.6.21          0.48.1          Chart for the nginx Ingress controller            
+bitnami/mysql                                   8.8.8           8.0.26          Chart to create a Highly available MySQL cluster
+bitnami/nats                                    6.4.10          2.6.1           An open-source, cloud-native messaging system
+bitnami/nginx                                   9.5.7           1.21.3          Chart for the nginx server
+bitnami/nginx-ingress-controller                7.6.21          0.48.1          Chart for the nginx Ingress controller
 bitnami/node                                    15.2.28         14.18.0         Event-driven I/O server-side JavaScript environ...
 bitnami/node-exporter                           2.3.9           1.2.2           Prometheus exporter for hardware and OS metrics...
 bitnami/oauth2-proxy                            1.0.2           7.1.3           A reverse proxy and static file server that pro...
-bitnami/odoo                                    19.0.9          14.0.20210910   A suite of web based open source business apps.   
+bitnami/odoo                                    19.0.9          14.0.20210910   A suite of web based open source business apps.
 bitnami/opencart                                10.0.26         3.0.3-8         A free and open source e-commerce platform for ...
 bitnami/orangehrm                               10.1.23         4.8.0-0         OrangeHRM is a free HR management system that o...
 bitnami/osclass                                 11.0.16         4.4.0           Osclass is a php script that allows you to quic...
@@ -477,7 +477,7 @@ bitnami/owncloud                                10.2.27         10.8.0          
 bitnami/parse                                   15.0.10         4.10.4          Parse is a platform that enables users to add a...
 bitnami/phabricator                             11.0.30         2021.26.0       DEPRECATED Collection of open source web applic...
 bitnami/phpbb                                   10.1.24         3.3.5           Community forum that supports the notion of use...
-bitnami/phpmyadmin                              8.2.16          5.1.1           phpMyAdmin is an mysql administration frontend    
+bitnami/phpmyadmin                              8.2.16          5.1.1           phpMyAdmin is an mysql administration frontend
 bitnami/postgresql                              10.12.2         11.13.0         Chart for PostgreSQL, an object-relational data...
 bitnami/postgresql-ha                           7.10.1          11.13.0         Chart for PostgreSQL with HA architecture (usin...
 bitnami/prestashop                              13.2.3          1.7.8-0         A popular open source ecommerce solution. Profe...
@@ -487,7 +487,7 @@ bitnami/rabbitmq                                8.22.4          3.9.7           
 bitnami/rabbitmq-cluster-operator               0.1.6           1.9.0           The RabbitMQ Cluster Kubernetes Operator automa...
 bitnami/redis                                   15.4.1          6.2.6           Open source, advanced key-value store. It is of...
 bitnami/redis-cluster                           6.3.9           6.2.6           Open source, advanced key-value store. It is of...
-bitnami/redmine                                 17.0.9          4.2.2           A flexible project management web application.    
+bitnami/redmine                                 17.0.9          4.2.2           A flexible project management web application.
 bitnami/solr                                    2.0.7           8.9.0           Apache Solr is an open source enterprise search...
 bitnami/spark                                   5.7.4           3.1.2           Spark is a fast and general-purpose cluster com...
 bitnami/spring-cloud-dataflow                   4.1.1           2.8.2           Spring Cloud Data Flow is a microservices-based...
@@ -497,12 +497,12 @@ bitnami/tensorflow-inception                    3.3.2           1.13.0          
 bitnami/tensorflow-resnet                       3.2.15          2.6.0           Open-source software library serving the ResNet...
 bitnami/testlink                                9.2.24          1.9.20          Web-based test management system that facilitat...
 bitnami/thanos                                  6.0.12          0.23.1          Thanos is a highly available metrics system tha...
-bitnami/tomcat                                  9.4.3           10.0.12         Chart for Apache Tomcat                           
-bitnami/wavefront                               3.1.12          1.7.1           Chart for Wavefront Collector for Kubernetes      
+bitnami/tomcat                                  9.4.3           10.0.12         Chart for Apache Tomcat
+bitnami/wavefront                               3.1.12          1.7.1           Chart for Wavefront Collector for Kubernetes
 bitnami/wavefront-adapter-for-istio             1.0.8           0.1.5           Wavefront Adapter for Istio is a lightweight Is...
 bitnami/wavefront-hpa-adapter                   0.1.5           0.9.8           Wavefront HPA Adapter for Kubernetes is a Kuber...
 bitnami/wavefront-prometheus-storage-adapter    1.0.8           1.0.3           Wavefront Storage Adapter is a Prometheus integ...
-bitnami/wildfly                                 11.1.3          24.0.1          Chart for Wildfly                                 
+bitnami/wildfly                                 11.1.3          24.0.1          Chart for Wildfly
 bitnami/wordpress                               12.1.20         5.8.1           Web publishing platform for building blogs and ... #👈👈👈
 bitnami/zookeeper                               7.4.6           3.7.0           A centralized service for maintaining configura...
 ```
@@ -513,6 +513,7 @@ helm search repo bitnami | grep wordpress
 ```
 
 Output:
+
 ```bash
 bitnami/wordpress                               12.1.20         5.8.1           Web publishing platform for building blogs and ...
 ```
@@ -524,10 +525,11 @@ helm install my-wp-release \
   --set wordpressPassword=password \
   --set mariadb.auth.rootPassword=secretpassword \
   --set service.type=ClusterIP \
-    bitnami/wordpress 
+    bitnami/wordpress
 ```
 
 Output:
+
 ```bash
 NAME: my-wp-release
 LAST DEPLOYED: Fri Oct  8 15:44:30 2021
@@ -576,6 +578,105 @@ helm delete my-wp-release --purge
 </p>
 </details>
 
+#### 03-05. Create a namespace called `blue-green-namespace`. Create a Deployment called `blue-deployment`, with `10` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx containers. Label the pods `version=blue` and `tier=web`. Create a Service called `bsg-service` to route traffic to `blue-deployment`. Verify that traffic is flowing from the Service to the Deployment. Create a new Deployment called `green-deployment` , with `10` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx containers. Label the pods `version=green` and `tier=web`. Once the `green-deployment` is active split traffic between `blue-deployment`=70% and `green-deployment`=30%
+
+<details><summary>show</summary>
+<p>
+
+##### Prerequisites
+
+```bash
+clear
+# Create the namespace
+kubectl create namespace blue-green-namespace
+```
+
+```bash
+clear
+# Switch context into the namespace so that all subsequent commands execute inside that namespace.
+kubectl config set-context --current --namespace=blue-green-namespace
+```
+
+</p>
+</details>
+
+##### Solution
+
+```bash
+clear
+# Create a service
+kubectl create namespace blue-green-namespace
+```
+
+</p>
+</details>
+
+##### Solution - Blue Deployment
+
+```bash
+clear
+# Create a service
+kubectl create deployment blue-deployment --image=nginx --replicas=10 --port=80 --labels='version=blue, tier=web'
+```
+
+```bash
+clear
+# Check your work - Watch the Pods
+kubectl get pods -w
+```
+
+```bash
+clear
+# Check your work - Is the service load balancing to the pods
+kubectl get ep
+```
+
+</p>
+</details>
+
+</p>
+</details>
+
+##### Solution - Green Deployment
+
+```bash
+clear
+# Create a service
+kubectl create deployment green-deployment --image=nginx --replicas=10 --port=80 --labels='version=green, tier=web'
+```
+
+```bash
+clear
+# Check your work - Is the service load balancing to the pods
+kubectl get ep
+```
+
+</p>
+</details>
+
+##### Solution - Green=70 & Blue=30
+
+```bash
+clear
+# Scale Green to 7=70%
+kubectl scale --replicas=7 deployment blue-deployment
+```
+
+```bash
+clear
+# Scale Blue to 3=30%
+kubectl scale --replicas=7 deployment green-deployment
+```
+
+```bash
+clear
+# Check your work - Is the service load balancing to the pods
+kubectl get pods -L version
+```
+
+</p>
+</details>
+
 #### Clean Up
 
 <details><summary>show</summary>
@@ -586,6 +687,7 @@ yes | rm -R ~/ckad/
 kubectl delete ns deployment-namespace --force
 kubectl delete ns edit-namespace --force
 kubectl delete ns wordpress-namespace --force
+kubectl delete ns blue-green-namespace --force
 ```
 
 </p>

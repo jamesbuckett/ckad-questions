@@ -95,6 +95,16 @@ kubectl get networkpolicies.crd.projectcalico.org
 <details><summary>show</summary>
 <p>
 
+##### Overview
+
+![02-02](https://user-images.githubusercontent.com/18049790/136649966-372037e8-d2bf-48af-8951-0451cd3ab8f4.png)
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
 ##### Prerequisites
 
 ```bash
@@ -144,11 +154,10 @@ my-quota   118s   cpu: 0/500Mi, memory: 0/2G
 
 In English:
 
-| Value      | Translation |
-| ----------- | ----------- |
-| REQUEST      | Minimum (Request)      |
-| LIMIT   | Maximum (Limits)        |
-
+| Value   | Translation       |
+| ------- | ----------------- |
+| REQUEST | Minimum (Request) |
+| LIMIT   | Maximum (Limits)  |
 
 ```bash
 clear
@@ -181,15 +190,14 @@ my-quota   19m   cpu: 250m/500Mi, memory: 1Gi/2G
 
 In English:
 
-| Suffix      | Description |
-| ----------- | ----------- |
-| E/Ei      | Exabyte      |
-| P/Pi   | Petabyte        |
-| T/Ti   | Terrabyte        |
-| G/Gi   | Gigabyte        |
-| M/Mi   | Megabyte        |
-| k/Ki   | Kilobyte        |
-
+| Suffix | Description |
+| ------ | ----------- |
+| E/Ei   | Exabyte     |
+| P/Pi   | Petabyte    |
+| T/Ti   | Terrabyte   |
+| G/Gi   | Gigabyte    |
+| M/Mi   | Megabyte    |
+| k/Ki   | Kilobyte    |
 
 </p>
 </details>
@@ -394,7 +402,7 @@ kubectl create sa my-serviceaccount
 ```bash
 # Get the corresponding secret created for the new serviceAccount
 clear
-kubectl get secret 
+kubectl get secret
 ```
 
 ```bash
@@ -404,6 +412,7 @@ kubectl describe secret my-serviceaccount-token-***** #👈👈👈 Replace ****
 ```
 
 Output:
+
 ```bash
 Name:         my-serviceaccount-token-nptmw
 Namespace:    serviceaccount-namespace
@@ -470,11 +479,10 @@ kubectl get pod serviceaccount-pod -o jsonpath={.spec.serviceAccountName}
 ```
 
 Output
+
 ```bash
 my-serviceaccount
 ```
-
-
 
 </p>
 </details>

@@ -58,6 +58,8 @@ kubectl patch deployment metrics-server -n kube-system --type 'json' -p '[{"op":
 
 ### Contour Ingress
 
+![contour](https://user-images.githubusercontent.com/18049790/136644054-a6dc7100-cfd5-499c-9c34-01ec4fffbb01.png)
+
 By default the Contour Ingress required for the Ingress Networking question is not present on Docker Desktop.
 
 Please install the [contour ingress](https://projectcontour.io/) with the following command:
@@ -74,6 +76,8 @@ kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
 
 ### Calico
 
+![calico](https://user-images.githubusercontent.com/18049790/136644040-3b4cbfe8-3eb6-4c46-b238-adb51c2bb09c.png)
+
 Calico is required for the non native Kubernetes resources lookup question.
 
 ```bash
@@ -88,6 +92,8 @@ curl https://docs.projectcalico.org/manifests/calico.yaml | kubectl apply -f -
 
 ### Helm
 
+![helm](https://user-images.githubusercontent.com/18049790/136644027-f030c442-ee59-4ddd-a0a3-8075dfc3e796.png)
+
 Please install the [Helm](https://helm.sh/docs/) with the following command:
 
 ```bash
@@ -99,7 +105,6 @@ chmod 700 get_helm.sh
 </p>
 </details>
 
-
 ### Optional software for Docker desktop
 
 <details><summary>show</summary>
@@ -107,10 +112,12 @@ chmod 700 get_helm.sh
 
 #### Octant
 
-* Consider installing Octant to visualize Kubernetes Resource Types
-* This will help you understand the interaction and relationships between Kubernetes Resource types
-* Installation instructions for Octant can be found [here](https://octant.dev/)
-  * Or just use mine at [octant.jamesbuckett.com](http://octant.jamesbuckett.com/)
+![octant](https://user-images.githubusercontent.com/18049790/136644006-b0009cea-690c-4303-88a0-e06738fd28de.png)
+
+- Consider installing Octant to visualize Kubernetes Resource Types
+- This will help you understand the interaction and relationships between Kubernetes Resource types
+- Installation instructions for Octant can be found [here](https://octant.dev/)
+  - Or just use mine at [octant.jamesbuckett.com](http://octant.jamesbuckett.com/)
 
 </p>
 </details>

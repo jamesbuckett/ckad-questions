@@ -70,6 +70,16 @@ kube-system               cilium-ml27n                                          
 <details><summary>show</summary>
 <p>
 
+##### Overview
+
+![05-02](https://user-images.githubusercontent.com/18049790/136656169-85488092-140a-44ff-98d2-233f16842154.png)
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
 ##### Prerequisites
 
 ```bash
@@ -154,6 +164,16 @@ kubectl logs --since=1h log-pod
 <details><summary>show</summary>
 <p>
 
+##### Overview
+
+![05-03](https://user-images.githubusercontent.com/18049790/136656243-8d251a08-6411-48f8-b630-84c295254d6e.png)
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
 ##### Solution
 
 kubernetes.io: [Viewing, finding resources](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resources)
@@ -167,6 +187,16 @@ kubectl get events -A --sort-by=.metadata.creationTimestamp
 </details>
 
 #### 05-04. Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`. Create the namespace. Obtain the `hostIP` address using `JSONPath`.
+
+<details><summary>show</summary>
+<p>
+
+##### Overview
+
+![05-04](https://user-images.githubusercontent.com/18049790/136656501-11f5b64c-a250-4e49-92cf-c729daf9cd34.png)
+
+</p>
+</details>
 
 ##### Prerequisites
 

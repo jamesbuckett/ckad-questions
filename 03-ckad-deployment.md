@@ -600,6 +600,9 @@ kubectl config set-context --current --namespace=blue-green-namespace
 </p>
 </details>
 
+<details><summary>show</summary>
+<p>
+
 ##### Solution
 
 ```bash
@@ -610,6 +613,9 @@ kubectl create namespace blue-green-namespace
 
 </p>
 </details>
+
+<details><summary>show</summary>
+<p>
 
 ##### Solution - Blue Deployment
 
@@ -634,8 +640,8 @@ kubectl get ep
 </p>
 </details>
 
-</p>
-</details>
+<details><summary>show</summary>
+<p>
 
 ##### Solution - Green Deployment
 
@@ -653,6 +659,9 @@ kubectl get ep
 
 </p>
 </details>
+
+<details><summary>show</summary>
+<p>
 
 ##### Solution - Green=70 & Blue=30
 

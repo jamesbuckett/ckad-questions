@@ -207,6 +207,16 @@ In English:
 <details><summary>show</summary>
 <p>
 
+##### Overview
+
+![02-03](https://user-images.githubusercontent.com/18049790/136654563-56865c4f-2e2d-47b1-850a-36c5be816732.png)
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
 ##### Prerequisites
 
 ```bash
@@ -373,6 +383,16 @@ HOME=/root
 </details>
 
 #### 02-04. Create a namespace called `serviceaccount-namespace`. Create a pod called `serviceaccount-pod` using `nginx` image. Create a SeviceAccount called: my-serviceaccount. Update the pod to use the new ServiceAccount. Display the token for the new ServiceAccount.
+
+<details><summary>show</summary>
+<p>
+
+##### Overview
+
+![02-04](https://user-images.githubusercontent.com/18049790/136654659-8dce6ade-0487-45dc-97c8-d3191ed286d3.png)
+
+</p>
+</details>
 
 <details><summary>show</summary>
 <p>

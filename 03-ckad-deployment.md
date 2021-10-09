@@ -701,9 +701,7 @@ spec:
     targetPort: 80
   selector:
     #app: blue-deployment # Delete this
-    tier: web #👈👈👈 Add the label:  `tier=web`
-    version: green #👈👈👈  Add the label `version=green`
-    version: blue #👈👈👈 Add the label `version=blue`
+    tier: web #👈👈👈 Add the label:  `tier=web`. This is the sauce. One label pointing to both deployments
 status:
   loadBalancer: {}
 ```
@@ -813,7 +811,7 @@ kubectl get pods -L version
 ```bash
 clear
 # Check your work - Is the service load balancing to the pods
-kubectl get ep -o wide
+kubectl get ep
 ```
 
 </p>

@@ -110,6 +110,16 @@ docker image prune -a
 <details><summary>show</summary>
 <p>
 
+##### Overview
+
+![01-02](https://user-images.githubusercontent.com/18049790/136649495-9194b039-b88c-4e93-b493-83eb5e296aae.png)
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
 ##### Prerequisites
 
 ```bash
@@ -232,6 +242,16 @@ kubectl get pod --watch
 </details>
 
 #### 01-03. Create a namespace called `storage-namespace`. Create a Persistent Volume called `my-pv` with `5Gi` storage using hostPath `/mnt/my-host`. Create a Persistent Volume Claim called `my-pvc` with `2Gi` storage. Create a pod called `storage-pod` using the nginx image. Mount the Persistent Volume Claim onto `/my-mount` in `storage-pod`.
+
+<details><summary>show</summary>
+<p>
+
+##### Overview
+
+![01-03](https://user-images.githubusercontent.com/18049790/136649638-3faa1be6-3eab-439b-86bf-13f604dd9849.png)
+
+</p>
+</details>
 
 <details><summary>show</summary>
 <p>
@@ -386,6 +406,16 @@ Output:
 </details>
 
 #### 01-04. Create a namespace called `ram-namespace`. Create a pod called `ram-pod` using `nginx` image. Create an emptyDir volume called `ram-emptydir`. The emptyDir must use a RAM-backed filesystem. Mount the mount path at `/tmpfs`
+
+<details><summary>show</summary>
+<p>
+
+##### Overview
+
+![01-04](https://user-images.githubusercontent.com/18049790/136649713-c13c3248-2345-435d-9603-9ebc3ee67c13.png)
+
+</p>
+</details>
 
 <details><summary>show</summary>
 <p>

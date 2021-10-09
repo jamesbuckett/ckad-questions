@@ -143,6 +143,16 @@ kubectl exec web-pod -- curl -s db-service:80
 <details><summary>show</summary>
 <p>
 
+##### Overview
+
+![04-02](https://user-images.githubusercontent.com/18049790/136655759-a276fab5-fd7e-4703-91ca-56db086917ac.png)
+
+</p>
+</details>
+
+<details><summary>show</summary>
+<p>
+
 ##### Prerequisites
 
 ```bash
@@ -255,7 +265,19 @@ kubectl get ep
 </p>
 </details>
 
-#### 04-03. Create an ingress called `my-ingress` to expose the service `my-service` outside the cluster.
+#### 04-03. Create an ingress called `my-ingress` to expose the service `my-service` from previous question, outside the cluster.
+
+<details><summary>show</summary>
+<p>
+
+##### Overview
+
+![04-03-nginx](https://user-images.githubusercontent.com/18049790/136655897-148abcb7-4a6d-4d5b-afe0-18a377921d70.png)
+
+![04-03-ing](https://user-images.githubusercontent.com/18049790/136655911-644a6aea-c237-4fee-aa07-8f75ac786b64.png)
+
+</p>
+</details>
 
 <details><summary>show</summary>
 <p>

@@ -708,6 +708,12 @@ status:
   loadBalancer: {}
 ```
 
+```bash
+clear
+# Apply the YAML file to the Kubernetes API server
+kubectl apply -f ~/ckad/03-05-bsg-service.yml
+```
+
 </p>
 </details>
 

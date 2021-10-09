@@ -587,6 +587,8 @@ helm delete my-wp-release --purge
 </p>
 </details>
 
+![03-05](https://user-images.githubusercontent.com/18049790/136649195-3178d098-badb-478f-8b16-3d7e1774a81f.png)
+
 <details><summary>show</summary>
 <p>
 

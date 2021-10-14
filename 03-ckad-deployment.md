@@ -695,8 +695,8 @@ spec:
         tier: web #👈👈👈 Add the label:  `tier=web`
     spec:
       containers:
-      - image: nginx
-        name: nginx
+      - image: docker.io/jamesbuckett/blue:latest
+        name: blue
         ports:
         - containerPort: 80
         resources: {}
@@ -811,8 +811,8 @@ spec:
         tier: web #👈👈👈 Add the label:  `tier=web`
     spec:
       containers:
-      - image: nginx
-        name: nginx
+      - image: --image=docker.io/jamesbuckett/green:latest
+        name: green
         ports:
         - containerPort: 80
         resources: {}

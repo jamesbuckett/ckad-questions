@@ -631,8 +631,6 @@ helm delete my-wp-release --purge
 
 ![08-kubernetes-blue-green](https://user-images.githubusercontent.com/18049790/137315553-1792d855-fe0c-47df-911b-305251feeb4e.png)
 
-![03-05](https://user-images.githubusercontent.com/18049790/136649195-3178d098-badb-478f-8b16-3d7e1774a81f.png)
-
 </p>
 </details>
 

@@ -718,7 +718,7 @@ kubectl get pod --watch
 ```bash
 clear
 # Check labels
-kubectl get pods -L version
+kubectl get pods -L tier -L version
 ```
 
 </p>
@@ -811,7 +811,7 @@ spec:
         tier: web #👈👈👈 Add the label:  `tier=web`
     spec:
       containers:
-      - image: --image=docker.io/jamesbuckett/green:latest
+      - image: docker.io/jamesbuckett/green:latest
         name: green
         ports:
         - containerPort: 80
@@ -834,7 +834,7 @@ kubectl get pod --watch
 ```bash
 clear
 # Check labels
-kubectl get pods -L version
+kubectl get pods -L tier -L version
 ```
 
 </p>
@@ -860,13 +860,29 @@ kubectl scale --replicas=3 deployment green-deployment
 ```bash
 clear
 # Check your work - 7 blue and 3 green
-kubectl get pods -L version
+kubectl get pods -L tier -L version
+```
+
+Output:
+
+```bash
+NAME                                READY   STATUS    RESTARTS   AGE     VERSION   TIER
+blue-deployment-5f855f68d6-295xb    1/1     Running   0          9m52s   blue      web
+blue-deployment-5f855f68d6-2b4wv    1/1     Running   0          9m52s   blue      web
+blue-deployment-5f855f68d6-2c9wn    1/1     Running   0          9m52s   blue      web
+blue-deployment-5f855f68d6-5d4kb    1/1     Running   0          9m52s   blue      web
+blue-deployment-5f855f68d6-7tqx7    1/1     Running   0          9m52s   blue      web
+blue-deployment-5f855f68d6-k4s4w    1/1     Running   0          9m52s   blue      web
+blue-deployment-5f855f68d6-vqv8m    1/1     Running   0          9m52s   blue      web
+green-deployment-5b9f998d46-dlmsx   1/1     Running   0          112s    green     web
+green-deployment-5b9f998d46-k6lpt   1/1     Running   0          112s    green     web
+green-deployment-5b9f998d46-tjxl6   1/1     Running   0          112s    green     web
 ```
 
 ```bash
 clear
-# Check your work - Is the service load balancing to the pods
-kubectl get ep
+# Check your work - curl the service to verify operation
+kubectl run remote-run --image=busybox --restart=Never --rm -it
 ```
 
 </p>

@@ -883,6 +883,49 @@ green-deployment-5b9f998d46-tjxl6   1/1     Running   0          112s    green  
 clear
 # Check your work - curl the service to verify operation
 kubectl run remote-run --image=busybox --restart=Never --rm -it
+# Repeat this command to see different responses
+wget -qO- bsg-service
+```
+
+Output
+
+```bash
+/ # wget -qO- bsg-service
+Green !!!
+Green !!!
+Green !!!
+/ # wget -qO- bsg-service
+Blue !!!
+Blue !!!
+Blue !!!
+/ # wget -qO- bsg-service
+Blue !!!
+Blue !!!
+Blue !!!
+/ # wget -qO- bsg-service
+Blue !!!
+Blue !!!
+Blue !!!
+/ # wget -qO- bsg-service
+Blue !!!
+Blue !!!
+Blue !!!
+/ # wget -qO- bsg-service
+Blue !!!
+Blue !!!
+Blue !!!
+/ # wget -qO- bsg-service
+Blue !!!
+Blue !!!
+Blue !!!
+/ # wget -qO- bsg-service
+Blue !!!
+Blue !!!
+Blue !!!
+/ # wget -qO- bsg-service
+Green !!!
+Green !!!
+Green !!!
 ```
 
 </p>

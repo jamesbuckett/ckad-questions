@@ -693,7 +693,7 @@ spec:
       labels:
         # app: blue-deployment #👈👈👈 Delete this
         version: blue #👈👈👈 Add the label `version=blue`
-        tier: web #👈👈👈 Add the label:  `tier=web`
+        tier: web #👈👈👈 Add the label: `tier=web`
     spec:
       containers:
       - image: docker.io/jamesbuckett/blue:latest
@@ -714,6 +714,7 @@ kubectl apply -f ~/ckad/03-05-deploy-blue.yml
 clear
 # Quick verification that the pod was created and is working
 kubectl get pod --watch
+# or kubectl get pod -w
 ```
 
 ```bash
@@ -725,7 +726,7 @@ kubectl get pods --show-labels
 ```bash
 clear
 # Check labels specific to this question
-kubectl get pods -L tier -L version
+kubectl get pods -L tier,version
 ```
 
 </p>
@@ -762,7 +763,7 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    #app: blue-deployment #👈👈👈 Delete this
+    # version: blue #👈👈👈 Delete this
     tier: web #👈👈👈 Add the label:  `tier=web`. This is the sauce. One label pointing to both deployments
 status:
   loadBalancer: {}
@@ -837,12 +838,13 @@ kubectl apply -f ~/ckad/03-05-deploy-green.yml
 clear
 # Quick verification that the pod was created and is working
 kubectl get pod --watch
+# or kubectl get pod -w
 ```
 
 ```bash
 clear
-# Check labels
-kubectl get pods -L tier -L version
+# Check labels specific to this question
+kubectl get pods -L tier,version
 ```
 
 </p>
@@ -867,8 +869,8 @@ kubectl scale --replicas=3 deployment green-deployment
 
 ```bash
 clear
-# Check your work - 7 blue and 3 green
-kubectl get pods -L tier -L version
+# Check labels specific to this question
+kubectl get pods -L tier,version
 ```
 
 Output:

@@ -83,7 +83,7 @@ kubectl create deployment my-deployment --image=nginx --replicas=3 --port=80 --d
 vi ~/ckad/03-01.yml
 ```
 
-kubernetes.io: [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory)
+kubernetes.io bookmark: [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory)
 
 ```bash
 apiVersion: apps/v1

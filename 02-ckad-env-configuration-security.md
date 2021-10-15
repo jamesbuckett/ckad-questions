@@ -281,7 +281,7 @@ kubectl create secret generic my-secret --from-literal=user=bob --from-literal=p
 vi ~/ckad/02-03-secret.yml
 ```
 
-kubernetes.io: [Immutable Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#secret-immutable)
+kubernetes.io bookmark: [Immutable Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#secret-immutable)
 
 ```bash
 apiVersion: v1
@@ -313,7 +313,7 @@ kubectl run secret-pod --image=nginx --restart=Never -n secret-namespace --dry-r
 vi ~/ckad/02-03-pod.yml
 ```
 
-kubernetes.io: [Using Secrets as environment variables](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables)
+kubernetes.io bookmark: [Using Secrets as environment variables](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables)
 
 ```bash
 apiVersion: v1
@@ -467,7 +467,7 @@ kubectl run serviceaccount-pod --image=nginx --dry-run=client -o yaml > ~/ckad/0
 vi ~/ckad/02-04.yml
 ```
 
-kubernetes.io: [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
+kubernetes.io bookmark: [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
 
 ```bash
 apiVersion: v1

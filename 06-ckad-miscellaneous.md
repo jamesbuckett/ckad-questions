@@ -5,12 +5,10 @@
 <details><summary>show</summary>
 <p>
 
-kubernetes.io: [Kubectl context and configuration](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-context-and-configuration)
-
 ```bash
 # List all namespaces, but which is currently active?
 clear
-kubectl config get-contexts
+kubectl get namespace
 ```
 
 ```bash
@@ -32,6 +30,8 @@ ns-vpa            Active   15d
 projectcontour    Active   15d
 ```
 
+kubernetes.io bookmark: [Kubectl context and configuration](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-context-and-configuration)
+
 ```bash
 # Get the current active namespace
 kubectl config get-contexts
@@ -50,7 +50,7 @@ CURRENT   NAME                            CLUSTER                         AUTHIN
 <details><summary>show</summary>
 <p>
 
-kubernetes.io: [Not All Objects are in a Namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#not-all-objects-are-in-a-namespace)
+kubernetes.io bookmark: [Not All Objects are in a Namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#not-all-objects-are-in-a-namespace)
 
 ```bash
 clear

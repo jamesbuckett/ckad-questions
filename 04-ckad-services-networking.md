@@ -69,7 +69,7 @@ kubectl exec web-pod -- curl -s db-service:80
 
 ##### Solution
 
-kubernetes.io: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
+kubernetes.io bookmark: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
 
 ```bash
 vi ~/ckad/04-01-netpol.yml
@@ -284,7 +284,7 @@ kubectl get ep
 
 ##### Solution
 
-kubernetes.io [The Ingress resource](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
+kubernetes.io bookmark: [The Ingress resource](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
 
 ```bash
 vi ~/ckad/04-03-ing.yml

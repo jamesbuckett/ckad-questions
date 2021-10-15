@@ -56,7 +56,7 @@ docker images
 
 ##### Docker Container Operations
 
-kubernetes.io: [docker run](https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/)
+kubernetes.io bookmark: [docker run](https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/)
 
 ```bash
 clear
@@ -193,7 +193,7 @@ kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>
 
 ##### Solution
 
-kubernetes.io: [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+kubernetes.io bookmark: [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
 ```bash
 clear
@@ -266,7 +266,7 @@ kubectl config set-context --current --namespace=storage-namespace
 
 ##### Solution
 
-kubernetes.io: [Create a PersistentVolume](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume)
+kubernetes.io bookmark: [Create a PersistentVolume](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume)
 
 ```bash
 # Create a YAML file for the PV
@@ -312,7 +312,7 @@ my-pv     5Gi        RWO            Retain           Available
 
 ##### Solution
 
-kubernetes.io: [Create a PersistentVolumeClaim](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim)
+kubernetes.io bookmark: [Create a PersistentVolumeClaim](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim)
 
 ```bash
 # Create a YAML file for the PVC
@@ -358,7 +358,7 @@ my-pvc   Bound    my-pv    5Gi        RWO            manual         6s          
 
 ##### Solution
 
-kubernetes.io: [Create a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-pod)
+kubernetes.io bookmark: [Create a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-pod)
 
 ```bash
 # Create a YAML file for the Pod
@@ -436,7 +436,7 @@ kubectl config set-context --current --namespace=ram-namespace
 
 ##### Solution
 
-kubernetes.io: [emptyDir](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir)
+kubernetes.io bookmark: [emptyDir](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir)
 
 ```bash
 clear

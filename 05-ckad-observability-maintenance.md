@@ -176,7 +176,7 @@ kubectl logs --since=1h log-pod
 
 ##### Solution
 
-kubernetes.io: [Viewing, finding resources](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resources)
+kubernetes.io bookmark: [Viewing, finding resources](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resources)
 
 ```bash
 clear
@@ -274,7 +274,7 @@ scheduled.
 
 Using either method to obtain the JSONPath construct the search query to hostIP.
 
-kubernetes.io:[JSONPath Support](https://kubernetes.io/docs/reference/kubectl/jsonpath/)
+kubernetes.io bookmark:[JSONPath Support](https://kubernetes.io/docs/reference/kubectl/jsonpath/)
 
 ```bash
 kubectl get pod json-pod -o jsonpath={.status.hostIP}

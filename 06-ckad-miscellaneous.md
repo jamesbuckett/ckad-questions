@@ -1,6 +1,49 @@
 ## Sample CKAD API Q&A
 
-#### 06-01. List all the Kubernetes resources that can be found inside a namespace. By name only.
+#### 06-01. What is the current active namespace?
+
+<details><summary>show</summary>
+<p>
+
+kubernetes.io: [Kubectl context and configuration](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-context-and-configuration)
+
+```bash
+# List all namespaces, but which is currently active?
+clear
+kubectl config get-contexts
+```
+
+```bash
+NAME              STATUS   AGE
+cert-manager      Active   15d
+default           Active   15d
+knative-serving   Active   15d
+kourier-system    Active   15d
+kube-node-lease   Active   15d
+kube-public       Active   15d
+kube-system       Active   15d
+ns-chaos          Active   15d
+ns-cookies        Active   13d
+ns-demo           Active   15d
+ns-fluentbit      Active   7d20h
+ns-goldilocks     Active   15d
+ns-loki           Active   15d
+ns-vpa            Active   15d
+projectcontour    Active   15d
+```
+
+```bash
+# Get the current active namespace
+clear
+kubectl config get-contexts
+```
+
+```bash
+CURRENT   NAME                            CLUSTER                         AUTHINFO                              NAMESPACE
+*         do-sgp1-digital-ocean-cluster   do-sgp1-digital-ocean-cluster   do-sgp1-digital-ocean-cluster-admin   ns-cookies 👈👈👈 # ns-cookies is the active namespace
+```
+
+#### 06-02. List all the Kubernetes resources that can be found inside a namespace. By name only.
 
 <details><summary>show</summary>
 <p>
@@ -51,7 +94,7 @@ events
 </p>
 </details>
 
-#### 06-02. Give the command to list out all the available API groups on your cluster. Then list out the API's in the `named` group.
+#### 06-03. Give the command to list out all the available API groups on your cluster. Then list out the API's in the `named` group.
 
 <details><summary>show</summary>
 <p>

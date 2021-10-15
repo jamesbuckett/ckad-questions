@@ -34,7 +34,6 @@ projectcontour    Active   15d
 
 ```bash
 # Get the current active namespace
-clear
 kubectl config get-contexts
 ```
 
@@ -42,6 +41,9 @@ kubectl config get-contexts
 CURRENT   NAME                            CLUSTER                         AUTHINFO                              NAMESPACE
 *         do-sgp1-digital-ocean-cluster   do-sgp1-digital-ocean-cluster   do-sgp1-digital-ocean-cluster-admin   ns-cookies 👈👈👈 # ns-cookies is the active namespace
 ```
+
+</p>
+</details>
 
 #### 06-02. List all the Kubernetes resources that can be found inside a namespace. By name only.
 

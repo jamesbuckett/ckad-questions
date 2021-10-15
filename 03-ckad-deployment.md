@@ -684,13 +684,14 @@ spec:
   replicas: 10
   selector:
     matchLabels:
-      app: blue-deployment
+      # app: blue-deployment #👈👈👈 Delete this
+      version: blue #👈👈👈 Add this
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: blue-deployment
+        # app: blue-deployment #👈👈👈 Delete this
         version: blue #👈👈👈 Add the label `version=blue`
         tier: web #👈👈👈 Add the label:  `tier=web`
     spec:
@@ -717,7 +718,13 @@ kubectl get pod --watch
 
 ```bash
 clear
-# Check labels
+# See all labels on Pods
+kubectl get pods --show-labels
+```
+
+```bash
+clear
+# Check labels specific to this question
 kubectl get pods -L tier -L version
 ```
 
@@ -755,7 +762,7 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    #app: blue-deployment # Delete this
+    #app: blue-deployment #👈👈👈 Delete this
     tier: web #👈👈👈 Add the label:  `tier=web`. This is the sauce. One label pointing to both deployments
 status:
   loadBalancer: {}
@@ -800,13 +807,14 @@ spec:
   replicas: 10
   selector:
     matchLabels:
-      app: green-deployment
+      # app: green-deployment #👈👈👈 Delete this
+      version: green #👈👈👈  Add this
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: green-deployment
+        # app: green-deployment #👈👈👈 Delete this
         version: green #👈👈👈  Add the label `version=green`
         tier: web #👈👈👈 Add the label:  `tier=web`
     spec:

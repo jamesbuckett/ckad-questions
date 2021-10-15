@@ -92,8 +92,6 @@ curl https://docs.projectcalico.org/manifests/calico.yaml | kubectl apply -f -
 
 ### Helm
 
-![helm](https://user-images.githubusercontent.com/18049790/136644027-f030c442-ee59-4ddd-a0a3-8075dfc3e796.png)
-
 Please install the [Helm](https://helm.sh/docs/) with the following command:
 
 ```bash
@@ -125,7 +123,7 @@ chmod 700 get_helm.sh
 ## Logistics
 
 - The current version of Kubernetes in the CKAD exam can be found [here](https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks#what-application-version-is-running-in-the-exam-environment).
-- This has been tested on Docker Desktop v4.1.0.
+- This has been tested on Docker Desktop v4.1.1 (69879)
 - To remove all the resources that get created run the commands in the Clean Up section.
 
 _End of Section_

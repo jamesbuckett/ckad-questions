@@ -115,7 +115,6 @@ chmod 700 get_helm.sh
 - Consider installing Octant to visualize Kubernetes Resource Types
 - This will help you understand the interaction and relationships between Kubernetes Resource types
 - Installation instructions for Octant can be found [here](https://octant.dev/)
-  - Or just use mine at [octant.jamesbuckett.com](http://octant.jamesbuckett.com/)
 
 </p>
 </details>

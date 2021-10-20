@@ -272,7 +272,7 @@ scheduled.
 
 ##### Solution
 
-Using either method to obtain the JSONPath construct the search query to hostIP.
+Construct the search query to `hostIP`.
 
 kubernetes.io bookmark:[JSONPath Support](https://kubernetes.io/docs/reference/kubectl/jsonpath/)
 

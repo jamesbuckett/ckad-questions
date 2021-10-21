@@ -104,18 +104,30 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: app-netpol #👈👈👈 Change
+  name: app-policy #👈👈👈 Change  
 spec:
+  policyTypes:
+  - Ingress
+  - Egress
   podSelector:
     matchLabels:
       tier: app #👈👈👈 Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=app
   ingress:
-  - from:
-    - podSelector:
-        matchLabels:
-          tier: web #👈👈👈 Ingress - Traffic from pod with label tier=web
-  policyTypes:
-  - Ingress
+    - from:
+        - podSelector:
+            matchLabels:
+              tier: web #👈👈👈 Ingress - Traffic from pod with label tier=web
+      ports:
+        - port: 80
+  egress:
+    - to:
+        - namespaceSelector: {}
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+      ports:
+        - port: 53
+          protocol: UDP  
 ```
 
 ```bash

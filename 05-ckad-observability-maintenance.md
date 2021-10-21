@@ -83,7 +83,7 @@ kube-system               cilium-ml27n                                          
 ##### Prerequisites
 
 ```bash
-mkdir ~/ckad/
+mkdir -p ~/ckad/
 clear
 kubectl create namespace log-namespace
 kubectl run log-pod --image=nginx -n log-namespace

@@ -162,7 +162,7 @@ kubectl exec web-pod -- curl -s db-service:80
 
 ##### Overview
 
-![04-k8s-ports](https://user-images.githubusercontent.com/18049790/138287282-f5066dde-d9f9-4bbf-98d8-f1fedeebcc56.png)
+![04-k8s-ports](https://user-images.githubusercontent.com/18049790/138288244-ff029e2a-9501-4d57-a009-04259e7f2781.png)
 
 </p>
 </details>
@@ -289,7 +289,7 @@ kubectl get ep
 
 ##### Overview
 
-![04-k8s-ports](https://user-images.githubusercontent.com/18049790/138287282-f5066dde-d9f9-4bbf-98d8-f1fedeebcc56.png)
+![04-k8s-ports](https://user-images.githubusercontent.com/18049790/138288244-ff029e2a-9501-4d57-a009-04259e7f2781.png)
 
 </p>
 </details>

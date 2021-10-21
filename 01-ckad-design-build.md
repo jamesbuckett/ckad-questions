@@ -17,7 +17,7 @@
 Create a file called index.html
 
 ```bash
-mkdir ~/ckad/
+mkdir -p ~/ckad/
 vi ~/ckad/index.html
 ```
 
@@ -198,6 +198,7 @@ kubernetes.io bookmark: [kubectl Cheat Sheet](https://kubernetes.io/docs/referen
 ```bash
 clear
 # Using the best example that matches the question
+mkdir -p ~/ckad/
 kubectl run pod-1 --image=nginx --dry-run=client -o yaml > ~/ckad/01-02.yml
 ```
 
@@ -270,6 +271,7 @@ kubernetes.io bookmark: [Create a PersistentVolume](https://kubernetes.io/docs/t
 
 ```bash
 # Create a YAML file for the PV
+mkdir -p ~/ckad/
 vi ~/ckad/01-03-pv.yml
 ```
 
@@ -316,6 +318,7 @@ kubernetes.io bookmark: [Create a PersistentVolumeClaim](https://kubernetes.io/d
 
 ```bash
 # Create a YAML file for the PVC
+mkdir -p ~/ckad/
 vi ~/ckad/01-03-pvc.yml
 ```
 
@@ -362,6 +365,7 @@ kubernetes.io bookmark: [Create a Pod](https://kubernetes.io/docs/tasks/configur
 
 ```bash
 # Create a YAML file for the Pod
+mkdir -p ~/ckad/
 vi  ~/ckad/01-03-pod.yml
 ```
 
@@ -447,6 +451,7 @@ kubectl run ram-pod --image=nginx --dry-run=client -o yaml > ~/ckad/01-04.yml
 clear
 # Edit the YAML file to make required changes
 # Use the Question number in case you want to return to the question for reference or for review
+mkdir -p ~/ckad/
 vi ~/ckad/01-04.yml
 ```
 

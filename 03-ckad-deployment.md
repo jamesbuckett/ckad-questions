@@ -26,7 +26,7 @@
 ##### Prerequisites
 
 ```bash
-mkdir ~/ckad/
+mkdir -p ~/ckad/
 clear
 # Create the namespace
 kubectl create namespace deployment-namespace
@@ -80,6 +80,7 @@ kubectl create deployment my-deployment --image=nginx --replicas=3 --port=80 --d
 
 ```bash
 # Edit the YAML file to make required changes
+mkdir -p ~/ckad/
 vi ~/ckad/03-01.yml
 ```
 
@@ -661,6 +662,7 @@ kubectl config set-context --current --namespace=blue-green-namespace
 
 ```bash
 clear
+mkdir -p ~/ckad/
 # Create the deployment as far as possible using the CLI (imperatively)
 kubectl create deployment blue-deployment --image=nginx --replicas=10 --port=80 --dry-run=client -o yaml > ~/ckad/03-05-deploy-blue.yml
 ```
@@ -745,6 +747,7 @@ kubectl expose deployment blue-deployment --port=80 --target-port=80 --name=bsg-
 
 ```bash
 clear
+mkdir -p ~/ckad/
 # Edit the YAML file to make required changes
 vi ~/ckad/03-05-bsg-service.yml
 ```
@@ -791,6 +794,7 @@ kubectl create deployment green-deployment --image=nginx --replicas=10 --port=80
 
 ```bash
 clear
+mkdir -p ~/ckad/
 # Edit the YAML file to make required changes
 # Use the Question number in case you want to return to the question for reference or for review
 vi ~/ckad/03-05-deploy-green.yml

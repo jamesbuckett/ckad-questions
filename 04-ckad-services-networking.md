@@ -72,6 +72,7 @@ kubectl exec web-pod -- curl -s db-service:80
 kubernetes.io bookmark: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
 
 ```bash
+mkdir -p ~/ckad/
 vi ~/ckad/04-01-netpol.yml
 ```
 
@@ -156,7 +157,7 @@ kubectl exec web-pod -- curl -s db-service:80
 ##### Prerequisites
 
 ```bash
-mkdir ~/ckad/
+mkdir -p ~/ckad/
 clear
 kubectl create namespace service-namespace
 kubectl config set-context --current --namespace=service-namespace
@@ -287,6 +288,7 @@ kubectl get ep
 kubernetes.io bookmark: [The Ingress resource](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
 
 ```bash
+mkdir -p ~/ckad/
 vi ~/ckad/04-03-ing.yml
 ```
 

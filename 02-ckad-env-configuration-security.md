@@ -108,7 +108,6 @@ kubectl get networkpolicies.crd.projectcalico.org
 ##### Prerequisites
 
 ```bash
-mkdir ~/ckad/
 clear
 kubectl create namespace quota-namespace
 kubectl config set-context --current --namespace=quota-namespace
@@ -160,6 +159,7 @@ In English:
 | LIMIT   | Maximum (Limits)  |
 
 ```bash
+mkdir -p ~/ckad/
 clear
 # Try to run a Pod with resource requests exceeding the quota
 kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl set resources -f - --requests=cpu=1000m,memory=4Gi --limits=cpu=1000m,memory=4Gi --local -o yaml > ~/ckad/02-02-exceed.yml
@@ -167,6 +167,7 @@ kubectl apply -f ~/ckad/02-02-exceed.yml
 ```
 
 ```bash
+mkdir -p ~/ckad/
 clear
 # Try to run a Pod with resource requests within the quota
 kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl set resources -f - --requests=cpu=250m,memory=1Gi --limits=cpu=250m,memory=1Gi --local -o yaml > ~/ckad/02-02-succeed.yml
@@ -277,6 +278,7 @@ Examples:
 ```bash
 clear
 # Create a generic secret
+mkdir -p ~/ckad/
 kubectl create secret generic my-secret --from-literal=user=bob --from-literal=password=123456 --dry-run=client -o yaml > ~/ckad/02-03-secret.yml
 vi ~/ckad/02-03-secret.yml
 ```
@@ -459,6 +461,7 @@ token:      eyJhbGciOiJSUzI1NiIsImtpZCI6IkFEcU0xS1hKTTQtZFR6bjl3UHlJZ09rNWpobDky
 
 ```bash
 # Create the pod declaratively
+mkdir -p ~/ckad/
 kubectl run serviceaccount-pod --image=nginx --dry-run=client -o yaml > ~/ckad/02-04.yml
 ```
 

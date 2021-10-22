@@ -249,7 +249,7 @@ kubectl get pod --watch
 
 ##### Overview
 
-![01-03](https://user-images.githubusercontent.com/18049790/136649638-3faa1be6-3eab-439b-86bf-13f604dd9849.png)
+![pv-pvc-pod](https://user-images.githubusercontent.com/18049790/138383528-c262a6a1-6d61-4493-abb8-93d1534010ec.jpg)
 
 </p>
 </details>

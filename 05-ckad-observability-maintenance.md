@@ -314,6 +314,7 @@ kubectl rollout status deployment my-revision-deployment
 kubectl set image deployment.apps/my-revision-deployment nginx=nginx:1.20.0 --record
 kubectl rollout status deployment my-revision-deployment
 kubectl set image deployment.apps/my-revision-deployment nginx=ngin:1.21.0 --record
+clear
 ```
 
 </p>

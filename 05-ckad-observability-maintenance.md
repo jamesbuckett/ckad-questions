@@ -286,6 +286,66 @@ kubectl get pod json-pod -o jsonpath={.status.hostIP}
 </p>
 </details>
 
+#### 05-05. Run the preparation steps. A deployment called `my-revision-deployment` in the namespace `revision-namespace` will be created. Check the status of this deployment. Check the revision history of this deployment. Roll back to the last good working deployment. Roll back to the earliest revision. Verify that it is now working.
+
+<details><summary>show</summary>
+<p>
+
+##### Overview
+
+TBC
+
+</p>
+</details>
+
+##### Prerequisites
+
+<details><summary>show</summary>
+<p>
+
+```bash
+clear
+kubectl create namespace revision-namespace
+kubectl config set-context --current --namespace=revision-namespace
+kubectl create deployment my-revision-deployment --image=nginx:1.18.0 --replicas=2
+kubectl rollout status deployment my-revision-deployment
+kubectl set image deployment.apps/my-revision-deployment nginx=nginx:1.19.0 --record
+kubectl rollout status deployment my-revision-deployment
+kubectl set image deployment.apps/my-revision-deployment nginx=nginx:1.20.0 --record
+kubectl rollout status deployment my-revision-deployment
+kubectl set image deployment.apps/my-revision-deployment nginx=ngin:1.21.0 --record
+```
+
+</p>
+</details>
+
+##### Solution
+
+<details><summary>show</summary>
+<p>
+
+```bash
+clear
+
+#Situational Awareness 
+kubectl get all 
+
+# Exam events from Deployment 
+kubectl describe deployment.apps/my-revision-deployment
+
+# Get Deployment Revisions
+kubectl rollout history deployment.apps/my-revision-deployment
+
+# Fix the immediate problem
+kubectl rollout undo deployment.apps/my-revision-deployment
+
+# Go back further to an earlier revision
+kubectl rollout history deployment.apps/my-revision-deployment --revision=2
+```
+
+</p>
+</details>
+
 #### Clean Up
 
 <details><summary>show</summary>

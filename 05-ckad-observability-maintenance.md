@@ -198,10 +198,10 @@ kubectl get events -A --sort-by=.metadata.creationTimestamp
 </p>
 </details>
 
-##### Prerequisites
-
 <details><summary>show</summary>
 <p>
+
+##### Prerequisites
 
 ```bash
 clear
@@ -298,10 +298,10 @@ TBC
 </p>
 </details>
 
-##### Prerequisites
-
 <details><summary>show</summary>
 <p>
+
+##### Prerequisites
 
 ```bash
 clear
@@ -319,10 +319,10 @@ kubectl set image deployment.apps/my-revision-deployment nginx=ngin:1.21.0 --rec
 </p>
 </details>
 
-##### Solution
-
 <details><summary>show</summary>
 <p>
+
+##### Solution
 
 ```bash
 clear

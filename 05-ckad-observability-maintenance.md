@@ -193,7 +193,7 @@ kubectl get events -A --sort-by=.metadata.creationTimestamp
 
 ##### Overview
 
-![05-04](https://user-images.githubusercontent.com/18049790/136656501-11f5b64c-a250-4e49-92cf-c729daf9cd34.png)
+![jsonpath](https://user-images.githubusercontent.com/18049790/138386382-0e2c550b-14cf-47e5-96ef-105b0f278036.jpg)
 
 </p>
 </details>

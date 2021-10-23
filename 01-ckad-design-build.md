@@ -257,7 +257,7 @@ Legend
 * Pod – a running container that will consume a PersistentVolume
 * StorageClass – allows for dynamic provisioning of PersistentVolumes
 
-Access Modes
+[Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
 * ReadWriteOnce(RWO) - volume can be mounted as read-write by a single node.
 * ReadOnlyMany(ROX) - volume can be mounted read-only by many nodes.
 * ReadWriteMany(RWX) - volume can be mounted as read-write by many nodes.
@@ -270,7 +270,7 @@ Notes
 * The link between PV and PVC is not explict, instead the PVC makes a some requests for storage. 
 * Kubernetes will pick an appropriate PersistentVolume to meet that claim.
 * StorageClass provisions PV dynamically, when PVC claims it. 
-* StorageClass allows dynamically provision volumes for an incoming claim.
+* StorageClass allows for dynamically provisioned volumes for an incoming claim.
 
 
 </p>

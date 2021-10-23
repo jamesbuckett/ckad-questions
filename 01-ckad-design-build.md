@@ -9,7 +9,7 @@
 
 #### 01-01. Create a container from the attached Dockerfile and index.html. Name the image `my-image`. Run the container exposing port `8080` on the host and port `80` on the container. Name the container `my-container`. Stop the container. Delete the container.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Docker Image Creation</summary>
 <p>
 
 ##### Docker Image Creation

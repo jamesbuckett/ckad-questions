@@ -493,6 +493,8 @@ kubectl describe pod ram-pod | grep -i Mounts -A1
 </p>
 </details>
 
+#### Clean Up
+
 <details class="faq box"><summary>Clean Up</summary>
 <p>
 

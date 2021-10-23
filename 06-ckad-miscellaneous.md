@@ -2,7 +2,7 @@
 
 #### 06-01. What is the current active namespace?
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - kubectl config get-contexts</summary>
 <p>
 
 ```bash
@@ -47,7 +47,7 @@ CURRENT   NAME                            CLUSTER                         AUTHIN
 
 #### 06-02. List all the Kubernetes resources that can be found inside a namespace. By name only.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - kubectl api-resources --namespaced=true</summary>
 <p>
 
 kubernetes.io bookmark: [Not All Objects are in a Namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#not-all-objects-are-in-a-namespace)
@@ -73,7 +73,7 @@ endpoints                          ep                                   v1      
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>kubectl api-resources --namespaced=true -o name</summary>
 <p>
 
 ##### Solution
@@ -98,10 +98,8 @@ events
 
 #### 06-03. Give the command to list out all the available API groups on your cluster. Then list out the API's in the `named` group.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
-
-##### Prerequisites
 
 ```bash
 clear
@@ -115,10 +113,8 @@ kubectl proxy &
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - All API groups</summary>
 <p>
-
-##### Solution
 
 ```bash
 clear
@@ -183,10 +179,8 @@ Output:
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - named API's</summary>
 <p>
-
-##### Solution
 
 ```bash
 clear

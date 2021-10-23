@@ -10,10 +10,8 @@
 
 #### 05-01. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - kubectl top pods -A --sort-by=cpu</summary>
 <p>
-
-##### Solution
 
 ```bash
 clear
@@ -37,7 +35,7 @@ ns-demo                   recommendationservice-b4cf8f489-xwv49                 
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - kubectl top pods -A --sort-by=memory</summary>
 <p>
 
 ##### Solution
@@ -67,17 +65,15 @@ kube-system               cilium-ml27n                                          
 
 #### 05-02. Create a pod called `log-pod` using image `nginx` in namespace `log-namespace`. Create the namespace. Obtain the `logs` for the nginx pod for the `last hour`.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
-
-##### Overview
 
 ![05-02](https://user-images.githubusercontent.com/18049790/136656169-85488092-140a-44ff-98d2-233f16842154.png)
 
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
 
 ##### Prerequisites
@@ -94,10 +90,8 @@ kubectl get all
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Help</summary>
 <p>
-
-##### Help Examples
 
 ```bash
 clear
@@ -145,10 +139,8 @@ Examples:
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
-
-##### Solution
 
 ```bash
 clear
@@ -161,20 +153,16 @@ kubectl logs --since=1h log-pod
 
 #### 05-03. Output all the events for all namespaces by creation date.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
-
-##### Overview
 
 ![05-03](https://user-images.githubusercontent.com/18049790/136656243-8d251a08-6411-48f8-b630-84c295254d6e.png)
 
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
-
-##### Solution
 
 kubernetes.io bookmark: [Viewing, finding resources](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resources)
 
@@ -188,20 +176,16 @@ kubectl get events -A --sort-by=.metadata.creationTimestamp
 
 #### 05-04. Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`. Create the namespace. Obtain the `hostIP` address using `JSONPath`.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
-
-##### Overview
 
 ![jsonpath](https://user-images.githubusercontent.com/18049790/138386382-0e2c550b-14cf-47e5-96ef-105b0f278036.jpg)
 
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
-
-##### Prerequisites
 
 ```bash
 clear
@@ -214,10 +198,8 @@ kubectl get all
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - kubectl explain</summary>
 <p>
-
-##### Solution
 
 ```bash
 clear
@@ -267,10 +249,8 @@ scheduled.
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - kubectl get pod json-pod -o jsonpath=</summary>
 <p>
-
-##### Solution
 
 Construct the search query to `hostIP`.
 
@@ -283,12 +263,9 @@ kubectl get pod json-pod -o jsonpath={.status.hostIP}
 </p>
 </details>
 
-</p>
-</details>
-
 #### 05-05. Run the preparation steps. A deployment called `my-revision-deployment` in the namespace `revision-namespace` will be created. Check the status of this deployment. Check the revision history of this deployment. Roll back to the last good working deployment. Roll back to the earliest revision. Verify that it is now working.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
 
 ##### Overview
@@ -298,10 +275,8 @@ TBC
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
-
-##### Prerequisites
 
 ```bash
 clear
@@ -320,10 +295,8 @@ clear
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
-
-##### Solution
 
 ```bash
 clear
@@ -349,7 +322,7 @@ kubectl rollout history deployment.apps/my-revision-deployment --revision=2
 
 #### Clean Up
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Clean Up</summary>
 <p>
 
 ```bash

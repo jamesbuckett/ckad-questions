@@ -51,7 +51,7 @@ docker images
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Docker Container Operations</summary>
 <p>
 
 ##### Docker Container Operations
@@ -91,6 +91,7 @@ docker image rm my-image:v0.1
 </p>
 </details>
 
+<details class="faq box"><summary>Docker Operations</summary>
 <details><summary>show</summary>
 <p>
 
@@ -107,7 +108,7 @@ docker image prune -a
 
 #### 01-02. Create a namespace called `pod-namespace`. Create a pod called `pod-1` using `nginx` image. The container in the pod should be named `container-1`.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
 
 ##### Overview
@@ -117,7 +118,7 @@ docker image prune -a
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
 
 ##### Prerequisites
@@ -188,7 +189,7 @@ kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
 
 ##### Solution
@@ -244,7 +245,7 @@ kubectl get pod --watch
 
 #### 01-03. Create a namespace called `storage-namespace`. Create a Persistent Volume called `my-pv` with `5Gi` storage using hostPath `/mnt/my-host`. Create a Persistent Volume Claim called `my-pvc` with `2Gi` storage. Create a pod called `storage-pod` using the nginx image. Mount the Persistent Volume Claim onto `/my-mount` in `storage-pod`.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
 
 ##### Overview
@@ -276,7 +277,7 @@ Notes
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
 
 ##### Prerequisites
@@ -286,6 +287,13 @@ clear
 kubectl create namespace storage-namespace
 kubectl config set-context --current --namespace=storage-namespace
 ```
+
+</p>
+</details>
+
+
+<details class="faq box"><summary>Solution - PersistentVolume</summary>
+<p>
 
 ##### Solution
 
@@ -331,7 +339,7 @@ my-pv     5Gi        RWO            Retain           Available
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - PersistentVolumeClaim</summary>
 <p>
 
 ##### Solution
@@ -378,7 +386,7 @@ my-pvc   Bound    my-pv    5Gi        RWO            manual         6s          
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - Pod</summary>
 <p>
 
 ##### Solution
@@ -433,7 +441,7 @@ Output:
 
 #### 01-04. Create a namespace called `ram-namespace`. Create a pod called `ram-pod` using `nginx` image. Create an emptyDir volume called `ram-emptydir`. The emptyDir must use a RAM-backed filesystem. Mount the mount path at `/tmpfs`
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
 
 ##### Overview
@@ -443,7 +451,7 @@ Output:
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
 
 ##### Prerequisites
@@ -457,7 +465,7 @@ kubectl config set-context --current --namespace=ram-namespace
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
 
 ##### Solution
@@ -516,7 +524,7 @@ kubectl describe pod ram-pod | grep -i Mounts -A1
 
 #### Clean Up
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Clean Up</summary>
 <p>
 
 ```bash

@@ -14,16 +14,21 @@ Please NOTE:
 - The commands work but the NetworkPolicy's are not enforced
 ```
 
+<details class="faq box"><summary>Overview</summary>
+<p>
+
 I use the notepad to sketch out the ingress and egress before starting
 
 Rules
 
 - `tier: web` > `tier: app` on port 80
 
-<details><summary>show</summary>
-<p>
+</p>
+</details>
 
-##### Prerequisites
+
+<details class="faq box"><summary>Prerequisites</summary>
+<p>
 
 ```bash
 mkdir ~/ckad/
@@ -64,10 +69,8 @@ kubectl exec web-pod -- curl -s db-service:80
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
-
-##### Solution
 
 kubernetes.io bookmark: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
 
@@ -157,20 +160,16 @@ kubectl exec web-pod -- curl -s db-service:80
 
 #### 04-02. Create a namespace called `service-namespace`. Create a pod called `service-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a service for the pod called `my-service` allowing for communication inside the cluster. Let the service expose port 8080.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
-
-##### Overview
 
 ![pod-svc-port](https://user-images.githubusercontent.com/18049790/138384354-4ab48373-8feb-402f-b66c-5864d7fc506f.jpg)
 
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
-
-##### Prerequisites
 
 ```bash
 mkdir -p ~/ckad/
@@ -178,6 +177,12 @@ clear
 kubectl create namespace service-namespace
 kubectl config set-context --current --namespace=service-namespace
 ```
+
+</p>
+</details>
+
+<details class="faq box"><summary>Solution - Create Pod</summary>
+<p>
 
 ##### Help Examples
 
@@ -229,7 +234,7 @@ kubectl get all
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - Expose Service</summary>
 <p>
 
 ##### Help Examples
@@ -284,17 +289,15 @@ kubectl get ep
 
 #### 04-03. Create an ingress called `my-ingress` to expose the service `my-service` from previous question, outside the cluster.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
-
-##### Overview
 
 ![svc-ing](https://user-images.githubusercontent.com/18049790/138384372-c8df7988-d2bb-4857-8999-28234b035355.jpg)
 
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
 
 ##### Solution
@@ -394,7 +397,7 @@ Commercial support is available at
 
 #### Clean Up
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Clean Up</summary> 
 <p>
 
 ```bash

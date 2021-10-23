@@ -12,7 +12,7 @@
 
 #### 02-01. List all the Custom Resource Definitions installed in a cluster. Calico is a CRD. List out how to obtain the correct resource name to query a Calico Network Policy and not the default Kubernetes Network Policy.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
 
 ```bash
@@ -48,10 +48,8 @@ tlscertificatedelegations.projectcontour.io           2021-09-24T05:26:16Z
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
-
-##### Solution
 
 ```bash
 kubectl config set-context --current --namespace=default
@@ -92,20 +90,16 @@ kubectl get networkpolicies.crd.projectcalico.org
 
 #### 02-02. Create a namespace called `quota-namespace`. Create a Resource Quota for this namespace called `my-quota`. Set a memory reservation of `2Gi`. Set a CPU reservation of `500Mi`.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
-
-##### Overview
 
 ![02-02](https://user-images.githubusercontent.com/18049790/136649966-372037e8-d2bf-48af-8951-0451cd3ab8f4.png)
 
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
-
-##### Prerequisites
 
 ```bash
 clear
@@ -133,10 +127,8 @@ Output
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
-
-##### Solution
 
 ```bash
 clear
@@ -205,20 +197,16 @@ In English:
 
 #### 02-03. Create a namespace called `secret-namespace`. Create a secret in this namespace called `my-secret`. The secret should be immutable and contain the literal values `user=bob` and `password=123456`. Create a pod called called `secret-pod` using the `nginx` image. The pod should consume the secret as environmental variables `SECRET-ENV-USER` and `SECRET-ENV-PASSWORD`.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
-
-##### Overview
 
 ![02-03](https://user-images.githubusercontent.com/18049790/136654563-56865c4f-2e2d-47b1-850a-36c5be816732.png)
 
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
-
-##### Prerequisites
 
 ```bash
 clear
@@ -229,7 +217,7 @@ kubectl config set-context --current --namespace=secret-namespace
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Help</summary> 
 <p>
 
 ##### Help Examples
@@ -270,10 +258,8 @@ Examples:
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
-
-##### Solution
 
 ```bash
 clear
@@ -386,20 +372,16 @@ HOME=/root
 
 #### 02-04. Create a namespace called `serviceaccount-namespace`. Create a pod called `serviceaccount-pod` using `nginx` image. Create a SeviceAccount called: my-serviceaccount. Update the pod to use the new ServiceAccount. Display the token for the new ServiceAccount.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
-
-##### Overview
 
 ![02-04](https://user-images.githubusercontent.com/18049790/136654659-8dce6ade-0487-45dc-97c8-d3191ed286d3.png)
 
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
-
-##### Prerequisites
 
 ```bash
 clear
@@ -410,10 +392,8 @@ kubectl config set-context --current --namespace=serviceaccount-namespace
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - Create the serviceAccount and display the token</summary>
 <p>
-
-##### Solution: Create the serviceAccount and display the token
 
 ```bash
 clear
@@ -454,10 +434,8 @@ token:      eyJhbGciOiJSUzI1NiIsImtpZCI6IkFEcU0xS1hKTTQtZFR6bjl3UHlJZ09rNWpobDky
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - Create the pod and update the pod to use the new serviceAccount</summary>
 <p>
-
-##### Solution: Create the pod and update the pod to use the new serviceAccount
 
 ```bash
 # Create the pod declaratively
@@ -512,7 +490,7 @@ my-serviceaccount
 
 #### Clean Up
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Clean Up</summary> 
 <p>
 
 ```bash

@@ -8,10 +8,8 @@
 
 #### 03-01. Create a namespace called `deployment-namespace`. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx container. The containers should be named `my-container`. Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
-
-##### Overview
 
 ![03-01-deploy](https://user-images.githubusercontent.com/18049790/136654817-cf8b912c-7dc3-486d-8615-6b8ecbdc0e8a.png)
 
@@ -20,10 +18,8 @@
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
-
-##### Prerequisites
 
 ```bash
 mkdir -p ~/ckad/
@@ -67,10 +63,8 @@ Examples:
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
-
-##### Solution
 
 ```bash
 clear
@@ -151,20 +145,16 @@ replicaset.apps/my-deployment-67fc8546   3         3         3       16m
 
 #### 03-02. In the previous question a Deployment called `my-deployment` was created. Allow network traffic to flow to this deployment from inside the cluster on `port 8080`.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
-
-##### Overview
 
 ![03-02](https://user-images.githubusercontent.com/18049790/136654933-3cbb67a7-c892-402b-a7a1-9e6f2977ab51.png)
 
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Help</summary> 
 <p>
-
-##### Help Examples
 
 ```bash
 clear
@@ -204,10 +194,8 @@ port 8000
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
-
-##### Solution
 
 ```bash
 clear
@@ -259,20 +247,16 @@ my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 
 #### 03-03. Create a namespace called `edit-namespace`. Create a deployment called `edit-deployment` with `2` replicas using the `redis` image in namespace. After the deployment is running, alter the containers to use the `nginx` image. Then alter the containers to use the `nginx:1.14.2` image and record the change.
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
-
-##### Overview
 
 ![03-03](https://user-images.githubusercontent.com/18049790/136655071-9e4a9225-3a8f-4aed-8556-0767162fec36.png)
 
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
-
-##### Prerequisites
 
 ```bash
 clear
@@ -284,7 +268,7 @@ kubectl config set-context --current --namespace=edit-namespace
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - kubectl edit</summary>
 <p>
 
 ##### Solution
@@ -351,10 +335,8 @@ This works but does not record what the change was.
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - kubectl set image</summary>
 <p>
-
-##### Solution
 
 kubernetes.io:[Updating a Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment)
 
@@ -377,10 +359,8 @@ kubectl rollout history deployment.apps/edit-deployment
 
 #### 03-04. Use Helm to install WordPress into a namespace called `wordpress-namespace`
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
-
-##### Overview
 
 ![03-04-wp](https://user-images.githubusercontent.com/18049790/136655517-2bf660fb-8f97-4503-b6b8-cae0bc4fc4b2.png)
 
@@ -389,12 +369,10 @@ kubectl rollout history deployment.apps/edit-deployment
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
 
 WordPress on Bitnami [details](https://github.com/bitnami/charts/tree/master/bitnami/wordpress/#installing-the-chart)
-
-##### Prerequisites
 
 ```bash
 clear
@@ -427,10 +405,8 @@ EOF
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
-
-##### Solution
 
 ```bash
 clear
@@ -476,52 +452,7 @@ bitnami/grafana                                 6.3.2           8.2.0           
 bitnami/grafana-operator                        1.1.4           3.10.3          Kubernetes Operator based on the Operator SDK f...
 bitnami/grafana-tempo                           0.2.7           1.1.0           Grafana Tempo is an open source, easy-to-use an...
 bitnami/haproxy                                 0.2.13          2.4.7           HAProxy is a TCP proxy and a HTTP reverse proxy...
-bitnami/harbor                                  11.0.4          2.3.3           Harbor is an an open source trusted cloud nativ...
-bitnami/influxdb                                2.3.15          2.0.9           InfluxDB&trade; is an open source time-series d...
-bitnami/jasperreports                           11.0.6          7.8.0           The JasperReports server can be used as a stand...
-bitnami/jenkins                                 8.0.14          2.303.1         The leading open source automation server
-bitnami/joomla                                  10.1.24         3.10.2          PHP content management system (CMS) for publish...
-bitnami/jupyterhub                              0.1.20          1.4.2           JupyterHub brings the power of notebooks to gro...
-bitnami/kafka                                   14.2.1          2.8.1           Apache Kafka is a distributed streaming platform.
-bitnami/keycloak                                5.1.2           15.0.2          Keycloak is a high performance Java-based ident...
-bitnami/kiam                                    0.3.15          3.6.0           kiam is a proxy that captures AWS Metadata API ...
-bitnami/kibana                                  9.0.6           7.14.2          Kibana is an open source, browser based analyti...
-bitnami/kong                                    4.1.4           2.6.0           Kong is a scalable, open source API layer (aka ...
-bitnami/kube-prometheus                         6.1.12          0.51.2          kube-prometheus collects Kubernetes manifests t...
-bitnami/kube-state-metrics                      2.1.11          2.2.1           kube-state-metrics is a simple service that lis...
-bitnami/kubeapps                                7.5.7           2.4.1           Kubeapps is a dashboard for your Kubernetes clu...
-bitnami/kubernetes-event-exporter               1.1.15          0.10.0          This tool allows exporting the often missed Kub...
-bitnami/kubewatch                               3.2.16          0.1.0           Kubewatch is a Kubernetes watcher that currentl...
-bitnami/logstash                                3.6.10          7.15.0          Logstash is an open source, server-side data pr...
-bitnami/magento                                 19.0.4          2.4.3           A feature-rich flexible e-commerce solution. It...
-bitnami/mariadb                                 9.6.2           10.5.12         Fast, reliable, scalable, and easy to use open-...
-bitnami/mariadb-cluster                         1.0.2           10.2.14         DEPRECATED Chart to create a Highly available M...
-bitnami/mariadb-galera                          6.0.1           10.6.4          MariaDB Galera is a multi-master database clust...
-bitnami/mean                                    6.1.2           4.6.2           DEPRECATED MEAN is a free and open-source JavaS...
-bitnami/mediawiki                               12.3.15         1.36.2          Extremely powerful, scalable software and a fea...
-bitnami/memcached                               5.15.5          1.6.12          Chart for Memcached
-bitnami/metallb                                 2.5.6           0.10.3          The Metal LB for Kubernetes
-bitnami/metrics-server                          5.10.4          0.5.1           Metrics Server is a cluster-wide aggregator of ...
-bitnami/minio                                   8.1.9           2021.10.6       Bitnami Object Storage based on MinIO&reg; is a...
-bitnami/mongodb                                 10.27.2         4.4.9           NoSQL document-oriented database that stores JS...
-bitnami/mongodb-sharded                         3.9.8           4.4.9           NoSQL document-oriented database that stores JS...
-bitnami/moodle                                  11.1.2          3.11.3          Moodle&trade; is a learning platform designed t...
-bitnami/mxnet                                   2.3.16          1.8.0           A flexible and efficient library for deep learning
-bitnami/mysql                                   8.8.8           8.0.26          Chart to create a Highly available MySQL cluster
-bitnami/nats                                    6.4.10          2.6.1           An open-source, cloud-native messaging system
-bitnami/nginx                                   9.5.7           1.21.3          Chart for the nginx server
-bitnami/nginx-ingress-controller                7.6.21          0.48.1          Chart for the nginx Ingress controller
-bitnami/node                                    15.2.28         14.18.0         Event-driven I/O server-side JavaScript environ...
-bitnami/node-exporter                           2.3.9           1.2.2           Prometheus exporter for hardware and OS metrics...
-bitnami/oauth2-proxy                            1.0.2           7.1.3           A reverse proxy and static file server that pro...
-bitnami/odoo                                    19.0.9          14.0.20210910   A suite of web based open source business apps.
-bitnami/opencart                                10.0.26         3.0.3-8         A free and open source e-commerce platform for ...
-bitnami/orangehrm                               10.1.23         4.8.0-0         OrangeHRM is a free HR management system that o...
-bitnami/osclass                                 11.0.16         4.4.0           Osclass is a php script that allows you to quic...
-bitnami/owncloud                                10.2.27         10.8.0          A file sharing server that puts the control and...
-bitnami/parse                                   15.0.10         4.10.4          Parse is a platform that enables users to add a...
-bitnami/phabricator                             11.0.30         2021.26.0       DEPRECATED Collection of open source web applic...
-bitnami/phpbb                                   10.1.24         3.3.5           Community forum that supports the notion of use...
+...
 bitnami/phpmyadmin                              8.2.16          5.1.1           phpMyAdmin is an mysql administration frontend
 bitnami/postgresql                              10.12.2         11.13.0         Chart for PostgreSQL, an object-relational data...
 bitnami/postgresql-ha                           7.10.1          11.13.0         Chart for PostgreSQL with HA architecture (usin...
@@ -625,20 +556,16 @@ helm delete my-wp-release --purge
 
 #### 03-05. Create a namespace called `blue-green-namespace`. Create a Deployment called `blue-deployment`, with `10` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx containers. Label the pods `version=blue` and `tier=web`. Create a Service called `bsg-service` to route traffic to `blue-deployment`. Verify that traffic is flowing from the Service to the Deployment. Create a new Deployment called `green-deployment` , with `10` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx containers. Label the pods `version=green` and `tier=web`. Once the `green-deployment` is active split traffic between `blue-deployment`=70% and `green-deployment`=30%
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Overview</summary>
 <p>
-
-##### Overview
 
 ![08-kubernetes-blue-green](https://user-images.githubusercontent.com/18049790/137315553-1792d855-fe0c-47df-911b-305251feeb4e.png)
 
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
-
-##### Prerequisites
 
 ```bash
 clear
@@ -655,10 +582,8 @@ kubectl config set-context --current --namespace=blue-green-namespace
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - Blue Deployment</summary>
 <p>
-
-##### Solution - Blue Deployment
 
 ```bash
 clear
@@ -734,10 +659,8 @@ kubectl get pods -L tier,version
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - Service</summary>
 <p>
-
-##### Solution - Service
 
 ```bash
 clear
@@ -781,10 +704,8 @@ kubectl apply -f ~/ckad/03-05-bsg-service.yml
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - Green Deployment</summary>
 <p>
-
-##### Solution - Green Deployment
 
 ```bash
 clear
@@ -854,10 +775,8 @@ kubectl get pods -L tier,version
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Solution - Adjust Replicas</summary>
 <p>
-
-##### Solution - Green=70 & Blue=30
 
 ```bash
 clear
@@ -947,7 +866,7 @@ Green !!!
 
 #### Clean Up
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Clean Up</summary>
 <p>
 
 ```bash

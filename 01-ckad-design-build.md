@@ -12,8 +12,6 @@
 <details class="faq box"><summary>Docker Image Creation</summary>
 <p>
 
-##### Docker Image Creation
-
 Create a file called index.html
 
 ```bash
@@ -54,8 +52,6 @@ docker images
 <details class="faq box"><summary>Docker Container Operations</summary>
 <p>
 
-##### Docker Container Operations
-
 kubernetes.io bookmark: [docker run](https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/)
 
 ```bash
@@ -94,8 +90,6 @@ docker image rm my-image:v0.1
 <details class="faq box"><summary>Docker Operations</summary>
 <p>
 
-##### Docker Operations
-
 ```bash
 clear
 # Prune all dangling images
@@ -110,8 +104,6 @@ docker image prune -a
 <details class="faq box"><summary>Overview</summary>
 <p>
 
-##### Overview
-
 ![01-02](https://user-images.githubusercontent.com/18049790/136649495-9194b039-b88c-4e93-b493-83eb5e296aae.png)
 
 </p>
@@ -119,8 +111,6 @@ docker image prune -a
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
-
-##### Prerequisites
 
 ```bash
 clear
@@ -191,8 +181,6 @@ kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>
 <details class="faq box"><summary>Solution</summary>
 <p>
 
-##### Solution
-
 kubernetes.io bookmark: [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
 ```bash
@@ -247,8 +235,6 @@ kubectl get pod --watch
 <details class="faq box"><summary>Overview</summary>
 <p>
 
-##### Overview
-
 ![pv-pvc-pod](https://user-images.githubusercontent.com/18049790/138383528-c262a6a1-6d61-4493-abb8-93d1534010ec.jpg)
 
 Legend
@@ -279,8 +265,6 @@ Notes
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
 
-##### Prerequisites
-
 ```bash
 clear
 kubectl create namespace storage-namespace
@@ -293,8 +277,6 @@ kubectl config set-context --current --namespace=storage-namespace
 
 <details class="faq box"><summary>Solution - PersistentVolume</summary>
 <p>
-
-##### Solution
 
 kubernetes.io bookmark: [Create a PersistentVolume](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume)
 
@@ -341,8 +323,6 @@ my-pv     5Gi        RWO            Retain           Available
 <details class="faq box"><summary>Solution - PersistentVolumeClaim</summary>
 <p>
 
-##### Solution
-
 kubernetes.io bookmark: [Create a PersistentVolumeClaim](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim)
 
 ```bash
@@ -387,8 +367,6 @@ my-pvc   Bound    my-pv    5Gi        RWO            manual         6s          
 
 <details class="faq box"><summary>Solution - Pod</summary>
 <p>
-
-##### Solution
 
 kubernetes.io bookmark: [Create a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-pod)
 
@@ -443,8 +421,6 @@ Output:
 <details class="faq box"><summary>Overview</summary>
 <p>
 
-##### Overview
-
 ![01-04](https://user-images.githubusercontent.com/18049790/136649713-c13c3248-2345-435d-9603-9ebc3ee67c13.png)
 
 </p>
@@ -452,8 +428,6 @@ Output:
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
-
-##### Prerequisites
 
 ```bash
 clear
@@ -466,8 +440,6 @@ kubectl config set-context --current --namespace=ram-namespace
 
 <details class="faq box"><summary>Solution</summary>
 <p>
-
-##### Solution
 
 kubernetes.io bookmark: [emptyDir](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir)
 
@@ -520,8 +492,6 @@ kubectl describe pod ram-pod | grep -i Mounts -A1
 
 </p>
 </details>
-
-#### Clean Up
 
 <details class="faq box"><summary>Clean Up</summary>
 <p>

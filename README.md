@@ -33,10 +33,8 @@
 
 Please install these software components, required to answer questions in later sections:
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Metrics Server</summary>
 <p>
-
-### Metrics Server
 
 By default the metrics server required for the `kubectl top` command is not present on Docker Desktop.
 
@@ -53,10 +51,8 @@ kubectl patch deployment metrics-server -n kube-system --type 'json' -p '[{"op":
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Contour Ingress</summary>
 <p>
-
-### Contour Ingress
 
 ![contour](https://user-images.githubusercontent.com/18049790/136644054-a6dc7100-cfd5-499c-9c34-01ec4fffbb01.png)
 
@@ -71,10 +67,8 @@ kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Calico</summary>
 <p>
-
-### Calico
 
 ![calico](https://user-images.githubusercontent.com/18049790/136644040-3b4cbfe8-3eb6-4c46-b238-adb51c2bb09c.png)
 
@@ -87,10 +81,8 @@ curl https://docs.projectcalico.org/manifests/calico.yaml | kubectl apply -f -
 </p>
 </details>
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Helm</summary>
 <p>
-
-### Helm
 
 Please install the [Helm](https://helm.sh/docs/) with the following command:
 
@@ -105,10 +97,8 @@ chmod 700 get_helm.sh
 
 ### Optional software for Docker desktop
 
-<details><summary>show</summary>
+<details class="faq box"><summary>Octant</summary>
 <p>
-
-#### Octant
 
 ![octant](https://user-images.githubusercontent.com/18049790/136644006-b0009cea-690c-4303-88a0-e06738fd28de.png)
 

@@ -251,6 +251,28 @@ kubectl get pod --watch
 
 ![pv-pvc-pod](https://user-images.githubusercontent.com/18049790/138383528-c262a6a1-6d61-4493-abb8-93d1534010ec.jpg)
 
+Legend
+* PersistentVolume – the low level representation of a storage volume
+* PersistentVolumeClaim – the binding between a Pod and PersistentVolume
+* Pod – a running container that will consume a PersistentVolume
+* StorageClass – allows for dynamic provisioning of PersistentVolumes
+
+Access Modes
+* ReadWriteOnce(RWO) - volume can be mounted as read-write by a single node.
+* ReadOnlyMany(ROX) - volume can be mounted read-only by many nodes.
+* ReadWriteMany(RWX) - volume can be mounted as read-write by many nodes.
+* ReadWriteOncePod(RWOP) - volume can be mounted as read-write by a single Pod.
+
+Notes
+* Once a PV is bound to a PVC, that PV is essentially tied to the PVC and cannot be bound to by another PVC. 
+* There is a one-to-one mapping of PVs and PVCs. 
+* However, multiple pods in the same project can use the same PVC.
+* The link between PV and PVC is not explict, instead the PVC makes a some requests for storage. 
+* Kubernetes will pick an appropriate PersistentVolume to meet that claim.
+* StorageClass provisions PV dynamically, when PVC claims it. 
+* StorageClass allows dynamically provision volumes for an incoming claim.
+
+
 </p>
 </details>
 

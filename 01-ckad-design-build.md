@@ -92,7 +92,6 @@ docker image rm my-image:v0.1
 </details>
 
 <details class="faq box"><summary>Docker Operations</summary>
-<details><summary>show</summary>
 <p>
 
 ##### Docker Operations

@@ -6,7 +6,7 @@
 - Provide and troubleshoot access to applications via services [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/04-ckad-services-networking.md#04-02-create-a-namespace-called-service-namespace-create-a-pod-called-service-pod-using-the-nginx-image-and-exposing-port-80-label-the-pod-tierweb-create-a-service-for-the-pod-called-my-service-allowing-for-communication-inside-the-cluster-let-the-service-expose-port-8080)
 - Use Ingress rules to expose applications [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/04-ckad-services-networking.md#04-03-create-an-ingress-called-my-ingress-to-expose-the-service-my-service-outside-the-cluster)
 
-#### 04-01. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a pod called `app-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=app`. Create a pod called `db-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=db`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only egress to `app-pod` on port `80`.
+#### 04-01. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and label the pod `tier=web`. Create a pod called `app-pod` using the `nginx` image and label the pod `tier=app`. Create a pod called `db-pod` using the `nginx` image and label the pod `tier=db`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only egress to `app-pod` on port `80`.
 
 ```diff
 Please NOTE:
@@ -20,11 +20,12 @@ Please NOTE:
 I use the notepad to sketch out the ingress and egress before starting
 
 Rules
-
 - `tier: web` > `tier: app` on port 80
 
-Important Links
+Use this link to visually solve the problem:
 * [Network Policy Editor](https://editor.cilium.io/)
+
+Use this link for common network policy recipes:
 * [Kubernetes Network Policy Recipes](https://github.com/ahmetb/kubernetes-network-policy-recipes)
 
 </p>
@@ -76,7 +77,6 @@ kubectl get pods -o wide
 ```
 
 ```bash
-clear
 # Inside the web-pod try to curl to app and db pods
 kubectl exec --stdin --tty web-pod -- /bin/bash
 
@@ -144,7 +144,6 @@ kubectl get pods -o wide
 ```
 
 ```bash
-clear
 # Inside the web-pod try to curl to app and db pods
 kubectl exec --stdin --tty web-pod -- /bin/bash
 
@@ -152,7 +151,7 @@ kubectl exec --stdin --tty web-pod -- /bin/bash
 #curl <db-pod-ip>
 ```
 
-Output:
+Output: This output is from Digital Ocean where the Network Policies are enforced.
 
 ```bash
 [root@digital-ocean-droplet ~ (do-sgp1-digital-ocean-cluster:netpol-namespace)]# kubectl get pods -o wide

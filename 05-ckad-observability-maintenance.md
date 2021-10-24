@@ -320,7 +320,7 @@ kubectl rollout history deployment.apps/my-revision-deployment --revision=2
 </p>
 </details>
 
-#### 05-06. Patch the deployment from the previous question: `my-revision-deployment` to have a `revision` size of 20.
+#### 05-06. Patch the deployment from the previous question: `my-revision-deployment` to have a `revisionHistoryLimit` size of 20.
 
 <details class="faq box"><summary>Overview</summary>
 <p>
@@ -382,20 +382,32 @@ FIELDS:
      Template describes the pods that will be created.
 ```
 
+</p>
+</details>
+
+<details class="faq box"><summary>Solution</summary>
+<p>
+
+
 ```bash
+# Create a file to hold the patch
 vi ~/ckad/patch-file.yaml
 ```
 
 ```bash
-spec:
-  template:
-    spec:
-      revisionHistoryLimit: 20
+spec: # 👈👈👈 First element: =.spec
+  revisionHistoryLimit: 20 👈👈👈 Second element: =.spec.revisionHistoryLimit
 ```
 
 ```bash
 kubectl patch deployment my-revision-deployment --patch "$(cat ~/ckad/patch-file.yaml)"
 ```
+
+```bash
+# Verify your work
+kubectl get deployment my-revision-deployment -o jsonpath={.spec.revisionHistoryLimit}
+```
+
 
 </p>
 </details>

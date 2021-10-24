@@ -329,6 +329,7 @@ kubectl rollout history deployment.apps/my-revision-deployment --revision=2
 yes | rm -R ~/ckad/
 kubectl delete ns json-namespace --force
 kubectl delete ns log-namespace --force
+kubectl delete ns revision-namespace --force
 ```
 
 </p>

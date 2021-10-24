@@ -101,39 +101,26 @@ vi ~/ckad/04-01-netpol.yml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: web-policy #👈👈👈 Change
+  name: web-policy  #👈👈👈 Change
+  namespace: netpol-namespace
 spec:
-  policyTypes:
-  - Ingress
-  - Egress
   podSelector:
     matchLabels:
       tier: web #👈👈👈 Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=web
   egress:
-    - to
+    - to:
         - podSelector:
             matchLabels:
               tier: app #👈👈👈 Egress - Traffic to pod with label tier=app
       ports:
         - port: 80
-  egress:
-    - to:
-        - namespaceSelector: {}
-          podSelector:
-            matchLabels:
-              k8s-app: kube-dns
-      ports:
-        - port: 53
-          protocol: UDP  
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: app-policy #👈👈👈 Change  
+  namespace: netpol-namespace
 spec:
-  policyTypes:
-  - Ingress
-  - Egress
   podSelector:
     matchLabels:
       tier: app #👈👈👈 Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=app
@@ -144,15 +131,6 @@ spec:
               tier: web #👈👈👈 Ingress - Traffic from pod with label tier=web
       ports:
         - port: 80
-  egress:
-    - to:
-        - namespaceSelector: {}
-          podSelector:
-            matchLabels:
-              k8s-app: kube-dns
-      ports:
-        - port: 53
-          protocol: UDP  
 ```
 
 ```bash
@@ -161,16 +139,17 @@ kubectl apply -f ~/ckad/04-01-netpol.yml
 
 ```bash
 clear
-# Test connectivity with Network Policy
-# Remember on Docker Desktop this will work as NetworkPolicy's are not enforced
-kubectl exec --stdin --tty web-pod -- /bin/bash
+# Get the IP address of pods
+kubectl get pods -o wide
 ```
 
 ```bash
 clear
-# Test connectivity with Network Policy
-# Remember on Docker Desktop this will work as NetworkPolicy's are not enforced
-kubectl exec web-pod -- curl -s db-service:80
+# Inside the web-pod try to curl to app and db pods
+kubectl exec --stdin --tty web-pod -- /bin/bash
+
+#curl <app-pod-ip>
+#curl <db-pod-ip>
 ```
 
 </p>

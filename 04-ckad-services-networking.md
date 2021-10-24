@@ -59,7 +59,7 @@ kubectl config set-context --current --namespace=netpol-namespace
 kubectl run web-pod --image=docker.io/jamesbuckett/web:latest --port=80  --labels="tier=web"
 
 # tier: app
-kubectl run app-pod--image=docker.io/jamesbuckett/app:latest --port=80 --labels="tier=app"
+kubectl run app-pod --image=docker.io/jamesbuckett/app:latest --port=80 --labels="tier=app"
 
 # tier: db
 kubectl run db-pod --image=docker.io/jamesbuckett/db:latest --port=80 --labels="tier=db"
@@ -80,8 +80,8 @@ clear
 # Inside the web-pod try to curl to app and db pods
 kubectl exec --stdin --tty web-pod -- /bin/bash
 
-curl <app-pod-ip>:80
-curl <db-pod>:80
+#curl <app-pod-ip>
+#curl <db-pod-ip>
 ```
 
 </p>
@@ -110,7 +110,7 @@ spec:
     matchLabels:
       tier: web #👈👈👈 Change - Which pod does this Network Policy Apply to i.e. any pod with label tier=web
   egress:
-    - from:
+    - to
         - podSelector:
             matchLabels:
               tier: app #👈👈👈 Egress - Traffic to pod with label tier=app

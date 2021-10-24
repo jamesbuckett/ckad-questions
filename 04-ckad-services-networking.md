@@ -152,6 +152,41 @@ kubectl exec --stdin --tty web-pod -- /bin/bash
 #curl <db-pod-ip>
 ```
 
+Output:
+
+```bash
+[root@digital-ocean-droplet ~ (do-sgp1-digital-ocean-cluster:netpol-namespace)]# kubectl get pods -o wide
+NAME      READY   STATUS    RESTARTS   AGE     IP             NODE                       NOMINATED NODE   READINESS GATES
+app-pod   1/1     Running   0          57s     10.244.1.197   digital-ocean-pool-uch0o   <none>           <none>
+db-pod    1/1     Running   0          2m13s   10.244.3.11    digital-ocean-pool-uch0j   <none>           <none>
+web-pod   1/1     Running   0          2m13s   10.244.3.3     digital-ocean-pool-uch0j   <none>           <none>
+
+[root@digital-ocean-droplet ~ (do-sgp1-digital-ocean-cluster:netpol-namespace)]# kubectl exec --stdin --tty web-pod -- /bin/bash
+root@web-pod:/# curl 10.244.1.197
+app-pod !!!
+app-pod !!!
+app-pod !!!
+root@web-pod:/# curl 10.244.3.11
+db-pod !!!
+db-pod !!!
+db-pod !!!
+root@web-pod:/# curl 10.244.3.3
+web-pod !!!
+web-pod !!!
+web-pod !!!
+---------------------------------- #👈👈👈 Network Policy Applied
+root@web-pod:/# curl 10.244.3.3
+web-pod !!!
+web-pod !!!
+web-pod !!!
+root@web-pod:/# curl 10.244.3.11 #👈👈👈 Cannot curl db-pod
+^C
+root@web-pod:/# curl 10.244.1.197 #👈👈👈 Can curl app-pod
+app-pod !!!
+app-pod !!!
+app-pod !!!
+```
+
 </p>
 </details>
 

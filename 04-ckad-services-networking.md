@@ -34,6 +34,20 @@ Important Links
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
 
+For clarity in the solution steps below i use images that return: 
+* web-pod 
+  * web-pod !!!
+  * web-pod !!!
+  * web-pod !!!
+* app-pod
+  * app-pod !!!
+  * app-pod !!!
+  * app-pod !!!
+* db-pod
+  * db-pod !!!
+  * db-pod !!!
+  * db-pod !!!
+
 ```bash
 mkdir ~/ckad/
 clear

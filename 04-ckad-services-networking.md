@@ -23,6 +23,10 @@ Rules
 
 - `tier: web` > `tier: app` on port 80
 
+Important Links
+* [Network Policy Editor](https://editor.cilium.io/)
+* [Kubernetes Network Policy Recipes](https://github.com/ahmetb/kubernetes-network-policy-recipes)
+
 </p>
 </details>
 
@@ -38,16 +42,13 @@ kubectl create namespace netpol-namespace
 kubectl config set-context --current --namespace=netpol-namespace
 
 # tier: web
-kubectl run web-pod --image=nginx --port=80  --labels="tier=web"
-kubectl expose pod web-pod --port=80 --name=web-service
+kubectl run web-pod --image=docker.io/jamesbuckett/web:latest --port=80  --labels="tier=web"
 
 # tier: app
-kubectl run app-pod --image=nginx --port=80 --labels="tier=app"
-kubectl expose pod app-pod --port=80 --target-port=80 --name=app-service
+kubectl run app-pod--image=docker.io/jamesbuckett/app:latest --port=80 --labels="tier=app"
 
 # tier: db
-kubectl run db-pod --image=nginx --port=80 --labels="tier=db"
-kubectl expose pod db-pod --port=80 --target-port=80 --name=db-service
+kubectl run db-pod --image=docker.io/jamesbuckett/db:latest --port=80 --labels="tier=db"
 
 clear
 kubectl get all
@@ -56,14 +57,17 @@ kubectl get pod -L tier
 
 ```bash
 clear
-# Test connectivity without  a Network Policy to app-service
-kubectl exec web-pod -- curl -s app-service:80
+# Get the IP address of pods
+kubectl get pods -o wide
 ```
 
 ```bash
 clear
-# Test connectivity without  a Network Policy to db-service
-kubectl exec web-pod -- curl -s db-service:80
+# Inside the web-pod try to curl to app and db pods
+kubectl exec --stdin --tty web-pod -- /bin/bash
+
+curl <app-pod-ip>:80
+curl <db-pod>:80
 ```
 
 </p>
@@ -145,7 +149,7 @@ kubectl apply -f ~/ckad/04-01-netpol.yml
 clear
 # Test connectivity with Network Policy
 # Remember on Docker Desktop this will work as NetworkPolicy's are not enforced
-kubectl exec web-pod -- curl -s app-service:80
+kubectl exec --stdin --tty web-pod -- /bin/bash
 ```
 
 ```bash

@@ -328,6 +328,8 @@ kubectl rollout history deployment.apps/my-revision-deployment --revision=2
 ##### Overview
 
 ```bash
+kubectl config set-context --current --namespace=revision-namespace
+clear
 kubectl explain deployment.spec
 ```
 

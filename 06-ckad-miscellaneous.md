@@ -222,4 +222,47 @@ Output:
 </p>
 </details>
 
+#### 06-04. Using the kubectl convert command update the attached YAML file
+
+<details class="faq box"><summary>Solution - kubectl config get-contexts</summary>
+<p>
+
+```bash
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: my-ingress #👈👈👈 Change: `my-ingress`
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: / #👈👈👈 Change
+        pathType: Prefix
+        backend:
+          service:
+            name: my-service #👈👈👈 Change: `my-service`
+            port:
+              number: 8080 #👈👈👈 Change: --port=8080
+```
+
+```bash
+vi ~/ckad/06-04-beta-ingress.yml
+```
+
+kubernetes.io bookmark: [Migrate to non-deprecated APIs](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#migrate-to-non-deprecated-apis)
+
+```bash
+kubectl convert 
+```
+
+```bash
+kubectl-convert -f ~/ckad/06-04-beta-ingress.yml --output-version networking.k8s.io/v1
+```
+
+</p>
+</details>
+
+
 _End of Section_

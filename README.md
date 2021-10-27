@@ -36,6 +36,8 @@ Please install these software components, required to answer questions in later 
 <details class="faq box"><summary>Metrics Server</summary>
 <p>
 
+Metrics Server installs into Kubernetes
+
 By default the metrics server required for the `kubectl top` command is not present on Docker Desktop.
 
 Please install the [metrics server](https://github.com/kubernetes-sigs/metrics-server) with the following command:
@@ -54,6 +56,8 @@ kubectl patch deployment metrics-server -n kube-system --type 'json' -p '[{"op":
 <details class="faq box"><summary>Contour Ingress</summary>
 <p>
 
+Contour installs into Kubernetes
+
 ![contour](https://user-images.githubusercontent.com/18049790/136644054-a6dc7100-cfd5-499c-9c34-01ec4fffbb01.png)
 
 By default the Contour Ingress required for the Ingress Networking question is not present on Docker Desktop.
@@ -70,6 +74,8 @@ kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
 <details class="faq box"><summary>Calico</summary>
 <p>
 
+Calico installs into Kubernetes
+
 ![calico](https://user-images.githubusercontent.com/18049790/136644040-3b4cbfe8-3eb6-4c46-b238-adb51c2bb09c.png)
 
 Calico is required for the non native Kubernetes resources lookup question.
@@ -84,6 +90,8 @@ curl https://docs.projectcalico.org/manifests/calico.yaml | kubectl apply -f -
 <details class="faq box"><summary>Helm</summary>
 <p>
 
+Helm installs into WSL Linux
+
 Please install the [Helm](https://helm.sh/docs/) with the following command:
 
 ```bash
@@ -95,10 +103,30 @@ chmod 700 get_helm.sh
 </p>
 </details>
 
+<details class="faq box"><summary>kubectl convert</summary>
+<p>
+
+kubectl convert  installs into WSL Linux
+
+Please install the [kubectl convert](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#migrate-to-non-deprecated-apis) with the following command:
+
+```bash
+curl -LO https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert
+curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert.sha256"
+echo "$(<kubectl-convert.sha256) kubectl-convert" | sha256sum --check
+sudo install -o root -g root -m 0755 kubectl-convert /usr/local/bin/kubectl-convert
+kubectl convert --help
+```
+
+</p>
+</details>
+
 ### Optional software for Docker desktop
 
 <details class="faq box"><summary>Octant</summary>
 <p>
+
+Helm installs into Windows 
 
 ![octant](https://user-images.githubusercontent.com/18049790/136644006-b0009cea-690c-4303-88a0-e06738fd28de.png)
 

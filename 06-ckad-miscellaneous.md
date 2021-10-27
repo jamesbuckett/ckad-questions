@@ -224,8 +224,12 @@ Output:
 
 #### 06-04. Using the kubectl convert command update the attached YAML file
 
-<details class="faq box"><summary>Solution - kubectl config get-contexts</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
+
+```bash
+vi ~/ckad/06-04-beta-ingress.yml
+```
 
 ```bash
 apiVersion: networking.k8s.io/v1beta1
@@ -247,9 +251,11 @@ spec:
               number: 8080 #👈👈👈 Change: --port=8080
 ```
 
-```bash
-vi ~/ckad/06-04-beta-ingress.yml
-```
+</p>
+</details>
+
+<details class="faq box"><summary>Solution</summary>
+<p>
 
 kubernetes.io bookmark: [Migrate to non-deprecated APIs](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#migrate-to-non-deprecated-apis)
 

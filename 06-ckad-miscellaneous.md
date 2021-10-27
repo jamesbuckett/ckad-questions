@@ -260,11 +260,28 @@ spec:
 kubernetes.io bookmark: [Migrate to non-deprecated APIs](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#migrate-to-non-deprecated-apis)
 
 ```bash
-kubectl convert 
+kubectl-convert -f ~/ckad/06-04-beta-ingress.yml --output-version networking.k8s.io/v1
 ```
 
+Output:
+
 ```bash
-kubectl-convert -f ~/ckad/06-04-beta-ingress.yml --output-version networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  creationTimestamp: null
+  name: my-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - backend: {}
+        path: /
+        pathType: Prefix
+status:
+  loadBalancer: {}
 ```
 
 </p>

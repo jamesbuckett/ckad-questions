@@ -516,9 +516,9 @@ To access your WordPress site from outside the cluster follow the steps below:
 
 ```bash
 clear
-# Check your work - curl the service to verify operation
+# Run a Busybox pod in the namespace to check your work
 kubectl run remote-run --image=busybox --restart=Never --rm -it
-# Repeat this command to see different responses
+# Check your work - curl the service to verify operation
 wget -qO- my-wp-release-wordpress
 ```
 

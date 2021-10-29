@@ -380,28 +380,6 @@ kubectl create namespace wordpress-namespace
 kubectl config set-context --current --namespace=wordpress-namespace
 ```
 
-```bash
-cat << EOF | kubectl apply -f -
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: wp-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  rules:
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: my-wp-release-wordpress
-            port:
-              number: 80
-EOF
-```
-
 </p>
 </details>
 
@@ -535,17 +513,14 @@ To access your WordPress site from outside the cluster follow the steps below:
   echo Username: admin
   echo Password: $(kubectl get secret --namespace wordpress-namespace my-wp-release-wordpress -o jsonpath="{.data.wordpress-password}" | base64 --decode)
 ```
- #👈👈👈 This must be present for the solution to work
 
 ```bash
-# Verify operation of WordPress
-curl localhost:80
+clear
+# Check your work - curl the service to verify operation
+kubectl run remote-run --image=busybox --restart=Never --rm -it
+# Repeat this command to see different responses
+wget -qO- my-wp-release-wordpress
 ```
-
-If this does not work describe the ingress of the
-```bash
-```
-
 
 ```bash
 # List active helm releases
@@ -728,6 +703,11 @@ clear
 # Create the deployment as far as possible using the CLI (imperatively)
 kubectl create deployment green-deployment --image=nginx --replicas=10 --port=80 --dry-run=client -o yaml > ~/ckad/03-05-deploy-green.yml
 ```
+
+An even faster way would be to copy the 03-05-deploy-blue.yml to 03-05-deploy-green.yml
+* Alter the labels 
+* Alter the image 
+* Save and Apply
 
 ```bash
 clear

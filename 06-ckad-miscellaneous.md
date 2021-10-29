@@ -227,6 +227,13 @@ Output:
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
 
+Typical API deprication warning message:
+```bash
+Warning: policy/v1beta1 PodDisruptionBudget is deprecated in v1.21+, unavailable in v1.25+; use policy/v1 PodDisruptionBudget
+poddisruptionbudget.policy/calico-kube-controllers created
+```
+
+
 ```bash
 vi ~/ckad/06-04-beta-ingress.yml
 ```

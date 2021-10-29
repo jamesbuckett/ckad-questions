@@ -535,11 +535,17 @@ To access your WordPress site from outside the cluster follow the steps below:
   echo Username: admin
   echo Password: $(kubectl get secret --namespace wordpress-namespace my-wp-release-wordpress -o jsonpath="{.data.wordpress-password}" | base64 --decode)
 ```
+ #👈👈👈 This must be present for the solution to work
 
 ```bash
 # Verify operation of WordPress
 curl localhost:80
 ```
+
+If this does not work describe the ingress of the
+```bash
+```
+
 
 ```bash
 # List active helm releases
@@ -790,13 +796,13 @@ kubectl get pods -L tier,version
 
 ```bash
 clear
-# Scale Green to 7=70%
+# Scale Blue Deployment to 7=70%
 kubectl scale --replicas=7 deployment blue-deployment
 ```
 
 ```bash
 clear
-# Scale Blue to 3=30%
+# Scale Green Deployment to 3=30%
 kubectl scale --replicas=3 deployment green-deployment
 ```
 

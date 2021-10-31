@@ -375,7 +375,7 @@ Output:
 ```
 Name:             my-ingress
 Namespace:        service-namespace
-Address:          localhost
+Address:          localhost #👈👈👈 This must be present for the solution to work
 Default backend:  default-http-backend:80 (<error: endpoints "default-http-backend" not found>)
 Rules:
   Host        Path  Backends

@@ -134,10 +134,6 @@ Helm installs into Windows
 - This will help you understand the interaction and relationships between Kubernetes Resource types
 - Installation instructions for Octant can be found [here](https://octant.dev/)
 
-All questions in the repo are running on this publicly available [Octant](http://octant.jamesbuckett.com/).
-
-This is made available so that you can more easily visualize questions and final state of each question.
-
 </p>
 </details>
 

@@ -92,6 +92,21 @@ kubectl exec --stdin --tty web-pod -- /bin/bash
 
 kubernetes.io bookmark: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
 
+Deny All Traffic in Namespace
+
+```bash
+cat << EOF | kubectl apply -f -
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: default-deny-all
+  namespace: default
+spec:
+  podSelector: {}
+  ingress: []
+EOF
+  ```
+
 ```bash
 mkdir -p ~/ckad/
 vi ~/ckad/04-01-netpol.yml
@@ -335,6 +350,12 @@ kubectl get ep
 
 kubernetes.io bookmark: [The Ingress resource](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
 
+Install the Contour Ingress if you have not already installed it:
+
+```bash
+kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
+```
+
 ```bash
 mkdir -p ~/ckad/
 vi ~/ckad/04-03-ing.yml
@@ -392,8 +413,6 @@ clear
 # If you have trouble with this reboot
 curl localhost
 ```
-
-I sometimes had trouble with this networking setup. I just rebooted and this would work.
 
 Output:
 

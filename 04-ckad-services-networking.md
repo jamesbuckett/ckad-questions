@@ -92,7 +92,7 @@ kubectl exec --stdin --tty web-pod -- /bin/bash
 
 kubernetes.io bookmark: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
 
-Deny All Traffic in Namespace
+Deny All Traffic in Namespace from [here](https://github.com/ahmetb/kubernetes-network-policy-recipes).
 
 ```bash
 cat << EOF | kubectl apply -f -

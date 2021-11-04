@@ -100,7 +100,7 @@ kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
   name: default-deny-all
-  namespace: default
+  namespace: netpol-namespace
 spec:
   podSelector: {}
   ingress: []

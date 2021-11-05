@@ -112,7 +112,7 @@ mkdir -p ~/ckad/
 vi ~/ckad/04-01-netpol.yml
 ```
 
-```bash
+```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -361,7 +361,7 @@ mkdir -p ~/ckad/
 vi ~/ckad/04-03-ing.yml
 ```
 
-```bash
+```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:

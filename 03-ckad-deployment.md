@@ -277,7 +277,7 @@ kubectl config set-context --current --namespace=edit-namespace
 kubectl edit deployment.apps/edit-deployment
 ```
 
-```bash
+```yaml
 # Please edit the object below. Lines beginning with a '#' will be ignored,
 # and an empty file will abort the edit. If an error occurs while saving this file will be
 # reopened with the relevant failures.
@@ -590,7 +590,7 @@ clear
 vi ~/ckad/03-05-deploy-blue.yml
 ```
 
-```bash
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -666,7 +666,7 @@ mkdir -p ~/ckad/
 vi ~/ckad/03-05-bsg-service.yml
 ```
 
-```bash
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -717,7 +717,7 @@ mkdir -p ~/ckad/
 vi ~/ckad/03-05-deploy-green.yml
 ```
 
-```bash
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:

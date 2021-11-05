@@ -311,7 +311,7 @@ kubectl get pv
 
 Output:
 
-```
+```console
 # Note the STATUS=Available
 NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM
 my-pv     5Gi        RWO            Retain           Available
@@ -354,7 +354,7 @@ kubectl get pvc
 
 Output:
 
-```
+```console
 NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM
 my-pv     5Gi        RWO            Retain           Bound       storage-namespace/my-pvc  # STATUS=Bound means the PV and PVC are linked
 
@@ -408,7 +408,7 @@ kubectl describe pod storage-pod | grep -i Mounts -A1
 
 Output:
 
-```
+```console
     Mounts:
       /my-mount from my-volume (rw)    # Success
 ```

@@ -45,7 +45,7 @@ kubectl create deploy -h | more
 
 Output:
 
-```
+```console
 Examples:
   # Create a deployment named my-dep that runs the busybox image
   kubectl create deployment my-dep --image=busybox
@@ -127,7 +127,7 @@ kubectl get all
 
 Output:
 
-```
+```console
 NAME                               READY   STATUS    RESTARTS   AGE
 pod/my-deployment-67fc8546-9b4bm   1/1     Running   0          16m
 pod/my-deployment-67fc8546-mjw24   1/1     Running   0          16m
@@ -164,7 +164,7 @@ kubectl expose -h | more
 
 Output:
 
-```
+```console
 Examples:
   # Create a service for a replicated nginx, which serves on port 80 and connects to the containers on port 8000
   kubectl expose rc nginx --port=80 --target-port=8000
@@ -222,7 +222,7 @@ kubectl get service
 
 Output:
 
-```
+```console
 NAME            TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
 my-deployment   ClusterIP   10.245.79.74   <none>        80/TCP    103s
 ```
@@ -236,7 +236,7 @@ kubectl get pods -o wide
 
 Output:
 
-```
+```console
 NAME            ENDPOINTS                                         AGE
 my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 # The three replicas internal endpoints are registered
@@ -399,7 +399,7 @@ helm search repo bitnami
 
 Output:
 
-```bash
+```console
 NAME                                            CHART VERSION   APP VERSION     DESCRIPTION
 bitnami/bitnami-common                          0.0.9           0.0.9           DEPRECATED Chart with custom templates used in ...
 bitnami/airflow                                 11.0.8          2.1.4           Apache Airflow is a platform to programmaticall...
@@ -468,7 +468,7 @@ helm search repo bitnami | grep wordpress
 
 Output:
 
-```bash
+```console
 bitnami/wordpress                               12.1.20         5.8.1           Web publishing platform for building blogs and ...
 ```
 
@@ -484,7 +484,7 @@ helm install my-wp-release \
 
 Output:
 
-```bash
+```console
 NAME: my-wp-release
 LAST DEPLOYED: Fri Oct  8 15:44:30 2021
 NAMESPACE: wordpress-namespace
@@ -794,7 +794,7 @@ kubectl get pods -L tier,version
 
 Output:
 
-```bash
+```console
 NAME                                READY   STATUS    RESTARTS   AGE     VERSION   TIER
 blue-deployment-5f855f68d6-295xb    1/1     Running   0          9m52s   blue      web
 blue-deployment-5f855f68d6-2b4wv    1/1     Running   0          9m52s   blue      web
@@ -818,7 +818,7 @@ wget -qO- bsg-service
 
 Output
 
-```bash
+```console
 / # wget -qO- bsg-service
 Green !!!
 Green !!!

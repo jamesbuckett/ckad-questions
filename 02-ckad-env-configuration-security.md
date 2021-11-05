@@ -23,7 +23,7 @@ kubectl get crds
 
 Output:
 
-```
+```console
 NAME                                                  CREATED AT
 bgpconfigurations.crd.projectcalico.org               2021-09-24T05:26:26Z
 bgppeers.crd.projectcalico.org                        2021-09-24T05:26:26Z
@@ -59,7 +59,7 @@ kubectl api-resources -o name | grep calico
 
 Output:
 
-```bash
+```console
 bgpconfigurations.crd.projectcalico.org
 bgppeers.crd.projectcalico.org
 blockaffinities.crd.projectcalico.org
@@ -116,7 +116,7 @@ kubectl create quota -h | more
 
 Output
 
-```
+```console
   # Create a new resource quota named my-quota
   kubectl create quota my-quota --hard=cpu=1,memory=1G,pods=2,services=3,replicationcontrollers=2,resourcequotas=1,secrets=5,persistentvolumeclaims=10 👈👈👈 This example matches most closely to the question.
 
@@ -138,7 +138,7 @@ kubectl get quota
 
 Output:
 
-```bash
+```console
 NAME       AGE    REQUEST                      LIMIT
 my-quota   118s   cpu: 0/500Mi, memory: 0/2G
 ```
@@ -170,7 +170,7 @@ kubectl get quota
 
 Output:
 
-```bash
+```console
 NAME       AGE   REQUEST                           LIMIT
 my-quota   19m   cpu: 250m/500Mi, memory: 1Gi/2G
 ```
@@ -236,7 +236,7 @@ kubectl create secret generic -h | more
 
 Output:
 
-```
+```console
 Examples:
   # Create a new secret named my-secret with keys for each file in folder bar
   kubectl create secret generic my-secret --from-file=path/to/bar
@@ -349,7 +349,7 @@ kubectl exec secret-pod -- env
 
 Output:
 
-```
+```console
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 HOSTNAME=secret-pod
 NGINX_VERSION=1.21.3
@@ -417,7 +417,7 @@ kubectl describe secret my-serviceaccount-token-***** #👈👈👈 Replace ****
 
 Output:
 
-```bash
+```console
 Name:         my-serviceaccount-token-nptmw
 Namespace:    serviceaccount-namespace
 Labels:       <none>
@@ -483,7 +483,7 @@ kubectl get pod serviceaccount-pod -o jsonpath={.spec.serviceAccountName}
 
 Output
 
-```bash
+```console
 my-serviceaccount
 ```
 

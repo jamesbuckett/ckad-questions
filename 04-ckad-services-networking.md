@@ -168,7 +168,7 @@ kubectl exec --stdin --tty web-pod -- /bin/bash
 
 Output: This output is from Digital Ocean where the Network Policies are enforced.
 
-```bash
+```console
 [root@digital-ocean-droplet ~ (do-sgp1-digital-ocean-cluster:netpol-namespace)]# kubectl get pods -o wide
 NAME      READY   STATUS    RESTARTS   AGE     IP             NODE                       NOMINATED NODE   READINESS GATES
 app-pod   1/1     Running   0          57s     10.244.1.197   digital-ocean-pool-uch0o   <none>           <none>
@@ -239,7 +239,7 @@ kubectl run -h | more
 
 Output:
 
-```
+```console
 Examples:
   # Start a nginx pod
   kubectl run nginx --image=nginx
@@ -292,7 +292,7 @@ kubectl expose -h | more
 
 Output:
 
-```
+```console
 Examples:
   # Create a service for a replicated nginx, which serves on port 80 and connects to the containers on port 8000
   kubectl expose rc nginx --port=80 --target-port=8000
@@ -393,7 +393,7 @@ kubectl describe ingress my-ingress
 
 Output:
 
-```
+```console
 Name:             my-ingress
 Namespace:        service-namespace
 Address:          localhost #👈👈👈 This must be present for the solution to work
@@ -416,7 +416,7 @@ curl localhost
 
 Output:
 
-```
+```console
 <!DOCTYPE html>
 <html>
 <head>

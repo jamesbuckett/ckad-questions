@@ -11,7 +11,7 @@ clear
 kubectl get namespace
 ```
 
-```bash
+```console
 NAME              STATUS   AGE
 cert-manager      Active   15d
 default           Active   15d
@@ -59,7 +59,7 @@ kubectl api-resources --namespaced=true | more
 
 Output:
 
-```
+```console
 NAME                               SHORTNAMES                           APIVERSION                                  NAMESPACED   KIND
 bindings                                                                v1                                          true         Binding
 configmaps                         cm                                   v1                                          true         ConfigMap
@@ -85,7 +85,7 @@ kubectl api-resources --namespaced=true -o name | more
 
 Output:
 
-```
+```console
 bindings
 configmaps
 endpoints
@@ -128,7 +128,7 @@ curl http://localhost:8001 | more
 
 Output:
 
-```
+```console
 {
   "paths": [
     "/.well-known/openid-configuration",
@@ -191,7 +191,7 @@ curl http://localhost:8001/apis | grep "name" | more
 
 Output:
 
-```
+```console
 ...
       "name": "apiregistration.k8s.io",
       "name": "apps",
@@ -228,11 +228,10 @@ Output:
 <p>
 
 Typical API deprecated warning message:
-```bash
+```console
 Warning: policy/v1beta1 PodDisruptionBudget is deprecated in v1.21+, unavailable in v1.25+; use policy/v1 PodDisruptionBudget
 poddisruptionbudget.policy/calico-kube-controllers created
 ```
-
 
 ```bash
 vi ~/ckad/06-04-beta-ingress.yml
@@ -272,7 +271,7 @@ kubectl-convert -f ~/ckad/06-04-beta-ingress.yml --output-version networking.k8s
 
 Output:
 
-```bash
+```console
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:

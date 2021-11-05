@@ -22,7 +22,7 @@ kubectl top pods -A --sort-by=cpu | more
 
 Output:
 
-```
+```console
 NAMESPACE                 NAME                                                    CPU(cores)   MEMORY(bytes)
 default                   falco-pxf8g                                             51m 👈👈👈   55Mi
 ns-loki                   loki-release-prometheus-server-6d4f4df478-9z2f8         38m          356Mi
@@ -49,7 +49,7 @@ kubectl top pods -A --sort-by=memory | more
 
 Output:
 
-```
+```console
 NAMESPACE                 NAME                                                    CPU(cores)   MEMORY(bytes)
 ns-loki                   loki-release-prometheus-server-6d4f4df478-9z2f8         11m          356Mi 👈👈👈
 ns-demo                   adservice-68444cb46c-jvc86                              20m          202Mi
@@ -100,7 +100,7 @@ kubectl logs -h | more
 
 Output:
 
-```
+```console
 Examples:
   # Return snapshot logs from pod nginx with only one container
   kubectl logs nginx
@@ -210,7 +210,7 @@ kubectl explain pod.status | more
 
 Output:
 
-```
+```console
 KIND:     Pod
 VERSION:  v1
 
@@ -335,7 +335,7 @@ kubectl explain deployment.spec
 
 Output:
 
-```bash
+```console
 KIND:     Deployment
 VERSION:  apps/v1
 

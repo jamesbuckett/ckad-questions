@@ -283,9 +283,8 @@ metadata:
   name: my-secret
 ```
 
-```bash
-[Link](https://github.com/jamesbuckett/ckad-questions/blob/main/examples/02-03-secret.yml)
-```
+<iframe src="examples/02-03-secret.yml" seamless></iframe>
+
 
 
 ```bash

@@ -283,7 +283,7 @@ metadata:
   name: my-secret
 ```
 
-@@include[my-secret](examples/02-03-secret.yml)
+[my-secret](examples/02-03-secret.yml)
 
 ```bash
 clear

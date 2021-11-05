@@ -9,6 +9,7 @@
 - Create & consume Secrets [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/02-ckad-env-configuration-security.md#02-02-create-a-namespace-called-quota-namespace-create-a-resource-quota-for-this-namespace-called-my-quota-set-a-memory-reservation-of-2gi-set-a-cpu-reservation-of-500mi)
 - Understand ServiceAccounts [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/02-ckad-env-configuration-security.md#02-04-create-a-namespace-called-serviceaccount-namespace-create-a-pod-called-serviceaccount-pod-using-nginx-image-create-a-seviceaccount-called-my-serviceaccount-update-the-pod-to-use-the-new-serviceaccount-display-the-token-for-the-new-serviceaccount)
 - Understand SecurityContexts
+<br />
 
 #### 02-01. List all the Custom Resource Definitions installed in a cluster. Calico is a CRD. List out how to obtain the correct resource name to query a Calico Network Policy and not the default Kubernetes Network Policy.
 
@@ -87,6 +88,7 @@ kubectl get networkpolicies.crd.projectcalico.org
 
 </p>
 </details>
+<br />
 
 #### 02-02. Create a namespace called `quota-namespace`. Create a Resource Quota for this namespace called `my-quota`. Set a memory reservation of `2Gi`. Set a CPU reservation of `500Mi`.
 
@@ -194,6 +196,7 @@ In English:
 
 </p>
 </details>
+<br />
 
 #### 02-03. Create a namespace called `secret-namespace`. Create a secret in this namespace called `my-secret`. The secret should be immutable and contain the literal values `user=bob` and `password=123456`. Create a pod called called `secret-pod` using the `nginx` image. The pod should consume the secret as environmental variables `SECRET-ENV-USER` and `SECRET-ENV-PASSWORD`.
 
@@ -371,6 +374,7 @@ HOME=/root
 
 </p>
 </details>
+<br />
 
 #### 02-04. Create a namespace called `serviceaccount-namespace`. Create a pod called `serviceaccount-pod` using `nginx` image. Create a SeviceAccount called: my-serviceaccount. Update the pod to use the new ServiceAccount. Display the token for the new ServiceAccount.
 
@@ -489,6 +493,7 @@ my-serviceaccount
 
 </p>
 </details>
+<br />
 
 #### Clean Up
 

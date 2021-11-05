@@ -134,7 +134,7 @@ kubectl run -h | more
 
 Output:
 
-```
+```console
 Examples:
 
 # Start a nginx pod

@@ -5,6 +5,7 @@
 - Understand Deployments and how to perform rolling updates [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md#03-01-create-a-namespace-called-deployment-namespace-create-a-deployment-called-my-deployment-with-three-replicas-using-the-nginx-image-inside-the-namespace-expose-port-80-for-the-nginx-container-the-containers-should-be-named-my-container-each-container-should-have-a-memory-request-of-25mi-and-a-memory-limit-of-100mi)
 - Use the Helm package manager to deploy existing packages [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md#03-04-use-helm-to-install-wordpress-into-a-namespace-called-wordpress-namespace)
 - Use Kubernetes primitives to implement common deployment strategies (e.g. blue/green or canary) [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/03-ckad-deployment.md#03-05-create-a-namespace-called-blue-green-namespace-create-a-deployment-called-blue-deployment-with-10-replicas-using-the-nginx-image-inside-the-namespace-expose-port-80-for-the-nginx-containers-label-the-pods-versionblue-and-tierweb-create-a-service-called-bsg-service-to-route-traffic-to-blue-deployment-verify-that-traffic-is-flowing-from-the-service-to-the-deployment-create-a-new-deployment-called-green-deployment--with-10-replicas-using-the-nginx-image-inside-the-namespace-expose-port-80-for-the-nginx-containers-label-the-pods-versiongreen-and-tierweb-once-the-green-deployment-is-active-split-traffic-between-blue-deployment70-and-green-deployment30)
+<br />
 
 #### 03-01. Create a namespace called `deployment-namespace`. Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx container. The containers should be named `my-container`. Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi.
 
@@ -142,6 +143,7 @@ replicaset.apps/my-deployment-67fc8546   3         3         3       16m
 
  </p>
 </details>
+<br />
 
 #### 03-02. In the previous question a Deployment called `my-deployment` was created. Allow network traffic to flow to this deployment from inside the cluster on `port 8080`.
 
@@ -244,6 +246,7 @@ my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 
 </p>
 </details>
+<br />
 
 #### 03-03. Create a namespace called `edit-namespace`. Create a deployment called `edit-deployment` with `2` replicas using the `redis` image in namespace. After the deployment is running, alter the containers to use the `nginx` image. Then alter the containers to use the `nginx:1.14.2` image and record the change.
 
@@ -356,6 +359,7 @@ kubectl rollout history deployment.apps/edit-deployment
 
 </p>
 </details>
+<br />
 
 #### 03-04. Use Helm to install WordPress into a namespace called `wordpress-namespace`
 
@@ -534,6 +538,7 @@ helm delete my-wp-release --purge
 
 </p>
 </details>
+<br />
 
 #### 03-05. Create a namespace called `blue-green-namespace`. Create a Deployment called `blue-deployment`, with `10` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx containers. Label the pods `version=blue` and `tier=web`. Create a Service called `bsg-service` to route traffic to `blue-deployment`. Verify that traffic is flowing from the Service to the Deployment. Create a new Deployment called `green-deployment` , with `10` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx containers. Label the pods `version=green` and `tier=web`. Once the `green-deployment` is active split traffic between `blue-deployment`=70% and `green-deployment`=30%
 
@@ -859,6 +864,7 @@ Green !!!
 
 </p>
 </details>
+<br />
 
 #### Clean Up
 

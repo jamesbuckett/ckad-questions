@@ -44,6 +44,7 @@ CURRENT   NAME                            CLUSTER                         AUTHIN
 
 </p>
 </details>
+<br />
 
 #### 06-02. List all the Kubernetes resources that can be found inside a namespace. By name only.
 
@@ -95,6 +96,7 @@ events
 
 </p>
 </details>
+<br />
 
 #### 06-03. Give the command to list out all the available API groups on your cluster. Then list out the API's in the `named` group.
 
@@ -221,6 +223,7 @@ Output:
 
 </p>
 </details>
+<br />
 
 #### 06-04. Using the kubectl convert command update the attached YAML file
 

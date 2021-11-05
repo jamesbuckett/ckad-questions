@@ -7,6 +7,7 @@
 - Use provided tools to monitor Kubernetes applications [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/05-ckad-observability-maintenance.md#05-01-first-list-all-the-pods-in-the-cluster-by-cpu-consumption-then-list-all-the-pods-in-the-cluster-by-memory-consumption)
 - Utilize container logs [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/05-ckad-observability-maintenance.md#05-02-create-a-pod-called-log-pod-using-image-nginx-in-namespace-log-namespace-create-the-namespace-obtain-the-logs-for-the-nginx-pod-for-the-last-hour)
 - Debugging in Kubernetes [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/05-ckad-observability-maintenance.md#05-04-create-a-pod-called-json-pod-using-image-nginx-in-namespace-json-namespace-create-the-namespace-obtain-the-hostip-address-using-jsonpath)
+<br />
 
 #### 05-01. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
 
@@ -62,6 +63,7 @@ kube-system               cilium-ml27n                                          
 
 </p>
 </details>
+<br />
 
 #### 05-02. Create a pod called `log-pod` using image `nginx` in namespace `log-namespace`. Create the namespace. Obtain the `logs` for the nginx pod for the `last hour`.
 
@@ -150,6 +152,7 @@ kubectl logs --since=1h log-pod
 
 </p>
 </details>
+<br />
 
 #### 05-03. Output all the events for all namespaces by creation date.
 
@@ -173,6 +176,7 @@ kubectl get events -A --sort-by=.metadata.creationTimestamp
 
 </p>
 </details>
+<br />
 
 #### 05-04. Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`. Create the namespace. Obtain the `hostIP` address using `JSONPath`.
 
@@ -262,6 +266,7 @@ kubectl get pod json-pod -o jsonpath={.status.hostIP}
 
 </p>
 </details>
+<br />
 
 #### 05-05. Run the preparation steps. A deployment called `my-revision-deployment` in the namespace `revision-namespace` will be created. Check the status of this deployment. Check the revision history of this deployment. Roll back to the last good working deployment. Roll back to the earliest revision. Verify that it is now working.
 
@@ -319,6 +324,7 @@ kubectl rollout history deployment.apps/my-revision-deployment --revision=2
 
 </p>
 </details>
+<br />
 
 #### 05-06. Patch the deployment from the previous question: `my-revision-deployment` to have a `revisionHistoryLimit` size of 20.
 
@@ -413,7 +419,7 @@ kubectl get deployment my-revision-deployment -o jsonpath={.spec.revisionHistory
 
 </p>
 </details>
-
+<br />
 
 #### Clean Up
 

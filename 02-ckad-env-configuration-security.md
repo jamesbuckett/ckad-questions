@@ -283,10 +283,6 @@ metadata:
   name: my-secret
 ```
 
-<iframe src="examples/02-03-secret.yml" seamless></iframe>
-
-
-
 ```bash
 clear
 # Apply the YAML file to the Kubernetes API server

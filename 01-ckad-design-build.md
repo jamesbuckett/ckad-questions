@@ -197,7 +197,7 @@ clear
 vi ~/ckad/01-02.yml
 ```
 
-```bash
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -286,7 +286,7 @@ mkdir -p ~/ckad/
 vi ~/ckad/01-03-pv.yml
 ```
 
-```bash
+```yaml
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -331,7 +331,7 @@ mkdir -p ~/ckad/
 vi ~/ckad/01-03-pvc.yml
 ```
 
-```bash
+```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -376,7 +376,7 @@ mkdir -p ~/ckad/
 vi  ~/ckad/01-03-pod.yml
 ```
 
-```bash
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -456,7 +456,7 @@ mkdir -p ~/ckad/
 vi ~/ckad/01-04.yml
 ```
 
-```bash
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:

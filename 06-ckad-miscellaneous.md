@@ -227,7 +227,7 @@ Output:
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
 
-Typical API deprication warning message:
+Typical API deprecated warning message:
 ```bash
 Warning: policy/v1beta1 PodDisruptionBudget is deprecated in v1.21+, unavailable in v1.25+; use policy/v1 PodDisruptionBudget
 poddisruptionbudget.policy/calico-kube-controllers created
@@ -238,7 +238,7 @@ poddisruptionbudget.policy/calico-kube-controllers created
 vi ~/ckad/06-04-beta-ingress.yml
 ```
 
-```bash
+```yaml
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
@@ -293,6 +293,5 @@ status:
 
 </p>
 </details>
-
 
 _End of Section_

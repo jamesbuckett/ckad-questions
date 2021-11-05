@@ -305,7 +305,7 @@ vi ~/ckad/02-03-pod.yml
 
 kubernetes.io bookmark: [Using Secrets as environment variables](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables)
 
-```bash
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -452,7 +452,7 @@ vi ~/ckad/02-04.yml
 
 kubernetes.io bookmark: [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
 
-```bash
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:

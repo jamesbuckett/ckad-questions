@@ -284,6 +284,11 @@ metadata:
 ```
 
 ```bash
+[Link](examples/02-03-secret.yml)
+```
+
+
+```bash
 clear
 # Apply the YAML file to the Kubernetes API server
 # The secret is available to all pods in the namespace

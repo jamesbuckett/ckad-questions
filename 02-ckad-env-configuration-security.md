@@ -271,7 +271,7 @@ vi ~/ckad/02-03-secret.yml
 
 kubernetes.io bookmark: [Immutable Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#secret-immutable)
 
-```bash
+```yaml
 apiVersion: v1
 data:
   password: MTIzNDU2

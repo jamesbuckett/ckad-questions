@@ -283,6 +283,8 @@ metadata:
   name: my-secret
 ```
 
+@@include[my-secret](examples/02-03-secret.yml)
+
 ```bash
 clear
 # Apply the YAML file to the Kubernetes API server

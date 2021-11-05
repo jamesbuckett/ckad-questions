@@ -284,7 +284,7 @@ metadata:
 ```
 
 ```bash
-[Link](examples/02-03-secret.yml)
+[Link](https://github.com/jamesbuckett/ckad-questions/blob/main/examples/02-03-secret.yml)
 ```
 
 

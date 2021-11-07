@@ -9,6 +9,7 @@
 
 - Opinions expressed here are solely my own and do not express the views or opinions of JPMorgan Chase.
 - Any third-party trademarks are the intellectual property of their respective owners and any mention herein is for referential purposes only.
+<br />
 
 ## Questions by Domain
 
@@ -18,6 +19,7 @@
 - [Example CKAD Services and Networking Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/04-ckad-services-networking.md)
 - [Example CKAD Observability and Maintenance Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/05-ckad-observability-maintenance.md)
 - [Example CKAD Miscellaneous Q&A](https://github.com/jamesbuckett/ckad-questions/blob/main/06-ckad-miscellaneous.md)
+<br />
 
 ## Docker Desktop Setup
 
@@ -28,6 +30,7 @@
 - To mimic the CKAD exam please execute all the commands in this repo from this Linux distribution that you installed.
   - The CKAD exam terminal is Ubuntu based.
 - Start the distribution directly by searching for Ubuntu and starting the application
+<br />
 
 ### Prerequisite software for Docker desktop
 
@@ -120,6 +123,7 @@ kubectl convert --help
 
 </p>
 </details>
+<br />
 
 ### Optional software for Docker desktop
 
@@ -136,6 +140,7 @@ Helm installs into Windows
 
 </p>
 </details>
+<br />
 
 ## Logistics
 

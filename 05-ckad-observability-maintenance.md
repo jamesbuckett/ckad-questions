@@ -421,11 +421,8 @@ kubectl get deployment my-revision-deployment -o jsonpath={.spec.revisionHistory
 </details>
 <br />
 
-#### 05-07. Run the code in the preparation section. Once the deployment is running alter the label in the Deployment from `tier=web` to `tier=app`
+#### 05-07. Run the code in the preparation section. Once the deployment is running alter the environmental variable `TIER=web` to `TIER=app`
 
-```diff
-UNDER CONSTRUCTION
-```
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
@@ -475,17 +472,17 @@ EOF
 
 ```bash
 # Describe the Deployment 
-kubectl describe deployment.apps nginx-deployment | grep -i tier
+kubectl describe deployment.apps nginx-deployment | grep -i env -A 1
 ```
 
 ```bash
 # Set the env using kubectl set env 
-kubectl set env deployment.apps nginx-deployment tier=app
+kubectl set env deployment.apps nginx-deployment TIER=app
 ```
 
 ```bash
 # Describe the Deployment 
-kubectl describe deployment.apps nginx-deployment | grep -i tier
+kubectl describe deployment.apps nginx-deployment | grep -i env -A 1
 ```
 
 </p>

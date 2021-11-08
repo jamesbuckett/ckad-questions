@@ -18,6 +18,8 @@ Please NOTE:
 <details class="faq box"><summary>Overview</summary>
 <p>
 
+![05-netpol](https://user-images.githubusercontent.com/18049790/140638229-62871b17-bc71-4e51-a71c-4c75c178a78f.jpg)
+
 I use the notepad to sketch out the ingress and egress before starting
 
 Rules

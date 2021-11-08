@@ -421,6 +421,65 @@ kubectl get deployment my-revision-deployment -o jsonpath={.spec.revisionHistory
 </details>
 <br />
 
+#### 05-07. Run the code in the preparation section. Once the deployment is running alter the label in the Deployment from `tier=web` to `tier=app`
+
+<details class="faq box"><summary>Prerequisites</summary>
+<p>
+
+```bash
+cat << EOF | kubectl apply -f -
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: set-env-namespace
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+        tier: web
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+EOF
+
+<details class="faq box"><summary>Solution</summary>
+<p>
+
+```bash
+# Describe the Deployment 
+kubectl describe deployment.apps nginx-deployment | grep -i tier
+```
+
+```bash
+# Set the env using kubectl set env 
+kubectl set env deployment.apps nginx-deployment tier=app
+```
+
+```bash
+# Describe the Deployment 
+kubectl describe deployment.apps nginx-deployment | grep -i tier
+```
+
+</p>
+</details>
+<br />
+
 #### Clean Up
 
 <details class="faq box"><summary>Clean Up</summary>

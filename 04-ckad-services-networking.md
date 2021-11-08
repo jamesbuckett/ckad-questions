@@ -213,8 +213,6 @@ app-pod !!!
 
 ![05-network-svc](https://user-images.githubusercontent.com/18049790/140637642-5ef46de4-4867-41a6-ba44-6333cd9441af.jpg)
 
-![pod-svc-port](https://user-images.githubusercontent.com/18049790/138384354-4ab48373-8feb-402f-b66c-5864d7fc506f.jpg)
-
 </p>
 </details>
 
@@ -344,8 +342,6 @@ kubectl get ep
 <p>
 
 ![05-network-ing](https://user-images.githubusercontent.com/18049790/140637548-d1a9ced9-7c66-406c-86d3-1a7001de2e75.jpg)
-
-![svc-ing](https://user-images.githubusercontent.com/18049790/138384372-c8df7988-d2bb-4857-8999-28234b035355.jpg)
 
 </p>
 </details>

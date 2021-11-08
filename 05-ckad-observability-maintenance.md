@@ -438,6 +438,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
+  namespace: set-env-namespace
   labels:
     app: nginx
 spec:

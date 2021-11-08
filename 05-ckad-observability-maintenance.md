@@ -457,6 +457,7 @@ spec:
         ports:
         - containerPort: 80
 EOF
+```
 
 <details class="faq box"><summary>Solution</summary>
 <p>

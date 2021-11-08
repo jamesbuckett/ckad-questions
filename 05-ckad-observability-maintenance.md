@@ -453,14 +453,16 @@ spec:
   template:
     metadata:
       labels:
-        app: nginx
-        tier: web
+        app: nginx        
     spec:
       containers:
       - name: nginx
         image: nginx:1.14.2
         ports:
         - containerPort: 80
+        env:
+        - name: TIER
+          value: web
 EOF
 ```
 

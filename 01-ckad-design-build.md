@@ -238,7 +238,7 @@ kubectl get pod --watch
 <details class="faq box"><summary>Overview</summary>
 <p>
 
-![pv-pvc-pod](https://user-images.githubusercontent.com/18049790/138383528-c262a6a1-6d61-4493-abb8-93d1534010ec.jpg)
+![06-pv-pvc-pod](https://user-images.githubusercontent.com/18049790/140639299-1b5a2c1b-139d-4b52-9a35-66d79de5fb71.jpg)
 
 Legend
 * PersistentVolume – the low level representation of a storage volume

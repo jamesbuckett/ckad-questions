@@ -423,6 +423,10 @@ kubectl get deployment my-revision-deployment -o jsonpath={.spec.revisionHistory
 
 #### 05-07. Run the code in the preparation section. Once the deployment is running alter the label in the Deployment from `tier=web` to `tier=app`
 
+```diff
+UNDER CONSTRUCTION
+```
+
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
 

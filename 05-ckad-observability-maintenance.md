@@ -270,16 +270,6 @@ kubectl get pod json-pod -o jsonpath={.status.hostIP}
 
 #### 05-05. Run the preparation steps. A deployment called `my-revision-deployment` in the namespace `revision-namespace` will be created. Check the status of this deployment. Check the revision history of this deployment. Roll back to the last good working deployment. Roll back to the earliest revision. Verify that it is now working.
 
-<details class="faq box"><summary>Overview</summary>
-<p>
-
-##### Overview
-
-TBC
-
-</p>
-</details>
-
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
 

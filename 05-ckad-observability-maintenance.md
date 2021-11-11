@@ -311,7 +311,7 @@ clear
 clear
 #Situational Awareness 
 kubectl get all 
-```bash
+```
 
 ```bash
 # Examine events from Deployment 

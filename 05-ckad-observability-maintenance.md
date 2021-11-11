@@ -330,7 +330,7 @@ kubectl rollout undo deployment.apps/my-revision-deployment
 
 ```bash
 # Go back further to an earlier revision
-kubectl rollout history deployment.apps/my-revision-deployment --revision=2
+kubectl rollout undo deployment.apps/my-revision-deployment --to-revision=2
 ```
 
 </p>
@@ -407,6 +407,10 @@ FIELDS:
 <details class="faq box"><summary>Solution</summary>
 <p>
 
+```bash
+# What is the current setting
+kubectl get deployment my-revision-deployment -o jsonpath={.spec.revisionHistoryLimit}
+```
 
 ```bash
 # Create a file to hold the patch
@@ -415,7 +419,7 @@ vi ~/ckad/patch-file.yaml
 
 ```bash
 spec: # 👈👈👈 First element: =.spec
-  revisionHistoryLimit: 20 👈👈👈 Second element: =.spec.revisionHistoryLimit
+  revisionHistoryLimit: 20 # 👈👈👈 Second element: =.spec.revisionHistoryLimit
 ```
 
 ```bash
@@ -472,6 +476,11 @@ spec:
         - name: TIER
           value: web
 EOF
+```
+
+```bash
+kubectl config set-context --current --namespace=set-env-namespace
+kubectl get all
 ```
 
 </p>

@@ -346,6 +346,9 @@ kubectl rollout undo deployment.apps/my-revision-deployment --to-revision=2
 
 ##### Overview
 
+kubernetes.io bookmark: [Use a strategic merge patch to update a Deployment](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/#use-a-strategic-merge-patch-to-update-a-deployment)
+
+
 ```bash
 kubectl config set-context --current --namespace=revision-namespace
 clear

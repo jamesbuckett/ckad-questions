@@ -9,6 +9,20 @@
 - Debugging in Kubernetes [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/05-ckad-observability-maintenance.md#05-04-create-a-pod-called-json-pod-using-image-nginx-in-namespace-json-namespace-create-the-namespace-obtain-the-hostip-address-using-jsonpath)
 <br />
 
+
+<details class="faq box"><summary>Optional - Install a Sample Microservices Application</summary>
+<p>
+
+```bash
+kubectl create ns ns-demo
+kubectl apply -n ns-demo -f "https://raw.githubusercontent.com/jamesbuckett/terraform-digital-ocean/master/prep/complete-demo.yaml"
+kubectl apply -n ns-demo -f "https://raw.githubusercontent.com/jamesbuckett/terraform-digital-ocean/master/prep/hpa-demo.yaml"
+kubectl wait -n ns-demo deploy frontend --for condition=Available --timeout=90s
+```
+</p>
+</details>
+<br />
+
 #### 05-01. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
 
 <details class="faq box"><summary>Solution - kubectl top pods -A --sort-by=cpu</summary>

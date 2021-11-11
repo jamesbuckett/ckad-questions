@@ -13,6 +13,8 @@
 <details class="faq box"><summary>Optional - Install a Sample Microservices Application</summary>
 <p>
 
+This application is useful to see CPU and Memory for a microservices application.
+
 ```bash
 kubectl create ns ns-demo
 kubectl apply -n ns-demo -f "https://raw.githubusercontent.com/jamesbuckett/terraform-digital-ocean/master/prep/complete-demo.yaml"
@@ -291,7 +293,7 @@ kubectl get pod json-pod -o jsonpath={.status.hostIP}
 clear
 kubectl create namespace revision-namespace
 kubectl config set-context --current --namespace=revision-namespace
-kubectl create deployment my-revision-deployment --image=nginx:1.18.0 --replicas=2 --record
+kubectl create deployment my-revision-deployment --image=nginx:1.18.0 --replicas=2
 kubectl rollout status deployment my-revision-deployment
 kubectl set image deployment.apps/my-revision-deployment nginx=nginx:1.19.0 --record
 kubectl rollout status deployment my-revision-deployment

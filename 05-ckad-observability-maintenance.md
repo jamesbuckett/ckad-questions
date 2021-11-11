@@ -291,7 +291,7 @@ kubectl get pod json-pod -o jsonpath={.status.hostIP}
 clear
 kubectl create namespace revision-namespace
 kubectl config set-context --current --namespace=revision-namespace
-kubectl create deployment my-revision-deployment --image=nginx:1.18.0 --replicas=2
+kubectl create deployment my-revision-deployment --image=nginx:1.18.0 --replicas=2 --record
 kubectl rollout status deployment my-revision-deployment
 kubectl set image deployment.apps/my-revision-deployment nginx=nginx:1.19.0 --record
 kubectl rollout status deployment my-revision-deployment

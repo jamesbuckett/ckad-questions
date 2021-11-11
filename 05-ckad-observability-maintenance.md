@@ -309,19 +309,26 @@ clear
 
 ```bash
 clear
-
 #Situational Awareness 
 kubectl get all 
+```bash
 
-# Exam events from Deployment 
+```bash
+# Examine events from Deployment 
 kubectl describe deployment.apps/my-revision-deployment
+```
 
+```bash
 # Get Deployment Revisions
 kubectl rollout history deployment.apps/my-revision-deployment
+```
 
+```bash
 # Fix the immediate problem
 kubectl rollout undo deployment.apps/my-revision-deployment
+```
 
+```bash
 # Go back further to an earlier revision
 kubectl rollout history deployment.apps/my-revision-deployment --revision=2
 ```

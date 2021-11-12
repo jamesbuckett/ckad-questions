@@ -31,6 +31,11 @@ Use this link to visually solve the problem:
 Use this link for common network policy recipes:
 * [Kubernetes Network Policy Recipes](https://github.com/ahmetb/kubernetes-network-policy-recipes)
 
+Notes 
+* Network policies do not conflict; they are additive. 
+* If any policy or policies select a pod, the pod is restricted to what is allowed by the union of those policies' ingress/egress rules. 
+* Thus, order of evaluation does not affect the policy result.
+
 </p>
 </details>
 

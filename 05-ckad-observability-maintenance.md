@@ -27,7 +27,7 @@ kubectl wait -n ns-demo deploy frontend --for condition=Available --timeout=90s
 
 #### 05-01. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
 
-<details class="faq box"><summary>Solution - kubectl top pods -A --sort-by=cpu</summary>
+<details class="faq box"><summary>Solution: First list all the pods in the cluster by CPU consumption</summary>
 <p>
 
 ```bash
@@ -52,7 +52,7 @@ ns-demo                   recommendationservice-b4cf8f489-xwv49                 
 </p>
 </details>
 
-<details class="faq box"><summary>Solution - kubectl top pods -A --sort-by=memory</summary>
+<details class="faq box"><summary>Solution: Then list all the pods in the cluster by Memory consumption</summary>
 <p>
 
 ##### Solution

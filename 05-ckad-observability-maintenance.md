@@ -279,6 +279,10 @@ kubernetes.io bookmark:[JSONPath Support](https://kubernetes.io/docs/reference/k
 ```bash
 kubectl get pod json-pod -o jsonpath={.status.hostIP}
 ```
+OR
+```bash
+kubectl get pod json-pod -o jsonpath={..hostIP}
+```
 
 </p>
 </details>

@@ -149,3 +149,4 @@ Helm installs into Windows
 - To remove all the resources that get created run the commands in the Clean Up section.
 
 _End of Section_
+<br />

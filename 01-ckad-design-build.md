@@ -231,21 +231,6 @@ kubectl get pod --watch
 
 </p>
 </details>
-
-<details class="faq box"><summary>Notes</summary>
-<p>
-
-
-There are three container types:
-* containers
-  * A container image is a ready-to-run software package, containing everything needed to run an application: the code and any runtime it requires, application and system libraries, and default values for any essential settings.
-* initContainers
-  * Specialized containers that run before app containers in a Pod. Init containers can contain utilities or setup scripts not present in an app image
-* ephemeralcontainers
-  * A special type of container that runs temporarily in an existing Pod to accomplish user-initiated actions such as troubleshooting
-
-</p>
-</details>
 <br />
 
 #### 01-03. Create a namespace called `storage-namespace`. Create a Persistent Volume called `my-pv` with `5Gi` storage using hostPath `/mnt/my-host`. Create a Persistent Volume Claim called `my-pvc` with `2Gi` storage. Create a pod called `storage-pod` using the nginx image. Mount the Persistent Volume Claim onto `/my-mount` in `storage-pod`.

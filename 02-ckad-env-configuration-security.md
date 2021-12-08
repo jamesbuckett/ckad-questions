@@ -500,7 +500,7 @@ my-serviceaccount
 <details class="faq box"><summary>Overview</summary>
 <p>
 
-![rbac](https://user-images.githubusercontent.com/18049790/145153619-a8c7966e-d1b8-480c-836c-d7c4a2bf622c.jpg)
+![rbac](https://user-images.githubusercontent.com/18049790/145154335-3086bbce-14d9-4a7d-83b7-92a61d4a9456.jpg)
 
 </p>
 </details>

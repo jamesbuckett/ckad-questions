@@ -563,6 +563,24 @@ kubectl auth can-i delete pods --as=system:serviceaccount:rbac-namespace:rbac-sa
 
 ```bash
 kubectl get role #👈👈👈 Get all the roles defined in the namespace
+```
+
+```bash
+kubectl describe role  rbac-role #👈👈👈 Describe the role
+```
+
+```console
+Name:         rbac-role
+Labels:       <none>
+Annotations:  <none>
+PolicyRule:
+  Resources    Non-Resource URLs  Resource Names  Verbs
+  ---------    -----------------  --------------  -----
+  pods/status  []                 []              [get watch]
+  pods         []                 []              [get watch]
+```
+
+```bash
 kubectl edit role rbac-role #👈👈👈 Edit the role
 ```
 
@@ -589,6 +607,21 @@ rules:
   - get
   - watch
   - delete #👈👈👈 Add the verb "delete"
+```
+
+```bash
+kubectl describe role  rbac-role #👈👈👈 Describe the role
+```
+
+```console
+Name:         rbac-role
+Labels:       <none>
+Annotations:  <none>
+PolicyRule:
+  Resources    Non-Resource URLs  Resource Names  Verbs
+  ---------    -----------------  --------------  -----
+  pods/status  []                 []              [get watch delete]
+  pods         []                 []              [get watch delete]
 ```
 
 ```bash

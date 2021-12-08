@@ -145,7 +145,7 @@ Helm installs into Windows
 ## Logistics
 
 - The current version of Kubernetes in the CKAD exam can be found [here](https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks#what-application-version-is-running-in-the-exam-environment).
-- This has been tested on Docker Desktop v4.1.1 (69879)
+- This has been tested on Docker Desktop 4.3.0 (71786)
 - To remove all the resources that get created run the commands in the Clean Up section.
 
 _End of Section_

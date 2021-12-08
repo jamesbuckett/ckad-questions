@@ -9,6 +9,22 @@
 - Debugging in Kubernetes [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/05-ckad-observability-maintenance.md#05-04-create-a-pod-called-json-pod-using-image-nginx-in-namespace-json-namespace-create-the-namespace-obtain-the-hostip-address-using-jsonpath)
 <br />
 
+
+<details class="faq box"><summary>Optional - Install a Sample Microservices Application</summary>
+<p>
+
+This application is useful to see CPU and Memory for a microservices application.
+
+```bash
+kubectl create ns ns-demo
+kubectl apply -n ns-demo -f "https://raw.githubusercontent.com/jamesbuckett/terraform-digital-ocean/master/prep/complete-demo.yaml"
+kubectl apply -n ns-demo -f "https://raw.githubusercontent.com/jamesbuckett/terraform-digital-ocean/master/prep/hpa-demo.yaml"
+kubectl wait -n ns-demo deploy frontend --for condition=Available --timeout=90s
+```
+</p>
+</details>
+<br />
+
 #### 05-01. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
 
 <details class="faq box"><summary>Solution - kubectl top pods -A --sort-by=cpu</summary>
@@ -183,7 +199,7 @@ kubectl get events -A --sort-by=.metadata.creationTimestamp
 <details class="faq box"><summary>Overview</summary>
 <p>
 
-![jsonpath](https://user-images.githubusercontent.com/18049790/138386382-0e2c550b-14cf-47e5-96ef-105b0f278036.jpg)
+![08-json-path](https://user-images.githubusercontent.com/18049790/141224991-a6e64661-685d-4b4f-8868-97dab51ad356.jpg)
 
 </p>
 </details>
@@ -263,22 +279,16 @@ kubernetes.io bookmark:[JSONPath Support](https://kubernetes.io/docs/reference/k
 ```bash
 kubectl get pod json-pod -o jsonpath={.status.hostIP}
 ```
+OR
+```bash
+kubectl get pod json-pod -o jsonpath={..hostIP}
+```
 
 </p>
 </details>
 <br />
 
-#### 05-05. Run the preparation steps. A deployment called `my-revision-deployment` in the namespace `revision-namespace` will be created. Check the status of this deployment. Check the revision history of this deployment. Roll back to the last good working deployment. Roll back to the earliest revision. Verify that it is now working.
-
-<details class="faq box"><summary>Overview</summary>
-<p>
-
-##### Overview
-
-TBC
-
-</p>
-</details>
+#### 05-05. Run the preparation steps. A deployment called `my-revision-deployment` will be created in the namespace `revision-namespace`. Check the status of this deployment. Check the revision history of this deployment. Roll back to the last good working deployment. Roll back to the earliest revision. Verify that it is now working.
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
@@ -305,21 +315,28 @@ clear
 
 ```bash
 clear
-
 #Situational Awareness 
 kubectl get all 
+```
 
-# Exam events from Deployment 
+```bash
+# Examine events from Deployment 
 kubectl describe deployment.apps/my-revision-deployment
+```
 
+```bash
 # Get Deployment Revisions
 kubectl rollout history deployment.apps/my-revision-deployment
+```
 
+```bash
 # Fix the immediate problem
 kubectl rollout undo deployment.apps/my-revision-deployment
+```
 
+```bash
 # Go back further to an earlier revision
-kubectl rollout history deployment.apps/my-revision-deployment --revision=2
+kubectl rollout undo deployment.apps/my-revision-deployment --to-revision=2
 ```
 
 </p>
@@ -332,6 +349,9 @@ kubectl rollout history deployment.apps/my-revision-deployment --revision=2
 <p>
 
 ##### Overview
+
+kubernetes.io bookmark: [Use a strategic merge patch to update a Deployment](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/#use-a-strategic-merge-patch-to-update-a-deployment)
+
 
 ```bash
 kubectl config set-context --current --namespace=revision-namespace
@@ -396,6 +416,10 @@ FIELDS:
 <details class="faq box"><summary>Solution</summary>
 <p>
 
+```bash
+# What is the current setting
+kubectl get deployment my-revision-deployment -o jsonpath={.spec.revisionHistoryLimit}
+```
 
 ```bash
 # Create a file to hold the patch
@@ -404,7 +428,7 @@ vi ~/ckad/patch-file.yaml
 
 ```bash
 spec: # 👈👈👈 First element: =.spec
-  revisionHistoryLimit: 20 👈👈👈 Second element: =.spec.revisionHistoryLimit
+  revisionHistoryLimit: 20 # 👈👈👈 Second element: =.spec.revisionHistoryLimit
 ```
 
 ```bash
@@ -416,6 +440,79 @@ kubectl patch deployment my-revision-deployment --patch "$(cat ~/ckad/patch-file
 kubectl get deployment my-revision-deployment -o jsonpath={.spec.revisionHistoryLimit}
 ```
 
+
+</p>
+</details>
+<br />
+
+#### 05-07. Run the code in the preparation section. Once the deployment is running alter the environmental variable `TIER=web` to `TIER=app`
+
+
+<details class="faq box"><summary>Prerequisites</summary>
+<p>
+
+```bash
+cat << EOF | kubectl apply -f -
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: set-env-namespace
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: set-env-namespace
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx        
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+        env:
+        - name: TIER
+          value: web
+EOF
+```
+
+```bash
+kubectl config set-context --current --namespace=set-env-namespace
+kubectl get all
+```
+
+</p>
+</details>
+<br />
+
+<details class="faq box"><summary>Solution</summary>
+<p>
+
+```bash
+# Describe the Deployment 
+kubectl describe deployment.apps nginx-deployment | grep -i env -A 1
+```
+
+```bash
+# Set the env using kubectl set env 
+kubectl set env deployment.apps nginx-deployment TIER=app
+```
+
+```bash
+# Describe the Deployment 
+kubectl describe deployment.apps nginx-deployment | grep -i env -A 1
+```
 
 </p>
 </details>

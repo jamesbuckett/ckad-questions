@@ -7,7 +7,7 @@
 - Use Ingress rules to expose applications [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/04-ckad-services-networking.md#04-03-create-an-ingress-called-my-ingress-to-expose-the-service-my-service-outside-the-cluster)
 <br />
 
-#### 04-01. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and label the pod `tier=web`. Create a pod called `app-pod` using the `nginx` image and label the pod `tier=app`. Create a pod called `db-pod` using the `nginx` image and label the pod `tier=db`. Create a Network Policy called `my-netpol` that allows the `web-pod` to only egress to `app-pod` on port `80`.
+#### 04-01. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and label the pod `tier=web`. Create a pod called `app-pod` using the `nginx` image and label the pod `tier=app`. Create a pod called `db-pod` using the `nginx` image and label the pod `tier=db`. Create Network Policies that allow the `web-pod` to connect with the `app-pod` on port `80` only.
 
 ```diff
 Please NOTE:
@@ -30,6 +30,11 @@ Use this link to visually solve the problem:
 
 Use this link for common network policy recipes:
 * [Kubernetes Network Policy Recipes](https://github.com/ahmetb/kubernetes-network-policy-recipes)
+
+Notes 
+* Network policies do not conflict; they are additive. 
+* If any policy or policies select a pod, the pod is restricted to what is allowed by the union of those policies' ingress/egress rules. 
+* Thus, order of evaluation does not affect the policy result.
 
 </p>
 </details>

@@ -497,6 +497,14 @@ my-serviceaccount
 
 #### 02-05. "Error from server (Forbidden): pod is forbidden: User `rbac-sa` cannot `delete` resource `pods` in API group `apps` in the namespace  `rbac-namespace`" Fix the problem.
 
+<details class="faq box"><summary>Overview</summary>
+<p>
+
+![rbac](https://user-images.githubusercontent.com/18049790/145152889-cf232edd-9b44-43b8-9b67-f84d3c8b7e14.jpg)
+
+</p>
+</details>
+
 <details class="faq box"><summary>Enable RBAC on Docker Desktop</summary>
 <p>
 
@@ -529,30 +537,22 @@ Notes:
 </p>
 </details>
 
-<details class="faq box"><summary>Overview</summary>
-<p>
-
-![02-04](https://user-images.githubusercontent.com/18049790/136654659-8dce6ade-0487-45dc-97c8-d3191ed286d3.png)
-
-</p>
-</details>
-
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
 
 ```bash
 clear
-kubectl create namespace rbac-namespace
-kubectl config set-context --current --namespace=rbac-namespace
-kubectl create sa rbac-sa
-kubectl create deployment rbac-deployment --image=nginx --replicas=3
-kubectl create role rbac-role --verb=get,watch --resource=pods,pods/status
-kubectl create rolebinding rbac-rolebinding --role=rbac-role --serviceaccount=rbac-namespace:rbac-sa
+kubectl create namespace rbac-namespace #👈👈👈 Create a namespace
+kubectl config set-context --current --namespace=rbac-namespace #👈👈👈Change directory into the namespace
+kubectl create sa rbac-sa #👈👈👈 Create a Service Account (Who)
+kubectl create deployment rbac-deployment --image=nginx --replicas=3 #👈👈👈 Create a deployment 
+kubectl create role rbac-role --verb=get,watch --resource=pods,pods/status #👈👈👈Create a Role (What and Where)
+kubectl create rolebinding rbac-rolebinding --role=rbac-role --serviceaccount=rbac-namespace:rbac-sa #👈👈👈 Bind Account and Role
 ```
 
 ```bash
-kubectl auth can-i get pods --as=system:serviceaccount:rbac-namespace:rbac-sa # yes to get
-kubectl auth can-i delete pods --as=system:serviceaccount:rbac-namespace:rbac-sa # no to delete
+kubectl auth can-i get pods --as=system:serviceaccount:rbac-namespace:rbac-sa # yes to get verb
+kubectl auth can-i delete pods --as=system:serviceaccount:rbac-namespace:rbac-sa # no to delete verb
 ```
 
 </p>
@@ -562,8 +562,8 @@ kubectl auth can-i delete pods --as=system:serviceaccount:rbac-namespace:rbac-sa
 <p>
 
 ```bash
-kubectl get role
-kubectl edit role rbac-role
+kubectl get role #👈👈👈 Get all the roles defined in the namespace
+kubectl edit role rbac-role #👈👈👈 Edit the role
 ```
 
 ```console

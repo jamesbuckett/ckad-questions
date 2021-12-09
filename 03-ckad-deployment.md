@@ -536,6 +536,39 @@ helm ls
 helm delete my-wp-release --purge
 ```
 
+
+</details>
+<br />
+
+<details class="faq box"><summary>Operations</summary>
+<p>
+
+##### Install a Release 
+
+```bash
+helm install happy-panda bitnami/wordpress
+```
+
+##### Upgrade a Release 
+
+```bash
+helm upgrade --set foo=bar --set foo=newbar redis ./redis
+```
+
+##### Delete a Release
+
+```bash
+helm uninstall my-release 
+```
+
+##### Broken Release 
+
+```bash
+helm list
+helm uninstall my-release 
+```
+
+
 </p>
 </details>
 <br />

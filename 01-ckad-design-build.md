@@ -420,84 +420,6 @@ Output:
 </details>
 <br />
 
-#### 01-04. Create a namespace called `ram-namespace`. Create a pod called `ram-pod` using `nginx` image. Create an emptyDir volume called `ram-emptydir`. The emptyDir must use a RAM-backed filesystem. Mount the mount path at `/tmpfs`
-
-<details class="faq box"><summary>Overview</summary>
-<p>
-
-![01-04](https://user-images.githubusercontent.com/18049790/136649713-c13c3248-2345-435d-9603-9ebc3ee67c13.png)
-
-</p>
-</details>
-
-<details class="faq box"><summary>Prerequisites</summary>
-<p>
-
-```bash
-clear
-kubectl create namespace ram-namespace
-kubectl config set-context --current --namespace=ram-namespace
-```
-
-</p>
-</details>
-
-<details class="faq box"><summary>Solution</summary>
-<p>
-
-kubernetes.io bookmark: [emptyDir](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir)
-
-```bash
-clear
-kubectl run ram-pod --image=nginx --dry-run=client -o yaml > ~/ckad/01-04.yml
-```
-
-```bash
-clear
-# Edit the YAML file to make required changes
-# Use the Question number in case you want to return to the question for reference or for review
-mkdir -p ~/ckad/
-vi ~/ckad/01-04.yml
-```
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  creationTimestamp: null
-  labels:
-    run: ram-pod
-  name: ram-pod
-spec:
-  containers:
-  - image: nginx
-    name: ram-pod
-    resources: {}
-    volumeMounts:
-    - mountPath: /tmpfs
-      name: ram-emptydir
-  volumes:
-  - name: ram-emptydir
-    emptyDir:
-      medium: Memory #👈👈👈 This is the sauce
-  dnsPolicy: ClusterFirst
-  restartPolicy: Always
-status: {}
-```
-
-```bash
-clear
-# Apply the YAML file to the Kubernetes API server
-kubectl apply -f ~/ckad/01-04.yml
-# Verify that the volume is mounted
-# Or just kubectl describe pod storage-pod
-kubectl describe pod ram-pod | grep -i Mounts -A1
-```
-
-</p>
-</details>
-<br />
-
 #### Clean Up
 
 <details class="faq box"><summary>Clean Up</summary>
@@ -508,7 +430,6 @@ cd
 yes | rm -R ~/ckad/
 kubectl delete ns storage-namespace --force
 kubectl delete ns pod-namespace --force
-kubectl delete ns ram-namespace --force
 kubectl delete pv my-pv
 ```
 

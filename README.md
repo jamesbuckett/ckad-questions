@@ -36,7 +36,7 @@
 
 Please install these software components, required to answer questions in later sections:
 
-<details class="faq box"><summary>Metrics Server</summary>
+<details class="faq box"><summary>Metrics Server - Kubernetes top command</summary>
 <p>
 
 Metrics Server installs into Kubernetes
@@ -56,7 +56,7 @@ kubectl patch deployment metrics-server -n kube-system --type 'json' -p '[{"op":
 </p>
 </details>
 
-<details class="faq box"><summary>Contour Ingress</summary>
+<details class="faq box"><summary>Contour Ingress - Kubernetes Ingress Controller</summary>
 <p>
 
 Contour installs into Kubernetes
@@ -74,7 +74,7 @@ kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
 </p>
 </details>
 
-<details class="faq box"><summary>Calico</summary>
+<details class="faq box"><summary>Calico - Kubernetes Container Network Interface (CNI)</summary>
 <p>
 
 Calico installs into Kubernetes
@@ -90,7 +90,7 @@ curl https://docs.projectcalico.org/manifests/calico.yaml | kubectl apply -f -
 </p>
 </details>
 
-<details class="faq box"><summary>Helm</summary>
+<details class="faq box"><summary>Helm - Kubernetes Package Manager</summary>
 <p>
 
 Helm installs into WSL Linux
@@ -126,7 +126,7 @@ kubectl convert --help
 
 ### Optional software for Docker desktop
 
-<details class="faq box"><summary>Octant</summary>
+<details class="faq box"><summary>Octant - Kubernetes UI</summary>
 <p>
 
 Octant installs into Windows 11

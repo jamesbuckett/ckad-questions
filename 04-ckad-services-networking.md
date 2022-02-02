@@ -100,18 +100,20 @@ kubectl exec --stdin --tty web-pod -- /bin/bash
 
 kubernetes.io bookmark: [The NetworkPolicy resource](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
 
-Deny All Traffic in Namespace from [here](https://github.com/ahmetb/kubernetes-network-policy-recipes).
+Deny All Traffic in Namespace from [here](https://kubernetes.io/docs/concepts/services-networking/network-policies/#default-deny-all-ingress-and-all-egress-traffic)
 
 ```bash
 cat << EOF | kubectl apply -f -
-kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
 metadata:
   name: default-deny-all
   namespace: netpol-namespace
 spec:
   podSelector: {}
-  ingress: []
+  policyTypes:
+  - Ingress
+  - Egress
 EOF
   ```
 

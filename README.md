@@ -31,7 +31,6 @@
 - To mimic the CKAD exam please execute all the commands in this repo from this Linux distribution that you installed.
   - The CKAD exam terminal is Ubuntu based.
 - Start the distribution directly by searching for Ubuntu and starting the application
-<br />
 
 ### Prerequisite software for Docker desktop
 
@@ -124,14 +123,14 @@ kubectl convert --help
 
 </p>
 </details>
-<br />
+
 
 ### Optional software for Docker desktop
 
 <details class="faq box"><summary>Octant</summary>
 <p>
 
-Helm installs into Windows 
+Octant installs into Windows 11
 
 ![octant](https://user-images.githubusercontent.com/18049790/136644006-b0009cea-690c-4303-88a0-e06738fd28de.png)
 

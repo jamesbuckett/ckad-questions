@@ -505,8 +505,12 @@ my-serviceaccount
 </p>
 </details>
 
-<details class="faq box"><summary>Enable RBAC on Docker Desktop</summary>
+<details class="faq box"><summary>Optional - Enable RBAC on Docker Desktop - Optional </summary>
 <p>
+
+RBAC seems to work now on Docker Desktop without this modification
+
+Only execute this if the RBAC example does not work
 
 ```bash
 kubectl delete clusterrolebinding docker-for-desktop-binding

@@ -124,7 +124,6 @@ kubectl convert --help
 </p>
 </details>
 
-
 ### Optional software for Docker desktop
 
 <details class="faq box"><summary>Octant</summary>
@@ -140,7 +139,6 @@ Octant installs into Windows 11
 
 </p>
 </details>
-<br />
 
 ## Logistics
 

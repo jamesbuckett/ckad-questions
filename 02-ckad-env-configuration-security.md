@@ -570,7 +570,7 @@ kubectl get role #👈👈👈 Get all the roles defined in the namespace
 ```
 
 ```bash
-kubectl describe role  rbac-role #👈👈👈 Describe the role
+kubectl describe role rbac-role #👈👈👈 Describe the role
 ```
 
 ```console

@@ -4,6 +4,7 @@
 - Assumed practice environment is [Docker Desktop](https://www.docker.com/products/docker-desktop) with a [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install) backend.
 
 ![kubernetes-ckad-color-300x294](https://user-images.githubusercontent.com/18049790/135700768-0f5735b3-4681-4abd-9075-ece42f4ef134.png)
+<br />
 
 ## Disclaimer
 
@@ -145,7 +146,7 @@ Helm installs into Windows
 ## Logistics
 
 - The current version of Kubernetes in the CKAD exam can be found [here](https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks#what-application-version-is-running-in-the-exam-environment).
-- This has been tested on Docker Desktop 4.3.0 (71786)
+- This has been tested on Docker Desktop 4.4.4 (73704)
 - To remove all the resources that get created run the commands in the Clean Up section.
 
 _End of Section_

@@ -1,7 +1,8 @@
 # Sample CKAD exercises and solutions
 
-- A set of sample questions and solutions to assist in preparing for the [CKAD](https://www.cncf.io/certification/ckad/) exam.
-- Assumed practice environment is [Docker Desktop](https://www.docker.com/products/docker-desktop) with a [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install) backend.
+- A set of sample questions and solutions to assist in preparing for the [CKAD](https://www.cncf.io/certification/ckad/) exam
+- Assumed practice environment is [Docker Desktop](https://www.docker.com/products/docker-desktop) with a [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install) backend
+- The current version of Kubernetes in the CKAD exam can be found [here](https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks#what-application-version-is-running-in-the-exam-environment)
 
 ![kubernetes-ckad-color-300x294](https://user-images.githubusercontent.com/18049790/135700768-0f5735b3-4681-4abd-9075-ece42f4ef134.png)
 <br />
@@ -24,7 +25,8 @@
 
 ## Docker Desktop Setup
 
-### Linux access to Docker desktop
+<details class="faq box"><summary>Linux access to Docker desktop</summary>
+<p>
 
 - Windows Subsystem for Linux requires you to install a Linux distribution from the Microsoft Store.
   - Tick the 'Use the WSL 2 based engine' under the 'General' panel
@@ -32,7 +34,11 @@
   - The CKAD exam terminal is Ubuntu based.
 - Start the distribution directly by searching for Ubuntu and starting the application
 
-### Prerequisite software for Docker desktop
+</p>
+</details>
+
+<details class="faq box"><summary>Prerequisite software for Docker desktop</summary>
+<p>
 
 Please install these software components, required to answer questions in later sections:
 
@@ -106,7 +112,7 @@ chmod 700 get_helm.sh
 </p>
 </details>
 
-<details class="faq box"><summary>kubectl convert</summary>
+<details class="faq box"><summary>kubectl convert - Deal with deprecated API versions</summary>
 <p>
 
 kubectl convert  installs into WSL Linux
@@ -124,8 +130,6 @@ kubectl convert --help
 </p>
 </details>
 
-### Optional software for Docker desktop
-
 <details class="faq box"><summary>Octant - Kubernetes UI</summary>
 <p>
 
@@ -140,11 +144,15 @@ Octant installs into Windows 11
 </p>
 </details>
 
+</p>
+</details>
+
 ## Logistics
 
-- The current version of Kubernetes in the CKAD exam can be found [here](https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks#what-application-version-is-running-in-the-exam-environment).
-- This has been tested on Docker Desktop 4.4.4 (73704)
-- To remove all the resources that get created run the commands in the Clean Up section.
+- You can follow along and cut and paste the example code snippets into your own cluster
+- A single node cluster is sufficient for all examples
+- All code snippets have been created and tested on Docker Desktop
+- To clean up just execute commands in the "Clean Up" section at the end of each section
 
 _End of Section_
 <br />

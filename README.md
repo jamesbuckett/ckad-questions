@@ -1,5 +1,7 @@
 # Sample CKAD exercises and solutions
 
+A warm welcome to the CKAD Study Group for Q1 2022
+
 - A set of sample questions and solutions to assist in preparing for the [CKAD](https://www.cncf.io/certification/ckad/) exam
 - Use the [CKAD bookmarks](https://github.com/jamesbuckett/ckad-bookmarks) repository to aid in answering questions
 - Use the [CKAD tips and tricks](https://github.com/jamesbuckett/ckad-tips) repository for various tips and tricks in the CKAD exam

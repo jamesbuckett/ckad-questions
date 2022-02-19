@@ -1,7 +1,5 @@
 ## Sample CKAD Environment, Configuration and Security Q&A
 
-File Updates and Fixes
-
 ### Application Environment, Configuration and Security – 25%
 
 - Discover and use resources that extend Kubernetes (CRD) [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/02-ckad-env-configuration-security.md#02-01-list-all-the-custom-resource-definitions-installed-in-a-cluster-calico-is-a-crd-list-out-how-to-obtain-the-correct-resource-name-to-query-a-calico-network-policy-and-not-the-default-kubernetes-network-policy)

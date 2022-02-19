@@ -1,7 +1,5 @@
 ## Sample CKAD API Q&A
 
-File Updates and Fixes
-
 #### 06-01. What is the current active namespace?
 
 <details class="faq box"><summary>Solution - kubectl config get-contexts</summary>

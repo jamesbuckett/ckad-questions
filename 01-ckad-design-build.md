@@ -1,7 +1,5 @@
 ## Sample CKAD Application Design and Build Q&A
 
-File Updates and Fixes
-
 ### Application Design and Build – 20%
 
 - Define, build and modify container images [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-design-build.md#01-01-create-a-container-from-the-attached-dockerfile-and-indexhtml-name-the-image-my-image-name-the-container-my-container-run-the-container-exposing-port-8080-on-the-host-and-port-80-on-the-container-stop-the-container-delete-the-container)

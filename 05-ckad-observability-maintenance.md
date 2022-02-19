@@ -1,5 +1,7 @@
 ## Sample CKAD Observability and Maintenance Q&A
 
+File Updates and Fixes
+
 ### Application Observability and Maintenance – 15%
 
 - Understand API deprecations

@@ -148,6 +148,7 @@ Octant installs into Windows 11
 
 </p>
 </details>
+<br />
 
 ## Logistics
 

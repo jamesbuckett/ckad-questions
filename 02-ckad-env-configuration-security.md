@@ -90,7 +90,7 @@ kubectl get networkpolicies.crd.projectcalico.org
 </details>
 <br />
 
-#### 02-02. Create a namespace called `quota-namespace`. Create a Resource Quota for this namespace called `my-quota`. Set a memory reservation of `2Gi`. Set a CPU reservation of `500Mi`.
+#### 02-02. Create a namespace called `quota-namespace`. Create a Resource Quota for this namespace called `my-quota`. Set a hard memory reservation of `2Gi`. Set a hard CPU reservation of `500Mi`.
 
 <details class="faq box"><summary>Overview</summary>
 <p>

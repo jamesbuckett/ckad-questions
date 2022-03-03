@@ -503,7 +503,7 @@ my-serviceaccount
 ![rbac](https://user-images.githubusercontent.com/18049790/145154335-3086bbce-14d9-4a7d-83b7-92a61d4a9456.jpg)
 
 
-![06-k8s-bootcamp-security-who-what-where](https://user-images.githubusercontent.com/18049790/156491820-bd5f76c6-ac05-4f56-ac63-4f5fa69ca160.png)
+![06-k8s-bootcamp-security-who-what-where](https://user-images.githubusercontent.com/18049790/156492250-53d7ff80-28ee-445b-bcf0-0746d19adaac.png)
 
 </p>
 </details>

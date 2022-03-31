@@ -90,7 +90,7 @@ kubectl get networkpolicies.crd.projectcalico.org
 </details>
 <br />
 
-#### 02-02. Create a namespace called `quota-namespace`. Create a Resource Quota for this namespace called `my-quota`. Set a hard memory reservation of `2Gi`. Set a hard CPU reservation of `500Mi`.
+#### 02-02. Create a namespace called `quota-namespace`. Create a Resource Quota for this namespace called `my-quota`. Set a hard memory reservation of `2Gi`. Set a hard CPU reservation of `500m`.
 
 <details class="faq box"><summary>Overview</summary>
 <p>
@@ -134,7 +134,7 @@ Output
 
 ```bash
 clear
-kubectl create quota my-quota --hard=cpu=500Mi,memory=2G
+kubectl create quota my-quota --hard=cpu=500m,memory=2G
 kubectl get quota
 ```
 
@@ -142,7 +142,7 @@ Output:
 
 ```console
 NAME       AGE    REQUEST                      LIMIT
-my-quota   118s   cpu: 0/500Mi, memory: 0/2G
+my-quota   118s   cpu: 0/500m, memory: 0/2G
 ```
 
 In English:
@@ -174,12 +174,12 @@ Output:
 
 ```console
 NAME       AGE   REQUEST                           LIMIT
-my-quota   19m   cpu: 250m/500Mi, memory: 1Gi/2G
+my-quota   19m   cpu: 250m/500m, memory: 1Gi/2G
 ```
 
 [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory)
 
-- Limits and requests for memory are measured in bytes.
+- Limits and requests for MEMORY are measured in bytes.
 - You can express memory as a plain integer or as a fixed-point number using one of these suffixes: E, P, T, G, M, k.
 - You can also use the power-of-two equivalents: Ei, Pi, Ti, Gi, Mi, Ki.
 

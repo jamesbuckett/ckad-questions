@@ -26,7 +26,7 @@ kubectl wait -n ns-demo deploy frontend --for condition=Available --timeout=90s
 
 #### 05-01. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
 
-<details class="faq box"><summary>Metrics Server - Kubernetes top command</summary>
+<details class="faq box"><summary>Prerequisite: Metrics Server - Kubernetes top command</summary>
 <p>
 
 Metrics Server installs into Kubernetes

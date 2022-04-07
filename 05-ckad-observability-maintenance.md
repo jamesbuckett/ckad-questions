@@ -26,6 +26,26 @@ kubectl wait -n ns-demo deploy frontend --for condition=Available --timeout=90s
 
 #### 05-01. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
 
+<details class="faq box"><summary>Metrics Server - Kubernetes top command</summary>
+<p>
+
+Metrics Server installs into Kubernetes
+
+By default the metrics server required for the `kubectl top` command is not present on Docker Desktop.
+
+Please install the [metrics server](https://github.com/kubernetes-sigs/metrics-server) with the following command:
+
+```bash
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+```
+
+```bash
+kubectl patch deployment metrics-server -n kube-system --type 'json' -p '[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--kubelet-insecure-tls"}]'
+```
+
+</p>
+</details>
+
 <details class="faq box"><summary>Solution - kubectl top pods -A --sort-by=cpu</summary>
 <p>
 

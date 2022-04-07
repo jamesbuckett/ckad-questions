@@ -32,10 +32,10 @@ kubectl patch deployment metrics-server -n kube-system --type 'json' -p '[{"op":
 </p>
 </details>
 
-<details class="faq box"><summary>Optional - Install a [Sample Microservices Application](https://github.com/GoogleCloudPlatform/microservices-demo) </summary>
+<details class="faq box"><summary>Optional - Install a Sample Microservices Application</summary>
 <p>
 
-This application is useful to see CPU and Memory for a microservices application.
+This application is useful to see CPU and Memory for a [microservices application](https://github.com/GoogleCloudPlatform/microservices-demo).
 
 ```bash
 kubectl create ns ns-demo

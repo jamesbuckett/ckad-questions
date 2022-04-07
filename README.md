@@ -95,6 +95,11 @@ Calico is required for the non native Kubernetes resources lookup question.
 curl https://docs.projectcalico.org/manifests/calico.yaml | kubectl apply -f -
 ```
 
+To work with Calico Network Policies use the following command:
+```bash
+kubectl get networkpolicy.p
+```
+
 </p>
 </details>
 

@@ -10,20 +10,6 @@
 <br />
 
 
-<details class="faq box"><summary>Optional - Install a Sample Microservices Application</summary>
-<p>
-
-This application is useful to see CPU and Memory for a microservices application.
-
-```bash
-kubectl create ns ns-demo
-kubectl apply -n ns-demo -f "https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/master/release/kubernetes-manifests.yaml"
-kubectl wait -n ns-demo deploy frontend --for condition=Available --timeout=90s
-```
-</p>
-</details>
-<br />
-
 #### 05-01. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
 
 <details class="faq box"><summary>Prerequisite: Metrics Server - Kubernetes top command</summary>
@@ -45,6 +31,20 @@ kubectl patch deployment metrics-server -n kube-system --type 'json' -p '[{"op":
 
 </p>
 </details>
+
+<details class="faq box"><summary>Optional - Install a Sample Microservices Application</summary>
+<p>
+
+This application is useful to see CPU and Memory for a microservices application.
+
+```bash
+kubectl create ns ns-demo
+kubectl apply -n ns-demo -f "https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/master/release/kubernetes-manifests.yaml"
+kubectl wait -n ns-demo deploy frontend --for condition=Available --timeout=90s
+```
+</p>
+</details>
+<br />
 
 <details class="faq box"><summary>Solution - kubectl top pods -A --sort-by=cpu</summary>
 <p>

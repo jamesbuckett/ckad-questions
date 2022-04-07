@@ -44,7 +44,6 @@ kubectl wait -n ns-demo deploy frontend --for condition=Available --timeout=90s
 ```
 </p>
 </details>
-<br />
 
 <details class="faq box"><summary>Solution - kubectl top pods -A --sort-by=cpu</summary>
 <p>
@@ -100,7 +99,7 @@ kube-system               cilium-ml27n                                          
 </details>
 <br />
 
-#### 05-02. Create a pod called `log-pod` using image `nginx` in namespace `log-namespace`. Create the namespace. Obtain the `logs` for the nginx pod for the `last hour`.
+#### 05-02. Create a namespace called `log-namespace`. Create a pod called `log-pod` using image `nginx` in namespace `log-namespace`. Create the namespace. Obtain the `logs` for the nginx pod for the `last hour`.
 
 <details class="faq box"><summary>Overview</summary>
 <p>
@@ -112,8 +111,6 @@ kube-system               cilium-ml27n                                          
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
-
-##### Prerequisites
 
 ```bash
 mkdir -p ~/ckad/
@@ -213,7 +210,7 @@ kubectl get events -A --sort-by=.metadata.creationTimestamp
 </details>
 <br />
 
-#### 05-04. Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`. Create the namespace. Obtain the `hostIP` address using `JSONPath`.
+#### 05-04. Create a namespace called `json-namespace`. Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`. Create the namespace. Obtain the `hostIP` address using `JSONPath`.
 
 <details class="faq box"><summary>Overview</summary>
 <p>
@@ -229,8 +226,8 @@ kubectl get events -A --sort-by=.metadata.creationTimestamp
 ```bash
 clear
 kubectl create namespace json-namespace
-kubectl run json-pod --image=nginx -n json-namespace
 kubectl config set-context --current --namespace=json-namespace
+kubectl run json-pod --image=nginx 
 kubectl get all
 ```
 
@@ -513,7 +510,6 @@ kubectl get all
 
 </p>
 </details>
-<br />
 
 <details class="faq box"><summary>Solution</summary>
 <p>

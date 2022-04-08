@@ -537,12 +537,12 @@ helm uninstall my-release
 </details>
 <br />
 
-#### 03-05. Create a namespace called `blue-green-namespace`. Create a Deployment called `blue-deployment`, with `10` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx containers. Label the pods `version=blue` and `tier=web`. Create a Service called `bsg-service` to route traffic to `blue-deployment`. Verify that traffic is flowing from the Service to the Deployment. Create a new Deployment called `green-deployment` , with `10` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx containers. Label the pods `version=green` and `tier=web`. Once the `green-deployment` is active split traffic between `blue-deployment`=70% and `green-deployment`=30%
+#### 03-05. Create a namespace called `blue-green-namespace`. Create a Deployment called `blue-deployment`, with `10` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx containers. Label the pods `version=blue` and `tier=web`. Create a Service called `bg-service` to route traffic to `blue-deployment`. Verify that traffic is flowing from the Service to the Deployment. Create a new Deployment called `green-deployment` , with `10` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx containers. Label the pods `version=green` and `tier=web`. Once the `green-deployment` is active split traffic between `blue-deployment`=70% and `green-deployment`=30%
 
 <details class="faq box"><summary>Overview</summary>
 <p>
 
-![08-kubernetes-blue-green](https://user-images.githubusercontent.com/18049790/137315553-1792d855-fe0c-47df-911b-305251feeb4e.png)
+![50-exec-blue-fixed](https://user-images.githubusercontent.com/18049790/162353407-3d6b296a-77c5-488b-8171-3262bf0f0d79.jpg)
 
 For clarity in the solution steps below i use images that return: 
 * Green Deployment 
@@ -658,14 +658,14 @@ kubectl get pods -L tier,version
 ```bash
 clear
 # Create the namespace
-kubectl expose deployment blue-deployment --port=80 --target-port=80 --name=bsg-service --dry-run=client -o yaml > ~/ckad/03-05-bsg-service.yml
+kubectl expose deployment blue-deployment --port=80 --target-port=80 --name=bg-service --dry-run=client -o yaml > ~/ckad/03-05-bsg-service.yml
 ```
 
 ```bash
 clear
 mkdir -p ~/ckad/
 # Edit the YAML file to make required changes
-vi ~/ckad/03-05-bsg-service.yml
+vi ~/ckad/03-05-bg-service.yml
 ```
 
 ```yaml
@@ -675,7 +675,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: blue-deployment
-  name: bsg-service
+  name: bg-service
 spec:
   ports:
   - port: 80
@@ -691,7 +691,7 @@ status:
 ```bash
 clear
 # Apply the YAML file to the Kubernetes API server
-kubectl apply -f ~/ckad/03-05-bsg-service.yml
+kubectl apply -f ~/ckad/03-05-bg-service.yml
 ```
 
 </p>

@@ -45,7 +45,7 @@ kubectl wait -n ns-demo deploy frontend --for condition=Available --timeout=90s
 </p>
 </details>
 
-<details class="faq box"><summary>Solution - kubectl top pods -A --sort-by=cpu</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
 
 ```bash
@@ -70,7 +70,7 @@ ns-demo                   recommendationservice-b4cf8f489-xwv49                 
 </p>
 </details>
 
-<details class="faq box"><summary>Solution - kubectl top pods -A --sort-by=memory</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
 
 ##### Solution
@@ -234,7 +234,7 @@ kubectl get all
 </p>
 </details>
 
-<details class="faq box"><summary>Solution - kubectl explain</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
 
 ```bash
@@ -285,7 +285,7 @@ scheduled.
 </p>
 </details>
 
-<details class="faq box"><summary>Solution - kubectl get pod json-pod -o jsonpath=</summary>
+<details class="faq box"><summary>Solution</summary>
 <p>
 
 Construct the search query to `hostIP`.

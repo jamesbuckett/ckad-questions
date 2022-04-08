@@ -92,14 +92,6 @@ kubectl get networkpolicies.crd.projectcalico.org
 
 #### 02-02. Create a namespace called `quota-namespace`. Create a Resource Quota for this namespace called `my-quota`. Set a hard memory reservation of `2Gi`. Set a hard CPU reservation of `500m`.
 
-<details class="faq box"><summary>Overview</summary>
-<p>
-
-![02-02](https://user-images.githubusercontent.com/18049790/136649966-372037e8-d2bf-48af-8951-0451cd3ab8f4.png)
-
-</p>
-</details>
-
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
 
@@ -199,14 +191,6 @@ In English:
 <br />
 
 #### 02-03. Create a namespace called `secret-namespace`. Create a secret in this namespace called `my-secret`. The secret should be immutable and contain the literal values `user=bob` and `password=123456`. Create a pod called called `secret-pod` using the `nginx` image. The pod should consume the secret as environmental variables `SECRET-ENV-USER` and `SECRET-ENV-PASSWORD`.
-
-<details class="faq box"><summary>Overview</summary>
-<p>
-
-![02-03](https://user-images.githubusercontent.com/18049790/136654563-56865c4f-2e2d-47b1-850a-36c5be816732.png)
-
-</p>
-</details>
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
@@ -377,14 +361,6 @@ HOME=/root
 <br />
 
 #### 02-04. Create a namespace called `serviceaccount-namespace`. Create a pod called `serviceaccount-pod` using `nginx` image. Create a SeviceAccount called: my-serviceaccount. Update the pod to use the new ServiceAccount. Display the token for the new ServiceAccount.
-
-<details class="faq box"><summary>Overview</summary>
-<p>
-
-![02-04](https://user-images.githubusercontent.com/18049790/136654659-8dce6ade-0487-45dc-97c8-d3191ed286d3.png)
-
-</p>
-</details>
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>

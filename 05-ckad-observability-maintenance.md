@@ -101,14 +101,6 @@ kube-system               cilium-ml27n                                          
 
 #### 05-02. Create a namespace called `log-namespace`. Create a pod called `log-pod` using image `nginx` in namespace `log-namespace`. Obtain the `logs` for the nginx pod for the `last hour`.
 
-<details class="faq box"><summary>Overview</summary>
-<p>
-
-![05-02](https://user-images.githubusercontent.com/18049790/136656169-85488092-140a-44ff-98d2-233f16842154.png)
-
-</p>
-</details>
-
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
 
@@ -187,14 +179,6 @@ kubectl logs --since=1h log-pod
 <br />
 
 #### 05-03. Output all the events for all namespaces by creation date.
-
-<details class="faq box"><summary>Overview</summary>
-<p>
-
-![05-03](https://user-images.githubusercontent.com/18049790/136656243-8d251a08-6411-48f8-b630-84c295254d6e.png)
-
-</p>
-</details>
 
 <details class="faq box"><summary>Solution</summary>
 <p>

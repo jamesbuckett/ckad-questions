@@ -103,14 +103,6 @@ docker image prune -a
 
 #### 01-02. Create a namespace called `pod-namespace`. Create a pod called `pod-1` using `nginx` image. The container in the pod should be named `container-1`.
 
-<details class="faq box"><summary>Overview</summary>
-<p>
-
-![01-02](https://user-images.githubusercontent.com/18049790/136649495-9194b039-b88c-4e93-b493-83eb5e296aae.png)
-
-</p>
-</details>
-
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
 

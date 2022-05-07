@@ -227,6 +227,24 @@ Output:
 
 #### 06-04. Using the kubectl convert command update the attached YAML file
 
+<details class="faq box"><summary>kubectl convert - Deal with deprecated API versions</summary>
+<p>
+
+kubectl convert  installs into WSL Linux
+
+Please install the [kubectl convert](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#migrate-to-non-deprecated-apis) with the following command:
+
+```bash
+curl -LO https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert
+curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert.sha256"
+echo "$(<kubectl-convert.sha256) kubectl-convert" | sha256sum --check
+sudo install -o root -g root -m 0755 kubectl-convert /usr/local/bin/kubectl-convert
+kubectl convert --help
+```
+
+</p>
+</details>
+
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
 

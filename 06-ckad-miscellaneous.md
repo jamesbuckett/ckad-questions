@@ -232,7 +232,7 @@ Output:
 
 kubectl convert  installs into WSL Linux
 
-Please install the [kubectl convert](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#migrate-to-non-deprecated-apis) with the following command:
+Please install the [kubectl convert](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-convert-plugin) with the following command:
 
 ```bash
 curl -LO https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert

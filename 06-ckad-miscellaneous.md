@@ -230,9 +230,9 @@ Output:
 <details class="faq box"><summary>kubectl convert - Deal with deprecated API versions</summary>
 <p>
 
-kubectl convert  installs into WSL Linux
+The `kubectl convert` plugin installs into WSL Linux
 
-Please install the [kubectl convert](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-convert-plugin) with the following command:
+Please install the [`kubectl convert` plugin](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-convert-plugin) with the following commands:
 
 ```bash
 curl -LO https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert

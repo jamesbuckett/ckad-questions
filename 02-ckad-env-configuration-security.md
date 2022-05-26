@@ -150,8 +150,8 @@ In English:
 
 
 LimitRange
-* The LimitRange object cannot be create from the command line
-* Use the [Configure LimitRange](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/memory-constraint-namespace/#create-a-limitrange-and-a-pod) bookmark
+* The LimitRange object cannot be created from the command line
+* Use the [Configure LimitRange](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/memory-constraint-namespace/#create-a-limitrange-and-a-pod) bookmark to obtain a code snippet
 
 ```yaml
 apiVersion: v1
@@ -163,7 +163,7 @@ spec:
   - max:
       memory: 1Gi
     min:
-      memory: 250Mi
+      memory: 250Mi # 👈👈👈 Change this value 
     type: Container
 ```
 

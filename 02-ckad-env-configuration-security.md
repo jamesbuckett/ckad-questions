@@ -90,7 +90,7 @@ kubectl get networkpolicies.crd.projectcalico.org
 </details>
 <br />
 
-#### 02-02. Create a namespace called `quota-namespace`. Create a Resource Quota for this namespace called `my-quota`. Set a hard memory reservation of `2Gi`. Set a hard CPU reservation of `500m`.
+#### 02-02. Create a namespace called `quota-namespace`. Create a Resource Quota for this namespace called `my-quota`. Set a hard memory reservation of `2Gi`. Set a hard CPU reservation of `500m`. Create a LimitRange for this namespace which limits Pods to memory of `1Gi` and CPU of  `200m`
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
@@ -143,6 +143,26 @@ In English:
 | ------- | ----------------- |
 | REQUEST | Minimum (Request) |
 | LIMIT   | Maximum (Limits)  |
+
+
+LimitRange
+* The LimitRange object cannot be create from the command line
+* Use the [Configure LimitRange](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/memory-constraint-namespace/#create-a-limitrange-and-a-pod) bookmark
+
+```yaml
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: mem-min-max-demo-lr
+spec:
+  limits:
+  - max:
+      memory: 1Gi
+    min:
+      memory: 250Mi
+    type: Container
+```
+
 
 ```bash
 mkdir -p ~/ckad/

@@ -101,7 +101,11 @@ kubectl create namespace quota-namespace
 kubectl config set-context --current --namespace=quota-namespace
 ```
 
-##### Help Examples
+</p>
+</details>
+
+<details class="faq box"><summary>Help</summary>
+<p>
 
 ```bash
 clear

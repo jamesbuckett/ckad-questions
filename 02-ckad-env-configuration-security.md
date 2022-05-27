@@ -90,7 +90,7 @@ kubectl get networkpolicies.crd.projectcalico.org
 </details>
 <br />
 
-#### 02-02. Create a namespace called `quota-namespace`. Create a Resource Quota for this namespace called `my-quota`. Set a hard memory reservation of `2Gi`. Set a hard CPU reservation of `500m`. Create a LimitRange for this namespace which limits Pods to memory of `1Gi` and CPU of  `200m`
+#### 02-02. Create a namespace called `quota-namespace`. Create a Resource Quota for this namespace called `my-quota`. Set a hard memory reservation of `2Gi`. Set a hard CPU reservation of `500m`. Create a LimitRange for this namespace which limits Pods to memory of `1Gi` and CPU of  `250m`
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
@@ -141,6 +141,14 @@ NAME       AGE    REQUEST                      LIMIT
 my-quota   118s   cpu: 0/500m, memory: 0/2G
 ```
 
+```bash
+# Try to run a Pod with resource requests exceeding the quota
+mkdir -p ~/ckad/
+clear
+kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl set resources -f - --requests=cpu=1000m,memory=4Gi --limits=cpu=1000m,memory=4Gi --local -o yaml > ~/ckad/02-02-exceed.yml
+kubectl apply -f ~/ckad/02-02-exceed.yml
+```
+
 In English:
 
 | Value   | Translation       |
@@ -161,25 +169,16 @@ metadata:
 spec:
   limits:
   - max:
-      memory: 1Gi
-    min:
-      memory: 250Mi # 👈👈👈 Change this value 
+      memory: 1Gi  # 👈👈👈 Change this value 
+      cpu: 250m    # 👈👈👈 Change this value  
     type: Container
 ```
 
 
 ```bash
+# This Pod is within the resource requests of the Resource Quota and LimitRange 
 mkdir -p ~/ckad/
 clear
-# Try to run a Pod with resource requests exceeding the quota
-kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl set resources -f - --requests=cpu=1000m,memory=4Gi --limits=cpu=1000m,memory=4Gi --local -o yaml > ~/ckad/02-02-exceed.yml
-kubectl apply -f ~/ckad/02-02-exceed.yml
-```
-
-```bash
-mkdir -p ~/ckad/
-clear
-# Try to run a Pod with resource requests within the quota
 kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl set resources -f - --requests=cpu=250m,memory=1Gi --limits=cpu=250m,memory=1Gi --local -o yaml > ~/ckad/02-02-succeed.yml
 kubectl apply -f ~/ckad/02-02-succeed.yml
 kubectl get all

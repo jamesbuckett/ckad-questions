@@ -230,7 +230,7 @@ my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 </details>
 <br />
 
-#### 03-03. Create a namespace called `edit-namespace`. Create a deployment called `edit-deployment` with `2` replicas using the `redis` image in namespace. After the deployment is running, alter the containers to use the `nginx` image. Then alter the containers to use the `nginx:1.14.2` image and record the change.
+#### 03-03. Create a namespace called `edit-namespace`. Create a deployment called `edit-deployment` with `2` replicas using the `redis` image in namespace. After the deployment is running, alter the containers to use the `nginx` image. Then alter the containers to use the `nginx:1.14.2` image.
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
@@ -320,15 +320,13 @@ kubernetes.io:[Updating a Deployment](https://kubernetes.io/docs/concepts/worklo
 ```bash
 clear
 # Use the kubectl set image command
-kubectl set image deployment.apps/edit-deployment redis=nginx:1.14.2 --record
+kubectl set image deployment.apps/edit-deployment redis=nginx:1.14.2
 ```
 
 ```bash
 clear
 # Check the image in the Deployment
 kubectl describe deployment edit-deployment | grep Image
-# Check that the change was recorded
-kubectl rollout history deployment.apps/edit-deployment
 ```
 
 </p>

@@ -534,7 +534,7 @@ helm uninstall my-release
 </details>
 <br />
 
-#### 03-05. Create a namespace called `blue-green-namespace`. Create a Deployment called `blue-deployment`, with `10` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx containers. Label the pods `version=blue` and `tier=web`. Create a Service called `bg-service` to route traffic to `blue-deployment`. Verify that traffic is flowing from the Service to the Deployment. Create a new Deployment called `green-deployment` , with `10` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx containers. Label the pods `version=green` and `tier=web`. Once the `green-deployment` is active split traffic between `blue-deployment`=70% and `green-deployment`=30%
+#### 03-05. Create a namespace called `blue-green-namespace`. Create a Deployment called `blue-deployment`, with `10` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx containers. Label the pods `app=blue-deployment` and `tier=web`. Create a Service called `bg-service` to route traffic to `blue-deployment`. Verify that traffic is flowing from the Service to the Deployment. Create a new Deployment called `green-deployment` , with `10` replicas, using the `nginx` image inside the namespace. Expose `port 80` for the nginx containers. Label the pods `app=green-deployment` and `tier=web`. Once the `green-deployment` is active split traffic between `blue-deployment`=70% and `green-deployment`=30%
 
 <details class="faq box"><summary>Overview</summary>
 <p>

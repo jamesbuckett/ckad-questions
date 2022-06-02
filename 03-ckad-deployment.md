@@ -601,15 +601,13 @@ spec:
   replicas: 10
   selector:
     matchLabels:
-      # app: blue-deployment #👈👈👈 Delete this
-      version: blue #👈👈👈 Add this
+      app: blue-deployment
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        # app: blue-deployment #👈👈👈 Delete this
-        version: blue #👈👈👈 Add the label `version=blue`
+        app: blue-deployment
         tier: web #👈👈👈 Add the label: `tier=web`
     spec:
       containers:
@@ -679,7 +677,7 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    # version: blue #👈👈👈 Delete this
+    # app: blue-deployment #👈👈👈 Delete this
     tier: web #👈👈👈 Add the label:  `tier=web`. This is the sauce. One label pointing to both deployments
 status:
   loadBalancer: {}
@@ -728,15 +726,13 @@ spec:
   replicas: 10
   selector:
     matchLabels:
-      # app: green-deployment #👈👈👈 Delete this
-      version: green #👈👈👈  Add this
+      app: green-deployment
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        # app: green-deployment #👈👈👈 Delete this
-        version: green #👈👈👈  Add the label `version=green`
+        app: green-deployment 
         tier: web #👈👈👈 Add the label:  `tier=web`
     spec:
       containers:

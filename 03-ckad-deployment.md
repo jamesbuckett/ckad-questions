@@ -502,7 +502,6 @@ helm delete my-wp-release --purge
 
 
 </details>
-<br />
 
 <details class="faq box"><summary>Operations</summary>
 <p>

@@ -162,5 +162,3 @@ Octant installs into Windows 11
 - All code snippets have been created and tested on Docker Desktop
 - To clean up just execute commands in the "Clean Up" section at the end of each section
 
-_End of Section_
-<br />

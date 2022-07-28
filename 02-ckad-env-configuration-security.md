@@ -179,7 +179,7 @@ spec:
 # This Pod is within the resource requests of the Resource Quota and LimitRange 
 mkdir -p ~/ckad/
 clear
-kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl set resources -f - --requests=cpu=250m,memory=1Gi --limits=cpu=250m,memory=1Gi --local -o yaml > ~/ckad/02-02-succeed.yml
+kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl set resources -f - --requests=cpu=200m,memory=512Mi --limits=cpu=200m,memory=512Mi --local -o yaml > ~/ckad/02-02-succeed.yml
 kubectl apply -f ~/ckad/02-02-succeed.yml
 kubectl get all
 kubectl get quota

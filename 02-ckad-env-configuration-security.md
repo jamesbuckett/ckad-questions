@@ -90,7 +90,7 @@ kubectl get networkpolicies.crd.projectcalico.org
 </details>
 <br />
 
-#### 02-02. Create a namespace called `quota-namespace`. Create a Resource Quota for this namespace called `my-quota`. Set a hard memory reservation of `2Gi`. Set a hard CPU reservation of `500m`. Create a LimitRange for this namespace which limits Pods to memory of `1Gi` and CPU of  `250m`
+#### 02-02. Create a namespace called `quota-namespace`. Create a Resource Quota for this namespace called `my-quota`. Set a hard memory reservation of `2Gi`. Set a hard CPU reservation of `500m`. Create a LimitRange for this namespace called `my-limit` which limits Pods to to a maximum of `1Gi` memory and `250m` CPU.
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
@@ -165,7 +165,7 @@ LimitRange
 apiVersion: v1
 kind: LimitRange
 metadata:
-  name: mem-min-max-demo-lr
+  name: my-limit
 spec:
   limits:
   - max:

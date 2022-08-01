@@ -808,45 +808,45 @@ clear
 # Check your work - curl the service to verify operation
 kubectl run remote-run --image=busybox --restart=Never --rm -it
 # Repeat this command to see different responses
-wget -qO- bsg-service
+wget -qO- bg-service
 ```
 
 Output
 
 ```console
-/ # wget -qO- bsg-service
+/ # wget -qO- bg-service
 Green !!!
 Green !!!
 Green !!!
-/ # wget -qO- bsg-service
+/ # wget -qO- bg-service
 Blue !!!
 Blue !!!
 Blue !!!
-/ # wget -qO- bsg-service
+/ # wget -qO- bg-service
 Blue !!!
 Blue !!!
 Blue !!!
-/ # wget -qO- bsg-service
+/ # wget -qO- bg-service
 Blue !!!
 Blue !!!
 Blue !!!
-/ # wget -qO- bsg-service
+/ # wget -qO- bg-service
 Blue !!!
 Blue !!!
 Blue !!!
-/ # wget -qO- bsg-service
+/ # wget -qO- bg-service
 Blue !!!
 Blue !!!
 Blue !!!
-/ # wget -qO- bsg-service
+/ # wget -qO- bg-service
 Blue !!!
 Blue !!!
 Blue !!!
-/ # wget -qO- bsg-service
+/ # wget -qO- bg-service
 Blue !!!
 Blue !!!
 Blue !!!
-/ # wget -qO- bsg-service
+/ # wget -qO- bg-service
 Green !!!
 Green !!!
 Green !!!

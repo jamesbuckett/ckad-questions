@@ -10,7 +10,9 @@
 <br />
 
 
-#### 05-01. First list all the pods in the cluster by CPU consumption. Then list all the pods in the cluster by Memory consumption.
+#### 05-01. CPU and Memory of Pods Question
+* First list all the pods in the cluster by CPU consumption. 
+* Then list all the pods in the cluster by Memory consumption.
 
 <details class="faq box"><summary>Prerequisite: Metrics Server - Kubernetes top command</summary>
 <p>
@@ -99,7 +101,10 @@ kube-system               cilium-ml27n                                          
 </details>
 <br />
 
-#### 05-02. Create a namespace called `log-namespace`. Create a pod called `log-pod` using image `nginx` in namespace `log-namespace`. Obtain the `logs` for the nginx pod for the `last hour`.
+#### 05-02. Pod Logging Question
+* Create a namespace called `log-namespace`. 
+* Create a pod called `log-pod` using image `nginx` in namespace `log-namespace`. 
+* Obtain the `logs` for the nginx pod for the `last hour`.
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
@@ -178,7 +183,8 @@ kubectl logs --since=1h log-pod
 </details>
 <br />
 
-#### 05-03. Output all the events for all namespaces by creation date.
+#### 05-03. Kubernetes Events Question
+* Output all the events for all namespaces by creation date.
 
 <details class="faq box"><summary>Solution</summary>
 <p>
@@ -194,7 +200,10 @@ kubectl get events -A --sort-by=.metadata.creationTimestamp
 </details>
 <br />
 
-#### 05-04. Create a namespace called `json-namespace`. Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`. Obtain the `hostIP` address using `JSONPath`.
+#### 05-04. JSONPath Question
+* Create a namespace called `json-namespace`. 
+* Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`. 
+* Obtain the `hostIP` address using `JSONPath`.
 
 <details class="faq box"><summary>Overview</summary>
 <p>
@@ -288,7 +297,14 @@ kubectl get pod json-pod -o jsonpath={..hostIP}
 </details>
 <br />
 
-#### 05-05. Run the preparation steps. A deployment called `my-revision-deployment` will be created in the namespace `revision-namespace`. Check the status of this deployment. Check the revision history of this deployment. Roll back to the last good working deployment. Roll back to the earliest revision. Verify that it is now working.
+#### 05-05. Deployment Revision History Question
+* Run the preparation steps. 
+* A deployment called `my-revision-deployment` will be created in the namespace `revision-namespace`. 
+* Check the status of this deployment. 
+* Check the revision history of this deployment. 
+* Roll back to the last good working deployment. 
+* Roll back to the earliest revision. 
+* Verify that it is now working.
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
@@ -343,7 +359,8 @@ kubectl rollout undo deployment.apps/my-revision-deployment --to-revision=2
 </details>
 <br />
 
-#### 05-06. Patch the deployment from the previous question: `my-revision-deployment` to have a `revisionHistoryLimit` size of 20.
+#### 05-06. Strategic Merge Patch Question
+* Patch the deployment from the previous question: `my-revision-deployment` to have a `revisionHistoryLimit` size of 20.
 
 <details class="faq box"><summary>Overview</summary>
 <p>
@@ -445,7 +462,9 @@ kubectl get deployment my-revision-deployment -o jsonpath={.spec.revisionHistory
 </details>
 <br />
 
-#### 05-07. Run the code in the preparation section. Once the deployment is running alter the environmental variable `TIER=web` to `TIER=app`
+#### 05-07. Set Environment Variable Question
+* Run the code in the preparation section. 
+* Once the deployment is running alter the environmental variable `TIER=web` to `TIER=app`
 
 
 <details class="faq box"><summary>Prerequisites</summary>

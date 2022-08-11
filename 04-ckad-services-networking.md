@@ -7,7 +7,7 @@
 - Use Ingress rules to expose applications [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/04-ckad-services-networking.md#04-03-create-an-ingress-called-my-ingress-to-expose-the-service-my-service-outside-the-cluster)
 <br />
 
-#### 04-01. Network Policy
+#### 04-01. Network Policy Question
 * Create a namespace called `netpol-namespace`. 
 * Create a pod called `web-pod` using the `nginx` image and label the pod `tier=web`. 
 * Create a pod called `app-pod` using the `nginx` image and label the pod `tier=app`. 
@@ -220,7 +220,7 @@ app-pod !!!
 </details>
 <br />
 
-#### 04-02. Kubernetes Service
+#### 04-02. Kubernetes Service Question
 * Create a namespace called `service-namespace`. 
 * Create a pod called `service-pod` using the `nginx` image and exposing port `80`. 
 * Label the pod `tier=web`. 
@@ -355,7 +355,7 @@ kubectl get ep
 </details>
 <br />
 
-#### 04-03. Ingress 
+#### 04-03. Ingress Question
 * Create an ingress called `my-ingress` to expose the service `my-service` from previous question, outside the cluster.
 
 <details class="faq box"><summary>Overview</summary>

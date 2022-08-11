@@ -8,7 +8,11 @@
 - Utilize persistent and ephemeral volumes [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/01-ckad-design-build.md#01-03-create-a-namespace-called-storage-namespace-create-a-persistent-volume-called-my-pv-with-5gi-storage-using-hostpath-mntmy-host-create-a-persistent-volume-claim-called-my-pvc-with-2gi-storage-create-a-pod-called-storage-pod-using-the-nginx-image-mount-the-persistent-volume-claim-onto-my-mount-in-storage-pod)
 <br />
 
-#### 01-01. Create a container from the attached `Dockerfile` and `index.html`. Name the image `my-image`. Run the container exposing port `8080` on the host and port `80` on the container. Name the container `my-container`. Stop the container. Delete the container.
+#### 01-01. Docker Question
+* Create a container from the attached `Dockerfile` and `index.html`. 
+* Name the image `my-image`. 
+* Run the container exposing port `8080` on the host and port `80` on the container. 
+* Name the container `my-container`. Stop the container. Delete the container.
 
 <details class="faq box"><summary>Docker Image Creation</summary>
 <p>
@@ -101,7 +105,10 @@ docker image prune -a
 </details>
 <br />
 
-#### 01-02. Create a namespace called `pod-namespace`. Create a pod called `pod-1` using `nginx` image. The container in the pod should be named `container-1`.
+#### 01-02. Name Container Question
+* Create a namespace called `pod-namespace`. 
+* Create a pod called `pod-1` using `nginx` image. 
+* The container in the pod should be named `container-1`.
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
@@ -225,7 +232,12 @@ kubectl get pod --watch
 </details>
 <br />
 
-#### 01-03. Create a namespace called `storage-namespace`. Create a Persistent Volume called `my-pv` with `5Gi` storage using hostPath `/mnt/my-host`. Create a Persistent Volume Claim called `my-pvc` with `2Gi` storage. Create a pod called `storage-pod` using the nginx image. Mount the Persistent Volume Claim onto `/my-mount` in `storage-pod`.
+#### 01-03. Storage Question
+* Create a namespace called `storage-namespace`. 
+* Create a Persistent Volume called `my-pv` with `5Gi` storage using hostPath `/mnt/my-host`. 
+* Create a Persistent Volume Claim called `my-pvc` with `2Gi` storage. 
+* Create a pod called `storage-pod` using the nginx image. 
+* Mount the Persistent Volume Claim onto `/my-mount` in `storage-pod`.
 
 <details class="faq box"><summary>Overview</summary>
 <p>

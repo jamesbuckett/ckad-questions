@@ -11,7 +11,10 @@
 - Understand SecurityContexts
 <br />
 
-#### 02-01. List all the Custom Resource Definitions installed in a cluster. Calico is a CRD. List out how to obtain the correct resource name to query a Calico Network Policy and not the default Kubernetes Network Policy.
+#### 02-01. Custom Resource Definition Question
+* List all the Custom Resource Definitions installed in a cluster. 
+* Calico is a CRD. 
+* List out how to obtain the correct resource name to query a Calico Network Policy and not the default Kubernetes Network Policy.
 
 <details class="faq box"><summary>Overview</summary>
 <p>
@@ -90,7 +93,12 @@ kubectl get networkpolicies.crd.projectcalico.org
 </details>
 <br />
 
-#### 02-02. Create a namespace called `quota-namespace`. Create a Resource Quota for this namespace called `my-quota`. Set a hard memory reservation of `2Gi`. Set a hard CPU reservation of `500m`. Create a LimitRange for this namespace called `my-limit` which limits Pods to to a maximum of `1Gi` memory and `250m` CPU.
+#### 02-02. Quota and LimitRange Question
+* Create a namespace called `quota-namespace`. 
+* Create a Resource Quota for this namespace called `my-quota`. 
+* Set a hard memory reservation of `2Gi`. 
+* Set a hard CPU reservation of `500m`. 
+* Create a LimitRange for this namespace called `my-limit` which limits Pods to to a maximum of `1Gi` memory and `250m` CPU.
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
@@ -213,7 +221,12 @@ In English:
 </details>
 <br />
 
-#### 02-03. Create a namespace called `secret-namespace`. Create a secret in this namespace called `my-secret`. The secret should be immutable and contain the literal values `user=bob` and `password=123456`. Create a pod called called `secret-pod` using the `nginx` image. The pod should consume the secret as environmental variables `SECRET-ENV-USER` and `SECRET-ENV-PASSWORD`.
+#### 02-03. Secret Question
+* Create a namespace called `secret-namespace`. 
+* Create a secret in this namespace called `my-secret`. 
+* The secret should be immutable and contain the literal values `user=bob` and `password=123456`. 
+* Create a pod called called `secret-pod` using the `nginx` image. 
+* The pod should consume the secret as environmental variables `SECRET-ENV-USER` and `SECRET-ENV-PASSWORD`.
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
@@ -383,7 +396,12 @@ HOME=/root
 </details>
 <br />
 
-#### 02-04. Create a namespace called `serviceaccount-namespace`. Create a pod called `serviceaccount-pod` using `nginx` image. Create a SeviceAccount called: my-serviceaccount. Update the pod to use the new ServiceAccount. Display the token for the new ServiceAccount.
+#### 02-04. ServiceAccount Question
+* Create a namespace called `serviceaccount-namespace`. 
+* Create a pod called `serviceaccount-pod` using `nginx` image. 
+* Create a SeviceAccount called: `my-serviceaccount`. 
+* Update the pod to use the new ServiceAccount. 
+* Display the token for the new ServiceAccount.
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
@@ -494,7 +512,9 @@ my-serviceaccount
 </details>
 <br />
 
-#### 02-05. "Error from server (Forbidden): pod is forbidden: User `rbac-sa` cannot `delete` resource `pods` in API group `apps` in the namespace  `rbac-namespace`" Fix the problem.
+#### 02-05. RBAC Question
+* "Error from server (Forbidden): pod is forbidden: User `rbac-sa` cannot `delete` resource `pods` in API group `apps` in the namespace `rbac-namespace`" 
+* Fix the problem.
 
 <details class="faq box"><summary>Overview</summary>
 <p>

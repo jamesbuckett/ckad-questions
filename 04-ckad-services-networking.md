@@ -7,7 +7,12 @@
 - Use Ingress rules to expose applications [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/04-ckad-services-networking.md#04-03-create-an-ingress-called-my-ingress-to-expose-the-service-my-service-outside-the-cluster)
 <br />
 
-#### 04-01. Create a namespace called `netpol-namespace`. Create a pod called `web-pod` using the `nginx` image and label the pod `tier=web`. Create a pod called `app-pod` using the `nginx` image and label the pod `tier=app`. Create a pod called `db-pod` using the `nginx` image and label the pod `tier=db`. Create Network Policies that allow the `web-pod` to connect with the `app-pod` on port `80` only.
+#### 04-01. Network Policy
+* Create a namespace called `netpol-namespace`. 
+* Create a pod called `web-pod` using the `nginx` image and label the pod `tier=web`. 
+* Create a pod called `app-pod` using the `nginx` image and label the pod `tier=app`. 
+* Create a pod called `db-pod` using the `nginx` image and label the pod `tier=db`. 
+* Create Network Policies that allow the `web-pod` to connect with the `app-pod` on port `80` only.
 
 ```diff
 Please NOTE:
@@ -215,7 +220,12 @@ app-pod !!!
 </details>
 <br />
 
-#### 04-02. Create a namespace called `service-namespace`. Create a pod called `service-pod` using the `nginx` image and exposing port `80`. Label the pod `tier=web`. Create a service for the pod called `my-service` allowing for communication inside the cluster. Let the service expose port 8080.
+#### 04-02. Kubernetes Service
+* Create a namespace called `service-namespace`. 
+* Create a pod called `service-pod` using the `nginx` image and exposing port `80`. 
+* Label the pod `tier=web`. 
+* Create a service for the pod called `my-service` allowing for communication inside the cluster. 
+* Let the service expose port 8080.
 
 <details class="faq box"><summary>Overview</summary>
 <p>
@@ -345,7 +355,8 @@ kubectl get ep
 </details>
 <br />
 
-#### 04-03. Create an ingress called `my-ingress` to expose the service `my-service` from previous question, outside the cluster.
+#### 04-03. Ingress 
+* Create an ingress called `my-ingress` to expose the service `my-service` from previous question, outside the cluster.
 
 <details class="faq box"><summary>Overview</summary>
 <p>

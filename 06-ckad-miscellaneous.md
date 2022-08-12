@@ -230,7 +230,7 @@ Output:
 <details class="faq box"><summary>kubectl convert - Deal with deprecated API versions</summary>
 <p>
 
-Search for `kubectl convert install` and scroll until you find the `Install kubectl convert plugin` section for installation instructions.
+Search for `kubectl` ` convert` ` install` and scroll until you find the `Install kubectl convert plugin` section for installation instructions.
 
 The `kubectl convert` plugin installs into WSL Linux
 

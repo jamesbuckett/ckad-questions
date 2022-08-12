@@ -366,18 +366,26 @@ kubectl get ep
 </p>
 </details>
 
-<details class="faq box"><summary>Solution</summary>
+<details class="faq box"><summary>Prerequisites</summary>
 <p>
 
-##### Solution
-
-kubernetes.io bookmark: [The Ingress resource](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
+##### Prerequisites
 
 Install the  Ingress Controller if you have not already installed it:
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
 ```
+
+</p>
+</details>
+
+<details class="faq box"><summary>Solution</summary>
+<p>
+
+##### Solution
+
+kubernetes.io bookmark: [The Ingress resource](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
 
 ```bash
 mkdir -p ~/ckad/

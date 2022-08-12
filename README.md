@@ -1,7 +1,6 @@
 # Sample CKAD exercises and solutions
 
 - A set of sample questions and solutions to assist in preparing for the [CKAD](https://www.cncf.io/certification/ckad/) exam
-- Use the [CKAD bookmarks](https://github.com/jamesbuckett/ckad-bookmarks) repository to aid in answering questions
 - Use the [CKAD tips and tricks](https://github.com/jamesbuckett/ckad-tips) repository for various tips and tricks in the CKAD exam
 - Assumed practice environment is [Docker Desktop](https://www.docker.com/products/docker-desktop) with a [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install) backend
 - The current version of Kubernetes in the CKAD exam can be found [here](https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks#what-application-version-is-running-in-the-exam-environment)

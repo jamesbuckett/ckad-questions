@@ -373,10 +373,10 @@ kubectl get ep
 
 kubernetes.io bookmark: [The Ingress resource](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
 
-Install the Contour Ingress if you have not already installed it:
+Install the  Ingress Controller if you have not already installed it:
 
 ```bash
-kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
 ```
 
 ```bash

@@ -11,8 +11,8 @@
 
 
 #### 05-01. CPU and Memory of Pods Question
-* First list all the pods in the cluster by CPU consumption. 
-* Then list all the pods in the cluster by Memory consumption.
+* First list **all** the pods in the cluster **sort by** CPU consumption. 
+* Then list **all** the pods in the cluster **sort by** Memory consumption.
 
 <details class="faq box"><summary>Prerequisite: Metrics Server - Kubernetes top command</summary>
 <p>
@@ -184,7 +184,7 @@ kubectl logs --since=1h log-pod
 <br />
 
 #### 05-03. Kubernetes Events Question
-* Output all the events for all namespaces by creation date.
+* Output all the events for **all** namespaces by creation date.
 
 <details class="faq box"><summary>Solution</summary>
 <p>
@@ -360,7 +360,7 @@ kubectl rollout undo deployment.apps/my-revision-deployment --to-revision=2
 <br />
 
 #### 05-06. Strategic Merge Patch Question
-* Patch the deployment from the previous question: `my-revision-deployment` to have a `revisionHistoryLimit` size of 20.
+* Patch the deployment from the previous question: `my-revision-deployment` to have a `revisionHistoryLimit` size of `20` using a **Strategic Merge Patch**
 
 <details class="faq box"><summary>Overview</summary>
 <p>

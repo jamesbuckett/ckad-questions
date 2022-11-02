@@ -359,7 +359,7 @@ kubectl rollout undo deployment.apps/my-revision-deployment --to-revision=2
 </details>
 <br />
 
-#### 05-06. Using the kubectl convert command update the attached YAML file
+#### 05-06. Convert manifests between different API versions.
 
 <details class="faq box"><summary>kubectl convert - Deal with deprecated API versions</summary>
 <p>

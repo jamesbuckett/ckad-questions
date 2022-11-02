@@ -359,72 +359,59 @@ kubectl rollout undo deployment.apps/my-revision-deployment --to-revision=2
 </details>
 <br />
 
-#### 05-06. Strategic Merge Patch Question
-* Patch the deployment from the previous question: `my-revision-deployment` to have a `revisionHistoryLimit` size of `20` using a **Strategic Merge Patch**
+#### 05-06. Using the kubectl convert command update the attached YAML file
 
-<details class="faq box"><summary>Overview</summary>
+<details class="faq box"><summary>kubectl convert - Deal with deprecated API versions</summary>
 <p>
 
-##### Overview
+Search for `kubectl` ` convert` ` install` and scroll until you find the `Install kubectl convert plugin` section for installation instructions.
 
-kubernetes.io bookmark: [Use a strategic merge patch to update a Deployment](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/#use-a-strategic-merge-patch-to-update-a-deployment)
+The `kubectl convert` plugin installs into WSL Linux
 
+Please install the [`kubectl convert` plugin](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-convert-plugin) with the following commands:
 
 ```bash
-kubectl config set-context --current --namespace=revision-namespace
-clear
-kubectl explain deployment.spec
+curl -LO https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert
+curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert.sha256"
+echo "$(<kubectl-convert.sha256) kubectl-convert" | sha256sum --check
+sudo install -o root -g root -m 0755 kubectl-convert /usr/local/bin/kubectl-convert
+kubectl convert --help
 ```
 
-Output:
+</p>
+</details>
 
+<details class="faq box"><summary>Prerequisites</summary>
+<p>
+
+Typical API deprecated warning message:
 ```console
-KIND:     Deployment
-VERSION:  apps/v1
+Warning: policy/v1beta1 PodDisruptionBudget is deprecated in v1.21+, unavailable in v1.25+; use policy/v1 PodDisruptionBudget
+poddisruptionbudget.policy/calico-kube-controllers created
+```
 
-RESOURCE: spec <Object>  👈👈👈 First element: =.spec
+```bash
+vi ~/ckad/06-04-beta-ingress.yml
+```
 
-DESCRIPTION:
-     Specification of the desired behavior of the Deployment.
-
-     DeploymentSpec is the specification of the desired behavior of the
-     Deployment.
-
-FIELDS:
-   minReadySeconds      <integer>
-     Minimum number of seconds for which a newly created pod should be ready
-     without any of its container crashing, for it to be considered available.
-     Defaults to 0 (pod will be considered available as soon as it is ready)
-
-   paused       <boolean>
-     Indicates that the deployment is paused.
-
-   progressDeadlineSeconds      <integer>
-     The maximum time in seconds for a deployment to make progress before it is
-     considered to be failed. The deployment controller will continue to process
-     failed deployments and a condition with a ProgressDeadlineExceeded reason
-     will be surfaced in the deployment status. Note that progress will not be
-     estimated during the time a deployment is paused. Defaults to 600s.
-
-   replicas     <integer>
-     Number of desired pods. This is a pointer to distinguish between explicit
-     zero and not specified. Defaults to 1.
-
-   revisionHistoryLimit <integer>  👈👈👈 Second element: =.spec.revisionHistoryLimit
-     The number of old ReplicaSets to retain to allow rollback. This is a
-     pointer to distinguish between explicit zero and not specified. Defaults to
-     10.
-
-   selector     <Object> -required-
-     Label selector for pods. Existing ReplicaSets whose pods are selected by
-     this will be the ones affected by this deployment. It must match the pod
-     template's labels.
-
-   strategy     <Object>
-     The deployment strategy to use to replace existing pods with new ones.
-
-   template     <Object> -required-
-     Template describes the pods that will be created.
+```yaml
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: my-ingress #👈👈👈 Change: `my-ingress`
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: / #👈👈👈 Change
+        pathType: Prefix
+        backend:
+          service:
+            name: my-service #👈👈👈 Change: `my-service`
+            port:
+              number: 8080 #👈👈👈 Change: --port=8080
 ```
 
 </p>
@@ -433,34 +420,37 @@ FIELDS:
 <details class="faq box"><summary>Solution</summary>
 <p>
 
-```bash
-# What is the current setting
-kubectl get deployment my-revision-deployment -o jsonpath={.spec.revisionHistoryLimit}
-```
+kubernetes.io bookmark: [Migrate to non-deprecated APIs](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#migrate-to-non-deprecated-apis)
 
 ```bash
-# Create a file to hold the patch
-vi ~/ckad/patch-file.yaml
+kubectl-convert -f ~/ckad/06-04-beta-ingress.yml --output-version networking.k8s.io/v1
 ```
 
-```bash
-spec: # 👈👈👈 First element: =.spec
-  revisionHistoryLimit: 20 # 👈👈👈 Second element: =.spec.revisionHistoryLimit
-```
+Output:
 
-```bash
-kubectl patch deployment my-revision-deployment --patch "$(cat ~/ckad/patch-file.yaml)"
+```console
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  creationTimestamp: null
+  name: my-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - backend: {}
+        path: /
+        pathType: Prefix
+status:
+  loadBalancer: {}
 ```
-
-```bash
-# Verify your work
-kubectl get deployment my-revision-deployment -o jsonpath={.spec.revisionHistoryLimit}
-```
-
 
 </p>
 </details>
-<br />
+
+
 
 #### 05-07. Set Environment Variable Question
 * Run the code in the preparation section. 

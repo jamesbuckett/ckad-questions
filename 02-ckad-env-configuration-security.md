@@ -251,6 +251,10 @@ Three types of secret:
 - docker-registry
 - tls
 
+##### Help Examples - GENERIC
+
+Create a secret from a local file, directory, or literal value
+
 ```bash
 clear
 # kubectl create secret -h
@@ -276,6 +280,22 @@ Examples:
 
   # Create a new secret named my-secret from an env file
   kubectl create secret generic my-secret --from-env-file=path/to/bar.env
+```
+
+##### Help Examples - TLS (Transport Layer Security)
+
+Create a TLS secret
+
+```bash
+clear
+# kubectl create secret -h
+kubectl create secret tls -h | more
+```
+
+```console
+Examples:
+  # Create a new TLS secret named tls-secret with the given key pair
+  kubectl create secret tls tls-secret --cert=path/to/tls.cert --key=path/to/tls.key
 ```
 
 </p>

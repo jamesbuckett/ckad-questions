@@ -294,7 +294,8 @@ Examples:
 
 ```bash
 clear
-kubectl run service-pod --image=nginx --port=80  --labels="tier=web"
+kubectl run web-pod --image=nginx --port=80  --labels="tier=web"
+kubectl run app-pod --image=nginx --port=80  --labels="tier=app"
 kubectl get all
 ```
 
@@ -344,7 +345,8 @@ port 8000
 
 ```bash
 clear
-kubectl expose pod service-pod --port=8080 --target-port=80 --name=my-service
+kubectl expose pod web-pod --port=8080 --target-port=80 --name=web-service
+kubectl expose pod app-pod --port=8080 --target-port=80 --name=app-service
 clear
 kubectl get pod -o wide
 kubectl get service
@@ -356,7 +358,7 @@ kubectl get ep
 <br />
 
 #### 04-03. Ingress Question
-* Create an ingress called `my-ingress` to expose the service `my-service` from previous question, outside the cluster.
+* Create an ingress called `my-ingress` to expose the service `web-service` from previous question, outside the cluster.
 
 <details class="faq box"><summary>Overview</summary>
 <p>
@@ -404,13 +406,20 @@ spec:
   rules:
   - http:
       paths:
-      - path: / #👈👈👈 Change
+      - path: /web #👈👈👈 Change
         pathType: Prefix
         backend:
           service:
-            name: my-service #👈👈👈 Change: `my-service`
+            name: web-service #👈👈👈 Change: `web-service`
             port:
               number: 8080 #👈👈👈 Change: --port=8080
+      - path: /app #👈👈👈 Change
+        pathType: Prefix
+        backend:
+          service:
+            name: app-service #👈👈👈 Change: `app-service`
+            port:
+              number: 8080 #👈👈👈 Change: --port=8080              
 ```
 
 ```bash

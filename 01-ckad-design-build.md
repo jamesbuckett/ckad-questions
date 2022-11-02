@@ -51,6 +51,13 @@ docker build -t my-image:v0.1 .
 docker images
 ```
 
+```bash
+# Create a TAR file from the image file
+docker save --output my-image.tar my-image:v0.1
+ls my-image*
+```
+
+
 </p>
 </details>
 

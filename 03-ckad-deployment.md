@@ -546,7 +546,7 @@ helm uninstall my-release
 </details>
 <br />
 
-#### 03-05. Blue Green Deployment Question
+#### 03-05. Canary Deployment Question
 * Create a namespace called `blue-green-namespace`. 
 * Create a Deployment called `blue-deployment`, with `10` replicas, using the `nginx` image inside the namespace. 
 * Expose `port 80` for the nginx containers. 

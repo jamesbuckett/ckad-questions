@@ -404,7 +404,8 @@ metadata:
 spec:
   ingressClassName: nginx-example
   rules:
-  - http:
+  - host: "world.universe.mine"
+    http:
       paths:
       - path: /web #👈👈👈 Change
         pathType: Prefix

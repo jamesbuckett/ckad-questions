@@ -294,8 +294,8 @@ Examples:
 
 ```bash
 clear
-kubectl run web-pod --image=nginx --port=80  --labels="tier=web"
-kubectl run app-pod --image=nginx --port=80  --labels="tier=app"
+kubectl run web-pod --image=docker.io/jamesbuckett/web:latest --port=80  --labels="tier=web"
+kubectl run app-pod --image=docker.io/jamesbuckett/app:latest --port=80  --labels="tier=app"
 kubectl get all
 ```
 

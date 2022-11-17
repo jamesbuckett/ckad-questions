@@ -294,8 +294,7 @@ Examples:
 
 ```bash
 clear
-kubectl run web-pod --image=docker.io/jamesbuckett/web:latest --port=80  --labels="tier=web"
-kubectl run app-pod --image=docker.io/jamesbuckett/app:latest --port=80  --labels="tier=app"
+kubectl run service-pod --image=nginx --port=80  --labels="tier=web"
 kubectl get all
 ```
 
@@ -345,8 +344,7 @@ port 8000
 
 ```bash
 clear
-kubectl expose pod web-pod --port=8080 --target-port=80 --name=web-service
-kubectl expose pod app-pod --port=8080 --target-port=80 --name=app-service
+kubectl expose pod service-pod --port=8080 --target-port=80 --name=my-service
 clear
 kubectl get pod -o wide
 kubectl get service
@@ -358,7 +356,7 @@ kubectl get ep
 <br />
 
 #### 04-03. Ingress Question
-* Create an ingress called `my-ingress` to expose the service `web-service` from previous question, outside the cluster.
+* Create an ingress called `my-ingress` to expose the service `my-service` from previous question, outside the cluster.
 
 <details class="faq box"><summary>Overview</summary>
 <p>
@@ -402,25 +400,17 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: nginx-example
+  ingressClassName: nginx
   rules:
-  - host: "world.universe.mine"
-    http:
+  - http:
       paths:
-      - path: /web #👈👈👈 Change
+      - path: / #👈👈👈 Change
         pathType: Prefix
         backend:
           service:
-            name: web-service #👈👈👈 Change: `web-service`
+            name: my-service #👈👈👈 Change: `my-service`
             port:
-              number: 8080 #👈👈👈 Change: --port=8080
-      - path: /app #👈👈👈 Change
-        pathType: Prefix
-        backend:
-          service:
-            name: app-service #👈👈👈 Change: `app-service`
-            port:
-              number: 8080 #👈👈👈 Change: --port=8080              
+              number: 8080 #👈👈👈 Change: --port=8080          
 ```
 
 ```bash

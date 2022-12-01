@@ -201,6 +201,12 @@ kubectl get events -A --sort-by=.metadata.creationTimestamp
 <br />
 
 #### 05-04. JSONPath Question
+
+Concepts
+* JSONPath is a query language for JSON.
+* It allows you to select and extract data from a JSON document. 
+
+
 * Create a namespace called `json-namespace`. 
 * Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`. 
 * Obtain the `hostIP` address using `JSONPath`.
@@ -283,7 +289,9 @@ scheduled.
 
 Construct the search query to `hostIP`.
 
-kubernetes.io bookmark:[JSONPath Support](https://kubernetes.io/docs/reference/kubectl/jsonpath/)
+Search term: `JSONPath Support` on [kubernetes.io](https://kubernetes.io/)
+
+kubernetes.io bookmark: [JSONPath Support](https://kubernetes.io/docs/reference/kubectl/jsonpath/)
 
 ```bash
 kubectl get pod json-pod -o jsonpath={.status.hostIP}

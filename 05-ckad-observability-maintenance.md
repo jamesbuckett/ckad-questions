@@ -372,11 +372,12 @@ kubectl rollout undo deployment.apps/my-revision-deployment --to-revision=2
 <br />
 
 #### 05-06. Convert manifests between different API versions.
+* Updated the sample YAML file from `networking.k8s.io/v1beta1` to `networking.k8s.io/v1`
 
 <details class="faq box"><summary>kubectl convert - Deal with deprecated API versions</summary>
 <p>
 
-Search for `kubectl` ` convert` ` install` and scroll until you find the `Install kubectl convert plugin` section for installation instructions.
+Search for `kubectl convert install` and scroll until you find the `Install kubectl convert plugin` section for installation instructions.
 
 The `kubectl convert` plugin installs into WSL Linux
 
@@ -431,6 +432,8 @@ spec:
 
 <details class="faq box"><summary>Solution</summary>
 <p>
+
+Search for `kubectl convert`
 
 kubernetes.io bookmark: [Migrate to non-deprecated APIs](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#migrate-to-non-deprecated-apis)
 

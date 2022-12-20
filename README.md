@@ -162,5 +162,3 @@ Octant installs into Windows 11
 - To clean up just execute commands in the "Clean Up" section at the end of each section
 
 _End of Section_
-
-This is an intentional edit

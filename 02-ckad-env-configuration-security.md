@@ -179,7 +179,7 @@ spec:
   - max:
       memory: 1Gi  # 👈👈👈 Change this value 
       cpu: 250m    # 👈👈👈 Change this value  
-    type: Container
+    type: Pod      # 👈👈👈 Change this value  
 ```
 
 

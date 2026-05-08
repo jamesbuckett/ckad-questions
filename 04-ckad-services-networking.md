@@ -63,7 +63,7 @@ For clarity in the solution steps below i use images that return:
   * db-pod !!!
 
 ```bash
-mkdir ~/ckad/
+mkdir -p ~/ckad/
 clear
 # Create all the required resources
 kubectl create namespace netpol-namespace
@@ -120,7 +120,7 @@ spec:
   - Ingress
   - Egress
 EOF
-  ```
+```
 
 ```bash
 mkdir -p ~/ckad/

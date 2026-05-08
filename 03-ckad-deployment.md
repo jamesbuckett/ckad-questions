@@ -76,7 +76,7 @@ vi ~/ckad/03-01.yml
 
 kubernetes.io bookmark: [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory)
 
-```bash
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -510,7 +510,7 @@ helm ls
 helm uninstall my-wp-release
 ```
 
-
+</p>
 </details>
 
 <details class="faq box"><summary>Operations</summary>

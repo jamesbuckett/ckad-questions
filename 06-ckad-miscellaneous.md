@@ -1,4 +1,4 @@
-## Sample CKAD API Q&A
+## Sample CKAD Miscellaneous Q&A
 
 #### 06-01. What is the current active namespace?
 

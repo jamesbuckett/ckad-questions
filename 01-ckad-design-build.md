@@ -36,9 +36,9 @@ Create a file called Dockerfile
 vi ~/ckad/Dockerfile
 ```
 
-Edit the Docker with to include the text below
-:
-```bash
+Edit the Dockerfile to include the text below:
+
+```dockerfile
 FROM nginx:latest
 COPY ./index.html /usr/share/nginx/html/index.html
 ```
@@ -80,7 +80,7 @@ curl localhost:8080
 
 ```bash
 clear
-# List all images
+# List all containers
 docker ps -a
 ```
 

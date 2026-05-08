@@ -507,7 +507,7 @@ helm ls
 
 ```bash
 # Delete WordPress with Helm
-helm delete my-wp-release --purge
+helm uninstall my-wp-release
 ```
 
 

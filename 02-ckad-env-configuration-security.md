@@ -212,7 +212,7 @@ In English:
 | ------ | ----------- |
 | E/Ei   | Exabyte     |
 | P/Pi   | Petabyte    |
-| T/Ti   | Terrabyte   |
+| T/Ti   | Terabyte    |
 | G/Gi   | Gigabyte    |
 | M/Mi   | Megabyte    |
 | k/Ki   | Kilobyte    |
@@ -225,8 +225,8 @@ In English:
 * Create a namespace called `secret-namespace`. 
 * Create a secret in this namespace called `my-secret`. 
 * The secret should be immutable and contain the literal values `user=bob` and `password=123456`. 
-* Create a pod called called `secret-pod` using the `nginx` image. 
-* The pod should consume the secret as environmental variables `SECRET-ENV-USER` and `SECRET-ENV-PASSWORD`.
+* Create a pod called `secret-pod` using the `nginx` image. 
+* The pod should consume the secret as environment variables `SECRET-ENV-USER` and `SECRET-ENV-PASSWORD`.
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
@@ -419,7 +419,7 @@ HOME=/root
 #### 02-04. ServiceAccount Question
 * Create a namespace called `serviceaccount-namespace`. 
 * Create a pod called `serviceaccount-pod` using `nginx` image. 
-* Create a SeviceAccount called: `my-serviceaccount`. 
+* Create a ServiceAccount called: `my-serviceaccount`. 
 * Update the pod to use the new ServiceAccount. 
 * Display the token for the new ServiceAccount.
 

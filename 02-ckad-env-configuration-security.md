@@ -2,12 +2,12 @@
 
 ### Application Environment, Configuration and Security – 25%
 
-- Discover and use resources that extend Kubernetes (CRD) [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/02-ckad-env-configuration-security.md#02-01-list-all-the-custom-resource-definitions-installed-in-a-cluster-calico-is-a-crd-list-out-how-to-obtain-the-correct-resource-name-to-query-a-calico-network-policy-and-not-the-default-kubernetes-network-policy)
+- Discover and use resources that extend Kubernetes (CRD) [\*\*](#02-01-custom-resource-definition-question)
 - Understand authentication, authorization and admission control
-- Understanding and defining resource requirements, limits and quotas [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/02-ckad-env-configuration-security.md#02-02-create-a-namespace-called-quota-namespace-create-a-resource-quota-for-this-namespace-called-my-quota-set-a-memory-reservation-of-2gi-set-a-cpu-reservation-of-500mi)
+- Understanding and defining resource requirements, limits and quotas [\*\*](#02-02-quota-and-limitrange-question)
 - Understand ConfigMaps
-- Create & consume Secrets [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/02-ckad-env-configuration-security.md#02-02-create-a-namespace-called-quota-namespace-create-a-resource-quota-for-this-namespace-called-my-quota-set-a-memory-reservation-of-2gi-set-a-cpu-reservation-of-500mi)
-- Understand ServiceAccounts [\*\*](https://github.com/jamesbuckett/ckad-questions/blob/main/02-ckad-env-configuration-security.md#02-04-create-a-namespace-called-serviceaccount-namespace-create-a-pod-called-serviceaccount-pod-using-nginx-image-create-a-seviceaccount-called-my-serviceaccount-update-the-pod-to-use-the-new-serviceaccount-display-the-token-for-the-new-serviceaccount)
+- Create & consume Secrets [\*\*](#02-03-secret-question)
+- Understand ServiceAccounts [\*\*](#02-04-serviceaccount-question)
 - Understand SecurityContexts
 <br />
 

@@ -8,10 +8,10 @@
 <br />
 
 ### 04-01. Network Policy Question
-* Create a namespace called `netpol-namespace`. 
-* Create a pod called `web-pod` using the `nginx` image and label the pod `tier=web`. 
-* Create a pod called `app-pod` using the `nginx` image and label the pod `tier=app`. 
-* Create a pod called `db-pod` using the `nginx` image and label the pod `tier=db`. 
+* Create a namespace called `netpol-namespace`.
+* Create a pod called `web-pod` using the `nginx` image and label the pod `tier=web`.
+* Create a pod called `app-pod` using the `nginx` image and label the pod `tier=app`.
+* Create a pod called `db-pod` using the `nginx` image and label the pod `tier=db`.
 * Create Network Policies that allow the `web-pod` to connect with the `app-pod` on port `80` only.
 
 ```diff
@@ -36,9 +36,9 @@ Use this link to visually solve the problem:
 Use this link for common network policy recipes:
 * [Kubernetes Network Policy Recipes](https://github.com/ahmetb/kubernetes-network-policy-recipes)
 
-Notes 
-* Network policies do not conflict; they are additive. 
-* If any policy or policies select a pod, the pod is restricted to what is allowed by the union of those policies' ingress/egress rules. 
+Notes
+* Network policies do not conflict; they are additive.
+* If any policy or policies select a pod, the pod is restricted to what is allowed by the union of those policies' ingress/egress rules.
 * Thus, order of evaluation does not affect the policy result.
 
 </p>
@@ -48,8 +48,8 @@ Notes
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
 
-For clarity in the solution steps below i use images that return: 
-* web-pod 
+For clarity in the solution steps below i use images that return:
+* web-pod
   * web-pod !!!
   * web-pod !!!
   * web-pod !!!
@@ -148,7 +148,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: app-policy #👈👈👈 Change  
+  name: app-policy #👈👈👈 Change
   namespace: netpol-namespace
 spec:
   podSelector:
@@ -221,10 +221,10 @@ app-pod !!!
 <br />
 
 ### 04-02. Kubernetes Service Question
-* Create a namespace called `service-namespace`. 
-* Create a pod called `service-pod` using the `nginx` image and exposing port `80`. 
-* Label the pod `tier=web`. 
-* Create a service for the pod called `my-service` allowing for communication inside the cluster. 
+* Create a namespace called `service-namespace`.
+* Create a pod called `service-pod` using the `nginx` image and exposing port `80`.
+* Label the pod `tier=web`.
+* Create a service for the pod called `my-service` allowing for communication inside the cluster.
 * Let the service expose port 8080.
 
 <details class="faq box"><summary>Overview</summary>
@@ -410,7 +410,7 @@ spec:
           service:
             name: my-service #👈👈👈 Change: `my-service`
             port:
-              number: 8080 #👈👈👈 Change: --port=8080          
+              number: 8080 #👈👈👈 Change: --port=8080
 ```
 
 ```bash
@@ -480,7 +480,7 @@ Commercial support is available at
 
 ### Clean Up
 
-<details class="faq box"><summary>Clean Up</summary> 
+<details class="faq box"><summary>Clean Up</summary>
 <p>
 
 ```bash

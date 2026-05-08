@@ -9,9 +9,9 @@
 <br />
 
 ### 01-01. Docker Question
-* Create a container from the attached `Dockerfile` and `index.html`. 
-* Name the image `my-image`. 
-* Run the container exposing port `8080` on the host and port `80` on the container. 
+* Create a container from the attached `Dockerfile` and `index.html`.
+* Name the image `my-image`.
+* Run the container exposing port `8080` on the host and port `80` on the container.
 * Name the container `my-container`. Stop the container. Delete the container.
 
 <details class="faq box"><summary>Docker Image Creation</summary>
@@ -113,8 +113,8 @@ docker image prune -a
 <br />
 
 ### 01-02. Name Container Question
-* Create a namespace called `pod-namespace`. 
-* Create a pod called `pod-1` using `nginx` image. 
+* Create a namespace called `pod-namespace`.
+* Create a pod called `pod-1` using `nginx` image.
 * The container in the pod should be named `container-1`.
 
 <details class="faq box"><summary>Prerequisites</summary>
@@ -240,10 +240,10 @@ kubectl get pod --watch
 <br />
 
 ### 01-03. Storage Question
-* Create a namespace called `storage-namespace`. 
-* Create a Persistent Volume called `my-pv` with `5Gi` storage using hostPath `/mnt/my-host`. 
-* Create a Persistent Volume Claim called `my-pvc` with `2Gi` storage. 
-* Create a pod called `storage-pod` using the nginx image. 
+* Create a namespace called `storage-namespace`.
+* Create a Persistent Volume called `my-pv` with `5Gi` storage using hostPath `/mnt/my-host`.
+* Create a Persistent Volume Claim called `my-pvc` with `2Gi` storage.
+* Create a pod called `storage-pod` using the nginx image.
 * Mount the Persistent Volume Claim onto `/my-mount` in `storage-pod`.
 
 <details class="faq box"><summary>Overview</summary>
@@ -264,12 +264,12 @@ Legend
 * ReadWriteOncePod(RWOP) - volume can be mounted as read-write by a single Pod.
 
 Notes
-* Once a PV is bound to a PVC, that PV is essentially tied to the PVC and cannot be bound to by another PVC. 
-* There is a one-to-one mapping of PVs and PVCs. 
+* Once a PV is bound to a PVC, that PV is essentially tied to the PVC and cannot be bound to by another PVC.
+* There is a one-to-one mapping of PVs and PVCs.
 * However, multiple pods in the same project can use the same PVC.
-* The link between PV and PVC is not explict, instead the PVC makes a some requests for storage. 
+* The link between PV and PVC is not explict, instead the PVC makes a some requests for storage.
 * Kubernetes will pick an appropriate PersistentVolume to meet that claim.
-* StorageClass provisions PV dynamically, when PVC claims it. 
+* StorageClass provisions PV dynamically, when PVC claims it.
 * StorageClass allows for dynamically provisioned volumes for an incoming claim.
 
 

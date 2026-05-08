@@ -11,7 +11,7 @@
 
 
 ### 05-01. CPU and Memory of Pods Question
-* First list **all** the pods in the cluster **sort by** CPU consumption. 
+* First list **all** the pods in the cluster **sort by** CPU consumption.
 * Then list **all** the pods in the cluster **sort by** Memory consumption.
 
 <details class="faq box"><summary>Prerequisite: Metrics Server - Kubernetes top command</summary>
@@ -102,8 +102,8 @@ kube-system               cilium-ml27n                                          
 <br />
 
 ### 05-02. Pod Logging Question
-* Create a namespace called `log-namespace`. 
-* Create a pod called `log-pod` using image `nginx` in namespace `log-namespace`. 
+* Create a namespace called `log-namespace`.
+* Create a pod called `log-pod` using image `nginx` in namespace `log-namespace`.
 * Obtain the `logs` for the nginx pod for the `last hour`.
 
 <details class="faq box"><summary>Prerequisites</summary>
@@ -202,15 +202,15 @@ kubectl get events -A --sort-by=.metadata.creationTimestamp
 
 ### 05-04. JSONPath Question
 
-* Create a namespace called `json-namespace`. 
-* Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`. 
+* Create a namespace called `json-namespace`.
+* Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`.
 * Obtain the `hostIP` address using `JSONPath`.
 
 <details class="faq box"><summary>Concepts</summary>
 <p>
 
 * JSONPath is a query language for JSON.
-* It allows you to select and extract data from a JSON document. 
+* It allows you to select and extract data from a JSON document.
 
 </p>
 </details>
@@ -230,7 +230,7 @@ kubectl get events -A --sort-by=.metadata.creationTimestamp
 clear
 kubectl create namespace json-namespace
 kubectl config set-context --current --namespace=json-namespace
-kubectl run json-pod --image=nginx 
+kubectl run json-pod --image=nginx
 kubectl get all
 ```
 
@@ -310,12 +310,12 @@ kubectl get pod json-pod -o jsonpath={..hostIP}
 <br />
 
 ### 05-05. Deployment Revision History Question
-* Run the preparation steps. 
-* A deployment called `my-revision-deployment` will be created in the namespace `revision-namespace`. 
-* Check the status of this deployment. 
-* Check the revision **history** of this deployment. 
-* **Undo** to the last good working deployment. 
-* Roll back to the earliest revision. 
+* Run the preparation steps.
+* A deployment called `my-revision-deployment` will be created in the namespace `revision-namespace`.
+* Check the status of this deployment.
+* Check the revision **history** of this deployment.
+* **Undo** to the last good working deployment.
+* Roll back to the earliest revision.
 * Verify that it is now working.
 
 <details class="faq box"><summary>Prerequisites</summary>
@@ -343,12 +343,12 @@ clear
 
 ```bash
 clear
-#Situational Awareness 
-kubectl get all 
+#Situational Awareness
+kubectl get all
 ```
 
 ```bash
-# Examine events from Deployment 
+# Examine events from Deployment
 kubectl describe deployment.apps/my-revision-deployment
 ```
 
@@ -468,7 +468,7 @@ status:
 
 
 ### 05-07. Set Environment Variable Question
-* Run the code in the preparation section. 
+* Run the code in the preparation section.
 * Once the deployment is running alter the environmental variable `TIER=web` to `TIER=app`
 
 
@@ -498,7 +498,7 @@ spec:
   template:
     metadata:
       labels:
-        app: nginx        
+        app: nginx
     spec:
       containers:
       - name: nginx
@@ -523,17 +523,17 @@ kubectl get all
 <p>
 
 ```bash
-# Describe the Deployment 
+# Describe the Deployment
 kubectl describe deployment.apps nginx-deployment | grep -i env -A 1
 ```
 
 ```bash
-# Set the env using kubectl set env 
+# Set the env using kubectl set env
 kubectl set env deployment.apps nginx-deployment TIER=app
 ```
 
 ```bash
-# Describe the Deployment 
+# Describe the Deployment
 kubectl describe deployment.apps nginx-deployment | grep -i env -A 1
 ```
 

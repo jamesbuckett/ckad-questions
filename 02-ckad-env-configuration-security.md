@@ -12,8 +12,8 @@
 <br />
 
 ### 02-01. Custom Resource Definition Question
-* List all the Custom Resource Definitions installed in a cluster. 
-* Calico is a CRD. 
+* List all the Custom Resource Definitions installed in a cluster.
+* Calico is a CRD.
 * List out how to obtain the correct resource name to query a Calico Network Policy and not the default Kubernetes Network Policy.
 
 <details class="faq box"><summary>Overview</summary>
@@ -94,10 +94,10 @@ kubectl get networkpolicies.crd.projectcalico.org
 <br />
 
 ### 02-02. Quota and LimitRange Question
-* Create a namespace called `quota-namespace`. 
-* Create a Resource Quota for this namespace called `my-quota`. 
-* Set a hard memory reservation of `2Gi`. 
-* Set a hard CPU reservation of `500m`. 
+* Create a namespace called `quota-namespace`.
+* Create a Resource Quota for this namespace called `my-quota`.
+* Set a hard memory reservation of `2Gi`.
+* Set a hard CPU reservation of `500m`.
 * Create a LimitRange for this namespace called `my-limit` which limits Pods to to a maximum of `1Gi` memory and `250m` CPU.
 
 <details class="faq box"><summary>Prerequisites</summary>
@@ -177,14 +177,14 @@ metadata:
 spec:
   limits:
   - max:
-      memory: 1Gi  # 👈👈👈 Change this value 
-      cpu: 250m    # 👈👈👈 Change this value  
-    type: Pod      # 👈👈👈 Change this value  
+      memory: 1Gi  # 👈👈👈 Change this value
+      cpu: 250m    # 👈👈👈 Change this value
+    type: Pod      # 👈👈👈 Change this value
 ```
 
 
 ```bash
-# This Pod is within the resource requests of the Resource Quota and LimitRange 
+# This Pod is within the resource requests of the Resource Quota and LimitRange
 mkdir -p ~/ckad/
 clear
 kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl set resources -f - --requests=cpu=200m,memory=512Mi --limits=cpu=200m,memory=512Mi --local -o yaml > ~/ckad/02-02-succeed.yml
@@ -222,10 +222,10 @@ In English:
 <br />
 
 ### 02-03. Secret Question
-* Create a namespace called `secret-namespace`. 
-* Create a secret in this namespace called `my-secret`. 
-* The secret should be immutable and contain the literal values `user=bob` and `password=123456`. 
-* Create a pod called `secret-pod` using the `nginx` image. 
+* Create a namespace called `secret-namespace`.
+* Create a secret in this namespace called `my-secret`.
+* The secret should be immutable and contain the literal values `user=bob` and `password=123456`.
+* Create a pod called `secret-pod` using the `nginx` image.
 * The pod should consume the secret as environment variables `SECRET-ENV-USER` and `SECRET-ENV-PASSWORD`.
 
 <details class="faq box"><summary>Prerequisites</summary>
@@ -240,7 +240,7 @@ kubectl config set-context --current --namespace=secret-namespace
 </p>
 </details>
 
-<details class="faq box"><summary>Help</summary> 
+<details class="faq box"><summary>Help</summary>
 <p>
 
 #### Help Examples
@@ -417,10 +417,10 @@ HOME=/root
 <br />
 
 ### 02-04. ServiceAccount Question
-* Create a namespace called `serviceaccount-namespace`. 
-* Create a pod called `serviceaccount-pod` using `nginx` image. 
-* Create a ServiceAccount called: `my-serviceaccount`. 
-* Update the pod to use the new ServiceAccount. 
+* Create a namespace called `serviceaccount-namespace`.
+* Create a pod called `serviceaccount-pod` using `nginx` image.
+* Create a ServiceAccount called: `my-serviceaccount`.
+* Update the pod to use the new ServiceAccount.
 * Display the token for the new ServiceAccount.
 
 <details class="faq box"><summary>Prerequisites</summary>
@@ -533,7 +533,7 @@ my-serviceaccount
 <br />
 
 ### 02-05. RBAC Question
-* "Error from server (Forbidden): pod is forbidden: User `rbac-sa` cannot `delete` resource `pods` in API group `apps` in the namespace `rbac-namespace`" 
+* "Error from server (Forbidden): pod is forbidden: User `rbac-sa` cannot `delete` resource `pods` in API group `apps` in the namespace `rbac-namespace`"
 * Fix the problem.
 
 <details class="faq box"><summary>Overview</summary>
@@ -567,7 +567,7 @@ clear
 kubectl create namespace rbac-namespace #👈👈👈 Create a namespace
 kubectl config set-context --current --namespace=rbac-namespace #👈👈👈Change directory into the namespace
 kubectl create sa rbac-sa #👈👈👈 Create a Service Account (Who)
-kubectl create deployment rbac-deployment --image=nginx --replicas=3 #👈👈👈 Create a deployment 
+kubectl create deployment rbac-deployment --image=nginx --replicas=3 #👈👈👈 Create a deployment
 kubectl create role rbac-role --verb=get,watch --resource=pods,pods/status #👈👈👈Create a Role (What and Where)
 kubectl create rolebinding rbac-rolebinding --role=rbac-role --serviceaccount=rbac-namespace:rbac-sa #👈👈👈 Bind Account and Role
 ```
@@ -657,7 +657,7 @@ kubectl auth can-i delete pods --as=system:serviceaccount:rbac-namespace:rbac-sa
 
 ### Clean Up
 
-<details class="faq box"><summary>Clean Up</summary> 
+<details class="faq box"><summary>Clean Up</summary>
 <p>
 
 ```bash

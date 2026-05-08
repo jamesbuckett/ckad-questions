@@ -8,10 +8,10 @@
 <br />
 
 ### 03-01. Deployment Question
-* Create a namespace called `deployment-namespace`. 
-* Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image inside the namespace. 
-* Expose `port 80` for the nginx container. 
-* The containers should be named `my-container`. 
+* Create a namespace called `deployment-namespace`.
+* Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image inside the namespace.
+* Expose `port 80` for the nginx container.
+* The containers should be named `my-container`.
 * Each container should have a `memory request` of 25Mi and a `memory limit` of 100Mi.
 
 <details class="faq box"><summary>Prerequisites</summary>
@@ -141,10 +141,10 @@ replicaset.apps/my-deployment-67fc8546   3         3         3       16m
 <br />
 
 ### 03-02. Expose Deployment Question
-* In the previous question a Deployment called `my-deployment` was created. 
+* In the previous question a Deployment called `my-deployment` was created.
 * Allow network traffic to flow to this deployment from inside the cluster on `port 8080`.
 
-<details class="faq box"><summary>Help</summary> 
+<details class="faq box"><summary>Help</summary>
 <p>
 
 ```bash
@@ -238,9 +238,9 @@ my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 <br />
 
 ### 03-03. Change Image Question
-* Create a namespace called `edit-namespace`. 
-* Create a deployment called `edit-deployment` with `2` replicas using the `redis` image in namespace. 
-* After the deployment is running, alter the containers to use the `nginx` image. 
+* Create a namespace called `edit-namespace`.
+* Create a deployment called `edit-deployment` with `2` replicas using the `redis` image in namespace.
+* After the deployment is running, alter the containers to use the `nginx` image.
 * Then alter the containers to use the `nginx:1.14.2` image.
 
 <details class="faq box"><summary>Prerequisites</summary>
@@ -516,13 +516,13 @@ helm uninstall my-wp-release
 <details class="faq box"><summary>Operations</summary>
 <p>
 
-#### Install a Release 
+#### Install a Release
 
 ```bash
 helm install happy-panda bitnami/wordpress
 ```
 
-#### Upgrade a Release 
+#### Upgrade a Release
 
 ```bash
 helm upgrade --set foo=bar --set foo=newbar redis ./redis
@@ -531,14 +531,14 @@ helm upgrade --set foo=bar --set foo=newbar redis ./redis
 #### Delete a Release
 
 ```bash
-helm uninstall my-release 
+helm uninstall my-release
 ```
 
-#### Broken Release 
+#### Broken Release
 
 ```bash
 helm list
-helm uninstall my-release 
+helm uninstall my-release
 ```
 
 
@@ -547,15 +547,15 @@ helm uninstall my-release
 <br />
 
 ### 03-05. Canary Deployment Question
-* Create a namespace called `blue-green-namespace`. 
-* Create a Deployment called `blue-deployment`, with `10` replicas, using the `nginx` image inside the namespace. 
-* Expose `port 80` for the nginx containers. 
-* Label the pods `app=blue-deployment` and `tier=web`. 
-* Create a Service called `bg-service` to route traffic to `blue-deployment`. 
-* Verify that traffic is flowing from the Service to the Deployment. 
-* Create a new Deployment called `green-deployment` , with `10` replicas, using the `nginx` image inside the namespace. 
-* Expose `port 80` for the nginx containers. 
-* Label the pods `app=green-deployment` and `tier=web`. 
+* Create a namespace called `blue-green-namespace`.
+* Create a Deployment called `blue-deployment`, with `10` replicas, using the `nginx` image inside the namespace.
+* Expose `port 80` for the nginx containers.
+* Label the pods `app=blue-deployment` and `tier=web`.
+* Create a Service called `bg-service` to route traffic to `blue-deployment`.
+* Verify that traffic is flowing from the Service to the Deployment.
+* Create a new Deployment called `green-deployment` , with `10` replicas, using the `nginx` image inside the namespace.
+* Expose `port 80` for the nginx containers.
+* Label the pods `app=green-deployment` and `tier=web`.
 * Once the `green-deployment` is active split traffic between `blue-deployment`=70% and `green-deployment`=30%
 
 <details class="faq box"><summary>Overview</summary>
@@ -563,12 +563,12 @@ helm uninstall my-release
 
 ![50-exec-blue-fixed](https://user-images.githubusercontent.com/18049790/162353407-3d6b296a-77c5-488b-8171-3262bf0f0d79.jpg)
 
-For clarity in the solution steps below i use images that return: 
-* Green Deployment 
+For clarity in the solution steps below i use images that return:
+* Green Deployment
   * Green !!!
   * Green !!!
   * Green !!!
-* Blue Deployment 
+* Blue Deployment
   * Blue !!!
   * Blue !!!
   * Blue !!!
@@ -724,8 +724,8 @@ kubectl create deployment green-deployment --image=nginx --replicas=10 --port=80
 ```
 
 An even faster way would be to copy the 03-05-deploy-blue.yml to 03-05-deploy-green.yml
-* Alter the labels 
-* Alter the image 
+* Alter the labels
+* Alter the image
 * Save and Apply
 
 ```bash
@@ -754,7 +754,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: green-deployment 
+        app: green-deployment
         tier: web #👈👈👈 Add the label:  `tier=web`
     spec:
       containers:

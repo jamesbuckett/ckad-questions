@@ -1,6 +1,6 @@
-## Sample CKAD Observability and Maintenance Q&A
+# Sample CKAD Observability and Maintenance Q&A
 
-### Application Observability and Maintenance – 15%
+## Application Observability and Maintenance – 15%
 
 - Understand API deprecations
 - Implement probes and health checks
@@ -10,7 +10,7 @@
 <br />
 
 
-#### 05-01. CPU and Memory of Pods Question
+### 05-01. CPU and Memory of Pods Question
 * First list **all** the pods in the cluster **sort by** CPU consumption. 
 * Then list **all** the pods in the cluster **sort by** Memory consumption.
 
@@ -75,7 +75,7 @@ ns-demo                   recommendationservice-b4cf8f489-xwv49                 
 <details class="faq box"><summary>Solution</summary>
 <p>
 
-##### Solution
+#### Solution
 
 ```bash
 clear
@@ -101,7 +101,7 @@ kube-system               cilium-ml27n                                          
 </details>
 <br />
 
-#### 05-02. Pod Logging Question
+### 05-02. Pod Logging Question
 * Create a namespace called `log-namespace`. 
 * Create a pod called `log-pod` using image `nginx` in namespace `log-namespace`. 
 * Obtain the `logs` for the nginx pod for the `last hour`.
@@ -183,7 +183,7 @@ kubectl logs --since=1h log-pod
 </details>
 <br />
 
-#### 05-03. Kubernetes Events Question
+### 05-03. Kubernetes Events Question
 * Output all the events for **all** namespaces by creation date.
 
 <details class="faq box"><summary>Solution</summary>
@@ -200,7 +200,7 @@ kubectl get events -A --sort-by=.metadata.creationTimestamp
 </details>
 <br />
 
-#### 05-04. JSONPath Question
+### 05-04. JSONPath Question
 
 * Create a namespace called `json-namespace`. 
 * Create a pod called `json-pod` using image `nginx` in namespace `json-namespace`. 
@@ -309,7 +309,7 @@ kubectl get pod json-pod -o jsonpath={..hostIP}
 </details>
 <br />
 
-#### 05-05. Deployment Revision History Question
+### 05-05. Deployment Revision History Question
 * Run the preparation steps. 
 * A deployment called `my-revision-deployment` will be created in the namespace `revision-namespace`. 
 * Check the status of this deployment. 
@@ -371,7 +371,7 @@ kubectl rollout undo deployment.apps/my-revision-deployment --to-revision=2
 </details>
 <br />
 
-#### 05-06. Convert manifests between different API versions.
+### 05-06. Convert manifests between different API versions.
 * Updated the sample YAML file from `networking.k8s.io/v1beta1` to `networking.k8s.io/v1`
 
 <details class="faq box"><summary>kubectl convert - Deal with deprecated API versions</summary>
@@ -467,7 +467,7 @@ status:
 <br />
 
 
-#### 05-07. Set Environment Variable Question
+### 05-07. Set Environment Variable Question
 * Run the code in the preparation section. 
 * Once the deployment is running alter the environmental variable `TIER=web` to `TIER=app`
 
@@ -541,7 +541,7 @@ kubectl describe deployment.apps nginx-deployment | grep -i env -A 1
 </details>
 <br />
 
-#### Clean Up
+### Clean Up
 
 <details class="faq box"><summary>Clean Up</summary>
 <p>

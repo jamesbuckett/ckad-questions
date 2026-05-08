@@ -1,13 +1,13 @@
-## Sample CKAD Application Deployment Q&A
+# Sample CKAD Application Deployment Q&A
 
-### Application Deployment – 20%
+## Application Deployment – 20%
 
 - Understand Deployments and how to perform rolling updates [\*\*](#03-01-deployment-question)
 - Use the Helm package manager to deploy existing packages [\*\*](#03-04-helm-question)
 - Use Kubernetes primitives to implement common deployment strategies (e.g. blue/green or canary) [\*\*](#03-05-canary-deployment-question)
 <br />
 
-#### 03-01. Deployment Question
+### 03-01. Deployment Question
 * Create a namespace called `deployment-namespace`. 
 * Create a Deployment called `my-deployment`, with `three` replicas, using the `nginx` image inside the namespace. 
 * Expose `port 80` for the nginx container. 
@@ -30,7 +30,7 @@ clear
 kubectl config set-context --current --namespace=deployment-namespace
 ```
 
-##### Help Examples
+#### Help Examples
 
 ```bash
 clear
@@ -140,7 +140,7 @@ replicaset.apps/my-deployment-67fc8546   3         3         3       16m
 </details>
 <br />
 
-#### 03-02. Expose Deployment Question
+### 03-02. Expose Deployment Question
 * In the previous question a Deployment called `my-deployment` was created. 
 * Allow network traffic to flow to this deployment from inside the cluster on `port 8080`.
 
@@ -237,7 +237,7 @@ my-deployment   10.244.0.250:80,10.244.1.132:80,10.244.1.246:80   5m20s
 </details>
 <br />
 
-#### 03-03. Change Image Question
+### 03-03. Change Image Question
 * Create a namespace called `edit-namespace`. 
 * Create a deployment called `edit-deployment` with `2` replicas using the `redis` image in namespace. 
 * After the deployment is running, alter the containers to use the `nginx` image. 
@@ -259,7 +259,7 @@ kubectl config set-context --current --namespace=edit-namespace
 <details class="faq box"><summary>Solution - kubectl edit</summary>
 <p>
 
-##### Solution
+#### Solution
 
 ```bash
 kubectl edit deployment.apps/edit-deployment
@@ -344,7 +344,7 @@ kubectl describe deployment edit-deployment | grep Image
 </details>
 <br />
 
-#### 03-04. Helm Question
+### 03-04. Helm Question
 * Use Helm to install WordPress into a namespace called `wordpress-namespace`
 
 <details class="faq box"><summary>Prerequisites</summary>
@@ -516,25 +516,25 @@ helm uninstall my-wp-release
 <details class="faq box"><summary>Operations</summary>
 <p>
 
-##### Install a Release 
+#### Install a Release 
 
 ```bash
 helm install happy-panda bitnami/wordpress
 ```
 
-##### Upgrade a Release 
+#### Upgrade a Release 
 
 ```bash
 helm upgrade --set foo=bar --set foo=newbar redis ./redis
 ```
 
-##### Delete a Release
+#### Delete a Release
 
 ```bash
 helm uninstall my-release 
 ```
 
-##### Broken Release 
+#### Broken Release 
 
 ```bash
 helm list
@@ -546,7 +546,7 @@ helm uninstall my-release
 </details>
 <br />
 
-#### 03-05. Canary Deployment Question
+### 03-05. Canary Deployment Question
 * Create a namespace called `blue-green-namespace`. 
 * Create a Deployment called `blue-deployment`, with `10` replicas, using the `nginx` image inside the namespace. 
 * Expose `port 80` for the nginx containers. 
@@ -878,7 +878,7 @@ Green !!!
 </details>
 <br />
 
-#### Clean Up
+### Clean Up
 
 <details class="faq box"><summary>Clean Up</summary>
 <p>

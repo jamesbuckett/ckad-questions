@@ -1,6 +1,6 @@
-## Sample CKAD Environment, Configuration and Security Q&A
+# Sample CKAD Environment, Configuration and Security Q&A
 
-### Application Environment, Configuration and Security – 25%
+## Application Environment, Configuration and Security – 25%
 
 - Discover and use resources that extend Kubernetes (CRD) [\*\*](#02-01-custom-resource-definition-question)
 - Understand authentication, authorization and admission control
@@ -11,7 +11,7 @@
 - Understand SecurityContexts
 <br />
 
-#### 02-01. Custom Resource Definition Question
+### 02-01. Custom Resource Definition Question
 * List all the Custom Resource Definitions installed in a cluster. 
 * Calico is a CRD. 
 * List out how to obtain the correct resource name to query a Calico Network Policy and not the default Kubernetes Network Policy.
@@ -93,7 +93,7 @@ kubectl get networkpolicies.crd.projectcalico.org
 </details>
 <br />
 
-#### 02-02. Quota and LimitRange Question
+### 02-02. Quota and LimitRange Question
 * Create a namespace called `quota-namespace`. 
 * Create a Resource Quota for this namespace called `my-quota`. 
 * Set a hard memory reservation of `2Gi`. 
@@ -221,7 +221,7 @@ In English:
 </details>
 <br />
 
-#### 02-03. Secret Question
+### 02-03. Secret Question
 * Create a namespace called `secret-namespace`. 
 * Create a secret in this namespace called `my-secret`. 
 * The secret should be immutable and contain the literal values `user=bob` and `password=123456`. 
@@ -243,7 +243,7 @@ kubectl config set-context --current --namespace=secret-namespace
 <details class="faq box"><summary>Help</summary> 
 <p>
 
-##### Help Examples
+#### Help Examples
 
 Three types of secret:
 
@@ -251,7 +251,7 @@ Three types of secret:
 - docker-registry
 - tls
 
-##### Help Examples - GENERIC
+#### Help Examples - GENERIC
 
 Create a secret from a local file, directory, or literal value
 
@@ -282,7 +282,7 @@ Examples:
   kubectl create secret generic my-secret --from-env-file=path/to/bar.env
 ```
 
-##### Help Examples - TLS (Transport Layer Security)
+#### Help Examples - TLS (Transport Layer Security)
 
 Create a TLS secret
 
@@ -416,7 +416,7 @@ HOME=/root
 </details>
 <br />
 
-#### 02-04. ServiceAccount Question
+### 02-04. ServiceAccount Question
 * Create a namespace called `serviceaccount-namespace`. 
 * Create a pod called `serviceaccount-pod` using `nginx` image. 
 * Create a ServiceAccount called: `my-serviceaccount`. 
@@ -532,7 +532,7 @@ my-serviceaccount
 </details>
 <br />
 
-#### 02-05. RBAC Question
+### 02-05. RBAC Question
 * "Error from server (Forbidden): pod is forbidden: User `rbac-sa` cannot `delete` resource `pods` in API group `apps` in the namespace `rbac-namespace`" 
 * Fix the problem.
 
@@ -655,7 +655,7 @@ kubectl auth can-i delete pods --as=system:serviceaccount:rbac-namespace:rbac-sa
 </details>
 <br />
 
-#### Clean Up
+### Clean Up
 
 <details class="faq box"><summary>Clean Up</summary> 
 <p>

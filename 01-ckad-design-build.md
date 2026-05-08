@@ -1,6 +1,6 @@
-## Sample CKAD Application Design and Build Q&A
+# Sample CKAD Application Design and Build Q&A
 
-### Application Design and Build – 20%
+## Application Design and Build – 20%
 
 - Define, build and modify container images [\*\*](#01-01-docker-question)
 - Understand Jobs and CronJobs
@@ -8,7 +8,7 @@
 - Utilize persistent and ephemeral volumes [\*\*](#01-03-storage-question)
 <br />
 
-#### 01-01. Docker Question
+### 01-01. Docker Question
 * Create a container from the attached `Dockerfile` and `index.html`. 
 * Name the image `my-image`. 
 * Run the container exposing port `8080` on the host and port `80` on the container. 
@@ -112,7 +112,7 @@ docker image prune -a
 </details>
 <br />
 
-#### 01-02. Name Container Question
+### 01-02. Name Container Question
 * Create a namespace called `pod-namespace`. 
 * Create a pod called `pod-1` using `nginx` image. 
 * The container in the pod should be named `container-1`.
@@ -132,7 +132,7 @@ clear
 kubectl config set-context --current --namespace=pod-namespace
 ```
 
-##### Help Examples
+#### Help Examples
 
 ```bash
 clear
@@ -239,7 +239,7 @@ kubectl get pod --watch
 </details>
 <br />
 
-#### 01-03. Storage Question
+### 01-03. Storage Question
 * Create a namespace called `storage-namespace`. 
 * Create a Persistent Volume called `my-pv` with `5Gi` storage using hostPath `/mnt/my-host`. 
 * Create a Persistent Volume Claim called `my-pvc` with `2Gi` storage. 
@@ -431,7 +431,7 @@ Output:
 </details>
 <br />
 
-#### Clean Up
+### Clean Up
 
 <details class="faq box"><summary>Clean Up</summary>
 <p>

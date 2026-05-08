@@ -1,13 +1,13 @@
-## Sample CKAD Services and Networking Q&A
+# Sample CKAD Services and Networking Q&A
 
-### Services and Networking – 20%
+## Services and Networking – 20%
 
 - Demonstrate basic understanding of NetworkPolicies [\*\*](#04-01-network-policy-question)
 - Provide and troubleshoot access to applications via services [\*\*](#04-02-kubernetes-service-question)
 - Use Ingress rules to expose applications [\*\*](#04-03-ingress-question)
 <br />
 
-#### 04-01. Network Policy Question
+### 04-01. Network Policy Question
 * Create a namespace called `netpol-namespace`. 
 * Create a pod called `web-pod` using the `nginx` image and label the pod `tier=web`. 
 * Create a pod called `app-pod` using the `nginx` image and label the pod `tier=app`. 
@@ -220,7 +220,7 @@ app-pod !!!
 </details>
 <br />
 
-#### 04-02. Kubernetes Service Question
+### 04-02. Kubernetes Service Question
 * Create a namespace called `service-namespace`. 
 * Create a pod called `service-pod` using the `nginx` image and exposing port `80`. 
 * Label the pod `tier=web`. 
@@ -251,7 +251,7 @@ kubectl config set-context --current --namespace=service-namespace
 <details class="faq box"><summary>Solution - Create Pod</summary>
 <p>
 
-##### Help Examples
+#### Help Examples
 
 ```bash
 clear
@@ -290,7 +290,7 @@ Examples:
   kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>
 ```
 
-##### Solution
+#### Solution
 
 ```bash
 clear
@@ -304,7 +304,7 @@ kubectl get all
 <details class="faq box"><summary>Solution - Expose Service</summary>
 <p>
 
-##### Help Examples
+#### Help Examples
 
 ```bash
 clear
@@ -340,7 +340,7 @@ port 8000
   kubectl expose deployment nginx --port=80 --target-port=8000
 ```
 
-##### Solution
+#### Solution
 
 ```bash
 clear
@@ -355,7 +355,7 @@ kubectl get ep
 </details>
 <br />
 
-#### 04-03. Ingress Question
+### 04-03. Ingress Question
 * Create an ingress called `my-ingress` to expose the service `my-service` from previous question, outside the cluster.
 
 <details class="faq box"><summary>Overview</summary>
@@ -369,7 +369,7 @@ kubectl get ep
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
 
-##### Prerequisites
+#### Prerequisites
 
 Install the  Ingress Controller if you have not already installed it:
 
@@ -383,7 +383,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 <details class="faq box"><summary>Solution</summary>
 <p>
 
-##### Solution
+#### Solution
 
 kubernetes.io bookmark: [The Ingress resource](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
 
@@ -478,7 +478,7 @@ Commercial support is available at
 </details>
 <br />
 
-#### Clean Up
+### Clean Up
 
 <details class="faq box"><summary>Clean Up</summary> 
 <p>

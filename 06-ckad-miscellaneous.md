@@ -1,6 +1,6 @@
-## Sample CKAD Miscellaneous Q&A
+# Sample CKAD Miscellaneous Q&A
 
-#### 06-01. What is the current active namespace?
+## 06-01. What is the current active namespace?
 
 <details class="faq box"><summary>Solution - kubectl config get-contexts</summary>
 <p>
@@ -46,7 +46,7 @@ CURRENT   NAME                            CLUSTER                         AUTHIN
 </details>
 <br />
 
-#### 06-02. List all the Kubernetes resources that can be found inside a namespace. By name only.
+## 06-02. List all the Kubernetes resources that can be found inside a namespace. By name only.
 
 <details class="faq box"><summary>Solution - kubectl api-resources --namespaced=true</summary>
 <p>
@@ -77,7 +77,7 @@ endpoints                          ep                                   v1      
 <details class="faq box"><summary>kubectl api-resources --namespaced=true -o name</summary>
 <p>
 
-##### Solution
+### Solution
 
 ```bash
 clear
@@ -98,7 +98,7 @@ events
 </details>
 <br />
 
-#### 06-03. Give the command to list out all the available API groups on your cluster. Then list out the API's in the `named` group.
+## 06-03. Give the command to list out all the available API groups on your cluster. Then list out the API's in the `named` group.
 
 <details class="faq box"><summary>Prerequisites</summary>
 <p>
@@ -225,13 +225,13 @@ Output:
 </details>
 <br />
 
-#### 06-04. Strategic Merge Patch Question
+## 06-04. Strategic Merge Patch Question
 * Patch the deployment from the previous question: `my-revision-deployment` to have a `revisionHistoryLimit` size of `20` using a **Strategic Merge Patch**
 
 <details class="faq box"><summary>Overview</summary>
 <p>
 
-##### Overview
+### Overview
 
 kubernetes.io bookmark: [Use a strategic merge patch to update a Deployment](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/#use-a-strategic-merge-patch-to-update-a-deployment)
 

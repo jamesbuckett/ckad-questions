@@ -1,5 +1,18 @@
 # Sample CKAD exercises and solutions
 
+[![Kubernetes CKAD](https://img.shields.io/badge/Kubernetes-CKAD-326CE5?logo=kubernetes&logoColor=white)](https://www.cncf.io/certification/ckad/)
+[![License](https://img.shields.io/github/license/jamesbuckett/ckad-questions)](https://github.com/jamesbuckett/ckad-questions/blob/main/LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/jamesbuckett/ckad-questions)](https://github.com/jamesbuckett/ckad-questions/commits/main)
+[![Commit activity](https://img.shields.io/github/commit-activity/m/jamesbuckett/ckad-questions)](https://github.com/jamesbuckett/ckad-questions/commits/main)
+[![Contributors](https://img.shields.io/github/contributors/jamesbuckett/ckad-questions)](https://github.com/jamesbuckett/ckad-questions/graphs/contributors)
+[![Open issues](https://img.shields.io/github/issues/jamesbuckett/ckad-questions)](https://github.com/jamesbuckett/ckad-questions/issues)
+[![Repo size](https://img.shields.io/github/repo-size/jamesbuckett/ckad-questions)](https://github.com/jamesbuckett/ckad-questions)
+[![Top language](https://img.shields.io/github/languages/top/jamesbuckett/ckad-questions)](https://github.com/jamesbuckett/ckad-questions)
+[![Made with Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](https://commonmark.org/)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/jamesbuckett/ckad-questions/pulls)
+[![GitHub stars](https://img.shields.io/github/stars/jamesbuckett/ckad-questions?style=social)](https://github.com/jamesbuckett/ckad-questions/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/jamesbuckett/ckad-questions?style=social)](https://github.com/jamesbuckett/ckad-questions/network/members)
+
 - A set of sample questions and solutions to assist in preparing for the [CKAD](https://www.cncf.io/certification/ckad/) exam
 - Use the [CKAD tips and tricks](https://github.com/jamesbuckett/ckad-tips) repository for various tips and tricks in the CKAD exam
 - Assumed practice environment is [Docker Desktop](https://www.docker.com/products/docker-desktop) with a [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install) backend
